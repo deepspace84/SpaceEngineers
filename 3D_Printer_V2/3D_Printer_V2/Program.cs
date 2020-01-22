@@ -46,6 +46,11 @@ namespace IngameScript
         private int d3_posMax_y = 35;
         private int d3_posMax_z = 35;
 
+        // true => zero to max | false => max to zero
+        private bool d3_direction_x = true;
+        private bool d3_direction_y = false;
+        private bool d3_direction_z = true;
+
         //Block-Object variables
         private IMyPistonBase pistonObject;
 
@@ -65,7 +70,29 @@ namespace IngameScript
         List<string> d3_pist_z = new List<string>()
         {"3d_Pist_Vert_0","3d_Pist_Vert_1","3d_Pist_Vert_2","3d_Pist_Vert_3"};
 
-        private DataTable tablePiston = new DataTable();
+        public class pistons
+        {
+            private string sName;
+
+            public string name
+            {
+                get { return sName; }
+                set { sName = value; }
+            }
+
+            private string bActive;
+
+            public string active
+            {
+                get { return bActive; }
+                set { bActive = value; }
+            }
+
+            
+        }
+
+        private IDictionary<int, pistons> dict = new Dictionary<int, pistons>();
+
 
 
 
@@ -124,11 +151,6 @@ namespace IngameScript
         */
         private void init_tablePiston()
         {
-            // Define columns
-            tablePiston.Columns.Add("name", typeof(string));
-            tablePiston.Columns.Add("directon", typeof(string));
-            tablePiston.Columns.Add("order", typeof(int));
-            tablePiston.Columns.Add("active", typeof(bool));
 
             int oCount = 0;
             foreach (string name in d3_pist_x)
