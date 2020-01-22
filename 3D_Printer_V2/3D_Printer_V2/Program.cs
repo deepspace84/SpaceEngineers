@@ -70,8 +70,22 @@ namespace IngameScript
         List<string> d3_pist_z = new List<string>()
         {"3d_Pist_Vert_0","3d_Pist_Vert_1","3d_Pist_Vert_2","3d_Pist_Vert_3"};
 
-        public class pistons
+        public class piston
         {
+            public piston(int id, string name)
+            {
+                sName = name;
+                iId = id;
+            }
+
+            private int iId;
+
+            public int id
+            {
+                get { return iId; }
+                set { iId = value; }
+            }
+
             private string sName;
 
             public string name
@@ -79,23 +93,9 @@ namespace IngameScript
                 get { return sName; }
                 set { sName = value; }
             }
-
-            public pistons(string name)
-            {
-                sName = name;
-            }
-            /*
-            private string bActive;
-
-            public string active
-            {
-                get { return bActive; }
-                set { bActive = value; }
-            }
-            */
         }
 
-        private IDictionary<int, pistons> dPiston = new Dictionary<int, pistons>();
+        private IDictionary<int, piston> dPiston = new Dictionary<int, piston>();
 
 
 
@@ -156,21 +156,21 @@ namespace IngameScript
         private void init_tablePiston()
         {
 
-            int oCount = 0;
+            int iCount = 0;
             foreach (string name in d3_pist_x)
             {
-                dPiston.Add(new pistons())
-                oCount++;
+                dPiston.Add(new piston(iCount, "name"));
+                iCount++;
             }
             foreach (string name in d3_pist_y)
             {
-                tablePiston.Rows.Add(name, "y", oCount, false);
-                oCount++;
+                dPiston.Add(new piston(iCount, "name"));
+                iCount++;
             }
             foreach (string name in d3_pist_z)
             {
-                tablePiston.Rows.Add(name, "z", oCount, false);
-                oCount++;
+                dPiston.Add(new piston(iCount, "name"));
+                iCount++;
             }
         }
 
