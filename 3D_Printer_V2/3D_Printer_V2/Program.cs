@@ -159,17 +159,17 @@ namespace IngameScript
             int iCount = 0;
             foreach (string name in d3_pist_x)
             {
-                dPiston.Add(new piston(iCount, "name"));
+                dPiston.Add(iCount, new piston(iCount, "name"));
                 iCount++;
             }
             foreach (string name in d3_pist_y)
             {
-                dPiston.Add(new piston(iCount, "name"));
+                dPiston.Add(iCount, new piston(iCount, "name"));
                 iCount++;
             }
             foreach (string name in d3_pist_z)
             {
-                dPiston.Add(new piston(iCount, "name"));
+                dPiston.Add(iCount, new piston(iCount, "name"));
                 iCount++;
             }
         }
@@ -180,14 +180,15 @@ namespace IngameScript
         private bool pistZero()
         {
             bool zero = true;
-            foreach (DataRow row in tablePiston.Rows)
+
+            foreach (KeyValuePair<int, piston> entry in dPiston)
             {
-                pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(row["name"].ToString());
+                pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(entry.Value.name);
 
                 if (pistonObject.CurrentPosition > 0.01f)
                 {
                     // Set piston to zero
-                    setPistons(parseNames(row["name"].ToString()), 0, 0.1f, false);
+                    setPistons(parseNames(entry.Value.name), 0, 0.1f, false);
                     zero = false;
                 }
             }
@@ -288,3 +289,4 @@ namespace IngameScript
             }
         }
     }
+}
