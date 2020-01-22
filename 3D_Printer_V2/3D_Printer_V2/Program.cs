@@ -80,6 +80,11 @@ namespace IngameScript
                 set { sName = value; }
             }
 
+            public pistons(string name)
+            {
+                sName = name;
+            }
+            /*
             private string bActive;
 
             public string active
@@ -87,11 +92,10 @@ namespace IngameScript
                 get { return bActive; }
                 set { bActive = value; }
             }
-
-            
+            */
         }
 
-        private IDictionary<int, pistons> dict = new Dictionary<int, pistons>();
+        private IDictionary<int, pistons> dPiston = new Dictionary<int, pistons>();
 
 
 
@@ -155,7 +159,7 @@ namespace IngameScript
             int oCount = 0;
             foreach (string name in d3_pist_x)
             {
-                tablePiston.Rows.Add(name, "x", oCount, false);
+                dPiston.Add(new pistons())
                 oCount++;
             }
             foreach (string name in d3_pist_y)
