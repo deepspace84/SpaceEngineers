@@ -1,37 +1,28 @@
-﻿using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sandbox.Common;
-using Sandbox.Common.Components;
-using Sandbox.Common.ObjectBuilders;
-using Sandbox.Definitions;
-using Sandbox.Engine;
+﻿using Sandbox.Game.EntityComponents;
 using Sandbox.ModAPI.Ingame;
 using Sandbox.ModAPI.Interfaces;
-using Sandbox.Game;
-using Sandbox.Game.EntityComponents;
-using VRageMath;
-using VRage.Collections;
-using VRage.Game;
-using VRage.Game.Components;
-using VRage.Game.ObjectBuilders.Definitions;
-using VRage.Game.ModAPI.Ingame;
 using SpaceEngineers.Game.ModAPI.Ingame;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System;
+using VRage.Collections;
+using VRage.Game.Components;
+using VRage.Game.GUI.TextPanel;
 using VRage.Game.ModAPI.Ingame.Utilities;
+using VRage.Game.ModAPI.Ingame;
+using VRage.Game.ObjectBuilders.Definitions;
+using VRage.Game;
+using VRage;
+using VRageMath;
 
-
-namespace SpaceEngineers
-{//Namespace within Programmable-Block
-
-    //Target Lock
-    //Requires Camera for Scanning and retrieving target information
-    //Requires Gyroscope for maneuvering
-    //Requires Remote-Control for information on drone trajectory
-    public class Program : MyGridProgram
+namespace IngameScript
+{
+    partial class Program : MyGridProgram
     {
+
+
         // Global definitions
         public float pistonDefaultSpeed = 0.3f;
 
@@ -77,14 +68,15 @@ namespace SpaceEngineers
         private DataTable tablePiston = new DataTable();
 
 
-        
+
 
 
         /*
          * Init function 
          * -----------------------------------------------
          */
-        public Program() {
+        public Program()
+        {
 
             Runtime.UpdateFrequency = UpdateFrequency.Update100; // Set Tick update to 100
 
@@ -269,20 +261,4 @@ namespace SpaceEngineers
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-}
-
-
