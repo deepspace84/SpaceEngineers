@@ -60,15 +60,15 @@ namespace IngameScript
 
         // X
         List<string> d3_pist_x = new List<string>()
-        {"3d_Pist_Forward_0","3d_Pist_Forward_1","3d_Pist_Forward_2","3d_Pist_Forward_3"};
+        {"3D_Pist_Forward_0","3D_Pist_Forward_1","3D_Pist_Forward_2","3D_Pist_Forward_3"};
 
         // Y
         List<string> d3_pist_y = new List<string>()
-        {"3d_Pist_Side_0","3d_Pist_Side_1","3d_Pist_Side_3"};
+        {"3D_Pist_Side_0","3D_Pist_Side_1","3D_Pist_Side_3"};
 
         // Z
         List<string> d3_pist_z = new List<string>()
-        {"3d_Pist_Vert_0","3d_Pist_Vert_1","3d_Pist_Vert_2","3d_Pist_Vert_3"};
+        {"3D_Pist_Vert_0","3D_Pist_Vert_1","3D_Pist_Vert_2","3D_Pist_Vert_3"};
 
         public class piston
         {
@@ -96,10 +96,6 @@ namespace IngameScript
         }
 
         private IDictionary<int, piston> dPiston = new Dictionary<int, piston>();
-
-
-
-
 
 
         /*
@@ -159,17 +155,17 @@ namespace IngameScript
             int iCount = 0;
             foreach (string name in d3_pist_x)
             {
-                dPiston.Add(iCount, new piston(iCount, "name"));
+                dPiston.Add(iCount, new piston(iCount, name));
                 iCount++;
             }
             foreach (string name in d3_pist_y)
             {
-                dPiston.Add(iCount, new piston(iCount, "name"));
+                dPiston.Add(iCount, new piston(iCount, name));
                 iCount++;
             }
             foreach (string name in d3_pist_z)
             {
-                dPiston.Add(iCount, new piston(iCount, "name"));
+                dPiston.Add(iCount, new piston(iCount, name));
                 iCount++;
             }
         }
