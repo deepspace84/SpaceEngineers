@@ -38,11 +38,13 @@ namespace IngameScript
 
         MyIni _ini = new MyIni();
 
-        // Piston variables
-        private float d3_pos_x = 0;
-        private float d3_pos_y = 0;
-        private float d3_pos_z = 0;
+        // Ini variables
+        private float d3_ini_posMax_x = 35;
+        private float d3_ini_posMax_y = 105;
+        private float d3_ini_posMax_z = 35;
+        private int d3_ini_zeroLevel = 1;
 
+        // Piston variables
         private float d3_posMax_x = 35;
         private float d3_posMax_y = 105;
         private float d3_posMax_z = 35;
@@ -70,6 +72,14 @@ namespace IngameScript
         // Z
         List<string> d3_pist_z = new List<string>()
         {"3D_Pist_Down_0","3D_Pist_Down_1","3D_Pist_Down_2","3D_Pist_Down_3"};
+
+        // Piston dictoinary
+        private IDictionary<int, piston> dPiston = new Dictionary<int, piston>();
+
+        /*
+         *  Classes
+         * -------------------------------------------------
+         */
 
         public class piston
         {
@@ -132,8 +142,6 @@ namespace IngameScript
             }
         }
 
-        private IDictionary<int, piston> dPiston = new Dictionary<int, piston>();
-
 
         /*
          * Init function 
@@ -155,24 +163,22 @@ namespace IngameScript
             // Check init for first run
             if (!d3_init)
             {
+
+                // Read ini file
+                readini();
+
                 // Initialize pistons
-                if (init_tablePiston() == false) {
-                    return;
-                }
+                init_tablePiston();
+
+                
+
+                
 
                 // Check piston positons
                 if (!pistZeroCheck())
                 {
                     pistZero();
                 }
-
-                // Read custom data and check maximums
-                MyIniParseResult result;
-                if (!_ini.TryParse(Me.CustomData, out result))
-                    throw new Exception(result.ToString());
-
-                // Check maxsize
-                _ini.Get("Configuration", "MaxPositon_X").ToInt32();
 
 
                 // Set ini flag
@@ -192,10 +198,43 @@ namespace IngameScript
         }
 
 
+
+        /*
+         * 
+         */
+         private void readini()
+        {
+
+            // Read custom data and check maximums
+            MyIniParseResult result;
+            if (!_ini.TryParse(Me.CustomData, out result))
+            {
+                fatal_error("Could not parse customData information");
+            }
+
+
+            d3_ini_posMax_x = _ini.Get("Configuration", "MaxPositon_X").ToInt32();
+            d3_ini_posMax_y = _ini.Get("Configuration", "MaxPositon_Y").ToInt32();
+            d3_ini_posMax_z = _ini.Get("Configuration", "MaxPositon_Z").ToInt32();
+            d3_ini_zeroLevel = _ini.Get("Configuration", "ZeroLevel").ToInt32();
+
+            /*
+            if (_ini.Get("Configuration", "MaxPositon_Y").ToInt32() < d3_posMax_y)
+            {
+                d3_bp_posMax_y = _ini.Get("Configuration", "MaxPositon_Y").ToInt32();
+            }
+            if (_ini.Get("Configuration", "MaxPositon_Z").ToInt32() < d3_posMax_z)
+            {
+                d3_bp_posMax_z = _ini.Get("Configuration", "MaxPositon_Z").ToInt32();
+            }
+            */
+        }
+
+
         /*
             Piston Initialization 
         */
-        private bool init_tablePiston()
+        private void init_tablePiston()
         {
 
             int iCount = 0;
@@ -254,8 +293,6 @@ namespace IngameScript
                     return false;
                 }
             }
-
-            return true;
         }
 
         /*
@@ -286,8 +323,8 @@ namespace IngameScript
         }
 
         /*
-    Piston zero check
-*/
+            Piston zero check
+        */
         private bool pistZeroCheck()
         {
             bool zero = true;
@@ -315,6 +352,8 @@ namespace IngameScript
             return zero;
         }
 
+
+        // Parse Blocks into List
         public List<IMyTerminalBlock> parseNames(string s)
         {
             List<IMyTerminalBlock> blocks = new List<IMyTerminalBlock>();
