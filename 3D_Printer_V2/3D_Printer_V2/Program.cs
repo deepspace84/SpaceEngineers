@@ -28,7 +28,6 @@ namespace IngameScript
 
         // Programm variables
         private bool d3_init = false; // Initialization flag
-        private bool d3_pistonZeroMove = false;
         private bool d3_Running = false;
 
         private int d3_Status = 0; // 0 = Off / 1=Printing / 2 = Moving
@@ -37,14 +36,16 @@ namespace IngameScript
 
         private int d3_zIndex = 0; // Groundlevel of the Blueprint
 
-        // Piston variables
-        private int d3_pos_x = 0;
-        private int d3_pos_y = 0;
-        private int d3_pos_z = 0;
+        MyIni _ini = new MyIni();
 
-        private int d3_posMax_x = 35;
-        private int d3_posMax_y = 35;
-        private int d3_posMax_z = 35;
+        // Piston variables
+        private float d3_pos_x = 0;
+        private float d3_pos_y = 0;
+        private float d3_pos_z = 0;
+
+        private float d3_posMax_x = 35;
+        private float d3_posMax_y = 105;
+        private float d3_posMax_z = 35;
 
         // true => zero to max | false => max to zero
         private bool d3_direction_x = true;
@@ -64,18 +65,22 @@ namespace IngameScript
 
         // Y
         List<string> d3_pist_y = new List<string>()
-        {"3D_Pist_Side_0","3D_Pist_Side_1","3D_Pist_Side_3"};
+        {"3D_Pist_Side_0","3D_Pist_Side_1","3D_Pist_Side_2"};
 
         // Z
         List<string> d3_pist_z = new List<string>()
-        {"3D_Pist_Vert_0","3D_Pist_Vert_1","3D_Pist_Vert_2","3D_Pist_Vert_3"};
+        {"3D_Pist_Down_0","3D_Pist_Down_1","3D_Pist_Down_2","3D_Pist_Down_3"};
 
         public class piston
         {
-            public piston(int id, string name)
+            public piston(int id, string name, string axis, bool direction, float maxlength, IMyPistonBase grid)
             {
                 sName = name;
                 iId = id;
+                oGrid = grid;
+                saxis = axis;
+                bDirection = direction;
+                fMaxLength = maxlength;
             }
 
             private int iId;
@@ -92,6 +97,38 @@ namespace IngameScript
             {
                 get { return sName; }
                 set { sName = value; }
+            }
+
+            private IMyPistonBase oGrid;
+
+            public IMyPistonBase grid
+            {
+                get { return oGrid; }
+                set { oGrid = value; }
+            }
+
+            private string saxis;
+
+            public string axis
+            {
+                get { return saxis; }
+                set { saxis = value; }
+            }
+
+            private bool bDirection;
+
+            public bool direction
+            {
+                get { return bDirection; }
+                set { bDirection = value; }
+            }
+
+            private float fMaxLength;
+
+            public float maxLength
+            {
+                get { return fMaxLength; }
+                set { fMaxLength = value; }
             }
         }
 
@@ -119,79 +156,164 @@ namespace IngameScript
             if (!d3_init)
             {
                 // Initialize pistons
-                init_tablePiston();
+                if (init_tablePiston() == false) {
+                    return;
+                }
 
                 // Check piston positons
-                if (!pistZero())
+                if (!pistZeroCheck())
                 {
-                    d3_pistonZeroMove = true;
+                    pistZero();
                 }
+
+                // Read custom data and check maximums
+                MyIniParseResult result;
+                if (!_ini.TryParse(Me.CustomData, out result))
+                    throw new Exception(result.ToString());
+
+                // Check maxsize
+                _ini.Get("Configuration", "MaxPositon_X").ToInt32();
+
 
                 // Set ini flag
                 d3_init = true;
             }
 
-            // Check for piston zero moving
-            if (d3_pistonZeroMove)
+            // Wait until pistons are at zero
+            if (!pistZeroCheck())
             {
-                if (pistZero())
-                {
-                    d3_pistonZeroMove = false;
-                }
-                else
-                {
-                    return;
-                }
+                return;
             }
+
+            // 
+            
+
+
         }
 
 
         /*
             Piston Initialization 
         */
-        private void init_tablePiston()
+        private bool init_tablePiston()
         {
 
             int iCount = 0;
+
+            // X-Axis
+            float maxLength = (d3_posMax_x / d3_pist_x.Count);
+
             foreach (string name in d3_pist_x)
             {
-                dPiston.Add(iCount, new piston(iCount, name));
-                iCount++;
+                pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
+                if (null != pistonObject)
+                {
+                    dPiston.Add(iCount, new piston(iCount, name, "x", d3_direction_x, maxLength, pistonObject));
+                    iCount++;
+                }
+                else
+                {
+                    fatal_error("Piston not found =>"+ name);
+                    return false;
+                }
+                
             }
+
+            // Y-Axis
+            maxLength = (d3_posMax_y / d3_pist_x.Count);
+
             foreach (string name in d3_pist_y)
             {
-                dPiston.Add(iCount, new piston(iCount, name));
-                iCount++;
+                pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
+                if (null != pistonObject)
+                {
+                    dPiston.Add(iCount, new piston(iCount, name, "y", d3_direction_y, maxLength, pistonObject));
+                    iCount++;
+                }
+                else
+                {
+                    fatal_error("Piston not found =>" + name);
+                    return false;
+                }
             }
+
+            // Y-Axis
+            maxLength = (d3_posMax_z / d3_pist_x.Count);
+
             foreach (string name in d3_pist_z)
             {
-                dPiston.Add(iCount, new piston(iCount, name));
-                iCount++;
+                pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
+                if (null != pistonObject)
+                {
+                    dPiston.Add(iCount, new piston(iCount, name, "z", d3_direction_z, maxLength, pistonObject));
+                    iCount++;
+                }
+                else
+                {
+                    fatal_error("Piston not found =>" + name);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /*
+            Piston zero 
+        */
+        private void pistZero()
+        {
+            foreach (KeyValuePair<int, piston> entry in dPiston)
+            {
+
+                // Check direction
+                if (entry.Value.direction)
+                {
+                    if (entry.Value.grid.CurrentPosition > 0.01f)
+                    {
+                        // Set piston to zero
+                        setPistons(parseNames(entry.Value.name), 0, 0.1f, false);
+                    }
+                }
+                else {
+                    if (entry.Value.grid.CurrentPosition < entry.Value.maxLength)
+                    {
+                        // Set piston to zero
+                        setPistons(parseNames(entry.Value.name), entry.Value.maxLength, 0.1f, false);
+                    }
+                }
             }
         }
 
         /*
-            Piston zero check
-        */
-        private bool pistZero()
+    Piston zero check
+*/
+        private bool pistZeroCheck()
         {
             bool zero = true;
 
             foreach (KeyValuePair<int, piston> entry in dPiston)
             {
-                pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(entry.Value.name);
-
-                if (pistonObject.CurrentPosition > 0.01f)
+                // Check direction
+                if (entry.Value.direction)
                 {
-                    // Set piston to zero
-                    setPistons(parseNames(entry.Value.name), 0, 0.1f, false);
-                    zero = false;
+                    if (entry.Value.grid.CurrentPosition > 0.01f)
+                    {
+                        zero = false;
+                    }
                 }
+                else
+                {
+                    if (entry.Value.grid.CurrentPosition < entry.Value.maxLength)
+                    {
+                        zero = false;
+                    }
+                }
+                    
             }
 
             return zero;
         }
-
 
         public List<IMyTerminalBlock> parseNames(string s)
         {
@@ -284,5 +406,19 @@ namespace IngameScript
                 }
             }
         }
+
+
+        /*
+         * Fatal error
+         *  ---------------------------------
+         */
+         private void fatal_error(string msg)
+        {
+            Echo("Fatal Error: "+msg);
+
+            throw;
+            
+        }
+
     }
 }
