@@ -30,33 +30,44 @@ namespace IngameScript
         private bool d3_init = false; // Initialization flag
         private bool d3_Running = false;
 
-        private int d3_Status = 0; // 0 = Off / 1=Printing / 2 = Moving
-        private int d3_activeAxis = 0; // 1 = X / 2=Y / 3=Z
-        private bool d3_direction = true; // 0=Forward / 1=Backward
-
-        private int d3_zIndex = 0; // Groundlevel of the Blueprint
+        private bool d3_Status = false; // 0 = Off / 1=Printing
+        private string d3_activeAxis = "y";
+        private bool d3_pdirection_x = false;
+        private bool d3_pdirection_y = false;
+        private bool d3_pdirection_z = false;
 
         MyIni _ini = new MyIni();
 
         // Ini variables
-        private float d3_ini_posMax_x = 35;
-        private float d3_ini_posMax_y = 105;
-        private float d3_ini_posMax_z = 35;
-        private int d3_ini_zeroLevel = 1;
+        private float d3_ini_posMax_x = 0;
+        private float d3_ini_posMax_y = 0;
+        private float d3_ini_posMax_z = 0;
+        private int d3_ini_zeroLevel = 0;
 
         // Piston variables
-        private float d3_posMax_x = 35;
-        private float d3_posMax_y = 105;
-        private float d3_posMax_z = 35;
+        private float d3_posMax_x = 140;
+        private float d3_posMax_y = 70;
+        private float d3_posMax_z = 140;
 
         // true => zero to max | false => max to zero
         private bool d3_direction_x = true;
         private bool d3_direction_y = false;
-        private bool d3_direction_z = true;
+        private bool d3_direction_z = false;
 
         //Block-Object variables
         private IMyPistonBase pistonObject;
+        private IMyShipWelder welderObject;
+        private IMyProjector projectorObject;
 
+        // Prjector counter
+        private int proj_checks = 0;
+        private int proj_count = 0;
+
+        // Welder name
+        private string welderName = "3D_Welder";
+        private string projectorName = "3D_Projector";
+
+        private int debug_counter = 0;
 
         /* Piston declaration
          */
@@ -83,7 +94,7 @@ namespace IngameScript
 
         public class piston
         {
-            public piston(int id, string name, string axis, bool direction, float maxlength, IMyPistonBase grid)
+            public piston(int id, string name, string axis, bool direction, float maxlength, float printLength, IMyPistonBase grid)
             {
                 sName = name;
                 iId = id;
@@ -91,6 +102,7 @@ namespace IngameScript
                 saxis = axis;
                 bDirection = direction;
                 fMaxLength = maxlength;
+                fPrintLength = printLength;
             }
 
             private int iId;
@@ -140,6 +152,14 @@ namespace IngameScript
                 get { return fMaxLength; }
                 set { fMaxLength = value; }
             }
+
+            private float fPrintLength;
+
+            public float printLength
+            {
+                get { return fPrintLength; }
+                set { fPrintLength = value; }
+            }
         }
 
 
@@ -167,32 +187,208 @@ namespace IngameScript
                 // Read ini file
                 readini();
 
+                // Calculate z zero level
+                switch (d3_ini_zeroLevel)
+                {
+                    case 1:
+                        d3_posMax_z = 35;
+                        break;
+                    case 2:
+                        d3_posMax_z = 70;
+                        break;
+                    case 3:
+                        d3_posMax_z = 105;
+                        break;
+                    case 4:
+                        d3_posMax_z = 140;
+                        break;
+                    default:
+                        fatal_error("Zero level is out of range");
+                        break;
+                }
+                Echo("d3_posMax_z => " + d3_posMax_z.ToString());
+
+                // Init welder
+                welderObject = (IMyShipWelder) GridTerminalSystem.GetBlockWithName(welderName);
+                if (null == welderObject)
+                {
+                    fatal_error("Welder Name not found");
+                }
+                welderObject.ApplyAction("OnOff_Off");
+
+                // Init projector
+                projectorObject = (IMyProjector)GridTerminalSystem.GetBlockWithName(projectorName);
+                if (null == projectorObject)
+                {
+                    fatal_error("Projector Name not found");
+                }
+
                 // Initialize pistons
                 init_tablePiston();
 
-                
-
-                
-
-                // Check piston positons
+                // Set pistons to zero
                 if (!pistZeroCheck())
                 {
                     pistZero();
                 }
-
-
+                
                 // Set ini flag
                 d3_init = true;
+                
             }
 
             // Wait until pistons are at zero
-            if (!pistZeroCheck())
+            if (!pistZeroCheck() && d3_Status == false)
             {
+                Echo("Pist ZeroCheck");
                 return;
             }
+            else if(!d3_Status)
+            {
+                // Save projection count
+                proj_count = projectorObject.RemainingBlocks;
 
-            // 
-            
+                // Zero check finished, so start welder 
+                welderObject.ApplyAction("OnOff_On");
+
+                d3_Status = true;
+            }
+
+
+            // Check projector count
+            if(proj_checks == 12)
+            {
+                // Printer Finished
+                if (pistLimitCheck("y", true) && pistLimitCheck("x", true) && pistLimitCheck("z", true))
+                {
+                    fatal_error("Print finished");
+                }
+
+                // Check next step
+                if (d3_activeAxis == "y")
+                {
+
+                    if(pistLimitCheck("y", d3_pdirection_y) && pistLimitCheck("x", d3_pdirection_x)) // Plate finished, go step up
+                    {
+                        // Change direction
+                        if (d3_pdirection_y)
+                        {
+                            d3_pdirection_y = false;
+                        }
+                        else
+                        {
+                            d3_pdirection_y = true;
+                        }
+                        d3_activeAxis = "z";
+                    }else if (pistLimitCheck("y", d3_pdirection_y)) // Limit reached move to next row
+                    {
+                        // Change direction
+                        if (d3_pdirection_y)
+                        {
+                            d3_pdirection_y = false;
+                        }
+                        else
+                        {
+                            d3_pdirection_y = true;
+                        }
+                        d3_activeAxis = "x";
+                    }
+                    else // Move forward
+                    {
+                        foreach (KeyValuePair<int, piston> entry in dPiston)
+                        {
+                            if (entry.Value.axis != "y") continue;
+
+                            int step = 1;
+                            if (!d3_direction_y && !d3_pdirection_y) step = -1;
+
+                            setPistons(parseNames(entry.Value.name), step, 0.1f, true);
+
+                            Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
+                            debug_counter++;
+                        }
+                    }
+
+
+                }else if(d3_activeAxis == "x")
+                {
+                    // Check if we reached x axis limit
+                    if(pistLimitCheck("x", d3_pdirection_x))
+                    {
+                        // Change direction
+                        if (d3_pdirection_x)
+                        {
+                            d3_pdirection_x = false;
+                        }
+                        else
+                        {
+                            d3_pdirection_x = true;
+                        }
+                    }
+                    else // Move one step and switch bach to y
+                    {
+                        foreach (KeyValuePair<int, piston> entry in dPiston)
+                        {
+                            if (entry.Value.axis != "x") continue;
+
+                            int step = 1;
+                            if (d3_direction_x && d3_pdirection_x) step = -1;
+
+                            // Set piston 
+                            setPistons(parseNames(entry.Value.name), step, 0.1f, true);
+
+                            Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
+                            debug_counter++;
+                        }
+                    }
+
+                    // Always send back to y
+                    d3_activeAxis = "y";
+                }
+                else if(d3_activeAxis == "z")
+                {
+                    
+                    fatal_error("Plate finished");
+
+                    // Check if we reached z axis limit
+                    if (pistLimitCheck("z", d3_direction_z))
+                    { 
+                        foreach (KeyValuePair<int, piston> entry in dPiston)
+                        {
+                            if (entry.Value.axis != "z") continue;
+
+                            // Set piston 
+                            setPistons(parseNames(entry.Value.name), -1, 0.1f, true);
+
+                            Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
+                            debug_counter++;
+                        }
+                    }
+                    
+                    // Always send back to y
+                    d3_activeAxis = "y";
+                }
+                
+
+                proj_checks = 0;
+            }
+            else
+            {
+                // Check if smth changed
+                if(projectorObject.RemainingBlocks < proj_count)
+                {
+                    // Set new count
+                    proj_count = projectorObject.RemainingBlocks;
+
+                    // Reset checks
+                    proj_checks = 0;
+                }
+                else
+                {
+                    // Count didn't changed so go on with checking
+                    proj_checks++;
+                }
+            }
 
 
         }
@@ -200,7 +396,7 @@ namespace IngameScript
 
 
         /*
-         * 
+         * Init customData ini 
          */
          private void readini()
         {
@@ -212,27 +408,21 @@ namespace IngameScript
                 fatal_error("Could not parse customData information");
             }
 
-
+            // Read ini values
             d3_ini_posMax_x = _ini.Get("Configuration", "MaxPositon_X").ToInt32();
             d3_ini_posMax_y = _ini.Get("Configuration", "MaxPositon_Y").ToInt32();
             d3_ini_posMax_z = _ini.Get("Configuration", "MaxPositon_Z").ToInt32();
             d3_ini_zeroLevel = _ini.Get("Configuration", "ZeroLevel").ToInt32();
-
-            /*
-            if (_ini.Get("Configuration", "MaxPositon_Y").ToInt32() < d3_posMax_y)
-            {
-                d3_bp_posMax_y = _ini.Get("Configuration", "MaxPositon_Y").ToInt32();
-            }
-            if (_ini.Get("Configuration", "MaxPositon_Z").ToInt32() < d3_posMax_z)
-            {
-                d3_bp_posMax_z = _ini.Get("Configuration", "MaxPositon_Z").ToInt32();
-            }
-            */
+            Echo("d3_ini_posMax_x => " + d3_ini_posMax_x.ToString());
+            Echo("d3_ini_posMax_y => " + d3_ini_posMax_y.ToString());
+            Echo("d3_ini_posMax_z => " + d3_ini_posMax_z.ToString());
+            Echo("d3_ini_zeroLevel => " + d3_ini_zeroLevel.ToString());
+            Echo("------------------------");
         }
 
 
         /*
-            Piston Initialization 
+         * Piston Initialization 
         */
         private void init_tablePiston()
         {
@@ -240,57 +430,88 @@ namespace IngameScript
             int iCount = 0;
 
             // X-Axis
-            float maxLength = (d3_posMax_x / d3_pist_x.Count);
+            float printLength;
 
             foreach (string name in d3_pist_x)
             {
                 pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
                 if (null != pistonObject)
                 {
-                    dPiston.Add(iCount, new piston(iCount, name, "x", d3_direction_x, maxLength, pistonObject));
+                    // Calculate piston max
+                    if(d3_ini_posMax_x < d3_posMax_x)
+                    {
+                        printLength = (d3_ini_posMax_x / d3_pist_x.Count);
+                    }
+                    else
+                    {
+                        printLength = (d3_posMax_x / d3_pist_x.Count);
+                    }
+
+                    // Add piston object to dictonary
+                    //Echo("Piston X => " + name + " | maxLength => " + (d3_posMax_x / d3_pist_x.Count).ToString() + " | printLength=> " + printLength.ToString() + "\n");
+                    dPiston.Add(iCount, new piston(iCount, name, "x", d3_direction_x, (d3_posMax_x / d3_pist_x.Count), printLength, pistonObject));
                     iCount++;
                 }
                 else
                 {
                     fatal_error("Piston not found =>"+ name);
-                    return false;
                 }
                 
             }
 
             // Y-Axis
-            maxLength = (d3_posMax_y / d3_pist_x.Count);
-
+            
             foreach (string name in d3_pist_y)
             {
+                // Calculate piston max
+                if (d3_ini_posMax_y < d3_posMax_y)
+                {
+                    printLength = (d3_ini_posMax_y / d3_pist_y.Count);
+                }
+                else
+                {
+                    printLength = (d3_posMax_y / d3_pist_y.Count);
+                }
+
+                // Add piston object to dictonary
                 pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
                 if (null != pistonObject)
                 {
-                    dPiston.Add(iCount, new piston(iCount, name, "y", d3_direction_y, maxLength, pistonObject));
+                    //Echo("Piston Y => " + name + " | maxLength => " + (d3_posMax_y / d3_pist_y.Count).ToString() + " | printLength=> " + printLength.ToString()+"\n");
+                    dPiston.Add(iCount, new piston(iCount, name, "y", d3_direction_y, (d3_posMax_y / d3_pist_y.Count), printLength, pistonObject));
                     iCount++;
                 }
                 else
                 {
                     fatal_error("Piston not found =>" + name);
-                    return false;
                 }
             }
 
             // Y-Axis
-            maxLength = (d3_posMax_z / d3_pist_x.Count);
-
+            
             foreach (string name in d3_pist_z)
             {
+                // Calculate piston max
+                if (d3_ini_posMax_z < d3_posMax_z)
+                {
+                    printLength = (d3_ini_posMax_z / d3_pist_z.Count);
+                }
+                else
+                {
+                    printLength = (d3_posMax_z / d3_pist_z.Count);
+                }
+
+                // Add piston object to dictonary
                 pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
                 if (null != pistonObject)
                 {
-                    dPiston.Add(iCount, new piston(iCount, name, "z", d3_direction_z, maxLength, pistonObject));
+                    //Echo("Piston Z => " + name + " | maxLength => " + (d3_posMax_z / d3_pist_z.Count).ToString() + " | printLength=> " + printLength.ToString() + "\n");
+                    dPiston.Add(iCount, new piston(iCount, name, "z", d3_direction_z, (d3_posMax_z / d3_pist_z.Count), printLength, pistonObject));
                     iCount++;
                 }
                 else
                 {
                     fatal_error("Piston not found =>" + name);
-                    return false;
                 }
             }
         }
@@ -312,8 +533,9 @@ namespace IngameScript
                         setPistons(parseNames(entry.Value.name), 0, 0.1f, false);
                     }
                 }
-                else {
-                    if (entry.Value.grid.CurrentPosition < entry.Value.maxLength)
+                else
+                {
+                    if (entry.Value.grid.CurrentPosition < entry.Value.maxLength || entry.Value.grid.CurrentPosition > entry.Value.maxLength)
                     {
                         // Set piston to zero
                         setPistons(parseNames(entry.Value.name), entry.Value.maxLength, 0.1f, false);
@@ -341,7 +563,7 @@ namespace IngameScript
                 }
                 else
                 {
-                    if (entry.Value.grid.CurrentPosition < entry.Value.maxLength)
+                    if (entry.Value.grid.CurrentPosition < entry.Value.maxLength || entry.Value.grid.CurrentPosition > entry.Value.maxLength)
                     {
                         zero = false;
                     }
@@ -352,6 +574,41 @@ namespace IngameScript
             return zero;
         }
 
+        /*
+         *  Piston build_limit_check
+         */
+         private bool pistLimitCheck(string axis, bool pdirect)
+        {
+            bool check = true;
+
+            foreach (KeyValuePair<int, piston> entry in dPiston)
+            {
+                // Skipp non needed axis
+                if (entry.Value.axis != axis) continue;
+
+                // Check direction
+                if (!entry.Value.direction && !pdirect)
+                {
+                    // Check if piston is on or over its print length
+                    if (entry.Value.grid.CurrentPosition < entry.Value.printLength)
+                    {
+                        // Print length not reached
+                        check = false;
+                    }
+                }
+                else
+                {
+                    // Check if piston is on or over its print length
+                    if (entry.Value.grid.CurrentPosition > (entry.Value.maxLength-entry.Value.printLength))
+                    {
+                        // Print length not reached
+                        check = false;
+                    }
+                }
+            }
+
+            return check;
+        }
 
         // Parse Blocks into List
         public List<IMyTerminalBlock> parseNames(string s)
@@ -455,9 +712,9 @@ namespace IngameScript
         {
             Echo("Fatal Error: "+msg);
 
-            throw;
-            
+            throw new Exception("Fatal Error: " + msg);
         }
+
 
     }
 }
