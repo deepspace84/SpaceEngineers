@@ -587,7 +587,7 @@ namespace IngameScript
                 if (entry.Value.axis != axis) continue;
 
                 // Check direction
-                if (!entry.Value.direction && !pdirect)
+                if (entry.Value.direction && !pdirect)
                 {
                     // Check if piston is on or over its print length
                     if (entry.Value.grid.CurrentPosition < entry.Value.printLength)
