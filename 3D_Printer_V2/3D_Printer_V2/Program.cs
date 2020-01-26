@@ -258,10 +258,10 @@ namespace IngameScript
             if(proj_checks == 8)
             {
                 // Printer Finished
-                /*if (pistLimitCheck("y", true) && pistLimitCheck("x", true) && pistLimitCheck("z", true))
+                if (pistLimitCheck("y", d3_pdirection_y) && pistLimitCheck("x", d3_pdirection_x) && pistLimitCheck("z", false))
                 {
                     fatal_error("Print finished");
-                }*/
+                }
 
                 // Check next step
                 if (d3_activeAxis == "y")
@@ -302,7 +302,7 @@ namespace IngameScript
                             int step = 1;
                             if (d3_direction_y == d3_pdirection_y) step = -1;
 
-                            setPistons(parseNames(entry.Value.name), step, 0.1f, true);
+                            setPistons(parseNames(entry.Value.name), step, 0.15f, true);
 
                             Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
                             debug_counter++;
@@ -336,7 +336,7 @@ namespace IngameScript
                             if (d3_direction_x == d3_pdirection_x) step = -1;
 
                             // Set piston 
-                            setPistons(parseNames(entry.Value.name), step, 0.1f, true);
+                            setPistons(parseNames(entry.Value.name), step, 0.15f, true);
 
                             Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
                             debug_counter++;
@@ -348,8 +348,6 @@ namespace IngameScript
                 }
                 else if(d3_activeAxis == "z")
                 {
-                    
-                    fatal_error("Plate finished");
 
                     // Check if we reached z axis limit
                     if (pistLimitCheck("z", d3_direction_z))
@@ -359,7 +357,7 @@ namespace IngameScript
                             if (entry.Value.axis != "z") continue;
 
                             // Set piston 
-                            setPistons(parseNames(entry.Value.name), -1, 0.1f, true);
+                            setPistons(parseNames(entry.Value.name), -1, 0.15f, true);
 
                             Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
                             debug_counter++;
