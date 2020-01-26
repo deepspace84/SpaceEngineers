@@ -281,6 +281,7 @@ namespace IngameScript
                         d3_activeAxis = "z";
                     }else if (pistLimitCheck("y", d3_pdirection_y)) // Limit reached move to next row
                     {
+                        Echo("Pistlimit y reached");
                         // Change direction
                         if (d3_pdirection_y)
                         {
@@ -314,6 +315,7 @@ namespace IngameScript
                     // Check if we reached x axis limit
                     if(pistLimitCheck("x", d3_pdirection_x))
                     {
+                        Echo("Pistlimit x reached");
                         // Change direction
                         if (d3_pdirection_x)
                         {
