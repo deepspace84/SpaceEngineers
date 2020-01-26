@@ -612,11 +612,25 @@ namespace IngameScript
                 else
                 {
                     // Check if piston is on or over its print length
-                    if (entry.Value.grid.CurrentPosition > (entry.Value.maxLength-entry.Value.printLength))
+                    if (entry.Value.direction)
                     {
-                        // Print length not reached
-                        check = false;
+                        // Check if piston is on or over its print length
+                        if (entry.Value.grid.CurrentPosition > 0)
+                        {
+                            // Print length not reached
+                            check = false;
+                        }
                     }
+                    else
+                    {
+                        // Check if piston is on or over its print length
+                        if (entry.Value.grid.CurrentPosition > (entry.Value.maxLength - entry.Value.printLength))
+                        {
+                            // Print length not reached
+                            check = false;
+                        }
+                    }
+                        
                 }
             }
 
