@@ -44,8 +44,8 @@ namespace IngameScript
         private int d3_ini_zeroLevel = 0;
 
         // Piston variables
-        private float d3_posMax_x = 140;
-        private float d3_posMax_y = 70;
+        private float d3_posMax_x = 139.5f;
+        private float d3_posMax_y = 77.5f;
         private float d3_posMax_z = 140;
 
         // true => zero to max | false => max to zero
@@ -190,16 +190,16 @@ namespace IngameScript
                 switch (d3_ini_zeroLevel)
                 {
                     case 1:
-                        d3_posMax_z = 35;
+                        d3_posMax_z = 34.5f;
                         break;
                     case 2:
-                        d3_posMax_z = 70;
+                        d3_posMax_z = 69.5f;
                         break;
                     case 3:
-                        d3_posMax_z = 105;
+                        d3_posMax_z = 104.5f;
                         break;
                     case 4:
-                        d3_posMax_z = 140;
+                        d3_posMax_z = 139.5f;
                         break;
                     default:
                         fatal_error("Zero level is out of range");
@@ -253,9 +253,8 @@ namespace IngameScript
                 d3_Status = true;
             }
 
-
             // Check projector count
-            if(proj_checks == 8)
+            if(proj_checks == 3)
             {
                 // Printer Finished
                 if (pistLimitCheck("y", d3_pdirection_y) && pistLimitCheck("x", d3_pdirection_x) && pistLimitCheck("z", false))
@@ -597,16 +596,6 @@ namespace IngameScript
                 // Skipp non needed axis
                 if (entry.Value.axis != axis) continue;
                 
-                // Debug Z Information
-                if (axis == "z")
-                {
-                    Echo("pdirect => " + pdirect.ToString());
-                    Echo("entry.Value.direction => " + entry.Value.direction.ToString()+"\n");
-                    Echo("entry.Value.printLength => " + entry.Value.printLength.ToString() + "\n");
-                    Echo("entry.Value.maxLength => " + entry.Value.maxLength.ToString() + "\n");
-                }
-
-
                 // Check direction
                 if (entry.Value.direction != pdirect)
                 {
