@@ -300,7 +300,7 @@ namespace IngameScript
                             if (entry.Value.axis != "y") continue;
 
                             int step = 1;
-                            if (!d3_direction_y && !d3_pdirection_y) step = -1;
+                            if (d3_direction_y == d3_pdirection_y) step = -1;
 
                             setPistons(parseNames(entry.Value.name), step, 0.1f, true);
 
@@ -332,7 +332,7 @@ namespace IngameScript
                             if (entry.Value.axis != "x") continue;
 
                             int step = 1;
-                            if (d3_direction_x && d3_pdirection_x) step = -1;
+                            if (d3_direction_x == d3_pdirection_x) step = -1;
 
                             // Set piston 
                             setPistons(parseNames(entry.Value.name), step, 0.1f, true);
@@ -587,7 +587,7 @@ namespace IngameScript
                 if (entry.Value.axis != axis) continue;
 
                 // Check direction
-                if (!entry.Value.direction && !pdirect)
+                if (entry.Value.direction == pdirect)
                 {
                     // Check if piston is on or over its print length
                     if (entry.Value.grid.CurrentPosition < entry.Value.printLength)
