@@ -269,6 +269,7 @@ namespace IngameScript
 
                     if(pistLimitCheck("y", d3_pdirection_y) && pistLimitCheck("x", d3_pdirection_x)) // Plate finished, go step up
                     {
+                        Echo("Plate finished");
                         // Change direction
                         if (d3_pdirection_y)
                         {
