@@ -357,9 +357,8 @@ namespace IngameScript
                 }
                 else if(d3_activeAxis == "z")
                 {
-
                     // Check if we reached z axis limit
-                    if (pistLimitCheck("z", d3_direction_z))
+                    if (!pistLimitCheck("z", false))
                     { 
                         foreach (KeyValuePair<int, piston> entry in dPiston)
                         {
@@ -371,6 +370,10 @@ namespace IngameScript
                             Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
                             debug_counter++;
                         }
+                    }
+                    else
+                    {
+                        Echo("Directly failed");
                     }
                     
                     // Always send back to y
@@ -495,7 +498,7 @@ namespace IngameScript
                 }
             }
 
-            // Y-Axis
+            // Z-Axis
             
             foreach (string name in d3_pist_z)
             {
@@ -513,7 +516,7 @@ namespace IngameScript
                 pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
                 if (null != pistonObject)
                 {
-                    //Echo("Piston Z => " + name + " | maxLength => " + (d3_posMax_z / d3_pist_z.Count).ToString() + " | printLength=> " + printLength.ToString() + "\n");
+                    Echo("Piston Z => " + name + " | maxLength => " + (d3_posMax_z / d3_pist_z.Count).ToString() + " | printLength=> " + printLength.ToString() + "\n");
                     dPiston.Add(iCount, new piston(iCount, name, "z", d3_direction_z, (d3_posMax_z / d3_pist_z.Count), printLength, pistonObject));
                     iCount++;
                 }
@@ -593,6 +596,16 @@ namespace IngameScript
             {
                 // Skipp non needed axis
                 if (entry.Value.axis != axis) continue;
+                
+                // Debug Z Information
+                if (axis == "z")
+                {
+                    Echo("pdirect => " + pdirect.ToString());
+                    Echo("entry.Value.direction => " + entry.Value.direction.ToString()+"\n");
+                    Echo("entry.Value.printLength => " + entry.Value.printLength.ToString() + "\n");
+                    Echo("entry.Value.maxLength => " + entry.Value.maxLength.ToString() + "\n");
+                }
+
 
                 // Check direction
                 if (entry.Value.direction != pdirect)
