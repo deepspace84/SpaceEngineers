@@ -255,7 +255,7 @@ namespace IngameScript
 
 
             // Check projector count
-            if(proj_checks == 12)
+            if(proj_checks == 8)
             {
                 // Printer Finished
                 /*if (pistLimitCheck("y", true) && pistLimitCheck("x", true) && pistLimitCheck("z", true))
@@ -591,11 +591,23 @@ namespace IngameScript
                 if (entry.Value.direction != pdirect)
                 {
                     // Check if piston is on or over its print length
-                    if (entry.Value.grid.CurrentPosition < entry.Value.printLength)
+                    if (entry.Value.direction)
                     {
-                        // Print length not reached
-                        check = false;
+                        if (entry.Value.grid.CurrentPosition < entry.Value.printLength)
+                        {
+                            // Print length not reached
+                            check = false;
+                        }
                     }
+                    else
+                    {
+                        if (entry.Value.grid.CurrentPosition < entry.Value.maxLength)
+                        {
+                            // Print length not reached
+                            check = false;
+                        }
+                    }
+                    
                 }
                 else
                 {
