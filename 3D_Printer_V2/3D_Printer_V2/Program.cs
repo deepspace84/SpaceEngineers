@@ -34,7 +34,6 @@ namespace IngameScript
         private string d3_activeAxis = "y";
         private bool d3_pdirection_x = false;
         private bool d3_pdirection_y = false;
-        private bool d3_pdirection_z = false;
 
         MyIni _ini = new MyIni();
 
@@ -259,10 +258,10 @@ namespace IngameScript
             if(proj_checks == 12)
             {
                 // Printer Finished
-                if (pistLimitCheck("y", true) && pistLimitCheck("x", true) && pistLimitCheck("z", true))
+                /*if (pistLimitCheck("y", true) && pistLimitCheck("x", true) && pistLimitCheck("z", true))
                 {
                     fatal_error("Print finished");
-                }
+                }*/
 
                 // Check next step
                 if (d3_activeAxis == "y")
@@ -587,7 +586,7 @@ namespace IngameScript
                 if (entry.Value.axis != axis) continue;
 
                 // Check direction
-                if (entry.Value.direction == pdirect)
+                if (entry.Value.direction != pdirect)
                 {
                     // Check if piston is on or over its print length
                     if (entry.Value.grid.CurrentPosition < entry.Value.printLength)
