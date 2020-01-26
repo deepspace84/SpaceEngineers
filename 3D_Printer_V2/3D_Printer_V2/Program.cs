@@ -278,6 +278,14 @@ namespace IngameScript
                         {
                             d3_pdirection_y = true;
                         }
+                        if (d3_pdirection_x)
+                        {
+                            d3_pdirection_x = false;
+                        }
+                        else
+                        {
+                            d3_pdirection_x = true;
+                        }
                         d3_activeAxis = "z";
                     }else if (pistLimitCheck("y", d3_pdirection_y)) // Limit reached move to next row
                     {
