@@ -23,7 +23,7 @@ namespace IngameScript
     {
 
 
-        // Global definitions
+        // Global definition
         public float pistonDefaultSpeed = 0.3f;
 
         // Programm variables
