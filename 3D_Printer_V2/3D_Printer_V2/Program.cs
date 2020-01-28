@@ -45,7 +45,7 @@ namespace IngameScript
 
         // Piston variables
         private float d3_posMax_x = 139.5f;
-        private float d3_posMax_y = 77.5f;
+        private float d3_posMax_y = 70.5f;
         private float d3_posMax_z = 140;
 
         // true => zero to max | false => max to zero
@@ -61,6 +61,8 @@ namespace IngameScript
         // Prjector counter
         private int proj_checks = 0;
         private int proj_count = 0;
+        private int proj_defaultRunCount = 20;
+        private int proj_runCount = 20;
 
         // Welder name
         private string welderName = "3D_Welder";
@@ -85,6 +87,9 @@ namespace IngameScript
 
         // Piston dictoinary
         private IDictionary<int, piston> dPiston = new Dictionary<int, piston>();
+
+        // Part dictionary
+        private Dictionary<VRage.Game.MyDefinitionBase, System.Int32> dRemainingParts;
 
         /*
          *  Classes
@@ -246,6 +251,7 @@ namespace IngameScript
             {
                 // Save projection count
                 proj_count = projectorObject.RemainingBlocks;
+                dRemainingParts = projectorObject.RemainingBlocksPerType;
 
                 // Zero check finished, so start welder 
                 welderObject.ApplyAction("OnOff_On");
@@ -254,8 +260,11 @@ namespace IngameScript
             }
 
             // Check projector count
-            if(proj_checks == 3)
+            if(proj_checks == proj_runCount)
             {
+                // Set Back default runCount
+                proj_runCount = proj_defaultRunCount;
+
                 // Printer Finished
                 if (pistLimitCheck("y", d3_pdirection_y) && pistLimitCheck("x", d3_pdirection_x) && pistLimitCheck("z", false))
                 {
@@ -307,10 +316,20 @@ namespace IngameScript
                         {
                             if (entry.Value.axis != "y") continue;
 
-                            int step = 1;
-                            if (d3_direction_y == d3_pdirection_y) step = -1;
+                            float step = 4f;
+                            if (d3_direction_y == d3_pdirection_y) step = -4f;
 
-                            setPistons(parseNames(entry.Value.name), step, 0.15f, true);
+                            if((entry.Value.grid.CurrentPosition+step) > entry.Value.maxLength)
+                            {
+                                // Would be over limit, so just set limit
+                                setPistons(parseNames(entry.Value.name), entry.Value.maxLength, 0.2f, false);
+                            }
+                            else
+                            {
+                                setPistons(parseNames(entry.Value.name), step, 0.2f, true);
+                            }
+
+                            
 
                             Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
                             debug_counter++;
@@ -340,11 +359,11 @@ namespace IngameScript
                         {
                             if (entry.Value.axis != "x") continue;
 
-                            int step = 1;
-                            if (d3_direction_x == d3_pdirection_x) step = -1;
+                            float step = 4f;
+                            if (d3_direction_x == d3_pdirection_x) step = -4f;
 
                             // Set piston 
-                            setPistons(parseNames(entry.Value.name), step, 0.15f, true);
+                            setPistons(parseNames(entry.Value.name), step, 0.2f, true);
 
                             Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
                             debug_counter++;
@@ -364,7 +383,7 @@ namespace IngameScript
                             if (entry.Value.axis != "z") continue;
 
                             // Set piston 
-                            setPistons(parseNames(entry.Value.name), -1, 0.15f, true);
+                            setPistons(parseNames(entry.Value.name), -2.5f, 0.2f, true);
 
                             Echo("Next Piston Set => " + debug_counter + " | Piston => " + entry.Value.name);
                             debug_counter++;
@@ -384,11 +403,33 @@ namespace IngameScript
             }
             else
             {
+                bool check = false;
                 // Check if smth changed
-                if(projectorObject.RemainingBlocks < proj_count)
+                foreach (KeyValuePair<VRage.Game.MyDefinitionBase, int> entry in projectorObject.RemainingBlocksPerType)
+                {
+                    Echo("Entry key"+entry.Value.ToString()+ " | DisplayNameText => " + entry.Key.DisplayNameText + " | DescriptionText => " + entry.Key.DescriptionText + " | Id => " + entry.Key.Id.ToString());
+
+                    if (entry.Value < dRemainingParts[entry.Key]) {
+                        // Part is smaller
+                        check = true;
+
+                        // Check for heavy parts
+                        switch (entry.Key.DisplayNameText)
+                        {
+                            case "test":
+
+                                proj_runCount = 30;
+                                break;
+                        }
+                    }
+                }
+                fatal_error("Debug finished");
+
+                // If checck is ok, 
+                if (check)
                 {
                     // Set new count
-                    proj_count = projectorObject.RemainingBlocks;
+                    dRemainingParts = projectorObject.RemainingBlocksPerType;
 
                     // Reset checks
                     proj_checks = 0;
@@ -399,8 +440,6 @@ namespace IngameScript
                     proj_checks++;
                 }
             }
-
-
         }
 
 
@@ -587,7 +626,7 @@ namespace IngameScript
         /*
          *  Piston build_limit_check
          */
-         private bool pistLimitCheck(string axis, bool pdirect)
+        private bool pistLimitCheck(string axis, bool pdirect)
         {
             bool check = true;
 
