@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sandbox.Game;
+using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
+using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
-using VRage.Utils;
+using VRage.Game.ModAPI;
+using VRage.ModAPI;
+using VRageMath;
 
 namespace DeepSpaceCombat
 {
@@ -13,15 +18,21 @@ namespace DeepSpaceCombat
     // Remove any method that you don't need, none of them are required, they're only there to show what you can use.
     // Also remove all comments you've read to avoid the overload of comments that is this file.
     [MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation | MyUpdateOrder.AfterSimulation)]
-    public class Example_Session : MySessionComponentBase
+    public class DeepSpaceCombat : MySessionComponentBase
     {
-        public static Example_Session Instance; // the only way to access session comp from other classes and the only accepted static.
+        public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
         int tick = 0;
         int frequency = 120;
         int selectedCol = 0;
         List<MyFontEnum> cols = new List<MyFontEnum>();
 
+
+        // Found in another script
+        public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
+        {
+            public FileTest test = new FileTest();
+        }
 
         public override void LoadData()
         {
@@ -67,6 +78,11 @@ namespace DeepSpaceCombat
         {
             // executed every tick, 60 times a second, after physics simulation and only if game is not paused.
 
+            if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
+            {
+
+            }
+
             try // example try-catch for catching errors and notifying player, use only for non-critical code!
             {
                 if (tick % frequency == 0)
@@ -77,8 +93,6 @@ namespace DeepSpaceCombat
             }
             catch (Exception e) // NOTE: never use try-catch for code flow or to ignore errors! catching has a noticeable performance impact.
             {
-                MyLog.Default.WriteLineAndConsole($"{e.Message}\n{e.StackTrace}");
-
                 if (MyAPIGateway.Session?.Player != null)
                     MyAPIGateway.Utilities.ShowNotification($"[ ERROR: {GetType().FullName}: {e.Message} | Send SpaceEngineers.Log to mod author ]", 10000, MyFontEnum.Red);
             }
