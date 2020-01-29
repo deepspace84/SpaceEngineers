@@ -31,7 +31,8 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
-            //public FileTest test = new FileTest();
+            //FileTest test = new FileTest();
+            //test.test();
         }
 
         public override void LoadData()
@@ -80,7 +81,7 @@ namespace DeepSpaceCombat
 
             if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
             {
-
+                
             }
 
             try // example try-catch for catching errors and notifying player, use only for non-critical code!
