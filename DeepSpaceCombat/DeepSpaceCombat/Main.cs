@@ -31,7 +31,7 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
-            public FileTest test = new FileTest();
+            //public FileTest test = new FileTest();
         }
 
         public override void LoadData()
