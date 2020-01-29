@@ -9,6 +9,7 @@ using VRage.Game.Components;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
+using VRage.ObjectBuilders;
 
 
 namespace DeepSpaceCombat
