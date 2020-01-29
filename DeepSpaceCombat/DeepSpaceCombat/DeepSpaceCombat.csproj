@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="ProtoBuf.Net">
+      <HintPath>DLL\ProtoBuf.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="ProtoBuf.Net.Core">
+      <HintPath>DLL\ProtoBuf.Net.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Sandbox.Common">
       <HintPath>DLL\Sandbox.Common.dll</HintPath>
     </Reference>
