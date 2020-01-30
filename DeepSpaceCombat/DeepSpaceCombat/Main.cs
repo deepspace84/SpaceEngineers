@@ -32,8 +32,7 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
-            //FileTest test = new FileTest();
-            //test.test();
+
         }
 
         public override void LoadData()
@@ -82,21 +81,19 @@ namespace DeepSpaceCombat
 
             if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
             {
-                
-            }
-
-            try // example try-catch for catching errors and notifying player, use only for non-critical code!
-            {
-                if (tick % frequency == 0)
+                try // example try-catch for catching errors and notifying player, use only for non-critical code!
                 {
-                    MyAPIGateway.Utilities.ShowNotification("Hello World", 1000, cols[selectedCol]);
+                    if (tick % frequency == 0)
+                    {
+                        MyAPIGateway.Utilities.ShowNotification("Hello World", 1000, cols[selectedCol]);
+                    }
+                    tick++;
                 }
-                tick++;
-            }
-            catch (Exception e) // NOTE: never use try-catch for code flow or to ignore errors! catching has a noticeable performance impact.
-            {
-                if (MyAPIGateway.Session?.Player != null)
-                    MyAPIGateway.Utilities.ShowNotification($"[ ERROR: {GetType().FullName}: {e.Message} | Send SpaceEngineers.Log to mod author ]", 10000, MyFontEnum.Red);
+                catch (Exception e) // NOTE: never use try-catch for code flow or to ignore errors! catching has a noticeable performance impact.
+                {
+                    if (MyAPIGateway.Session?.Player != null)
+                        MyAPIGateway.Utilities.ShowNotification($"[ ERROR: {GetType().FullName}: {e.Message} | Send SpaceEngineers.Log to mod author ]", 10000, MyFontEnum.Red);
+                }
             }
         }
 
