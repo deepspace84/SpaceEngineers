@@ -35,6 +35,8 @@ namespace IngameScript
         private bool d3_pdirection_x = false;
         private bool d3_pdirection_y = false;
 
+        private bool onlyZero = false;
+
         MyIni _ini = new MyIni();
 
         // Ini variables
@@ -45,7 +47,7 @@ namespace IngameScript
 
         // Piston variables
         private float d3_posMax_x = 139.5f;
-        private float d3_posMax_y = 70.5f;
+        private float d3_posMax_y = 64f;
         private float d3_posMax_z = 140;
 
         // true => zero to max | false => max to zero
@@ -61,7 +63,7 @@ namespace IngameScript
         // Prjector counter
         private int proj_checks = 0;
         private int proj_count = 0;
-        private int proj_defaultRunCount = 20;
+        private int proj_defaultRunCount = 30;
         private int proj_runCount = 20;
 
         // Welder name
@@ -87,9 +89,6 @@ namespace IngameScript
 
         // Piston dictoinary
         private IDictionary<int, piston> dPiston = new Dictionary<int, piston>();
-
-        // Part dictionary
-        private Dictionary<VRage.Game.MyDefinitionBase, System.Int32> dRemainingParts;
 
         /*
          *  Classes
@@ -251,7 +250,6 @@ namespace IngameScript
             {
                 // Save projection count
                 proj_count = projectorObject.RemainingBlocks;
-                dRemainingParts = projectorObject.RemainingBlocksPerType;
 
                 // Zero check finished, so start welder 
                 welderObject.ApplyAction("OnOff_On");
@@ -259,8 +257,13 @@ namespace IngameScript
                 d3_Status = true;
             }
 
+            if (onlyZero)
+            {
+                fatal_error("Zero finished");
+            }
+
             // Check projector count
-            if(proj_checks == proj_runCount)
+            if (proj_checks == proj_runCount)
             {
                 // Set Back default runCount
                 proj_runCount = proj_defaultRunCount;
@@ -316,8 +319,8 @@ namespace IngameScript
                         {
                             if (entry.Value.axis != "y") continue;
 
-                            float step = 4f;
-                            if (d3_direction_y == d3_pdirection_y) step = -4f;
+                            float step = 5f;
+                            if (d3_direction_y == d3_pdirection_y) step = -5f;
 
                             if((entry.Value.grid.CurrentPosition+step) > entry.Value.maxLength)
                             {
@@ -359,8 +362,8 @@ namespace IngameScript
                         {
                             if (entry.Value.axis != "x") continue;
 
-                            float step = 4f;
-                            if (d3_direction_x == d3_pdirection_x) step = -4f;
+                            float step = 5f;
+                            if (d3_direction_x == d3_pdirection_x) step = -5f;
 
                             // Set piston 
                             setPistons(parseNames(entry.Value.name), step, 0.2f, true);
@@ -403,34 +406,10 @@ namespace IngameScript
             }
             else
             {
-                bool check = false;
-                // Check if smth changed
-                foreach (KeyValuePair<VRage.Game.MyDefinitionBase, int> entry in projectorObject.RemainingBlocksPerType)
-                {
-                    Echo("Entry key"+entry.Value.ToString()+ " | DisplayNameText => " + entry.Key.DisplayNameText + " | DescriptionText => " + entry.Key.DescriptionText + " | Id => " + entry.Key.Id.ToString());
-
-                    if (entry.Value < dRemainingParts[entry.Key]) {
-                        // Part is smaller
-                        check = true;
-
-                        // Check for heavy parts
-                        switch (entry.Key.DisplayNameText)
-                        {
-                            case "test":
-
-                                proj_runCount = 30;
-                                break;
-                        }
-                    }
-                }
-                fatal_error("Debug finished");
-
                 // If checck is ok, 
-                if (check)
+                if (projectorObject.RemainingBlocks < proj_count)
                 {
-                    // Set new count
-                    dRemainingParts = projectorObject.RemainingBlocksPerType;
-
+                    proj_count = projectorObject.RemainingBlocks;
                     // Reset checks
                     proj_checks = 0;
                 }
