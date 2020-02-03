@@ -32,7 +32,7 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
-
+            
         }
 
         public override void LoadData()
