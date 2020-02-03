@@ -21,6 +21,7 @@ namespace DeepSpaceCombat
     [MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation | MyUpdateOrder.AfterSimulation)]
     public class DeepSpaceCombat : MySessionComponentBase
     {
+        public string msgDead = "Hello World";
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
         int tick = 0;
@@ -39,17 +40,17 @@ namespace DeepSpaceCombat
                 MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
             }
 
-            Storage store = new Storage("BASIC");
-            if (!store.Load())
-            {
-                MyAPIGateway.Utilities.ShowNotification("First time init Mod Version 0.42", 60000);
-                store.Set("Mod_Version", "0.42");
-                store.Save();
-            }
-            else
-            {
-                MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version " + store.Get("Mod_Version"), 60000);
-            }
+            //Storage store = new Storage("BASIC");
+            //if (!store.Load())
+            //{
+            //    MyAPIGateway.Utilities.ShowNotification("First time init Mod Version 0.42", 60000);
+            //    store.Set("Mod_Version", "0.42");
+            //    store.Save();
+            //}
+            //else
+            //{
+            //    MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version " + store.Get("Mod_Version"), 60000);
+            //}
 
         }
 
@@ -103,7 +104,7 @@ namespace DeepSpaceCombat
                 {
                     if (tick % frequency == 0)
                     {
-                        MyAPIGateway.Utilities.ShowNotification("Hello World", 1000, cols[selectedCol]);
+                        MyAPIGateway.Utilities.ShowNotification(msgDead, 1000, cols[selectedCol]);
                     }
                     tick++;
                 }
@@ -136,7 +137,8 @@ namespace DeepSpaceCombat
 
         public void Event_Player_Died(long playerId)
         {
-            MyAPIGateway.Utilities.ShowNotification("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), 60000);
+            msgDead = "Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId);
+            //MyAPIGateway.Utilities.ShowNotification("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), 60000);
         }
     }
 }
