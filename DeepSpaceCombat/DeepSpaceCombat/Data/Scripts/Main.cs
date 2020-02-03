@@ -32,7 +32,17 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
-
+            Storage store = new Storage("BASIC");
+            if (!store.Load())
+            {
+                MyAPIGateway.Utilities.ShowNotification("First time init Mod Version 0.42", 60000);
+                store.Set("Mod_Version", "0.42");
+                store.Save();
+            }
+            else
+            {
+                MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version "+store.Get("Mod_Version"), 60000);
+            }
         }
 
         public override void LoadData()

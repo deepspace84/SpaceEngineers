@@ -96,14 +96,22 @@ namespace DeepSpaceCombat
         }
 
         //Load
-        public void Load()
+        public bool Load()
         {
+            Dictionary<string, string> AccTable;
             //String-Version
-            //string tableXML;
-            //MyAPIGateway.Utilities.GetVariable<string>(name, out tableXML);
-            //MyAPIGateway.Utilities.SerializeFromXML<Dictionary<string, string>>(tableXML);
+            string tableXML;
+            MyAPIGateway.Utilities.GetVariable<string>(name, out tableXML);
+            AccTable = MyAPIGateway.Utilities.SerializeFromXML<Dictionary<string, string>>(tableXML);
+            if (null == AccTable)
+                return false;
+            else
+            {
+                DicTable = AccTable;
+                return true;
+            }
             //Table-Version
-            MyAPIGateway.Utilities.GetVariable<Dictionary<string, string>> (name, out DicTable);
+            //MyAPIGateway.Utilities.GetVariable<Dictionary<string, string>> (name, out DicTable);
         }
 
         //Static load
