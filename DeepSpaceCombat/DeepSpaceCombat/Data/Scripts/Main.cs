@@ -32,6 +32,11 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
+            if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
+            {
+                MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
+            }
+
             Storage store = new Storage("BASIC");
             if (!store.Load())
             {
@@ -41,7 +46,7 @@ namespace DeepSpaceCombat
             }
             else
             {
-                MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version "+store.Get("Mod_Version"), 60000);
+                MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version " + store.Get("Mod_Version"), 60000);
             }
 
         }
@@ -123,6 +128,13 @@ namespace DeepSpaceCombat
         {
             selectedCol = (selectedCol + 1) % 3;
             // executed when game is paused
+        }
+
+
+
+        public void Event_Player_Died(long playerId)
+        {
+            MyAPIGateway.Utilities.ShowNotification("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), 60000);
         }
     }
 }
