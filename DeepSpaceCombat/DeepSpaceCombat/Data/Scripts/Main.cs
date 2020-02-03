@@ -43,6 +43,7 @@ namespace DeepSpaceCombat
             {
                 MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version "+store.Get("Mod_Version"), 60000);
             }
+
         }
 
         public override void LoadData()
