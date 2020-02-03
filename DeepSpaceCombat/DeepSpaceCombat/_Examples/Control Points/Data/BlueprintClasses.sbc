@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BlueprintClasses>
+
+    <Class>
+      <Id>
+        <TypeId>BlueprintClassDefinition</TypeId>
+        <SubtypeId>MatterFactory</SubtypeId>
+      </Id>
+      <DisplayName>Matter Factory</DisplayName>
+      <Icon>Textures\category\component.dds</Icon>
+      <HighlightIcon>Textures\category\component_highlight.dds</HighlightIcon>
+      <InputConstraintIcon>Textures\category\filter_ingot</InputConstraintIcon>
+    </Class>
+
+  </BlueprintClasses>
+  <BlueprintClassEntries>
+    <Entry Class="Components" BlueprintSubtypeId="MatterToFactoryCore" />
+
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToStone" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToIce" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToIronIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToNickelIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToCobaltIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToMagnesiumIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToSiliconIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToSilverIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToGoldIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToPlatinumIngot" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToUraniumIngot" />
+
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToMedpack" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToPowerkit" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToTech2x" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToTech4x" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToTech8x" />
+    <Entry Class="MatterFactory" BlueprintSubtypeId="MatterToTech8x" />
+  </BlueprintClassEntries>
+</Definitions>

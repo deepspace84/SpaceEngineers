@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Blueprints>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToFactoryCore</SubtypeId>
+      </Id>
+      <DisplayName>Control Factory Core</DisplayName>
+      <Icon>Textures\FactoryCore.dds</Icon>
+      <Prerequisites>
+        <Item Amount="60" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Component" SubtypeId="UnstableCore" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToStone</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_UraniumIngot</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\gravel_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1000" TypeId="Ingot" SubtypeId="Stone" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToIce</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_Ice</DisplayName>
+      <Icon>Textures\GUI\Icons\ore_H2O_ice.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="750" TypeId="Ore" SubtypeId="Ice" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+      <IsPrimary>true</IsPrimary>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToIronIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_IronIngot</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\iron_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="95" TypeId="Ingot" SubtypeId="Iron" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+      <IsPrimary>true</IsPrimary>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToNickelIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_NickelIngot</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\nickel_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="60" TypeId="Ingot" SubtypeId="Nickel" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToCobaltIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_CobaltIngot</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\cobalt_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="20" TypeId="Ingot" SubtypeId="Cobalt" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToMagnesiumIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_MagnesiumPowder</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\magnesium_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Ingot" SubtypeId="Magnesium" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToSiliconIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_SiliconWafer</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\silicon_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="65" TypeId="Ingot" SubtypeId="Silicon" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToSilverIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_SilverIngot</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\silver_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1.5" TypeId="Ingot" SubtypeId="Silver" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToGoldIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_GoldIngot</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\gold_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Ingot" SubtypeId="Gold" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToPlatinumIngot</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_PlatinumIngot</DisplayName>
+      <Icon>Textures\GUI\Icons\ingot\platinum_ingot.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="0.25" TypeId="Ingot" SubtypeId="Platinum" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+    <Id>
+      <TypeId>BlueprintDefinition</TypeId>
+      <SubtypeId>MatterToUraniumIngot</SubtypeId>
+    </Id>
+    <DisplayName>DisplayName_Item_UraniumIngot</DisplayName>
+    <Icon>Textures\GUI\Icons\ingot\uranium_ingot.dds</Icon>
+    <Prerequisites>
+      <Item Amount="0.3" TypeId="Ingot" SubtypeId="UnstableMatter" />
+    </Prerequisites>
+    <Result Amount="0.15" TypeId="Ingot" SubtypeId="Uranium" />
+    <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+  </Blueprint>
+
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToMedpack</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_Medkit</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\MedKit.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="ConsumableItem" SubtypeId="Medkit" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToPowerkit</SubtypeId>
+      </Id>
+      <DisplayName>DisplayName_Item_Powerkit</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\PowerKit.dds</Icon>
+      <Prerequisites>
+        <Item Amount="0.75" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="ConsumableItem" SubtypeId="Powerkit" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToTech2x</SubtypeId>
+      </Id>
+      <DisplayName>Common Tech</DisplayName>
+      <Icon>Textures\tech2x.dds</Icon>
+      <Prerequisites>
+        <Item Amount="6" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Component" SubtypeId="Tech2x" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToTech4x</SubtypeId>
+      </Id>
+      <DisplayName>Rare Tech</DisplayName>
+      <Icon>Textures\tech4x.dds</Icon>
+      <Prerequisites>
+        <Item Amount="12" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Component" SubtypeId="Tech4x" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>MatterToTech8x</SubtypeId>
+      </Id>
+      <DisplayName>Exotic Tech</DisplayName>
+      <Icon>Textures\tech8x.dds</Icon>
+      <Prerequisites>
+        <Item Amount="24" TypeId="Ingot" SubtypeId="UnstableMatter" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Component" SubtypeId="Tech8x" />
+      <BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>
+    </Blueprint>
+  </Blueprints>
+</Definitions>

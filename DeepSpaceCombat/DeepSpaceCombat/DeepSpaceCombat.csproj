@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="_Examples\midspace.Speed.Configurable\bin\**" />
+    <EmbeddedResource Remove="_Examples\midspace.Speed.Configurable\bin\**" />
+    <None Remove="_Examples\midspace.Speed.Configurable\bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="ProtoBuf.Net">
       <HintPath>DLL\ProtoBuf.Net.dll</HintPath>
     </Reference>
@@ -109,10 +115,6 @@
   <ItemGroup>
     <None Include="_Examples\midspace.Speed.Configurable\midspace.Speed.ConfigurableScript.csproj" />
     <None Include="_Examples\midspace.Speed.Configurable\midspace.test.csproj.user" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="_Examples\midspace.Speed.Configurable\bin\x64\Debug\" />
   </ItemGroup>
 
 </Project>

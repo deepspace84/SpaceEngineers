@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <EntityContainers>
+        <Container>
+            <Id>
+                <TypeId>CargoContainer</TypeId>
+                <SubtypeId>ControlPoint</SubtypeId>
+            </Id>
+            <DefaultComponents>
+                <Component BuilderType="MyObjectBuilder_Inventory" SubtypeId="ControlPoint"/>
+            </DefaultComponents>
+        </Container>
+    </EntityContainers>
+
+    <EntityComponents>
+        <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+            <Id>
+                <TypeId>Inventory</TypeId>
+                <SubtypeId>ControlPoint</SubtypeId>
+            </Id>
+            <Volume>6</Volume>
+            <InputConstraint IsWhitelist="true">
+                <Entry>
+                    <TypeId>Ingot</TypeId>
+                    <SubtypeId>UnstableMatter</SubtypeId>
+                </Entry>
+            </InputConstraint>
+        </EntityComponent>
+    </EntityComponents>
+</Definitions>
