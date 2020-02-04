@@ -34,6 +34,7 @@ namespace DeepSpaceCombat
         int selectedCol = 0;
         List<MyFontEnum> cols = new List<MyFontEnum>();
 
+        
 
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
@@ -154,8 +155,6 @@ namespace DeepSpaceCombat
             selectedCol = (selectedCol + 1) % 3;
             // executed when game is paused
         }
-
-
 
         public void Event_Player_Died(long playerId)
         {
