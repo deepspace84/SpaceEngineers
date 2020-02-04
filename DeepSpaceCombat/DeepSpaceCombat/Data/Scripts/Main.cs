@@ -42,6 +42,7 @@ namespace DeepSpaceCombat
             {
                 MyAPIGateway.Utilities = MyAPIUtilities.Static;
             }
+
             if (MyAPIGateway.Session != null)
             {
                 if (MyAPIGateway.Session.IsServer)
@@ -168,10 +169,11 @@ namespace DeepSpaceCombat
                     int limiter = 0;
                     while (enumerator.MoveNext() && limiter < 100)
                     {
-                        if (!types.Contains(enumerator.Current.Id.ToString()))
+                        if (!types.Contains(enumerator.Current.GetType().ToString()))
                         {
                             limiter++;
-                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString(), "SYSTEM", 0, "Red");
+                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.GetObjectBuilder().TypeId.ToString(), "SYSTEM", 0, "Red"); 
+                            //MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString(), "SYSTEM", 0, "Red");
                             types.Add(enumerator.Current.GetType().ToString());
                         }
                     }
@@ -200,6 +202,6 @@ namespace DeepSpaceCombat
             //else if ("!PCU" == messageText)
             //    x.BlockDefinition.PCU = 666;
             //MyAPIGateway.Utilities.ShowNotification("Conveyor PCU: " + x.BlockDefinition.PCU.ToString(),60000);
-        }.
+        }
     }
 }
