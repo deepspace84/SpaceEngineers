@@ -10,6 +10,7 @@ using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
 using VRage.ObjectBuilders;
+using Sandbox.Definitions;
 
 namespace DeepSpaceCombat
 {
@@ -33,7 +34,6 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
-            MyVisualScriptLogicProvider.
 
             if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
             {
