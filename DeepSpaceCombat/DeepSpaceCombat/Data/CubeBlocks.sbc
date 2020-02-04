@@ -42,7 +42,7 @@
       <DamagedSound>ParticleHeavyMech</DamagedSound>
       <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
       <DestroySound>WepSmallWarheadExpl</DestroySound>
-      <PCU>10</PCU>
+      <PCU>45000</PCU>
       <IsAirTight>true</IsAirTight>
       <InventorySize>
         <X>2</X>
@@ -91,7 +91,7 @@
       <DamagedSound>ParticleHeavyMech</DamagedSound>
       <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
       <DestroySound>WepSmallWarheadExpl</DestroySound>
-      <PCU>10</PCU>
+      <PCU>45000</PCU>
       <IsAirTight>true</IsAirTight>
       <InventorySize>
         <X>2</X>
@@ -140,7 +140,7 @@
       <DamagedSound>ParticleHeavyMech</DamagedSound>
       <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
       <DestroySound>WepSmallWarheadExpl</DestroySound>
-      <PCU>10</PCU>
+      <PCU>45000</PCU>
       <IsAirTight>true</IsAirTight>
       <InventorySize>
         <X>2</X>
@@ -189,7 +189,7 @@
       <DamagedSound>ParticleHeavyMech</DamagedSound>
       <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
       <DestroySound>WepSmallWarheadExpl</DestroySound>
-      <PCU>10</PCU>
+      <PCU>45000</PCU>
       <IsAirTight>true</IsAirTight>
       <InventorySize>
         <X>2</X>
