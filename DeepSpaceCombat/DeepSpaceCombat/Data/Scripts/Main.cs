@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sandbox.Definitions;
 using Sandbox.Game;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
@@ -10,7 +11,7 @@ using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
 using VRage.ObjectBuilders;
-using Sandbox.Definitions;
+using VRage.Collections;
 
 namespace DeepSpaceCombat
 {
@@ -25,8 +26,11 @@ namespace DeepSpaceCombat
         public string msgDead = "Hello World";
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
-        int tick = 0;
-        int frequency = 120;
+        float largeShipSpeed = 150;
+        float smallShipSpeed = 225;
+        float missileMinSpeed = 240;
+        float missileMaxSpeed = 360;
+        float missileExplosionRange = 2500;
         int selectedCol = 0;
         List<MyFontEnum> cols = new List<MyFontEnum>();
 
@@ -34,10 +38,15 @@ namespace DeepSpaceCombat
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
-
-            if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
+            if (MyAPIGateway.Utilities == null)
             {
-                MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
+                MyAPIGateway.Utilities = MyAPIUtilities.Static;
+            }
+            if (MyAPIGateway.Session != null)
+            {
+                if (MyAPIGateway.Session.IsServer)
+                    MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
+                MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
             }
 
             //Storage store = new Storage("BASIC");
@@ -51,7 +60,6 @@ namespace DeepSpaceCombat
             //{
             //    MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version " + store.Get("Mod_Version"), 60000);
             //}
-
         }
 
         public override void LoadData()
@@ -67,6 +75,18 @@ namespace DeepSpaceCombat
             cols.Add(MyFontEnum.Green);
             // executed before the world starts updating
 
+            //Player needs to be killed before character speeds works
+            MyDefinitionManager.Static.EnvironmentDefinition.LargeShipMaxSpeed = largeShipSpeed;
+            MyDefinitionManager.Static.EnvironmentDefinition.SmallShipMaxSpeed = smallShipSpeed;
+            MyDefinitionId missileId = new MyDefinitionId(typeof(MyObjectBuilder_AmmoDefinition), "Missile");
+            MyMissileAmmoDefinition ammoDefinition = MyDefinitionManager.Static.GetAmmoDefinition(missileId) as MyMissileAmmoDefinition;
+            ammoDefinition.MaxTrajectory = missileExplosionRange;
+            ammoDefinition.MissileInitialSpeed = missileMinSpeed;
+            ammoDefinition.DesiredSpeed = missileMaxSpeed;
+            //            MyDefinitionManager.Static.
+
+            MyVisualScriptLogicProvider.ResearchListClear();
+            MyVisualScriptLogicProvider.ResearchListWhitelist(true);
             // Main entry point: MyAPIGateway
             // Entry point for reading/editing definitions: MyDefinitionManager.Static
         }
@@ -74,7 +94,9 @@ namespace DeepSpaceCombat
         protected override void UnloadData()
         {
             // executed when world is exited to unregister events and stuff
-
+            if (MyAPIGateway.Session.IsServer)
+                MyVisualScriptLogicProvider.PlayerDied -= Event_Player_Died;
+            MyAPIGateway.Utilities.MessageEntered -= Event_Message_Typed;
             Instance = null; // important for avoiding this object to remain allocated in memory
         }
 
@@ -100,19 +122,19 @@ namespace DeepSpaceCombat
 
             if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
             {
-                try // example try-catch for catching errors and notifying player, use only for non-critical code!
-                {
-                    if (tick % frequency == 0)
-                    {
-                        MyAPIGateway.Utilities.ShowNotification(msgDead, 1000, cols[selectedCol]);
-                    }
-                    tick++;
-                }
-                catch (Exception e) // NOTE: never use try-catch for code flow or to ignore errors! catching has a noticeable performance impact.
-                {
-                    if (MyAPIGateway.Session?.Player != null)
-                        MyAPIGateway.Utilities.ShowNotification($"[ ERROR: {GetType().FullName}: {e.Message} | Send SpaceEngineers.Log to mod author ]", 10000, MyFontEnum.Red);
-                }
+                //try // example try-catch for catching errors and notifying player, use only for non-critical code!
+                //{
+                //   if (tick % frequency == 0)
+                //  {
+                //      MyAPIGateway.Utilities.ShowNotification(msgDead, 1000, cols[selectedCol]);
+                // }
+                //tick++;
+                //}
+                //catch (Exception e) // NOTE: never use try-catch for code flow or to ignore errors! catching has a noticeable performance impact.
+                //{
+                //    if (MyAPIGateway.Session?.Player != null)
+                //        MyAPIGateway.Utilities.ShowNotification($"[ ERROR: {GetType().FullName}: {e.Message} | Send SpaceEngineers.Log to mod author ]", 10000, MyFontEnum.Red);
+                //}
             }
         }
 
@@ -138,7 +160,34 @@ namespace DeepSpaceCombat
         public void Event_Player_Died(long playerId)
         {
             msgDead = "Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId);
+            MyVisualScriptLogicProvider.SendChatMessage(msgDead, "SYSTEM", 0, "Red");
             //MyAPIGateway.Utilities.ShowNotification("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), 60000);
+        }
+
+        public void Event_Message_Typed(string messageText, ref bool sendToOthers)
+        {
+            sendToOthers = false;//Test
+            MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
+            if (messageText == "!LIST")
+            {
+                MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 60000);
+                //    DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+                //    var enumerator = defset.GetEnumerator();
+                //    int limiter = 10;
+                //    do
+                //    {
+                //        MyVisualScriptLogicProvider.SendChatMessage("L: "+enumerator.Current.ToString(), "SYSTEM", 0, "Red");
+                //        limiter--;
+                //    } while (enumerator.MoveNext() && limiter > 0);
+                //	enumerator.Dispose();
+            }
+            //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
+            //MyConveyor x = new MyConveyor();
+            //if ("!Research" == messageText)
+            //    MyVisualScriptLogicProvider.ResearchListAddItem(x.BlockDefinition.Id);//MyCubeBlockDefinition.PCU_CONSTRUCTION_STAGE_COST);
+            //else if ("!PCU" == messageText)
+            //    x.BlockDefinition.PCU = 666;
+            //MyAPIGateway.Utilities.ShowNotification("Conveyor PCU: " + x.BlockDefinition.PCU.ToString(),60000);
         }
     }
 }
