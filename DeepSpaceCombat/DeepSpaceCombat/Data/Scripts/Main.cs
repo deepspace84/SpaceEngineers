@@ -188,6 +188,9 @@ namespace DeepSpaceCombat
                     MyVisualScriptLogicProvider.SendChatMessage("Research test: "+p.DisplayName, "SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID+ " Identity: "+p.IdentityId,"SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_CubeBlock", "LargeBlockArmorBlock"));
+
+                    MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_CubeBlock", "LargeBlockArmorBlock"));
+
                 } catch(Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
             }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
