@@ -185,10 +185,10 @@ namespace DeepSpaceCombat
                     int limiter = 0;
                     while (enumerator.MoveNext() && limiter < 100)
                     {
-                        if (!types.Contains(enumerator.Current.GetType().ToString()))
+                        if (!types.Contains(enumerator.Current.Id.ToString()))
                         {
                             limiter++;
-                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.GetType().ToString(), "SYSTEM", 0, "Red");
+                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString(), "SYSTEM", 0, "Red");
                             types.Add(enumerator.Current.GetType().ToString());
                         }
                     }
@@ -204,7 +204,7 @@ namespace DeepSpaceCombat
                     IMyPlayer p = MyAPIGateway.Session.Player;
                     MyVisualScriptLogicProvider.SendChatMessage("Research test: "+p.DisplayName, "SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID+ " Identity: "+p.IdentityId,"SYSTEM", 0, "Red");
-
+                    MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId,new MyDefinitionId(MyObjectBuilderType.Parse("Thrust"),"LargeBlockThrust"));
                 } catch(Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
             }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
