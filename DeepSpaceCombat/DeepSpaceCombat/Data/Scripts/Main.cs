@@ -45,9 +45,26 @@ namespace DeepSpaceCombat
             if (MyAPIGateway.Session != null)
             {
                 if (MyAPIGateway.Session.IsServer)
+                {
                     MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
+                    MyVisualScriptLogicProvider.PlayerResearchClearAll();
+                }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
             }
+
+            cols.Add(MyFontEnum.Red);
+            cols.Add(MyFontEnum.White);
+            cols.Add(MyFontEnum.Green);
+            // executed before the world starts updating
+
+            //Player needs to be killed before character speeds works
+            MyDefinitionManager.Static.EnvironmentDefinition.LargeShipMaxSpeed = largeShipSpeed;
+            MyDefinitionManager.Static.EnvironmentDefinition.SmallShipMaxSpeed = smallShipSpeed;
+            MyDefinitionId missileId = new MyDefinitionId(typeof(MyObjectBuilder_AmmoDefinition), "Missile");
+            MyMissileAmmoDefinition ammoDefinition = MyDefinitionManager.Static.GetAmmoDefinition(missileId) as MyMissileAmmoDefinition;
+            ammoDefinition.MaxTrajectory = missileExplosionRange;
+            ammoDefinition.MissileInitialSpeed = missileMinSpeed;
+            ammoDefinition.DesiredSpeed = missileMaxSpeed;
 
             //Storage store = new Storage("BASIC");
             //if (!store.Load())
@@ -70,23 +87,11 @@ namespace DeepSpaceCombat
 
         public override void BeforeStart()
         {
-            cols.Add(MyFontEnum.Red);
-            cols.Add(MyFontEnum.White);
-            cols.Add(MyFontEnum.Green);
-            // executed before the world starts updating
-
-            //Player needs to be killed before character speeds works
-            MyDefinitionManager.Static.EnvironmentDefinition.LargeShipMaxSpeed = largeShipSpeed;
-            MyDefinitionManager.Static.EnvironmentDefinition.SmallShipMaxSpeed = smallShipSpeed;
-            MyDefinitionId missileId = new MyDefinitionId(typeof(MyObjectBuilder_AmmoDefinition), "Missile");
-            MyMissileAmmoDefinition ammoDefinition = MyDefinitionManager.Static.GetAmmoDefinition(missileId) as MyMissileAmmoDefinition;
-            ammoDefinition.MaxTrajectory = missileExplosionRange;
-            ammoDefinition.MissileInitialSpeed = missileMinSpeed;
-            ammoDefinition.DesiredSpeed = missileMaxSpeed;
+            
             //            MyDefinitionManager.Static.
 
-            MyVisualScriptLogicProvider.ResearchListClear();
-            MyVisualScriptLogicProvider.ResearchListWhitelist(true);
+            //MyVisualScriptLogicProvider.ResearchListClear();
+            //MyVisualScriptLogicProvider.ResearchListWhitelist(true);
             // Main entry point: MyAPIGateway
             // Entry point for reading/editing definitions: MyDefinitionManager.Static
         }
@@ -170,16 +175,37 @@ namespace DeepSpaceCombat
             MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
             if (messageText == "!LIST")
             {
-                MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 60000);
-                //    DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
-                //    var enumerator = defset.GetEnumerator();
-                //    int limiter = 10;
-                //    do
-                //    {
-                //        MyVisualScriptLogicProvider.SendChatMessage("L: "+enumerator.Current.ToString(), "SYSTEM", 0, "Red");
-                //        limiter--;
-                //    } while (enumerator.MoveNext() && limiter > 0);
-                //	enumerator.Dispose();
+                MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 5000);
+                DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+                MyAPIGateway.Utilities.ShowNotification("SET created", 5000);
+                HashSet<string> types = new HashSet<string>();
+                try
+                {
+                    Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
+                    int limiter = 0;
+                    while (enumerator.MoveNext() && limiter < 100)
+                    {
+                        if (!types.Contains(enumerator.Current.GetType().ToString()))
+                        {
+                            limiter++;
+                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.GetType().ToString(), "SYSTEM", 0, "Red");
+                            types.Add(enumerator.Current.GetType().ToString());
+                        }
+                    }
+                    MyAPIGateway.Utilities.ShowNotification("LIMIT: " + limiter, 5000);
+                    enumerator.Dispose();
+                }
+                catch (Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
+            }
+            if(messageText == "!RESEARCH")
+            {
+                try
+                {
+                    IMyPlayer p = MyAPIGateway.Session.Player;
+                    MyVisualScriptLogicProvider.SendChatMessage("Research test: "+p.DisplayName, "SYSTEM", 0, "Red");
+                    MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID+ " Identity: "+p.IdentityId,"SYSTEM", 0, "Red");
+
+                } catch(Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
             }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
             //MyConveyor x = new MyConveyor();
@@ -188,6 +214,6 @@ namespace DeepSpaceCombat
             //else if ("!PCU" == messageText)
             //    x.BlockDefinition.PCU = 666;
             //MyAPIGateway.Utilities.ShowNotification("Conveyor PCU: " + x.BlockDefinition.PCU.ToString(),60000);
-        }
+        }.
     }
 }
