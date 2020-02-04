@@ -34,7 +34,6 @@ namespace DeepSpaceCombat
         int selectedCol = 0;
         List<MyFontEnum> cols = new List<MyFontEnum>();
 
-
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
@@ -65,18 +64,6 @@ namespace DeepSpaceCombat
             ammoDefinition.MaxTrajectory = missileExplosionRange;
             ammoDefinition.MissileInitialSpeed = missileMinSpeed;
             ammoDefinition.DesiredSpeed = missileMaxSpeed;
-
-            //Storage store = new Storage("BASIC");
-            //if (!store.Load())
-            //{
-            //    MyAPIGateway.Utilities.ShowNotification("First time init Mod Version 0.42", 60000);
-            //    store.Set("Mod_Version", "0.42");
-            //    store.Save();
-            //}
-            //else
-            //{
-            //    MyAPIGateway.Utilities.ShowNotification("Loaded Mod Version " + store.Get("Mod_Version"), 60000);
-            //}
         }
 
         public override void LoadData()
@@ -87,9 +74,6 @@ namespace DeepSpaceCombat
 
         public override void BeforeStart()
         {
-            
-            //            MyDefinitionManager.Static.
-
             //MyVisualScriptLogicProvider.ResearchListClear();
             //MyVisualScriptLogicProvider.ResearchListWhitelist(true);
             // Main entry point: MyAPIGateway
@@ -204,7 +188,7 @@ namespace DeepSpaceCombat
                     IMyPlayer p = MyAPIGateway.Session.Player;
                     MyVisualScriptLogicProvider.SendChatMessage("Research test: "+p.DisplayName, "SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID+ " Identity: "+p.IdentityId,"SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId,new MyDefinitionId(MyObjectBuilderType.Parse("Thrust"),"LargeBlockThrust"));
+                    MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_CubeBlock", "LargeBlockArmorBlock"));
                 } catch(Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
             }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
