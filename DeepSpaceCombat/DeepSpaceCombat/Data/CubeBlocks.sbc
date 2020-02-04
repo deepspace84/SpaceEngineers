@@ -2,648 +2,200 @@
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CubeBlocks>
 
-    <Definition>
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
       <Id>
-        <TypeId>CubeBlock</TypeId>
+        <TypeId>CargoContainer</TypeId>
         <SubtypeId>DSC_PCU_0</SubtypeId>
       </Id>
       <DisplayName>DSC_PCU_0</DisplayName>
-      <Icon>Textures\GUI\Icons\Cubes\light_armor_cube.dds</Icon>
-      <Description>DSC_PCU_0 Player Counter</Description>
+      <GuiVisible>false</GuiVisible>
+      <Icon>Textures\GUI\Icons\Cubes\container.dds</Icon>
+      <Description>DSC_PCU_0</Description>
       <CubeSize>Large</CubeSize>
-      <BlockTopology>Cube</BlockTopology>
-      <Size x="1" y="1" z="1" />
-      <ModelOffset x="0" y="0" z="0" />
-      <CubeDefinition>
-        <CubeTopology>Box</CubeTopology>
-        <ShowEdges>true</ShowEdges>
-        <Sides>
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-        </Sides>
-      </CubeDefinition>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CargoContainerSmall.mwm</Model>
       <Components>
-        <Component Subtype="SteelPlate" Count="20" />
-        <Component Subtype="SteelPlate" Count="5" />
+        <Component Subtype="InteriorPlate" Count="1"/>
       </Components>
-      <CriticalComponent Subtype="SteelPlate" Index="0" />
-      <Variants>
-        <Variant Color="Red" Suffix="_red" />
-        <Variant Color="Yellow" Suffix="_yellow" />
-        <Variant Color="Blue" Suffix="_blue" />
-        <Variant Color="Green" Suffix="_green" />
-        <Variant Color="Black" Suffix="_black" />
-        <Variant Color="White" Suffix="_white" />
-      </Variants>
+      <CriticalComponent Subtype="InteriorPlate" Index="0"/>
+      <MountPoints>
+        <MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Left" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+        <MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
+      </MountPoints>
       <BuildProgressModels>
-        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Armor\SquarePlateConstruction_1.mwm" />
-        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Armor\SquarePlateConstruction_2.mwm" RandomOrientation="true" />
-        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Armor\SquarePlateConstruction_3.mwm" RandomOrientation="true" />
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CargoContainerSmallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CargoContainerSmallConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CargoContainerSmallConstruction_3.mwm"/>
       </BuildProgressModels>
-      <Skeleton>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-      </Skeleton>
-      <BlockPairName>LightArmorBlock</BlockPairName>
+      <BlockPairName>DSC_PCU_0</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
       <EdgeType>Light</EdgeType>
-      <BuildTimeSeconds>8</BuildTimeSeconds>
-      <DisassembleRatio>2.5</DisassembleRatio>
-      <NavigationDefinition>Default</NavigationDefinition>
-      <PCU>45000</PCU>
+      <BuildTimeSeconds>99999999</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
       <IsAirTight>true</IsAirTight>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
     </Definition>
 
-    <Definition>
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
       <Id>
-        <TypeId>CubeBlock</TypeId>
+        <TypeId>CargoContainer</TypeId>
         <SubtypeId>DSC_PCU_1</SubtypeId>
       </Id>
       <DisplayName>DSC_PCU_1</DisplayName>
-      <Icon>Textures\GUI\Icons\Cubes\light_armor_cube.dds</Icon>
-      <Description>DSC_PCU_1 Player Counter</Description>
+      <GuiVisible>false</GuiVisible>
+      <Icon>Textures\GUI\Icons\Cubes\container.dds</Icon>
+      <Description>DSC_PCU_1</Description>
       <CubeSize>Large</CubeSize>
-      <BlockTopology>Cube</BlockTopology>
-      <Size x="1" y="1" z="1" />
-      <ModelOffset x="0" y="0" z="0" />
-      <CubeDefinition>
-        <CubeTopology>Box</CubeTopology>
-        <ShowEdges>true</ShowEdges>
-        <Sides>
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-        </Sides>
-      </CubeDefinition>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CargoContainerSmall.mwm</Model>
       <Components>
-        <Component Subtype="SteelPlate" Count="20" />
-        <Component Subtype="SteelPlate" Count="5" />
+        <Component Subtype="InteriorPlate" Count="1"/>
       </Components>
-      <CriticalComponent Subtype="SteelPlate" Index="0" />
-      <Variants>
-        <Variant Color="Red" Suffix="_red" />
-        <Variant Color="Yellow" Suffix="_yellow" />
-        <Variant Color="Blue" Suffix="_blue" />
-        <Variant Color="Green" Suffix="_green" />
-        <Variant Color="Black" Suffix="_black" />
-        <Variant Color="White" Suffix="_white" />
-      </Variants>
+      <CriticalComponent Subtype="InteriorPlate" Index="0"/>
+      <MountPoints>
+        <MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Left" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+        <MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
+      </MountPoints>
       <BuildProgressModels>
-        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Armor\SquarePlateConstruction_1.mwm" />
-        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Armor\SquarePlateConstruction_2.mwm" RandomOrientation="true" />
-        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Armor\SquarePlateConstruction_3.mwm" RandomOrientation="true" />
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CargoContainerSmallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CargoContainerSmallConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CargoContainerSmallConstruction_3.mwm"/>
       </BuildProgressModels>
-      <Skeleton>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-      </Skeleton>
-      <BlockPairName>LightArmorBlock</BlockPairName>
+      <BlockPairName>DSC_PCU_1</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
       <EdgeType>Light</EdgeType>
-      <BuildTimeSeconds>8</BuildTimeSeconds>
-      <DisassembleRatio>2.5</DisassembleRatio>
-      <NavigationDefinition>Default</NavigationDefinition>
-      <PCU>45000</PCU>
+      <BuildTimeSeconds>99999999</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
       <IsAirTight>true</IsAirTight>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
     </Definition>
 
-    <Definition>
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
       <Id>
-        <TypeId>CubeBlock</TypeId>
+        <TypeId>CargoContainer</TypeId>
         <SubtypeId>DSC_PCU_2</SubtypeId>
       </Id>
       <DisplayName>DSC_PCU_2</DisplayName>
-      <Icon>Textures\GUI\Icons\Cubes\light_armor_cube.dds</Icon>
-      <Description>DSC_PCU_2 Player Counter</Description>
+      <GuiVisible>false</GuiVisible>
+      <Icon>Textures\GUI\Icons\Cubes\container.dds</Icon>
+      <Description>DSC_PCU_2</Description>
       <CubeSize>Large</CubeSize>
-      <BlockTopology>Cube</BlockTopology>
-      <Size x="1" y="1" z="1" />
-      <ModelOffset x="0" y="0" z="0" />
-      <CubeDefinition>
-        <CubeTopology>Box</CubeTopology>
-        <ShowEdges>true</ShowEdges>
-        <Sides>
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-        </Sides>
-      </CubeDefinition>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CargoContainerSmall.mwm</Model>
       <Components>
-        <Component Subtype="SteelPlate" Count="20" />
-        <Component Subtype="SteelPlate" Count="5" />
+        <Component Subtype="InteriorPlate" Count="1"/>
       </Components>
-      <CriticalComponent Subtype="SteelPlate" Index="0" />
-      <Variants>
-        <Variant Color="Red" Suffix="_red" />
-        <Variant Color="Yellow" Suffix="_yellow" />
-        <Variant Color="Blue" Suffix="_blue" />
-        <Variant Color="Green" Suffix="_green" />
-        <Variant Color="Black" Suffix="_black" />
-        <Variant Color="White" Suffix="_white" />
-      </Variants>
+      <CriticalComponent Subtype="InteriorPlate" Index="0"/>
+      <MountPoints>
+        <MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Left" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+        <MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
+      </MountPoints>
       <BuildProgressModels>
-        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Armor\SquarePlateConstruction_1.mwm" />
-        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Armor\SquarePlateConstruction_2.mwm" RandomOrientation="true" />
-        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Armor\SquarePlateConstruction_3.mwm" RandomOrientation="true" />
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CargoContainerSmallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CargoContainerSmallConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CargoContainerSmallConstruction_3.mwm"/>
       </BuildProgressModels>
-      <Skeleton>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-      </Skeleton>
-      <BlockPairName>LightArmorBlock</BlockPairName>
+      <BlockPairName>DSC_PCU_2</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
       <EdgeType>Light</EdgeType>
-      <BuildTimeSeconds>8</BuildTimeSeconds>
-      <DisassembleRatio>2.5</DisassembleRatio>
-      <NavigationDefinition>Default</NavigationDefinition>
-      <PCU>45000</PCU>
+      <BuildTimeSeconds>99999999</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
       <IsAirTight>true</IsAirTight>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
     </Definition>
 
-    <Definition>
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
       <Id>
-        <TypeId>CubeBlock</TypeId>
+        <TypeId>CargoContainer</TypeId>
         <SubtypeId>DSC_PCU_3</SubtypeId>
       </Id>
       <DisplayName>DSC_PCU_3</DisplayName>
-      <Icon>Textures\GUI\Icons\Cubes\light_armor_cube.dds</Icon>
-      <Description>DSC_PCU_3 Player Counter</Description>
+      <GuiVisible>false</GuiVisible>
+      <Icon>Textures\GUI\Icons\Cubes\container.dds</Icon>
+      <Description>DSC_PCU_3</Description>
       <CubeSize>Large</CubeSize>
-      <BlockTopology>Cube</BlockTopology>
-      <Size x="1" y="1" z="1" />
-      <ModelOffset x="0" y="0" z="0" />
-      <CubeDefinition>
-        <CubeTopology>Box</CubeTopology>
-        <ShowEdges>true</ShowEdges>
-        <Sides>
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-          <Side Model="Models\Cubes\Large\Armor\SquarePlate.mwm" PatternWidth="4" PatternHeight="2" />
-        </Sides>
-      </CubeDefinition>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CargoContainerSmall.mwm</Model>
       <Components>
-        <Component Subtype="SteelPlate" Count="20" />
-        <Component Subtype="SteelPlate" Count="5" />
+        <Component Subtype="InteriorPlate" Count="1"/>
       </Components>
-      <CriticalComponent Subtype="SteelPlate" Index="0" />
-      <Variants>
-        <Variant Color="Red" Suffix="_red" />
-        <Variant Color="Yellow" Suffix="_yellow" />
-        <Variant Color="Blue" Suffix="_blue" />
-        <Variant Color="Green" Suffix="_green" />
-        <Variant Color="Black" Suffix="_black" />
-        <Variant Color="White" Suffix="_white" />
-      </Variants>
+      <CriticalComponent Subtype="InteriorPlate" Index="0"/>
+      <MountPoints>
+        <MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Left" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+        <MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="1"/>
+        <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
+      </MountPoints>
       <BuildProgressModels>
-        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Armor\SquarePlateConstruction_1.mwm" />
-        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Armor\SquarePlateConstruction_2.mwm" RandomOrientation="true" />
-        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Armor\SquarePlateConstruction_3.mwm" RandomOrientation="true" />
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CargoContainerSmallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CargoContainerSmallConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CargoContainerSmallConstruction_3.mwm"/>
       </BuildProgressModels>
-      <Skeleton>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="0" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="1" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="0" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="1" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="0" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="1" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-        <BoneInfo>
-          <BonePosition x="2" y="2" z="2" />
-          <BoneOffset x="127" y="127" z="127" />
-        </BoneInfo>
-      </Skeleton>
-      <BlockPairName>LightArmorBlock</BlockPairName>
+      <BlockPairName>DSC_PCU_3</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
       <EdgeType>Light</EdgeType>
-      <BuildTimeSeconds>8</BuildTimeSeconds>
-      <DisassembleRatio>2.5</DisassembleRatio>
-      <NavigationDefinition>Default</NavigationDefinition>
-      <PCU>45000</PCU>
+      <BuildTimeSeconds>99999999</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
       <IsAirTight>true</IsAirTight>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
     </Definition>
 
   </CubeBlocks>
