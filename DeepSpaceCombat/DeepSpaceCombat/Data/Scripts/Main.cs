@@ -34,6 +34,7 @@ namespace DeepSpaceCombat
         int selectedCol = 0;
         List<MyFontEnum> cols = new List<MyFontEnum>();
 
+
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
@@ -145,8 +146,6 @@ namespace DeepSpaceCombat
             // executed when game is paused
         }
 
-
-
         public void Event_Player_Died(long playerId)
         {
             msgDead = "Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId);
@@ -191,6 +190,9 @@ namespace DeepSpaceCombat
                     MyVisualScriptLogicProvider.SendChatMessage("Research test: "+p.DisplayName, "SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID+ " Identity: "+p.IdentityId,"SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_CubeBlock", "LargeBlockArmorBlock"));
+
+                    MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_CubeBlock", "LargeBlockArmorBlock"));
+
                 } catch(Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
             }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
