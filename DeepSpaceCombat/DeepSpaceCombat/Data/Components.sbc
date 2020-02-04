@@ -6,8 +6,8 @@
                 <TypeId>Component</TypeId>
                 <SubtypeId>ResearchPoint</SubtypeId>
             </Id>
-            <DisplayName>Control Core</DisplayName>
-            <Icon>Textures\UnstableMatter.dds</Icon>
+            <DisplayName>Research Point</DisplayName>
+            <Icon>Textures\researchpoints.dds</Icon>
             <Size>
                 <X>1</X>
                 <Y>0.7</Y>
