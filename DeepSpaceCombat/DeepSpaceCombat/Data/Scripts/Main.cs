@@ -11,6 +11,7 @@ using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
 using VRage.ObjectBuilders;
+using VRage.Collections;
 
 namespace DeepSpaceCombat
 {
@@ -38,20 +39,16 @@ namespace DeepSpaceCombat
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
             if (MyAPIGateway.Utilities == null)
-                
-
-            if (MyAPIGateway.Session != null)
-            {
-                if(MyAPIGateway.Session.IsServer)
-                    MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
-                else
-                    MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
-            }
-            if (MyAPIGateway.Utilities == null)
             {
                 MyAPIGateway.Utilities = MyAPIUtilities.Static;
             }
-            
+            if (MyAPIGateway.Session != null)
+            {
+                if (MyAPIGateway.Session.IsServer)
+                    MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
+                MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
+            }
+
             //Storage store = new Storage("BASIC");
             //if (!store.Load())
             //{
@@ -87,7 +84,7 @@ namespace DeepSpaceCombat
             ammoDefinition.MissileInitialSpeed = missileMinSpeed;
             ammoDefinition.DesiredSpeed = missileMaxSpeed;
             //            MyDefinitionManager.Static.
-           
+
             MyVisualScriptLogicProvider.ResearchListClear();
             MyVisualScriptLogicProvider.ResearchListWhitelist(true);
             // Main entry point: MyAPIGateway
@@ -97,7 +94,9 @@ namespace DeepSpaceCombat
         protected override void UnloadData()
         {
             // executed when world is exited to unregister events and stuff
-
+            if (MyAPIGateway.Session.IsServer)
+                MyVisualScriptLogicProvider.PlayerDied -= Event_Player_Died;
+            MyAPIGateway.Utilities.MessageEntered -= Event_Message_Typed;
             Instance = null; // important for avoiding this object to remain allocated in memory
         }
 
@@ -125,11 +124,11 @@ namespace DeepSpaceCombat
             {
                 //try // example try-catch for catching errors and notifying player, use only for non-critical code!
                 //{
-                 //   if (tick % frequency == 0)
-                  //  {
-                  //      MyAPIGateway.Utilities.ShowNotification(msgDead, 1000, cols[selectedCol]);
-                   // }
-                    //tick++;
+                //   if (tick % frequency == 0)
+                //  {
+                //      MyAPIGateway.Utilities.ShowNotification(msgDead, 1000, cols[selectedCol]);
+                // }
+                //tick++;
                 //}
                 //catch (Exception e) // NOTE: never use try-catch for code flow or to ignore errors! catching has a noticeable performance impact.
                 //{
@@ -168,6 +167,20 @@ namespace DeepSpaceCombat
         public void Event_Message_Typed(string messageText, ref bool sendToOthers)
         {
             sendToOthers = false;//Test
+            MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
+            if (messageText == "!LIST")
+            {
+                MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 60000);
+                //    DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+                //    var enumerator = defset.GetEnumerator();
+                //    int limiter = 10;
+                //    do
+                //    {
+                //        MyVisualScriptLogicProvider.SendChatMessage("L: "+enumerator.Current.ToString(), "SYSTEM", 0, "Red");
+                //        limiter--;
+                //    } while (enumerator.MoveNext() && limiter > 0);
+                //	enumerator.Dispose();
+            }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
             //MyConveyor x = new MyConveyor();
             //if ("!Research" == messageText)
