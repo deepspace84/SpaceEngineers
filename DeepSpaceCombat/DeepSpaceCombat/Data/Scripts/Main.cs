@@ -31,13 +31,12 @@ namespace DeepSpaceCombat
         float missileMinSpeed = 240;
         float missileMaxSpeed = 360;
         float missileExplosionRange = 2500;
-        int selectedCol = 0;
-        List<MyFontEnum> cols = new List<MyFontEnum>();
 
 
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
+            // executed before the world starts updating
             if (MyAPIGateway.Utilities == null)
             {
                 MyAPIGateway.Utilities = MyAPIUtilities.Static;
@@ -49,15 +48,12 @@ namespace DeepSpaceCombat
                 {
                     MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
                     MyVisualScriptLogicProvider.PlayerResearchClearAll();
+                    MyVisualScriptLogicProvider.ResearchListClear();
+                    MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
+                
             }
-
-            cols.Add(MyFontEnum.Red);
-            cols.Add(MyFontEnum.White);
-            cols.Add(MyFontEnum.Green);
-            // executed before the world starts updating
-
             //Player needs to be killed before character speeds works
             MyDefinitionManager.Static.EnvironmentDefinition.LargeShipMaxSpeed = largeShipSpeed;
             MyDefinitionManager.Static.EnvironmentDefinition.SmallShipMaxSpeed = smallShipSpeed;
@@ -110,23 +106,6 @@ namespace DeepSpaceCombat
         public override void UpdateAfterSimulation()
         {
             // executed every tick, 60 times a second, after physics simulation and only if game is not paused.
-
-            if (MyAPIGateway.Session != null && MyAPIGateway.Session.IsServer)
-            {
-                //try // example try-catch for catching errors and notifying player, use only for non-critical code!
-                //{
-                //   if (tick % frequency == 0)
-                //  {
-                //      MyAPIGateway.Utilities.ShowNotification(msgDead, 1000, cols[selectedCol]);
-                // }
-                //tick++;
-                //}
-                //catch (Exception e) // NOTE: never use try-catch for code flow or to ignore errors! catching has a noticeable performance impact.
-                //{
-                //    if (MyAPIGateway.Session?.Player != null)
-                //        MyAPIGateway.Utilities.ShowNotification($"[ ERROR: {GetType().FullName}: {e.Message} | Send SpaceEngineers.Log to mod author ]", 10000, MyFontEnum.Red);
-                //}
-            }
         }
 
         public override void Draw()
@@ -142,7 +121,6 @@ namespace DeepSpaceCombat
 
         public override void UpdatingStopped()
         {
-            selectedCol = (selectedCol + 1) % 3;
             // executed when game is paused
         }
 
@@ -157,11 +135,11 @@ namespace DeepSpaceCombat
         {
             sendToOthers = false;//Test
             MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
+            DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+            IMyPlayer p = MyAPIGateway.Session.Player;
             if (messageText == "!LIST")
             {
                 MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 5000);
-                DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
-                MyAPIGateway.Utilities.ShowNotification("SET created", 5000);
                 HashSet<string> types = new HashSet<string>();
                 try
                 {
@@ -169,12 +147,14 @@ namespace DeepSpaceCombat
                     int limiter = 0;
                     while (enumerator.MoveNext() && limiter < 100)
                     {
-                        if (!types.Contains(enumerator.Current.GetType().ToString()))
+                        if (!(enumerator.Current.Id.ToString().Contains("Block")))
+                            continue;
+                        if (!types.Contains(enumerator.Current.Id.ToString()))
                         {
                             limiter++;
-                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.GetObjectBuilder().TypeId.ToString(), "SYSTEM", 0, "Red"); 
+                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString()); 
                             //MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString(), "SYSTEM", 0, "Red");
-                            types.Add(enumerator.Current.GetType().ToString());
+                            types.Add(enumerator.Current.Id.ToString());
                         }
                     }
                     MyAPIGateway.Utilities.ShowNotification("LIMIT: " + limiter, 5000);
@@ -182,18 +162,37 @@ namespace DeepSpaceCombat
                 }
                 catch (Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
             }
-            if(messageText == "!RESEARCH")
+            else if (messageText == "!RESEARCH")
             {
                 try
                 {
-                    IMyPlayer p = MyAPIGateway.Session.Player;
-                    MyVisualScriptLogicProvider.SendChatMessage("Research test: "+p.DisplayName, "SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID+ " Identity: "+p.IdentityId,"SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_CubeBlock", "LargeBlockArmorBlock"));
-
-                    MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_CubeBlock", "LargeBlockArmorBlock"));
-
-                } catch(Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
+                    Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
+                    MyVisualScriptLogicProvider.SendChatMessage("Research test: " + p.DisplayName, "SYSTEM", 0, "Red");
+                    MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID + " Identity: " + p.IdentityId, "SYSTEM", 0, "Red");
+                    while (enumerator.MoveNext())
+                    {                    
+                      try { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
+                      catch (Exception ex2) { MyVisualScriptLogicProvider.SendChatMessage("Skip:" + enumerator.Current.Id.ToString()); } 
+                    }
+                    enumerator.Dispose();
+                }
+                catch (Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
+            }
+            else if (messageText == "!CLEAR")
+            {
+                Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
+                
+                //MyVisualScriptLogicProvider.PlayerResearchClearAll();
+                while (enumerator.MoveNext())
+                {
+                    try { MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, enumerator.Current.Id); }
+                    catch (Exception ex2) { MyVisualScriptLogicProvider.SendChatMessage("Skip:" + enumerator.Current.Id.ToString()); }
+                }
+                enumerator.Dispose();
+            }
+            else if(messageText == "!THRUST")
+            {
+                MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId,MyVisualScriptLogicProvider.GetDefinitionId("Thrust","SmallBlockSmallThrust"));
             }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
             //MyConveyor x = new MyConveyor();
