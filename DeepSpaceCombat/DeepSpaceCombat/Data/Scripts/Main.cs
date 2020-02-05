@@ -34,7 +34,6 @@ namespace DeepSpaceCombat
         int selectedCol = 0;
         List<MyFontEnum> cols = new List<MyFontEnum>();
 
-
         // Found in another script
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
@@ -51,6 +50,7 @@ namespace DeepSpaceCombat
                     MyVisualScriptLogicProvider.PlayerResearchClearAll();
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
+
             }
 
             cols.Add(MyFontEnum.Red);
