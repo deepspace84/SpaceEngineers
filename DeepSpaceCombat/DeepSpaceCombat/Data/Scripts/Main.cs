@@ -7,6 +7,7 @@ using Sandbox.ModAPI;
 using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
+using VRage.Game.Entity;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
@@ -32,8 +33,9 @@ namespace DeepSpaceCombat
         float missileMinSpeed = 240;
         float missileMaxSpeed = 360;
         float missileExplosionRange = 2500;
-        
 
+        HashSet<string> distinctSet = new HashSet<string>();
+        Dictionary<string, long> adminBlocks = new Dictionary<string, long>();
 
         // Main Initialisation
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
@@ -59,8 +61,8 @@ namespace DeepSpaceCombat
                     MyVisualScriptLogicProvider.ResearchListClear();
                     MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                 }
+                MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
 
-                
             }
             //Player needs to be killed before character speeds works
             MyDefinitionManager.Static.EnvironmentDefinition.LargeShipMaxSpeed = largeShipSpeed;
@@ -74,14 +76,17 @@ namespace DeepSpaceCombat
 
         private void Entities_OnEntityAdd(IMyEntity obj)
         {
-            
-            if (obj.HasInventory)
+            string s = obj.GetType().ToString();
+            if (!(distinctSet.Contains(s)))
+            {
+                distinctSet.Add(s);
+                MyVisualScriptLogicProvider.SendChatMessage(s, "", 0, "Red");
+            }
+            if (obj is IMyCubeGrid)
             {
                 MyVisualScriptLogicProvider.SendChatMessage("Entity added: " + obj.Name + " EntityId =>" + obj.EntityId.ToString() + "| Display Name=>" + obj.DisplayName + " | FriendlyName => " + obj.GetFriendlyName(), "SYSTEM", 0, "Red");
             }
             //obj.GetFriendlyName
-            
-
         }
 
         public override void LoadData()
@@ -106,7 +111,7 @@ namespace DeepSpaceCombat
                 MyVisualScriptLogicProvider.PlayerDied -= Event_Player_Died;
                 MyVisualScriptLogicProvider.AreaTrigger_Entered -= Event_Area_Entered;
             }
-                
+
             MyAPIGateway.Utilities.MessageEntered -= Event_Message_Typed;
             Instance = null; // important for avoiding this object to remain allocated in memory
         }
@@ -169,11 +174,11 @@ namespace DeepSpaceCombat
             MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
             You can use this, or SetName(). Not sure if SetName() works in all situations
             */
-            
+
             //test.OnEntityAdd;
 
             //IMyEntity test2;
-            
+
 
             //MyEntities.SetEntityName()
 
@@ -187,6 +192,49 @@ namespace DeepSpaceCombat
             MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
             DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
             IMyPlayer p = MyAPIGateway.Session.Player;
+            if (messageText == "!TEST")
+            {
+
+            }
+            if (messageText.StartsWith("!MEMORIZE"))
+            {
+                MyVisualScriptLogicProvider.SendChatMessage("Memorize.", "SYSTEM", 0, "Red");
+                string[] names = messageText.Split(' ');
+                if (names.Length > 1)
+                {
+                    MyConcurrentHashSet<MyEntity> all = MyEntities.GetEntities();
+                    int i = 0;
+                    int j = 0;
+                    foreach (IMyEntity entity in all)
+                    {
+                        i++;
+                        if (entity is IMyCubeGrid)
+                        {
+
+                            j++;
+                            IMyTerminalBlock block = (IMyTerminalBlock)entity;
+                            if (block.DisplayName.Contains(names[1]))
+                            {
+                                adminBlocks[block.CustomName] = block.EntityId;
+                                MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.DisplayName + " -> " + block.EntityId);
+                            }
+                        }
+                    }
+                    MyVisualScriptLogicProvider.SendChatMessage("Entities: " + i, "SYSTEM", 0, "Red");
+                    MyVisualScriptLogicProvider.SendChatMessage("Terminal: " + j, "SYSTEM", 0, "Red");
+                }
+                else
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage("Error: Usage: !MEMORIZE TAG", "SYSTEM", 0, "Red");
+                }
+            }
+            if (messageText.StartsWith("!SHOW_MEMORY"))
+            {
+                foreach (KeyValuePair<string, long> m in adminBlocks)
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage(m.Key + " -> " + m.Value);
+                }
+            }
             if (messageText == "!LIST")
             {
                 MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 5000);
@@ -202,7 +250,7 @@ namespace DeepSpaceCombat
                         if (!types.Contains(enumerator.Current.Id.ToString()))
                         {
                             limiter++;
-                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString()); 
+                            MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString());
                             //MyVisualScriptLogicProvider.SendChatMessage(enumerator.Current.Id.ToString(), "SYSTEM", 0, "Red");
                             types.Add(enumerator.Current.Id.ToString());
                         }
@@ -220,9 +268,9 @@ namespace DeepSpaceCombat
                     MyVisualScriptLogicProvider.SendChatMessage("Research test: " + p.DisplayName, "SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID + " Identity: " + p.IdentityId, "SYSTEM", 0, "Red");
                     while (enumerator.MoveNext())
-                    {                    
-                      try { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
-                      catch (Exception ex2) { MyVisualScriptLogicProvider.SendChatMessage("Skip:" + enumerator.Current.Id.ToString()); } 
+                    {
+                        try { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
+                        catch (Exception ex2) { MyVisualScriptLogicProvider.SendChatMessage("Skip:" + enumerator.Current.Id.ToString()); }
                     }
                     enumerator.Dispose();
                 }
@@ -231,7 +279,7 @@ namespace DeepSpaceCombat
             else if (messageText == "!CLEAR")
             {
                 Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
-                
+
                 //MyVisualScriptLogicProvider.PlayerResearchClearAll();
                 while (enumerator.MoveNext())
                 {
@@ -240,10 +288,11 @@ namespace DeepSpaceCombat
                 }
                 enumerator.Dispose();
             }
-            else if(messageText == "!THRUST")
+            else if (messageText == "!THRUST")
             {
-                MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId,MyVisualScriptLogicProvider.GetDefinitionId("Thrust","SmallBlockSmallThrust"));
-            }else if (messageText == "!addarea")
+                MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockSmallThrust"));
+            }
+            else if (messageText == "!addarea")
             {
                 MyVisualScriptLogicProvider.RemoveTrigger("Testarea");
 
