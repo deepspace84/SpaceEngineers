@@ -168,7 +168,7 @@ namespace DSC
             MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
 
             //Map Strings to EntityID
-            if (messageText.StartsWith("!MEMORIZE"))
+            if (messageText.StartsWith("#MEMORIZE"))
             {
                 //!MEMORIZE [TAG]
                 MyVisualScriptLogicProvider.SendChatMessage("Memorize called.", "SYSTEM", 0, "White");
@@ -216,7 +216,7 @@ namespace DSC
             }
 
             //Show String-ID Map in Chat
-            else if (messageText.StartsWith("!SHOW_MEMORY"))
+            else if (messageText.StartsWith("#SHOW_MEMORY"))
             {
                 MyVisualScriptLogicProvider.SendChatMessage("Show memory called.", "SYSTEM", 0, "Red");
                 foreach (KeyValuePair<string, string> m in adminBlocks)
@@ -226,7 +226,7 @@ namespace DSC
             }
 
             //Research all available blocks
-            else if (messageText.StartsWith("!RESEARCH"))
+            else if (messageText.StartsWith("#RESEARCH"))
             {
                 //!RESEARCH <Substring>
                 MyVisualScriptLogicProvider.SendChatMessage("Research called.", "SYSTEM", 0, "Red");
@@ -267,7 +267,7 @@ namespace DSC
                 }
             }
 
-            else if (messageText == "!CLEAR_RESEARCH")
+            else if (messageText.StartsWith("#CLEAR_RESEARCH"))
             {
                 //!CLEAR_RESEARCH <Substring>
                 MyVisualScriptLogicProvider.SendChatMessage("Clear research called.", "SYSTEM", 0, "Red");
@@ -308,7 +308,7 @@ namespace DSC
                 }
             }
 
-            else if (messageText == "!ADD_AREA")
+            else if (messageText.StartsWith("#ADD_AREA"))
             {
                 //Vector3D test = new Vector3D(17634.62, 55360.81, 22019.81);
 
@@ -344,7 +344,7 @@ namespace DSC
                 }
             }
 
-            else if (messageText == "!REMOVE_AREA")
+            else if (messageText == "#REMOVE_AREA")
             {
                 //!ADD_AREA <Substring>
                 MyVisualScriptLogicProvider.SendChatMessage("Removing all areas...", "SYSTEM", 0, "Red");
@@ -361,7 +361,7 @@ namespace DSC
 
             }
 
-            else if (messageText == "/faction")
+            else if (messageText.StartsWith("#faction"))
             {
 
                 // Check that only owner can set faction data
@@ -388,7 +388,7 @@ namespace DSC
                             }
 
                         }
-                        else if (names['2'] == "remove") // Remove Faction -------------------------------------------------
+                        else if (names[2] == "remove") // Remove Faction -------------------------------------------------
                         {
 
                         }
