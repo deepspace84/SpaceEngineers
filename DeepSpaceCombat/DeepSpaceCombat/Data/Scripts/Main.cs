@@ -35,7 +35,7 @@ namespace DeepSpaceCombat
         float missileExplosionRange = 2500;
 
         HashSet<string> distinctSet = new HashSet<string>();
-        Dictionary<string, long> adminBlocks = new Dictionary<string, long>();
+        Dictionary<string, string> adminBlocks = new Dictionary<string, string>();
 
         // Main Initialisation
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
@@ -206,7 +206,6 @@ namespace DeepSpaceCombat
                     MyConcurrentHashSet<MyEntity> all = MyEntities.GetEntities();
                     int i = 0;
                     int j = 0;
-                    int k = 0;
                     int l = 0;
                     foreach (IMyEntity entity in all)
                     {
@@ -214,30 +213,34 @@ namespace DeepSpaceCombat
                         if (entity is IMyCubeGrid)
                         {
                             IMyCubeGrid grid = (IMyCubeGrid)entity;
-                            List < IMySlimBlock > blocks = new List<IMySlimBlock>();
-                            grid.GetBlocks(blocks);
-                            j++;
 
-                            foreach (IMySlimBlock block in blocks)
+                            
+                            try
                             {
-                                k++;
-                                if (block is IMyTerminalBlock)
+                                MyVisualScriptLogicProvider.SendChatMessage("Try");
+                                List<Sandbox.ModAPI.Ingame.IMyTerminalBlock> blocks = new List<Sandbox.ModAPI.Ingame.IMyTerminalBlock>();
+                                MyVisualScriptLogicProvider.SendChatMessage("TBList created");
+                                Sandbox.ModAPI.Ingame.IMyGridTerminalSystem gts = MyAPIGateway.TerminalActionsHelper.GetTerminalSystemForGrid(grid);
+                                MyVisualScriptLogicProvider.SendChatMessage("GTS created");
+                                gts.GetBlocks(blocks);
+                                MyVisualScriptLogicProvider.SendChatMessage("Blocks read");
+                                j++;
+                                foreach (Sandbox.ModAPI.Ingame.IMyTerminalBlock block in blocks)
                                 {
-                                    IMyTerminalBlock tblock = (IMyTerminalBlock)entity;
                                     l++;
-                                    if (tblock.DisplayName.Contains(names[1]))
+                                    if (block.DisplayName.Contains(names[1]))
                                     {
-                                        
-                                        adminBlocks[tblock.DisplayName] = tblock.EntityId;
-                                        MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + tblock.DisplayName + " -> " + tblock.EntityId);
+                                        MyVisualScriptLogicProvider.SendChatMessage("Found");
+                                        adminBlocks[block.DisplayName] = block.EntityId.ToString();
+                                        MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.DisplayName + " -> " + block.EntityId);
                                     }
                                 }
                             }
+                            catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message + " "+ex.InnerException, "SYSTEM", 0, "Red"); }
                         }
                     }
                     MyVisualScriptLogicProvider.SendChatMessage("Entities: " + i, "SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.SendChatMessage("Grids   : " + j, "SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.SendChatMessage("Blocks: " + k, "SYSTEM", 0, "Red");
                     MyVisualScriptLogicProvider.SendChatMessage("Terminal: " + l, "SYSTEM", 0, "Red");
                 }
                 else
@@ -247,7 +250,7 @@ namespace DeepSpaceCombat
             }
             if (messageText.StartsWith("!SHOW_MEMORY"))
             {
-                foreach (KeyValuePair<string, long> m in adminBlocks)
+                foreach (KeyValuePair<string, string> m in adminBlocks)
                 {
                     MyVisualScriptLogicProvider.SendChatMessage(m.Key + " -> " + m.Value);
                 }
