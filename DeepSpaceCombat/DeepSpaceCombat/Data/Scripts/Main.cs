@@ -228,11 +228,16 @@ namespace DeepSpaceCombat
                                 foreach (Sandbox.ModAPI.Ingame.IMyTerminalBlock block in blocks)
                                 {
                                     l++;
-                                    if (block.DisplayName.Contains(names[1]))
+                                    if (block.CustomName.Contains(names[1]))
                                     {
-                                        MyVisualScriptLogicProvider.SendChatMessage("Found");
-                                        adminBlocks[block.DisplayName] = block.EntityId.ToString();
-                                        MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.DisplayName + " -> " + block.EntityId);
+                                        //MyVisualScriptLogicProvider.SendChatMessage("Found");
+                                        //MyVisualScriptLogicProvider.SendChatMessage(block.Name);
+                                        //MyVisualScriptLogicProvider.SendChatMessage(block.DisplayName);
+                                        //MyVisualScriptLogicProvider.SendChatMessage(block.DisplayNameText);
+                                        //MyVisualScriptLogicProvider.SendChatMessage(block.CustomName);
+                                        //MyVisualScriptLogicProvider.SendChatMessage(block.DetailedInfo);
+                                        adminBlocks[block.CustomName] = block.EntityId.ToString();
+                                        MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.CustomName + " -> " + block.EntityId);
                                     }
                                 }
                             }
