@@ -13,6 +13,7 @@ using VRageMath;
 using VRage.ObjectBuilders;
 using VRage.Collections;
 
+
 namespace DeepSpaceCombat
 {
     // This object is always present, from the world load to world unload.
@@ -31,9 +32,10 @@ namespace DeepSpaceCombat
         float missileMinSpeed = 240;
         float missileMaxSpeed = 360;
         float missileExplosionRange = 2500;
+        
 
 
-        // Found in another script
+        // Main Initialisation
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
             // executed before the world starts updating
@@ -46,12 +48,18 @@ namespace DeepSpaceCombat
             {
                 if (MyAPIGateway.Session.IsServer)
                 {
+                    // Register Events
                     MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
+                    MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Entered;
+                    //MyVisualScriptLogicProvider.BlockBuilt += Event_Block_Built;
+                    MyAPIGateway.Entities.OnEntityAdd += Entities_OnEntityAdd;
+
+
                     MyVisualScriptLogicProvider.PlayerResearchClearAll();
                     MyVisualScriptLogicProvider.ResearchListClear();
                     MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                 }
-                MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
+
                 
             }
             //Player needs to be killed before character speeds works
@@ -62,6 +70,18 @@ namespace DeepSpaceCombat
             ammoDefinition.MaxTrajectory = missileExplosionRange;
             ammoDefinition.MissileInitialSpeed = missileMinSpeed;
             ammoDefinition.DesiredSpeed = missileMaxSpeed;
+        }
+
+        private void Entities_OnEntityAdd(IMyEntity obj)
+        {
+            
+            if (obj.HasInventory)
+            {
+                MyVisualScriptLogicProvider.SendChatMessage("Entity added: " + obj.Name + " EntityId =>" + obj.EntityId.ToString() + "| Display Name=>" + obj.DisplayName + " | FriendlyName => " + obj.GetFriendlyName(), "SYSTEM", 0, "Red");
+            }
+            //obj.GetFriendlyName
+            
+
         }
 
         public override void LoadData()
@@ -82,7 +102,11 @@ namespace DeepSpaceCombat
         {
             // executed when world is exited to unregister events and stuff
             if (MyAPIGateway.Session.IsServer)
+            {
                 MyVisualScriptLogicProvider.PlayerDied -= Event_Player_Died;
+                MyVisualScriptLogicProvider.AreaTrigger_Entered -= Event_Area_Entered;
+            }
+                
             MyAPIGateway.Utilities.MessageEntered -= Event_Message_Typed;
             Instance = null; // important for avoiding this object to remain allocated in memory
         }
@@ -129,6 +153,32 @@ namespace DeepSpaceCombat
             msgDead = "Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId);
             MyVisualScriptLogicProvider.SendChatMessage(msgDead, "SYSTEM", 0, "Red");
             //MyAPIGateway.Utilities.ShowNotification("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), 60000);
+        }
+
+        public void Event_Area_Entered(string name, long playerId)
+        {
+            MyVisualScriptLogicProvider.SendChatMessage("Player entered area: " + MyVisualScriptLogicProvider.GetPlayersName(playerId) + " Name of area =>" + name, "SYSTEM", 0, "Red");
+        }
+
+        public void Event_Block_Built(IMyEntity obj)
+        {
+
+            /*
+            finalblock_string = final_block.FatBlock.EntityId.ToString();
+            final_block.FatBlock.Name = finalblock_string;
+            MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
+            You can use this, or SetName(). Not sure if SetName() works in all situations
+            */
+            
+            //test.OnEntityAdd;
+
+            //IMyEntity test2;
+            
+
+            //MyEntities.SetEntityName()
+
+
+
         }
 
         public void Event_Message_Typed(string messageText, ref bool sendToOthers)
@@ -193,6 +243,24 @@ namespace DeepSpaceCombat
             else if(messageText == "!THRUST")
             {
                 MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId,MyVisualScriptLogicProvider.GetDefinitionId("Thrust","SmallBlockSmallThrust"));
+            }else if (messageText == "!addarea")
+            {
+                MyVisualScriptLogicProvider.RemoveTrigger("Testarea");
+
+                Vector3D test = new Vector3D(17634.62, 55360.81, 22019.81);
+                MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(test, 50, "Testarea");
+
+            }
+            else if (messageText == "!addquest")
+            {
+                //finalblock_string = final_block.FatBlock.EntityId.ToString();
+                //final_block.FatBlock.Name = finalblock_string;
+                //MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
+
+                long test;
+                //MyVisualScriptLogicProvider.AddSearchContract(MyEntities.GetEntityByName("DSC_Contracts").EntityId, 1000, 0, 5000, MyVisualScriptLogicProvider.GetGridIdOfBlock("DSC_Target_Battery"), 50, out test);
+                //MyVisualScriptLogicProvider.AddSearchContract(MyVisualScriptLogicProvider.GetEntityIdFromName("DSC_Contracts"), 1000, 0, 5000, MyVisualScriptLogicProvider.GetEntityIdFromName("Target"), 50, out test);
+
             }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
             //MyConveyor x = new MyConveyor();
