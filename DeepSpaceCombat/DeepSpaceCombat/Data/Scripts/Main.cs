@@ -15,7 +15,9 @@ using VRage.ObjectBuilders;
 using VRage.Collections;
 
 
-namespace DeepSpaceCombat
+//Sandbox.ModAPI.Ingame.IMyTerminalBlock or Sandbox.ModAPI.IMyTerminalBlock ?
+
+namespace DSC
 {
     // This object is always present, from the world load to world unload.
     // NOTE: all clients and server run mod scripts, keep that in mind.
@@ -25,7 +27,6 @@ namespace DeepSpaceCombat
     [MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation | MyUpdateOrder.AfterSimulation)]
     public class DeepSpaceCombat : MySessionComponentBase
     {
-        public string msgDead = "Hello World";
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
         float largeShipSpeed = 150;
@@ -34,7 +35,9 @@ namespace DeepSpaceCombat
         float missileMaxSpeed = 360;
         float missileExplosionRange = 2500;
 
-        HashSet<string> distinctSet = new HashSet<string>();
+        HashSet<string> areas = new HashSet<string>();
+        string defaultArea = "DEFAULT_AREA";
+
         Dictionary<string, string> adminBlocks = new Dictionary<string, string>();
 
         // Main Initialisation
@@ -53,17 +56,16 @@ namespace DeepSpaceCombat
                     // Register Events
                     MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
                     MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Entered;
+                    MyVisualScriptLogicProvider.AreaTrigger_Left += Event_Area_Left;
                     //MyVisualScriptLogicProvider.BlockBuilt += Event_Block_Built;
-                    MyAPIGateway.Entities.OnEntityAdd += Entities_OnEntityAdd;
-
+                    //MyAPIGateway.Entities.OnEntityAdd += Event_OnEntityAdd;
 
                     MyVisualScriptLogicProvider.PlayerResearchClearAll();
-                    MyVisualScriptLogicProvider.ResearchListClear();
-                    MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
-
             }
+
+            //Define Speedes and Missile Range
             //Player needs to be killed before character speeds works
             MyDefinitionManager.Static.EnvironmentDefinition.LargeShipMaxSpeed = largeShipSpeed;
             MyDefinitionManager.Static.EnvironmentDefinition.SmallShipMaxSpeed = smallShipSpeed;
@@ -74,21 +76,6 @@ namespace DeepSpaceCombat
             ammoDefinition.DesiredSpeed = missileMaxSpeed;
         }
 
-        private void Entities_OnEntityAdd(IMyEntity obj)
-        {
-            string s = obj.GetType().ToString();
-            if (!(distinctSet.Contains(s)))
-            {
-                distinctSet.Add(s);
-                MyVisualScriptLogicProvider.SendChatMessage(s, "", 0, "Red");
-            }
-            if (obj is IMyCubeGrid)
-            {
-                MyVisualScriptLogicProvider.SendChatMessage("Entity added: " + obj.Name + " EntityId =>" + obj.EntityId.ToString() + "| Display Name=>" + obj.DisplayName + " | FriendlyName => " + obj.GetFriendlyName(), "SYSTEM", 0, "Red");
-            }
-            //obj.GetFriendlyName
-        }
-
         public override void LoadData()
         {
             // amogst the earliest execution points, but not everything is available at this point. 
@@ -97,8 +84,6 @@ namespace DeepSpaceCombat
 
         public override void BeforeStart()
         {
-            //MyVisualScriptLogicProvider.ResearchListClear();
-            //MyVisualScriptLogicProvider.ResearchListWhitelist(true);
             // Main entry point: MyAPIGateway
             // Entry point for reading/editing definitions: MyDefinitionManager.Static
         }
@@ -110,6 +95,12 @@ namespace DeepSpaceCombat
             {
                 MyVisualScriptLogicProvider.PlayerDied -= Event_Player_Died;
                 MyVisualScriptLogicProvider.AreaTrigger_Entered -= Event_Area_Entered;
+                MyVisualScriptLogicProvider.AreaTrigger_Left -= Event_Area_Left;
+            }
+
+            foreach(string areaName in areas)
+            {
+                MyVisualScriptLogicProvider.RemoveTrigger(areaName);
             }
 
             MyAPIGateway.Utilities.MessageEntered -= Event_Message_Typed;
@@ -155,111 +146,233 @@ namespace DeepSpaceCombat
 
         public void Event_Player_Died(long playerId)
         {
-            msgDead = "Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId);
-            MyVisualScriptLogicProvider.SendChatMessage(msgDead, "SYSTEM", 0, "Red");
+            MyVisualScriptLogicProvider.SendChatMessage("Player died: "+ MyVisualScriptLogicProvider.GetPlayersName(playerId), "SYSTEM", 0, "Red");
             //MyAPIGateway.Utilities.ShowNotification("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), 60000);
         }
 
         public void Event_Area_Entered(string name, long playerId)
         {
-            MyVisualScriptLogicProvider.SendChatMessage("Player entered area: " + MyVisualScriptLogicProvider.GetPlayersName(playerId) + " Name of area =>" + name, "SYSTEM", 0, "Red");
+            MyVisualScriptLogicProvider.SendChatMessage("Player entered area: " + MyVisualScriptLogicProvider.GetPlayersName(playerId) + " Name of area =>" + name, "SYSTEM");
         }
-
-        public void Event_Block_Built(IMyEntity obj)
+        public void Event_Area_Left(string name, long playerId)
         {
-
-            /*
-            finalblock_string = final_block.FatBlock.EntityId.ToString();
-            final_block.FatBlock.Name = finalblock_string;
-            MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
-            You can use this, or SetName(). Not sure if SetName() works in all situations
-            */
-
-            //test.OnEntityAdd;
-
-            //IMyEntity test2;
-
-
-            //MyEntities.SetEntityName()
-
-
-
+            MyVisualScriptLogicProvider.SendChatMessage("Player left area: " + MyVisualScriptLogicProvider.GetPlayersName(playerId) + " Name of area =>" + name, "SYSTEM");
         }
 
+        
         public void Event_Message_Typed(string messageText, ref bool sendToOthers)
         {
             sendToOthers = false;//Test
-            MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
-            DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
-            IMyPlayer p = MyAPIGateway.Session.Player;
-            if (messageText == "!TEST")
-            {
 
-            }
+            IMyPlayer p = MyAPIGateway.Session.Player;
+            MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
+
+            //Map Strings to EntityID
             if (messageText.StartsWith("!MEMORIZE"))
             {
-                MyVisualScriptLogicProvider.SendChatMessage("Memorize.", "SYSTEM", 0, "Red");
+                //!MEMORIZE [TAG]
+                MyVisualScriptLogicProvider.SendChatMessage("Memorize called.", "SYSTEM", 0, "White");
                 string[] names = messageText.Split(' ');
-                if (names.Length > 1)
+                if ((null != names) && (names.Length > 1))
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("TAG="+names[1], "SYSTEM", 0, "Red");
-                    MyConcurrentHashSet<MyEntity> all = MyEntities.GetEntities();
-                    int i = 0;
-                    int j = 0;
-                    int l = 0;
-                    foreach (IMyEntity entity in all)
+                    MyVisualScriptLogicProvider.SendChatMessage("TAG=" + names[1], "SYSTEM", 0, "White");
+                    DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+
+                    //Get all Entities
+                    MyConcurrentHashSet<MyEntity> allEntities = MyEntities.GetEntities();
+                    foreach (IMyEntity entity in allEntities)
                     {
-                        i++;
+                        //Get All grid-entities
                         if (entity is IMyCubeGrid)
                         {
                             IMyCubeGrid grid = (IMyCubeGrid)entity;
 
-                            
+                            //Possible Null-Pointer-Exception
                             try
                             {
-                                MyVisualScriptLogicProvider.SendChatMessage("Try");
+                                //Get Terminal Blocks. (Use FatBlocks instead?)
                                 List<Sandbox.ModAPI.Ingame.IMyTerminalBlock> blocks = new List<Sandbox.ModAPI.Ingame.IMyTerminalBlock>();
-                                MyVisualScriptLogicProvider.SendChatMessage("TBList created");
                                 Sandbox.ModAPI.Ingame.IMyGridTerminalSystem gts = MyAPIGateway.TerminalActionsHelper.GetTerminalSystemForGrid(grid);
-                                MyVisualScriptLogicProvider.SendChatMessage("GTS created");
                                 gts.GetBlocks(blocks);
-                                MyVisualScriptLogicProvider.SendChatMessage("Blocks read");
-                                j++;
+
                                 foreach (Sandbox.ModAPI.Ingame.IMyTerminalBlock block in blocks)
                                 {
-                                    l++;
+                                    //Look for tagged Terminal blocks
                                     if (block.CustomName.Contains(names[1]))
                                     {
-                                        //MyVisualScriptLogicProvider.SendChatMessage("Found");
-                                        //MyVisualScriptLogicProvider.SendChatMessage(block.Name);
-                                        //MyVisualScriptLogicProvider.SendChatMessage(block.DisplayName);
-                                        //MyVisualScriptLogicProvider.SendChatMessage(block.DisplayNameText);
-                                        //MyVisualScriptLogicProvider.SendChatMessage(block.CustomName);
-                                        //MyVisualScriptLogicProvider.SendChatMessage(block.DetailedInfo);
                                         adminBlocks[block.CustomName] = block.EntityId.ToString();
                                         MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.CustomName + " -> " + block.EntityId);
                                     }
                                 }
                             }
-                            catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message + " "+ex.InnerException, "SYSTEM", 0, "Red"); }
+                            catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message, "SYSTEM", 0, "Red"); }
                         }
                     }
-                    MyVisualScriptLogicProvider.SendChatMessage("Entities: " + i, "SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.SendChatMessage("Grids   : " + j, "SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.SendChatMessage("Terminal: " + l, "SYSTEM", 0, "Red");
                 }
                 else
                 {
                     MyVisualScriptLogicProvider.SendChatMessage("Error: Usage: !MEMORIZE TAG", "SYSTEM", 0, "Red");
                 }
             }
-            if (messageText.StartsWith("!SHOW_MEMORY"))
+
+            //Show String-ID Map in Chat
+            else if (messageText.StartsWith("!SHOW_MEMORY"))
             {
+                MyVisualScriptLogicProvider.SendChatMessage("Show memory called.", "SYSTEM", 0, "Red");
                 foreach (KeyValuePair<string, string> m in adminBlocks)
                 {
                     MyVisualScriptLogicProvider.SendChatMessage(m.Key + " -> " + m.Value);
                 }
             }
+
+            //Research all available blocks
+            else if (messageText.StartsWith("!RESEARCH"))
+            {
+                //!RESEARCH <Substring>
+                MyVisualScriptLogicProvider.SendChatMessage("Research called.", "SYSTEM", 0, "Red");
+
+                string[] names = messageText.Split(' ');
+                if ((null != names) && (names.Length > 1))
+                {
+                    try
+                    {
+                        DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+                        Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
+                        while (enumerator.MoveNext())
+                        {
+                            if (enumerator.Current.Id.ToString().Contains(names[1]))
+                            {
+                                try { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
+                                catch (Exception exin) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + exin.Message + "ID: " + enumerator.Current.Id.ToString()); }
+                            }
+                        }
+                        enumerator.Dispose();
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                }
+                else if(null!=names)
+                {
+                    try
+                    {
+                        DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+                        Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
+                        while (enumerator.MoveNext())
+                        {
+                            try { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
+                            catch (Exception exin) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + exin.Message + "ID: " + enumerator.Current.Id.ToString()); }
+                        }
+                        enumerator.Dispose();
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                }
+            }
+
+            else if (messageText == "!CLEAR_RESEARCH")
+            {
+                //!CLEAR_RESEARCH <Substring>
+                MyVisualScriptLogicProvider.SendChatMessage("Clear research called.", "SYSTEM", 0, "Red");
+
+                string[] names = messageText.Split(' ');
+                if ((null != names) && (names.Length > 1))
+                {
+                    try
+                    {
+                        DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+                        Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
+                        while (enumerator.MoveNext())
+                        {
+                            if (enumerator.Current.Id.ToString().Contains(names[1]))
+                            {
+                                try { MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, enumerator.Current.Id); }
+                                catch (Exception exin) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + exin.Message + "ID: " + enumerator.Current.Id.ToString()); }
+                            }
+                        }
+                        enumerator.Dispose();
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                }
+                else if (null != names)
+                {
+                    try
+                    {
+                        DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+                        Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
+                        while (enumerator.MoveNext())
+                        {
+                            try { MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, enumerator.Current.Id); }
+                            catch (Exception exin) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + exin.Message + "ID: " + enumerator.Current.Id.ToString()); }
+                        }
+                        enumerator.Dispose();
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                }
+            }
+
+            else if (messageText == "!ADD_AREA")
+            {
+                //Vector3D test = new Vector3D(17634.62, 55360.81, 22019.81);
+
+                //!ADD_AREA <Substring>
+                MyVisualScriptLogicProvider.SendChatMessage("Adding area...", "SYSTEM", 0, "Red");
+
+                float radius = 10f;
+                string[] names = messageText.Split(' ');
+                if ((null != names) && (names.Length > 1))
+                {
+                   try
+                    {
+                        if ((names.Length > 2) && (!(float.TryParse(names[2], out radius))))
+                        {radius = 10f;}
+                    
+                        if(areas.Contains(names[1]))
+                        { MyVisualScriptLogicProvider.RemoveTrigger(names[1]); }
+                        MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(p.GetPosition(), radius, names[1]);
+                        areas.Add(names[1]);
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                }
+                else if (null != names)
+                {
+                    try
+                    {
+                        if (areas.Contains(defaultArea))
+                        { MyVisualScriptLogicProvider.RemoveTrigger(defaultArea); }
+                        MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(p.GetPosition(), radius, defaultArea);
+                        areas.Add(defaultArea);
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                }
+            }
+
+            else if (messageText == "!REMOVE_AREA")
+            {
+                //!ADD_AREA <Substring>
+                MyVisualScriptLogicProvider.SendChatMessage("Removing all areas...", "SYSTEM", 0, "Red");
+
+                try
+                {
+                    foreach (string areaName in areas)
+                    {
+                        MyVisualScriptLogicProvider.RemoveTrigger(areaName);
+                        areas.Clear();
+                    }
+                }
+                catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+    
+            }
+
+            else if (messageText == "!addquest")
+            {
+                //finalblock_string = final_block.FatBlock.EntityId.ToString();
+                //final_block.FatBlock.Name = finalblock_string;
+                //MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
+
+                long test;
+                //MyVisualScriptLogicProvider.AddSearchContract(MyEntities.GetEntityByName("DSC_Contracts").EntityId, 1000, 0, 5000, MyVisualScriptLogicProvider.GetGridIdOfBlock("DSC_Target_Battery"), 50, out test);
+                //MyVisualScriptLogicProvider.AddSearchContract(MyVisualScriptLogicProvider.GetEntityIdFromName("DSC_Contracts"), 1000, 0, 5000, MyVisualScriptLogicProvider.GetEntityIdFromName("Target"), 50, out test);
+
+            }
+
             if (messageText == "!LIST")
             {
                 MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 5000);
@@ -285,57 +398,36 @@ namespace DeepSpaceCombat
                 }
                 catch (Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
             }
-            else if (messageText == "!RESEARCH")
-            {
-                try
-                {
-                    Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
-                    MyVisualScriptLogicProvider.SendChatMessage("Research test: " + p.DisplayName, "SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.SendChatMessage("PlayerID: " + p.PlayerID + " Identity: " + p.IdentityId, "SYSTEM", 0, "Red");
-                    while (enumerator.MoveNext())
-                    {
-                        try { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
-                        catch (Exception ex2) { MyVisualScriptLogicProvider.SendChatMessage("Skip:" + enumerator.Current.Id.ToString()); }
-                    }
-                    enumerator.Dispose();
-                }
-                catch (Exception ex) { MyAPIGateway.Utilities.ShowNotification("Exception: " + ex.Message, 5000); }
-            }
-            else if (messageText == "!CLEAR")
-            {
-                Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
 
-                //MyVisualScriptLogicProvider.PlayerResearchClearAll();
-                while (enumerator.MoveNext())
-                {
-                    try { MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, enumerator.Current.Id); }
-                    catch (Exception ex2) { MyVisualScriptLogicProvider.SendChatMessage("Skip:" + enumerator.Current.Id.ToString()); }
-                }
-                enumerator.Dispose();
-            }
-            else if (messageText == "!THRUST")
-            {
-                MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockSmallThrust"));
-            }
-            else if (messageText == "!addarea")
-            {
-                MyVisualScriptLogicProvider.RemoveTrigger("Testarea");
+            //public void Event_Block_Built(IMyEntity obj)
+            //{
+            /*
+            finalblock_string = final_block.FatBlock.EntityId.ToString();
+            final_block.FatBlock.Name = finalblock_string;
+            MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
+            You can use this, or SetName(). Not sure if SetName() works in all situations
+            */
 
-                Vector3D test = new Vector3D(17634.62, 55360.81, 22019.81);
-                MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(test, 50, "Testarea");
+            //test.OnEntityAdd;
+            //IMyEntity test2;
+            //MyEntities.SetEntityName()
+            //}
 
-            }
-            else if (messageText == "!addquest")
-            {
-                //finalblock_string = final_block.FatBlock.EntityId.ToString();
-                //final_block.FatBlock.Name = finalblock_string;
-                //MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
+            //private void Event_OnEntityAdd(IMyEntity obj)
+            //{
+            //    string s = obj.GetType().ToString();
+            //    if (!(distinctSet.Contains(s)))
+            //    {
+            //        distinctSet.Add(s);
+            //        MyVisualScriptLogicProvider.SendChatMessage(s, "", 0, "Red");
+            //    }
+            //    if (obj is IMyCubeGrid)
+            //    {
+            //       MyVisualScriptLogicProvider.SendChatMessage("Entity added: " + obj.Name + " EntityId =>" + obj.EntityId.ToString() + "| Display Name=>" + obj.DisplayName + " | FriendlyName => " + obj.GetFriendlyName(), "SYSTEM", 0, "Red");
+            //    }
+            //}
 
-                long test;
-                //MyVisualScriptLogicProvider.AddSearchContract(MyEntities.GetEntityByName("DSC_Contracts").EntityId, 1000, 0, 5000, MyVisualScriptLogicProvider.GetGridIdOfBlock("DSC_Target_Battery"), 50, out test);
-                //MyVisualScriptLogicProvider.AddSearchContract(MyVisualScriptLogicProvider.GetEntityIdFromName("DSC_Contracts"), 1000, 0, 5000, MyVisualScriptLogicProvider.GetEntityIdFromName("Target"), 50, out test);
 
-            }
             //List<MyDefinitionId> deflist = new List<MyDefinitionId>();
             //MyConveyor x = new MyConveyor();
             //if ("!Research" == messageText)
@@ -343,6 +435,75 @@ namespace DeepSpaceCombat
             //else if ("!PCU" == messageText)
             //    x.BlockDefinition.PCU = 666;
             //MyAPIGateway.Utilities.ShowNotification("Conveyor PCU: " + x.BlockDefinition.PCU.ToString(),60000);
+        }
+
+        class DSCArea
+        {
+            public string name;
+            public Vector3D center;
+            public float radius;
+            public bool active;
+
+            public DSCArea(string pName) { this.name = pName; center = new Vector3D(); radius = 10.0f;active = false; }
+            public DSCArea(string pName,Vector3D pCenter) { this.name = pName; center = pCenter; radius = 10.0f;active = false; }
+            public DSCArea(string pName,Vector3D pCenter,float pRadius) { this.name = pName; center = pCenter; radius = pRadius;active = false; }
+
+            public void activate()
+            {
+                if (!active)
+                {
+                    try
+                    {
+                        MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(center, radius, name);
+                        active = true;
+                    } catch (Exception ex) {}
+                }
+            }
+            public void deactivate()
+            {
+                if (active)
+                {
+                    try
+                    {
+                        MyVisualScriptLogicProvider.RemoveTrigger(name);
+                        active = false;
+                    }
+                    catch (Exception ex) {}
+                }
+            }
+            public void toggle()
+            {
+                if (active)
+                {
+                    try
+                    {
+                        MyVisualScriptLogicProvider.RemoveTrigger(name);
+                        active = false;
+                    }
+                    catch (Exception ex) { }
+                }else
+                {
+                    try
+                    {
+                        MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(center, radius, name);
+                        active = true;
+                    }
+                    catch (Exception ex) { }
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return name.GetHashCode();
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (null == obj) return false;
+                if(obj.GetType()!=this.GetType())return false;
+                DSCArea cmp = (DSCArea)obj;
+                return ((name==cmp.name)&&(center==cmp.center)&&(radius==cmp.radius));
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Sandbox.ModAPI;
 
-namespace DeepSpaceCombat
+namespace DSC
 {
     //Storage-Container for Raffi (untested)
 
