@@ -202,26 +202,43 @@ namespace DeepSpaceCombat
                 string[] names = messageText.Split(' ');
                 if (names.Length > 1)
                 {
+                    MyVisualScriptLogicProvider.SendChatMessage("TAG="+names[1], "SYSTEM", 0, "Red");
                     MyConcurrentHashSet<MyEntity> all = MyEntities.GetEntities();
                     int i = 0;
                     int j = 0;
+                    int k = 0;
+                    int l = 0;
                     foreach (IMyEntity entity in all)
                     {
                         i++;
                         if (entity is IMyCubeGrid)
                         {
-
+                            IMyCubeGrid grid = (IMyCubeGrid)entity;
+                            List < IMySlimBlock > blocks = new List<IMySlimBlock>();
+                            grid.GetBlocks(blocks);
                             j++;
-                            IMyTerminalBlock block = (IMyTerminalBlock)entity;
-                            if (block.DisplayName.Contains(names[1]))
+
+                            foreach (IMySlimBlock block in blocks)
                             {
-                                adminBlocks[block.CustomName] = block.EntityId;
-                                MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.DisplayName + " -> " + block.EntityId);
+                                k++;
+                                if (block is IMyTerminalBlock)
+                                {
+                                    IMyTerminalBlock tblock = (IMyTerminalBlock)entity;
+                                    l++;
+                                    if (tblock.DisplayName.Contains(names[1]))
+                                    {
+                                        
+                                        adminBlocks[tblock.DisplayName] = tblock.EntityId;
+                                        MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + tblock.DisplayName + " -> " + tblock.EntityId);
+                                    }
+                                }
                             }
                         }
                     }
                     MyVisualScriptLogicProvider.SendChatMessage("Entities: " + i, "SYSTEM", 0, "Red");
-                    MyVisualScriptLogicProvider.SendChatMessage("Terminal: " + j, "SYSTEM", 0, "Red");
+                    MyVisualScriptLogicProvider.SendChatMessage("Grids   : " + j, "SYSTEM", 0, "Red");
+                    MyVisualScriptLogicProvider.SendChatMessage("Blocks: " + k, "SYSTEM", 0, "Red");
+                    MyVisualScriptLogicProvider.SendChatMessage("Terminal: " + l, "SYSTEM", 0, "Red");
                 }
                 else
                 {
