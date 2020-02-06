@@ -361,16 +361,47 @@ namespace DSC
 
             }
 
-            else if (messageText == "!addquest")
+            else if (messageText == "/faction")
             {
-                //finalblock_string = final_block.FatBlock.EntityId.ToString();
-                //final_block.FatBlock.Name = finalblock_string;
-                //MyEntities.SetEntityName((MyEntity)final_block.FatBlock, true);
 
-                long test;
-                //MyVisualScriptLogicProvider.AddSearchContract(MyEntities.GetEntityByName("DSC_Contracts").EntityId, 1000, 0, 5000, MyVisualScriptLogicProvider.GetGridIdOfBlock("DSC_Target_Battery"), 50, out test);
-                //MyVisualScriptLogicProvider.AddSearchContract(MyVisualScriptLogicProvider.GetEntityIdFromName("DSC_Contracts"), 1000, 0, 5000, MyVisualScriptLogicProvider.GetEntityIdFromName("Target"), 50, out test);
+                // Check that only owner can set faction data
+                if (p.PromoteLevel.ToString() == "Owner")
+                {
+                    // Split up command
+                    string[] names = messageText.Split(' ');
 
+                    // Check if we have at least one parameter
+                    if ((null != names) && (names.Length >= 3))
+                    {
+                        if (names[2] == "add") // Add Faction --------------------------------------------------------------
+                        {
+                            // Check faction name
+                            IMyFaction faction = MyAPIGateway.Session.Factions.TryGetFactionByTag(names[3]); ;
+                            if(null != faction)
+                            {
+                                // Check if allready added
+                                MyVisualScriptLogicProvider.SendChatMessage("Faction was found", "SYSTEM", 0, "Red");
+                            }
+                            else
+                            {
+                                MyVisualScriptLogicProvider.SendChatMessage("Faction not found", "SYSTEM", 0, "Red");
+                            }
+
+                        }
+                        else if (names['2'] == "remove") // Remove Faction -------------------------------------------------
+                        {
+
+                        }
+                        else
+                        {
+                            MyVisualScriptLogicProvider.SendChatMessage("Unknown action", "SYSTEM", 0, "Red");
+                        }
+                    }
+                    else
+                    {
+                        MyVisualScriptLogicProvider.SendChatMessage("Wrong parameters. /faction [action] [Factionname]", "SYSTEM", 0, "Red");
+                    }
+                }
             }
 
             if (messageText == "!LIST")
