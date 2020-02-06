@@ -60,7 +60,7 @@ namespace DSC
                     //MyVisualScriptLogicProvider.BlockBuilt += Event_Block_Built;
                     //MyAPIGateway.Entities.OnEntityAdd += Event_OnEntityAdd;
 
-                    MyVisualScriptLogicProvider.PlayerResearchClearAll();
+                    //MyVisualScriptLogicProvider.PlayerResearchClearAll();
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
             }
@@ -98,7 +98,7 @@ namespace DSC
                 MyVisualScriptLogicProvider.AreaTrigger_Left -= Event_Area_Left;
             }
 
-            foreach(string areaName in areas)
+            foreach (string areaName in areas)
             {
                 MyVisualScriptLogicProvider.RemoveTrigger(areaName);
             }
@@ -146,7 +146,7 @@ namespace DSC
 
         public void Event_Player_Died(long playerId)
         {
-            MyVisualScriptLogicProvider.SendChatMessage("Player died: "+ MyVisualScriptLogicProvider.GetPlayersName(playerId), "SYSTEM", 0, "Red");
+            MyVisualScriptLogicProvider.SendChatMessage("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), "SYSTEM", 0, "Red");
             //MyAPIGateway.Utilities.ShowNotification("Player died: " + MyVisualScriptLogicProvider.GetPlayersName(playerId), 60000);
         }
 
@@ -159,7 +159,7 @@ namespace DSC
             MyVisualScriptLogicProvider.SendChatMessage("Player left area: " + MyVisualScriptLogicProvider.GetPlayersName(playerId) + " Name of area =>" + name, "SYSTEM");
         }
 
-        
+
         public void Event_Message_Typed(string messageText, ref bool sendToOthers)
         {
             sendToOthers = false;//Test
@@ -250,7 +250,7 @@ namespace DSC
                     }
                     catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
                 }
-                else if(null!=names)
+                else if (null != names)
                 {
                     try
                     {
@@ -319,12 +319,12 @@ namespace DSC
                 string[] names = messageText.Split(' ');
                 if ((null != names) && (names.Length > 1))
                 {
-                   try
+                    try
                     {
                         if ((names.Length > 2) && (!(float.TryParse(names[2], out radius))))
-                        {radius = 10f;}
-                    
-                        if(areas.Contains(names[1]))
+                        { radius = 10f; }
+
+                        if (areas.Contains(names[1]))
                         { MyVisualScriptLogicProvider.RemoveTrigger(names[1]); }
                         MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(p.GetPosition(), radius, names[1]);
                         areas.Add(names[1]);
@@ -358,7 +358,7 @@ namespace DSC
                     }
                 }
                 catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
-    
+
             }
 
             else if (messageText == "!addquest")
@@ -376,6 +376,7 @@ namespace DSC
             if (messageText == "!LIST")
             {
                 MyAPIGateway.Utilities.ShowNotification("LIST MESSAGE detected", 5000);
+                DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
                 HashSet<string> types = new HashSet<string>();
                 try
                 {
@@ -444,9 +445,9 @@ namespace DSC
             public float radius;
             public bool active;
 
-            public DSCArea(string pName) { this.name = pName; center = new Vector3D(); radius = 10.0f;active = false; }
-            public DSCArea(string pName,Vector3D pCenter) { this.name = pName; center = pCenter; radius = 10.0f;active = false; }
-            public DSCArea(string pName,Vector3D pCenter,float pRadius) { this.name = pName; center = pCenter; radius = pRadius;active = false; }
+            public DSCArea(string pName) { this.name = pName; center = new Vector3D(); radius = 10.0f; active = false; }
+            public DSCArea(string pName, Vector3D pCenter) { this.name = pName; center = pCenter; radius = 10.0f; active = false; }
+            public DSCArea(string pName, Vector3D pCenter, float pRadius) { this.name = pName; center = pCenter; radius = pRadius; active = false; }
 
             public void activate()
             {
@@ -456,7 +457,8 @@ namespace DSC
                     {
                         MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(center, radius, name);
                         active = true;
-                    } catch (Exception ex) {}
+                    }
+                    catch (Exception ex) { }
                 }
             }
             public void deactivate()
@@ -468,7 +470,7 @@ namespace DSC
                         MyVisualScriptLogicProvider.RemoveTrigger(name);
                         active = false;
                     }
-                    catch (Exception ex) {}
+                    catch (Exception ex) { }
                 }
             }
             public void toggle()
@@ -481,7 +483,8 @@ namespace DSC
                         active = false;
                     }
                     catch (Exception ex) { }
-                }else
+                }
+                else
                 {
                     try
                     {
@@ -500,9 +503,9 @@ namespace DSC
             public override bool Equals(object obj)
             {
                 if (null == obj) return false;
-                if(obj.GetType()!=this.GetType())return false;
+                if (obj.GetType() != this.GetType()) return false;
                 DSCArea cmp = (DSCArea)obj;
-                return ((name==cmp.name)&&(center==cmp.center)&&(radius==cmp.radius));
+                return ((name == cmp.name) && (center == cmp.center) && (radius == cmp.radius));
             }
         }
     }
