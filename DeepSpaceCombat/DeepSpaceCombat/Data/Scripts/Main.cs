@@ -61,7 +61,7 @@ namespace DeepSpaceCombat
                     MyVisualScriptLogicProvider.ResearchListClear();
                     MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                 }
-
+                MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
 
             }
             //Player needs to be killed before character speeds works
@@ -204,21 +204,24 @@ namespace DeepSpaceCombat
                 {
                     MyConcurrentHashSet<MyEntity> all = MyEntities.GetEntities();
                     int i = 0;
-
+                    int j = 0;
                     foreach (IMyEntity entity in all)
                     {
                         i++;
-                        if (entity is IMyTerminalBlock)
+                        if (entity is IMyCubeGrid)
                         {
+
+                            j++;
                             IMyTerminalBlock block = (IMyTerminalBlock)entity;
-                            if (block.CustomName.Contains(names[1]))
+                            if (block.DisplayName.Contains(names[1]))
                             {
                                 adminBlocks[block.CustomName] = block.EntityId;
-                                MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.CustomName + " -> " + block.EntityId);
+                                MyVisualScriptLogicProvider.SendChatMessage("Added Entry: " + block.DisplayName + " -> " + block.EntityId);
                             }
                         }
                     }
                     MyVisualScriptLogicProvider.SendChatMessage("Entities: " + i, "SYSTEM", 0, "Red");
+                    MyVisualScriptLogicProvider.SendChatMessage("Terminal: " + j, "SYSTEM", 0, "Red");
                 }
                 else
                 {
