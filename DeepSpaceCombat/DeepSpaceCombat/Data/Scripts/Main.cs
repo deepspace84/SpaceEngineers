@@ -486,6 +486,7 @@ namespace DSC
             //else if ("!PCU" == messageText)
             //    x.BlockDefinition.PCU = 666;
             //MyAPIGateway.Utilities.ShowNotification("Conveyor PCU: " + x.BlockDefinition.PCU.ToString(),60000);
+            MyVisualScriptLogicProvider.ClearAllToolbarSlots(p.IdentityId);
         }
 
         class DSCArea
