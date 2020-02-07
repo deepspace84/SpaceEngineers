@@ -57,10 +57,14 @@ namespace DSC
                     MyVisualScriptLogicProvider.PlayerDied += Event_Player_Died;
                     MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Entered;
                     MyVisualScriptLogicProvider.AreaTrigger_Left += Event_Area_Left;
+                    MyVisualScriptLogicProvider.PlayerResearchClearAll();
+                    MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                     //MyVisualScriptLogicProvider.BlockBuilt += Event_Block_Built;
-                    //MyAPIGateway.Entities.OnEntityAdd += Event_OnEntityAdd;
-
-                    //MyVisualScriptLogicProvider.PlayerResearchClearAll();
+                    //MyAPIGateway.Entities.OnEntityAdd += Event_OnEntityAdd;     
+                }
+                else
+                {
+                    MyVisualScriptLogicProvider.PlayerResearchClearAll();
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
             }
@@ -234,21 +238,22 @@ namespace DSC
                 string[] names = messageText.Split(' ');
                 if ((null != names) && (names.Length > 1))
                 {
-                    try
+                    if (names.Length > 2)
                     {
-                        DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
-                        Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
-                        while (enumerator.MoveNext())
+                        try
                         {
-                            if (enumerator.Current.Id.ToString().Contains(names[1]))
-                            {
-                                try { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
-                                catch (Exception exin) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + exin.Message + "ID: " + enumerator.Current.Id.ToString()); }
-                            }
+                            MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],names[2]));
                         }
-                        enumerator.Dispose();
+                        catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
                     }
-                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                    else
+                    {
+                        try
+                        {
+                            MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],null));
+                        }
+                        catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                    }
                 }
                 else if (null != names)
                 {
@@ -376,7 +381,7 @@ namespace DSC
                         if (names[2] == "add") // Add Faction --------------------------------------------------------------
                         {
                             // Check faction name
-                            IMyFaction faction = MyAPIGateway.Session.Factions.TryGetFactionByTag(names[3]); ;
+                            IMyFaction faction = MyAPIGateway.Session.Factions.TryGetFactionByTag(names[3]);
                             if(null != faction)
                             {
                                 // Check if allready added
