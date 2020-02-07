@@ -13,7 +13,7 @@ using VRage.ModAPI;
 using VRageMath;
 using VRage.ObjectBuilders;
 using VRage.Collections;
-
+using Sandbox.Game.SessionComponents;
 
 //Sandbox.ModAPI.Ingame.IMyTerminalBlock or Sandbox.ModAPI.IMyTerminalBlock ?
 
@@ -58,7 +58,7 @@ namespace DSC
                     MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Entered;
                     MyVisualScriptLogicProvider.AreaTrigger_Left += Event_Area_Left;
                     MyVisualScriptLogicProvider.PlayerResearchClearAll();
-                    MyVisualScriptLogicProvider.ResearchListWhitelist(true);
+                    //MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                     //MyVisualScriptLogicProvider.BlockBuilt += Event_Block_Built;
                     //MyAPIGateway.Entities.OnEntityAdd += Event_OnEntityAdd;     
                 }
@@ -242,6 +242,7 @@ namespace DSC
                     {
                         try
                         {
+                            //MySessionComponentResearch.Static.UnlockResearchDirect(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]));
                             MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],names[2]));
                         }
                         catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
@@ -250,6 +251,7 @@ namespace DSC
                     {
                         try
                         {
+                            //MySessionComponentResearch.Static.UnlockResearchDirect(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],null));
                             MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],null));
                         }
                         catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
@@ -280,21 +282,24 @@ namespace DSC
                 string[] names = messageText.Split(' ');
                 if ((null != names) && (names.Length > 1))
                 {
-                    try
+                    if (names.Length > 2)
                     {
-                        DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
-                        Dictionary<MyDefinitionId, MyDefinitionBase>.ValueCollection.Enumerator enumerator = defset.GetEnumerator();
-                        while (enumerator.MoveNext())
+                        try
                         {
-                            if (enumerator.Current.Id.ToString().Contains(names[1]))
-                            {
-                                try { MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, enumerator.Current.Id); }
-                                catch (Exception exin) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + exin.Message + "ID: " + enumerator.Current.Id.ToString()); }
-                            }
+                            //MySessionComponentResearch.Static.LockResearch(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]));
+                            MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]));
                         }
-                        enumerator.Dispose();
+                        catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
                     }
-                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                    else
+                    {
+                        try
+                        {
+                            //MySessionComponentResearch.Static.LockResearch(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], null));
+                            MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], null));
+                        }
+                        catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
+                    }
                 }
                 else if (null != names)
                 {
@@ -364,6 +369,15 @@ namespace DSC
                 }
                 catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
 
+            }
+
+            else if(messageText == "#WHITELIST")
+            {
+                MyVisualScriptLogicProvider.ResearchListWhitelist(true);
+            }
+            else if(messageText == "#NO_WHITELIST")
+            {
+                MyVisualScriptLogicProvider.ResearchListWhitelist(false);
             }
 
             else if (messageText.StartsWith("#faction"))
