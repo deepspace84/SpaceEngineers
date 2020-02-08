@@ -35,13 +35,13 @@ namespace DSC
             this.sTag = sTag;
             lMemberlist = new List<long>();
             iFactionScore = 0;
-            licences = new Dictionary<MyDefinitionId, int>();
+            licences = new Dictionary<string, int>();
         }
 
         private string sTag; // Faction tag
-        public List<long> lMemberlist; // Memberlist
+        private List<long> lMemberlist; // Memberlist
         private int iFactionScore; // FactionScore
-        public Dictionary<MyDefinitionId, int> licences;
+        private Dictionary<string, int> licences;
 
         // Return members
         public List<long> getMembers()
@@ -51,13 +51,48 @@ namespace DSC
 
         public void unlock(MyDefinitionId id)
         {
-            licences[id] = 1;
+            licences[id.ToString()] = 1;
         }
 
         public void lockResearch(MyDefinitionId id)
         {
-            licences[id] = 0;
+            licences[id.ToString()] = 0;
         }
+
+        public HashSet<string> getUnlockedResearch()
+        {
+            HashSet<string> ret = new HashSet<string>();
+            foreach(KeyValuePair<string,int> entry in licences)
+            {
+                if (entry.Value >= 0)
+                    ret.Add(entry.Key);
+            }
+            return ret;
+        }
+        public HashSet<string> getAvailableResearch()
+        {
+            HashSet<string> ret = new HashSet<string>();
+            foreach (KeyValuePair<string, int> entry in licences)
+            {
+                if (entry.Value > 0)
+                    ret.Add(entry.Key);
+            }
+            return ret;
+        }
+
+        public void updateResearch()
+        {
+            foreach(long pid in lMemberlist)
+            {
+                MyVisualScriptLogicProvider.PlayerResearchClear(pid);
+                MyVisualScriptLogicProvider.ClearAllToolbarSlots(pid);
+                foreach(string defid in getAvailableResearch())
+                {
+                    MyVisualScriptLogicProvider.PlayerResearchUnlock(pid,MyDefinitionId.Parse(defid));
+                }
+            }
+        }
+
 
         /*
          * Load object
