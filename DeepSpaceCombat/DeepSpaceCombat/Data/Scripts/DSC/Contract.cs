@@ -23,32 +23,45 @@ namespace DSC
     class DSC_Contracts
     {
         // Constructor
-        public DSC_Contracts(){
+        public DSC_Contracts()
+        {
 
         }
 
-        
+
         // Add new Search Contract
-        public DSC_Contract addFactionSearchContract(string factionTag, string contractLocation, string contractLoan)
+        public DSC_Contract addFactionSearchContract(string factionTag, string contractLocation, bool contractHardDifficulty)
         {
             // New Contract object
             DSC_Contract contract = new DSC_Contract();
 
             // Check location type
-            if(contractLocation == "earth")
+            if (contractLocation == "earth")
             {
+                MyPlanet earth = MyGamePruningStructure.GetClosestPlanet(new Vector3D(0,0,0));
 
-            }else if(contractLocation == "moon")
-            {
 
-            }else if(contractLocation == "spacenear")
-            {
 
-            }else if(contractLocation == "spacedeep")
+            }
+            else if (contractLocation == "moon")
             {
 
             }
-            
+            else if (contractLocation == "spacenear")
+            {
+
+            }
+            else if (contractLocation == "spacedeep")
+            {
+
+            }
+            else
+            {
+                // Could not parse location type
+                return null;
+            }
+
+
 
 
             return contract;
@@ -95,12 +108,22 @@ namespace DSC
 
     }
 
-    class DSC_Contract{
+    class DSC_Contract
+    {
+
+        public string FactionTag  // Faction Tag
+        { get; set; }
+
+        public string Location  // Contract Location
+        { get; set; }
+
 
         public DSC_Contract()
         {
 
         }
+
+
 
     }
 
