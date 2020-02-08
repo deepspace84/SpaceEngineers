@@ -18,6 +18,7 @@ namespace DSC
 {
     public class Faction
     {
+        
         public static Dictionary<string, Faction> factions = new Dictionary<string, Faction>();
 
         public static void initFactions()
@@ -26,9 +27,6 @@ namespace DSC
             factions.Add("[DSC]", new Faction("[DSC]"));
         }
 
-        public Faction()
-        {
-        }
 
         public Faction(string sTag)
         {
@@ -59,10 +57,6 @@ namespace DSC
             licences[id] = 0;
         }
 
-        /*
-         * Load object
-         * --------------------------------------------------------------------------------------------
-         */
         public bool load(string tag)
         {
             // Check if faction tag exists
@@ -95,7 +89,7 @@ namespace DSC
 
             return false;
         }
-
+        
         // Players
         
 
