@@ -34,7 +34,8 @@ namespace DSC
         float missileMinSpeed = 240;
         float missileMaxSpeed = 360;
         float missileExplosionRange = 2500;
-
+        public Dictionary<string, Faction> factions = new Dictionary<string, Faction>();
+        Faction f;
         HashSet<string> areas = new HashSet<string>();
         string defaultArea = "DEFAULT_AREA";
 
@@ -51,6 +52,8 @@ namespace DSC
 
             if (MyAPIGateway.Session != null)
             {
+                f = new Faction("[DSC]");
+
                 if (MyAPIGateway.Session.IsServer)
                 {
                     // Register Events
@@ -61,14 +64,11 @@ namespace DSC
                     //MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                     //MyVisualScriptLogicProvider.BlockBuilt += Event_Block_Built;
                     //MyAPIGateway.Entities.OnEntityAdd += Event_OnEntityAdd;     
-                    Faction.initFactions();
+
                 }
                 else
                 {
-                    if(!((Faction.factions["DSC"]).getMembers().Contains(MyAPIGateway.Session.Player.IdentityId)))
-                    {
-                        Faction.factions["[DSC]"].addMember(MyAPIGateway.Session.Player.IdentityId);
-                    }
+
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
             }
@@ -175,7 +175,9 @@ namespace DSC
             IMyPlayer p = MyAPIGateway.Session.Player;
             MyVisualScriptLogicProvider.SendChatMessage("Message received.", "SYSTEM", 0, "Red");
             //IMyFaction f = MyAPIGateway.Session.Factions.TryGetPlayerFaction(p.IdentityId);
-            Faction f = Faction.factions["[DSC]"];
+            //Faction f = new Faction("[DSC]");
+            if (messageText == "#ADDME")
+                f.addMember(p.IdentityId);
 
             //Map Strings to EntityID
             if (messageText.StartsWith("#MEMORIZE"))
@@ -261,7 +263,7 @@ namespace DSC
                         try
                         {
                             //MySessionComponentResearch.Static.UnlockResearchDirect(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],null));
-                            MyDefinitionId id = MyVisualScriptLogicProvider.GetDefinitionId(names[1],null);
+                            MyDefinitionId id = MyVisualScriptLogicProvider.GetDefinitionId(names[1], null);
                             f.unlockResearch(id);
                             f.updateResearch();
                             //MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],null));
@@ -278,7 +280,7 @@ namespace DSC
                         while (enumerator.MoveNext())
                         {
                             try
-                            {MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id);}
+                            { MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, enumerator.Current.Id); }
                             catch (Exception exin) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + exin.Message + "ID: " + enumerator.Current.Id.ToString()); }
                         }
                         enumerator.Dispose();
@@ -390,11 +392,11 @@ namespace DSC
 
             }
 
-            else if(messageText == "#WHITELIST")
+            else if (messageText == "#WHITELIST")
             {
                 MyVisualScriptLogicProvider.ResearchListWhitelist(true);
             }
-            else if(messageText == "#NO_WHITELIST")
+            else if (messageText == "#NO_WHITELIST")
             {
                 MyVisualScriptLogicProvider.ResearchListWhitelist(false);
             }
@@ -414,7 +416,7 @@ namespace DSC
                         {
                             // Check faction name
                             IMyFaction faction = MyAPIGateway.Session.Factions.TryGetFactionByTag(names[3]);
-                            if(null != faction)
+                            if (null != faction)
                             {
                                 // Check if allready added
                                 MyVisualScriptLogicProvider.SendChatMessage("Faction was found", "SYSTEM", 0, "Red");

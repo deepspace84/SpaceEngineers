@@ -18,13 +18,13 @@ namespace DSC
 {
     public class Faction
     {
-        public static Dictionary<string, Faction> factions = new Dictionary<string, Faction>();
+        //public static Dictionary<string, Faction> factions = new Dictionary<string, Faction>();
 
-        public static void initFactions()
-        {
-            factions.Add("[ADM]", new Faction("[ADM]"));
-            factions.Add("[DSC]", new Faction("[DSC]"));
-        }
+        //public static void initFactions()
+        //{
+        //    factions.Add("[ADM]", new Faction("[ADM]"));
+        //    factions.Add("[DSC]", new Faction("[DSC]"));
+        //}
 
         private string sTag; // Faction tag
         private List<long> lMemberlist; // Memberlist
@@ -67,7 +67,7 @@ namespace DSC
         public HashSet<string> getUnlockedResearch()
         {
             HashSet<string> ret = new HashSet<string>();
-            foreach(KeyValuePair<string,int> entry in licences)
+            foreach (KeyValuePair<string, int> entry in licences)
             {
                 if (entry.Value >= 0)
                     ret.Add(entry.Key);
@@ -82,7 +82,7 @@ namespace DSC
                 if (entry.Value > 0)
                 {
                     ret.Add(entry.Key);
-                    MyVisualScriptLogicProvider.SendChatMessage("Available: "+entry.Key);
+                    MyVisualScriptLogicProvider.SendChatMessage("Available: " + entry.Key);
                 }
             }
             return ret;
@@ -91,15 +91,15 @@ namespace DSC
         public void updateResearch()
         {
 
-            foreach(long pid in lMemberlist)
+            foreach (long pid in lMemberlist)
             {
-                MyVisualScriptLogicProvider.SendChatMessage("PID:"+pid);
+                MyVisualScriptLogicProvider.SendChatMessage("PID:" + pid);
                 MyVisualScriptLogicProvider.PlayerResearchClear(pid);
                 MyVisualScriptLogicProvider.ClearAllToolbarSlots(pid);
-                foreach(string defid in getAvailableResearch())
+                foreach (string defid in getAvailableResearch())
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("Unlocked: "+defid);
-                    MyVisualScriptLogicProvider.PlayerResearchUnlock(pid,MyDefinitionId.Parse(defid));
+                    MyVisualScriptLogicProvider.SendChatMessage("Unlocked: " + defid);
+                    MyVisualScriptLogicProvider.PlayerResearchUnlock(pid, MyDefinitionId.Parse(defid));
                 }
             }
             MyVisualScriptLogicProvider.SendChatMessage("Updated research.");
@@ -123,7 +123,7 @@ namespace DSC
 
                 // Load points
                 int fscore;
-                if(MyAPIGateway.Utilities.GetVariable<int>("faction_"+tag+"_score", out fscore))
+                if (MyAPIGateway.Utilities.GetVariable<int>("faction_" + tag + "_score", out fscore))
                 {
                     iFactionScore = fscore;
                 }
@@ -134,7 +134,7 @@ namespace DSC
                     MyAPIGateway.Utilities.SetVariable<int>("faction_" + tag + "_score", 0);
                 }
 
-                
+
 
 
 
@@ -144,7 +144,7 @@ namespace DSC
         }
 
         // Players
-        
+
 
         /*
         private void updatePlayers()
