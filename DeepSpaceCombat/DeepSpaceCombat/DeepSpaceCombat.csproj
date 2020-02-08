@@ -108,10 +108,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DLL\Sandbox.Common.dll">
+    <None Update="_DLL\Sandbox.Common.dll">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="DLL\Sandbox.Game.dll">
+    <None Update="_DLL\Sandbox.Game.dll">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
