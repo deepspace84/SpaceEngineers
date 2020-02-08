@@ -43,6 +43,11 @@ namespace DSC
             licences = new Dictionary<string, int>();
         }
 
+        public void addMember(long pid)
+        {
+            lMemberlist.Add(pid);
+        }
+
         // Return members
         public List<long> getMembers()
         {
@@ -88,10 +93,12 @@ namespace DSC
 
             foreach(long pid in lMemberlist)
             {
+                MyVisualScriptLogicProvider.SendChatMessage("PID:"+pid);
                 MyVisualScriptLogicProvider.PlayerResearchClear(pid);
                 MyVisualScriptLogicProvider.ClearAllToolbarSlots(pid);
                 foreach(string defid in getAvailableResearch())
                 {
+                    MyVisualScriptLogicProvider.SendChatMessage("Unlocked: "+defid);
                     MyVisualScriptLogicProvider.PlayerResearchUnlock(pid,MyDefinitionId.Parse(defid));
                 }
             }

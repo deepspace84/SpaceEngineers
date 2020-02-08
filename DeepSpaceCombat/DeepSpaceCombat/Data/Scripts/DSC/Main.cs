@@ -65,9 +65,9 @@ namespace DSC
                 }
                 else
                 {
-                    if(!((Faction.factions["DSC"]).lMemberlist.Contains(MyAPIGateway.Session.Player.IdentityId)))
+                    if(!((Faction.factions["DSC"]).getMembers().Contains(MyAPIGateway.Session.Player.IdentityId)))
                     {
-                        Faction.factions["[DSC]"].lMemberlist.Add(MyAPIGateway.Session.Player.IdentityId);
+                        Faction.factions["[DSC]"].addMember(MyAPIGateway.Session.Player.IdentityId);
                     }
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
