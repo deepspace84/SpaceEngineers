@@ -17,10 +17,42 @@ using Sandbox.Game.SessionComponents;
 
 namespace DSC
 {
-    class DSC_Functions
+    /*
+     * Contracts Class
+     */
+    class DSC_Contracts
     {
-        // References
+        // Constructor
+        public DSC_Contracts(){
 
+        }
+
+        
+        // Add new Search Contract
+        public DSC_Contract addFactionSearchContract(string factionTag, string contractLocation, string contractLoan)
+        {
+            // New Contract object
+            DSC_Contract contract = new DSC_Contract();
+
+            // Check location type
+            if(contractLocation == "earth")
+            {
+
+            }else if(contractLocation == "moon")
+            {
+
+            }else if(contractLocation == "spacenear")
+            {
+
+            }else if(contractLocation == "spacedeep")
+            {
+
+            }
+            
+
+
+            return contract;
+        }
 
 
         // Get faction trade data
@@ -62,4 +94,15 @@ namespace DSC
 
 
     }
+
+    class DSC_Contract{
+
+        public DSC_Contract()
+        {
+
+        }
+
+    }
+
+
 }
