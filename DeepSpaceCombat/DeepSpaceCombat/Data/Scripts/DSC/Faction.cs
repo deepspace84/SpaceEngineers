@@ -26,6 +26,11 @@ namespace DSC
             factions.Add("[DSC]", new Faction("[DSC]"));
         }
 
+        private string sTag; // Faction tag
+        private List<long> lMemberlist; // Memberlist
+        private int iFactionScore; // FactionScore
+        private Dictionary<string, int> licences;
+
         public Faction()
         {
         }
@@ -38,18 +43,13 @@ namespace DSC
             licences = new Dictionary<string, int>();
         }
 
-        private string sTag; // Faction tag
-        private List<long> lMemberlist; // Memberlist
-        private int iFactionScore; // FactionScore
-        private Dictionary<string, int> licences;
-
         // Return members
         public List<long> getMembers()
         {
             return lMemberlist;
         }
 
-        public void unlock(MyDefinitionId id)
+        public void unlockResearch(MyDefinitionId id)
         {
             licences[id.ToString()] = 1;
         }
@@ -75,13 +75,17 @@ namespace DSC
             foreach (KeyValuePair<string, int> entry in licences)
             {
                 if (entry.Value > 0)
+                {
                     ret.Add(entry.Key);
+                    MyVisualScriptLogicProvider.SendChatMessage("Available: "+entry.Key);
+                }
             }
             return ret;
         }
 
         public void updateResearch()
         {
+
             foreach(long pid in lMemberlist)
             {
                 MyVisualScriptLogicProvider.PlayerResearchClear(pid);
@@ -91,6 +95,7 @@ namespace DSC
                     MyVisualScriptLogicProvider.PlayerResearchUnlock(pid,MyDefinitionId.Parse(defid));
                 }
             }
+            MyVisualScriptLogicProvider.SendChatMessage("Updated research.");
         }
 
 
