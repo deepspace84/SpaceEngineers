@@ -26,6 +26,11 @@ namespace DSC
             factions.Add("[DSC]", new Faction("[DSC]"));
         }
 
+        private string sTag; // Faction tag
+        private List<long> lMemberlist; // Memberlist
+        private int iFactionScore; // FactionScore
+        private Dictionary<string, int> licences;
+
         public Faction()
         {
         }
@@ -38,10 +43,10 @@ namespace DSC
             licences = new Dictionary<string, int>();
         }
 
-        private string sTag; // Faction tag
-        private List<long> lMemberlist; // Memberlist
-        private int iFactionScore; // FactionScore
-        private Dictionary<string, int> licences;
+        public void addMember(long pid)
+        {
+            lMemberlist.Add(pid);
+        }
 
         // Return members
         public List<long> getMembers()
@@ -49,7 +54,7 @@ namespace DSC
             return lMemberlist;
         }
 
-        public void unlock(MyDefinitionId id)
+        public void unlockResearch(MyDefinitionId id)
         {
             licences[id.ToString()] = 1;
         }
@@ -75,22 +80,29 @@ namespace DSC
             foreach (KeyValuePair<string, int> entry in licences)
             {
                 if (entry.Value > 0)
+                {
                     ret.Add(entry.Key);
+                    MyVisualScriptLogicProvider.SendChatMessage("Available: "+entry.Key);
+                }
             }
             return ret;
         }
 
         public void updateResearch()
         {
+
             foreach(long pid in lMemberlist)
             {
+                MyVisualScriptLogicProvider.SendChatMessage("PID:"+pid);
                 MyVisualScriptLogicProvider.PlayerResearchClear(pid);
                 MyVisualScriptLogicProvider.ClearAllToolbarSlots(pid);
                 foreach(string defid in getAvailableResearch())
                 {
+                    MyVisualScriptLogicProvider.SendChatMessage("Unlocked: "+defid);
                     MyVisualScriptLogicProvider.PlayerResearchUnlock(pid,MyDefinitionId.Parse(defid));
                 }
             }
+            MyVisualScriptLogicProvider.SendChatMessage("Updated research.");
         }
 
 

@@ -65,9 +65,9 @@ namespace DSC
                 }
                 else
                 {
-                    if(!((Faction.factions["DSC"]).lMemberlist.Contains(MyAPIGateway.Session.Player.IdentityId)))
+                    if(!((Faction.factions["DSC"]).getMembers().Contains(MyAPIGateway.Session.Player.IdentityId)))
                     {
-                        Faction.factions["[DSC]"].lMemberlist.Add(MyAPIGateway.Session.Player.IdentityId);
+                        Faction.factions["[DSC]"].addMember(MyAPIGateway.Session.Player.IdentityId);
                     }
                 }
                 MyAPIGateway.Utilities.MessageEntered += Event_Message_Typed;
@@ -250,7 +250,8 @@ namespace DSC
                         {
                             //MySessionComponentResearch.Static.UnlockResearchDirect(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]));
                             MyDefinitionId id = MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]);
-                            f.unlock(id);
+                            f.unlockResearch(id);
+                            f.updateResearch();
                             //MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId,id);
                         }
                         catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
@@ -261,7 +262,8 @@ namespace DSC
                         {
                             //MySessionComponentResearch.Static.UnlockResearchDirect(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],null));
                             MyDefinitionId id = MyVisualScriptLogicProvider.GetDefinitionId(names[1],null);
-                            f.unlock(id);
+                            f.unlockResearch(id);
+                            f.updateResearch();
                             //MyVisualScriptLogicProvider.PlayerResearchUnlock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1],null));
                         }
                         catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
@@ -300,6 +302,7 @@ namespace DSC
                             //MySessionComponentResearch.Static.LockResearch(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]));
                             MyDefinitionId id = MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]);
                             f.lockResearch(id);
+                            f.updateResearch();
                             //MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]));
                         }
                         catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
@@ -311,6 +314,7 @@ namespace DSC
                             //MySessionComponentResearch.Static.LockResearch(p.Character.EntityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], null));
                             MyDefinitionId id = MyVisualScriptLogicProvider.GetDefinitionId(names[1], names[2]);
                             f.lockResearch(id);
+                            f.updateResearch();
                             //MyVisualScriptLogicProvider.PlayerResearchLock(p.IdentityId, MyVisualScriptLogicProvider.GetDefinitionId(names[1], null));
                         }
                         catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message); }
@@ -500,17 +504,7 @@ namespace DSC
             //else if ("!PCU" == messageText)
             //    x.BlockDefinition.PCU = 666;
             //MyAPIGateway.Utilities.ShowNotification("Conveyor PCU: " + x.BlockDefinition.PCU.ToString(),60000);
-            MyVisualScriptLogicProvider.PlayerResearchClearAll();
-            foreach (long pid in f.lMemberlist)
-            {
-                foreach (KeyValuePair<MyDefinitionId, int> tech in f.licences)
-                {
-                    if (tech.Value > 0)
-                    {
-                        MyVisualScriptLogicProvider.PlayerResearchUnlock(pid, tech.Key);
-                    }
-                }
-            }
+            f.getAvailableResearch();
             //MyVisualScriptLogicProvider.ClearAllToolbarSlots(p.IdentityId);
         }
 
