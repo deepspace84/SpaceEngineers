@@ -40,7 +40,11 @@ namespace DSC
             {
                 MyPlanet earth = MyGamePruningStructure.GetClosestPlanet(new Vector3D(0,0,0));
 
+                //MyVisualScriptLogicProvider.AddGPSToEntity();
 
+                MyRespawnShipDefinition test;
+
+                //MyAPIGateway.Session.GameDateTime
 
             }
             else if (contractLocation == "moon")
