@@ -18,15 +18,30 @@ namespace DSC
 {
     public class Faction
     {
+        public static Dictionary<string, Faction> factions = new Dictionary<string, Faction>();
+
+        public static void initFactions()
+        {
+            factions.Add("[ADM]", new Faction("[ADM]"));
+            factions.Add("[DSC]", new Faction("[DSC]"));
+        }
 
         public Faction()
         {
         }
 
+        public Faction(string sTag)
+        {
+            this.sTag = sTag;
+            lMemberlist = new List<long>();
+            iFactionScore = 0;
+            licences = new Dictionary<MyDefinitionId, int>();
+        }
 
         private string sTag; // Faction tag
-        private List<long> lMemberlist; // Memberlist
+        public List<long> lMemberlist; // Memberlist
         private int iFactionScore; // FactionScore
+        public Dictionary<MyDefinitionId, int> licences;
 
         // Return members
         public List<long> getMembers()
@@ -34,7 +49,15 @@ namespace DSC
             return lMemberlist;
         }
 
+        public void unlock(MyDefinitionId id)
+        {
+            licences[id] = 1;
+        }
 
+        public void lockResearch(MyDefinitionId id)
+        {
+            licences[id] = 0;
+        }
 
         /*
          * Load object
