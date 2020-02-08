@@ -364,7 +364,7 @@
 		<ResearchBlock xsi:type="ResearchBlock">
 			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Shower" />
 			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
+				<GroupSubtype>L0</GroupSubtype>
 			</UnlockedByGroups>
 		</ResearchBlock>
 		<ResearchBlock xsi:type="ResearchBlock">
