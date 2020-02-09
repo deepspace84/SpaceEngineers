@@ -17,7 +17,7 @@ using Sandbox.Game.SessionComponents;
 
 //Sandbox.ModAPI.Ingame.IMyTerminalBlock or Sandbox.ModAPI.IMyTerminalBlock ?
 
-namespace DSC
+namespace DSCDEV
 {
     // This object is always present, from the world load to world unload.
     // NOTE: all clients and server run mod scripts, keep that in mind.

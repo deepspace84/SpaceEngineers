@@ -14,7 +14,7 @@ using VRageMath;
 using VRage.ObjectBuilders;
 using VRage.Collections;
 
-namespace DSC
+namespace DSCDEV
 {
     public class Faction
     {
