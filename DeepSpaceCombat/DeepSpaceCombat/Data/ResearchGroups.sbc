@@ -1,6 +1,130 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ResearchGroups>
+		<!-- Delte original research groups -->
+		<!--
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="0" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="1" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="3" />
+			<Members>      
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="4" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="5" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="6" />
+			<Members>      
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="7" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="8" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+		<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="9" />
+			<Members>
+			</Members>
+		</ResearchGroup>    
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="13" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="14" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="15" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="16" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="17" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="19" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="21" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="22" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="23" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="24" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="25" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="26" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="27" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="28" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		<ResearchGroup xsi:type="ResearchGroup">
+			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="29" />
+			<Members>
+			</Members>
+		</ResearchGroup>
+		-->
+		<!-- New difinitions -->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L0" />
 			<Members>
@@ -43,6 +167,7 @@
 				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorSlope2Base" />
 				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorCorner2Base" />
 			</Members>
+		</ResearchGroup>
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L3" />
 			<Members>
@@ -50,14 +175,14 @@
 				<BlockId Type="MyObjectBuilder_Refinery" Subtype="LargeRefinery" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L4" />
 			<Members>
-				TODO
+			<BlockId Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEffectivenessModule" />
+			<BlockId Type="MyObjectBuilder_UpgradeModule" Subtype="LargeProductivityModule" />
+			<BlockId Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEnergyModule" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L5" />
 			<Members>
@@ -97,20 +222,19 @@
 				<BlockId Type="MyObjectBuilder_GravityGeneratorSphere" Subtype="" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L11" />
 			<Members>
-				TODO
+				<BlockId Type="MyObjectBuilder_JumpDrive" Subtype="LargeJumpDrive" />
+				<BlockId Type="MyObjectBuilder_SpaceBall" Subtype="SpaceBallLarge" />
 			</Members>
 		</ResearchGroup>
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L12" />
 			<Members>
-				TODO
+				<BlockId Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassLarge" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L13" />
 			<Members>
@@ -179,7 +303,6 @@
 				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension3x3mirrored" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L23" />
 			<Members>
@@ -190,7 +313,6 @@
 				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension5x5mirrored" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L24" />
 			<Members>
@@ -199,14 +321,12 @@
 				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_2corner" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L25" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_ReflectorLight" Subtype="LargeBlockFrontLight" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L26" />
 			<Members>
@@ -219,14 +339,12 @@
 				<BlockId Type="MyObjectBuilder_ShipWelder" Subtype="LargeShipWelder" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L28" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_ShipGrinder" Subtype="LargeShipGrinder" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L29" />
 			<Members>
@@ -245,7 +363,6 @@
 				<BlockId Type="MyObjectBuilder_MotorRotor" Subtype="LargeRotor" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L31" />
 			<Members>
@@ -260,7 +377,6 @@
 				<BlockId Type="MyObjectBuilder_Projector" Subtype="LargeProjector" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L33" />
 			<Members>
@@ -269,7 +385,6 @@
 				<BlockId Type="MyObjectBuilder_Jukebox" Subtype="Jukebox" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L34" />
 			<Members>
@@ -291,7 +406,6 @@
 				<BlockId Type="MyObjectBuilder_LCDPanelsBlock" Subtype="LabEquipment" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L36" />
 			<Members>
@@ -304,14 +418,12 @@
 				<BlockId Type="MyObjectBuilder_RadioAntenna" Subtype="LargeBlockRadioAntenna" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L38" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_LaserAntenna" Subtype="LargeBlockLaserAntenna" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L39" />
 			<Members>
@@ -330,14 +442,12 @@
 				<BlockId Type="MyObjectBuilder_AirtightHangarDoor" Subtype="" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L42" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_OreDetector" Subtype="LargeOreDetector" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L43" />
 			<Members>
@@ -372,7 +482,6 @@
 				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="RailingHalfLeft" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L44" />
 			<Members>
@@ -382,21 +491,18 @@
 				<BlockId Type="MyObjectBuilder_Passage" Subtype="" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L45" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_Reactor" Subtype="LargeBlockLargeGenerator" />	
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L46" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_Warhead" Subtype="LargeWarhead" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L47" />
 			<Members>
@@ -431,7 +537,6 @@
 				<BlockId Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallThrust" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L52" />
 			<Members>
@@ -457,7 +562,6 @@
 				<BlockId Type="MyObjectBuilder_RemoteControl" Subtype="LargeBlockRemoteControl" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L56" />
 			<Members>
@@ -473,21 +577,18 @@
 				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurved" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L58" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeBlockConveyorSorter" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L59" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_ShipConnector" Subtype="Connector" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L60" />
 			<Members>
@@ -503,7 +604,7 @@
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L62" />
 			<Members>
-				TODO
+				<BlockId Type="MyObjectBuilder_SafeZoneBlock" Subtype="SafeZoneBlock" />
 			</Members>
 		</ResearchGroup>
 		<ResearchGroup xsi:type="ResearchGroup">
@@ -526,13 +627,6 @@
 			</Members>
 		</ResearchGroup>
 		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L66" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SafeZoneBlock" Subtype="SafeZoneBlock" />
-			</Members>
-		</ResearchGroup>
-		-->
-		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S0" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorBlock" />
@@ -548,7 +642,6 @@
 				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpit" />
 				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitSmall" />
 			</Members>
-			</Members>
 		</ResearchGroup>
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S1" />
@@ -557,7 +650,6 @@
 				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="PassengerSeatSmall" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S2" />
 			<Members>
@@ -567,7 +659,6 @@
 				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_2corner" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S3" />
 			<Members>
@@ -583,14 +674,12 @@
 				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallHeavyBlockArmorBlock" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S5" />
 			<Members>
-				TODO
+				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockMediumContainer" />
 			</Members>
-		</ResearchGroup>
-		-->		
+		</ResearchGroup>		
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S6" />
 			<Members>
@@ -601,7 +690,6 @@
 				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension3x3mirrored" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S7" />
 			<Members>
@@ -619,7 +707,6 @@
 				<BlockId Type="MyObjectBuilder_RemoteControl" Subtype="SmallBlockRemoteControl" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S9" />
 			<Members>
@@ -635,7 +722,6 @@
 				<BlockId Type="MyObjectBuilder_SoundBlock" Subtype="SmallBlockSoundBlock" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S11" />
 			<Members>
@@ -649,7 +735,6 @@
 				<BlockId Type="MyObjectBuilder_OreDetector" Subtype="SmallBlockOreDetector" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S13" />
 			<Members>
@@ -662,14 +747,12 @@
 				<BlockId Type="MyObjectBuilder_RadioAntenna" Subtype="SmallBlockRadioAntenna" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S15" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_LaserAntenna" Subtype="SmallBlockLaserAntenna" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S16" />
 			<Members>
@@ -685,7 +768,7 @@
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S18" />
 			<Members>
-				<BlockId Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKitSmall" />
+				<BlockId Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKit" />
 			</Members>
 		</ResearchGroup>
 		<ResearchGroup xsi:type="ResearchGroup">
@@ -696,7 +779,6 @@
 				<BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="OxygenGeneratorSmall" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S20" />
 			<Members>
@@ -704,7 +786,6 @@
 				<BlockId Type="MyObjectBuilder_OxygenTank" Subtype="OxygenTankSmall" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S21" />
 			<Members>
@@ -721,15 +802,13 @@
 				<BlockId Type="MyObjectBuilder_MotorAdvancedStator" Subtype="SmallAdvancedStator" />
 				<BlockId Type="MyObjectBuilder_MotorAdvancedRotor" Subtype="SmallAdvancedRotor" />
 			</Members>
-		</ResearchGroup>
-		<!--		
+		</ResearchGroup>		
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S23" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_MergeBlock" Subtype="SmallShipMergeBlock" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S24" />
 			<Members>
@@ -748,7 +827,6 @@
 				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorFrameMedium" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S26" />
 			<Members>
@@ -756,23 +834,20 @@
 				<BlockId Type="MyObjectBuilder_ConveyorSorter" Subtype="MediumBlockConveyorSorter" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S27" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorMedium" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">		
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S28" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_Collector" Subtype="CollectorSmall" />
+				<!-- ConnectorSmall = Ejector -->
 				<BlockId Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorSmall" />
-				<!- - ConnectorSmall = Ejector - ->
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S29" />
 			<Members>
@@ -785,14 +860,12 @@
 				<BlockId Type="MyObjectBuilder_Reactor" Subtype="SmallBlockLargeGenerator" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S31" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_Warhead" Subtype="SmallWarhead" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S32" />
 			<Members>
@@ -823,21 +896,18 @@
 				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallThrust" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S37" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeThrust" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S38" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_Gyro" Subtype="SmallBlockGyro" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S39" />
 			<Members>
@@ -863,7 +933,6 @@
 				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="TransparentLCDSmall" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S42" />
 			<Members>
@@ -876,35 +945,30 @@
 				<BlockId Type="MyObjectBuilder_ShipWelder" Subtype="SmallShipWelder" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S44" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_ShipGrinder" Subtype="SmallShipGrinder" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S45" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_SmallGatlingGun" Subtype="" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">		
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S46" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S47" />
 			<Members>
 				<BlockId Type="MyObjectBuilder_SmallMissileLauncher" Subtype="" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S48" />
 			<Members>
@@ -913,14 +977,12 @@
 				<BlockId Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallRocketLauncherReload" />
 			</Members>
 		</ResearchGroup>
-		-->
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S49" />
 			<Members>
-				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockMediumContainer" />
+				<BlockId Type="MyObjectBuilder_Projector" Subtype="SmallProjector" />
 			</Members>
 		</ResearchGroup>
-		<!--
 		<ResearchGroup xsi:type="ResearchGroup">
 			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S50" />
 			<Members>
@@ -959,12 +1021,5 @@
 				<BlockId Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassSmall" />
 			</Members>
 		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S53" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Projector" Subtype="SmallProjector" />
-			</Members>
-		</ResearchGroup>
-		-->
 	</ResearchGroups>
 </Definitions>

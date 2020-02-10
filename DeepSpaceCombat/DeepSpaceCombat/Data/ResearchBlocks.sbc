@@ -908,7 +908,7 @@
 			</UnlockedByGroups>
 		</ResearchBlock>
 		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKitSmall" />
+			<Id Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKit" />
 			<UnlockedByGroups>
 				<GroupSubtype>S17</GroupSubtype>
 			</UnlockedByGroups>
@@ -1132,7 +1132,7 @@
 		<ResearchBlock xsi:type="ResearchBlock">
 			<Id Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockLargeContainer" />
 			<UnlockedByGroups>
-				<GroupSubtype>S49</GroupSubtype>
+				<GroupSubtype>S5</GroupSubtype>
 			</UnlockedByGroups>
 		</ResearchBlock>
 		<ResearchBlock xsi:type="ResearchBlock">
@@ -1390,7 +1390,7 @@
 		<ResearchBlock xsi:type="ResearchBlock">
 			<Id Type="MyObjectBuilder_Drill" Subtype="SmallBlockDrill" />
 			<UnlockedByGroups>
-				<GroupSubtype>S49</GroupSubtype>
+				<GroupSubtype>S5</GroupSubtype>
 			</UnlockedByGroups>
 		</ResearchBlock>
 		<ResearchBlock xsi:type="ResearchBlock">
