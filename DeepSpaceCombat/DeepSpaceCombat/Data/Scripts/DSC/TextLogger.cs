@@ -1,4 +1,4 @@
-﻿namespace midspace.Speed.ConfigurableScript
+﻿namespace DSC
 {
     using System;
     using System.Diagnostics;
