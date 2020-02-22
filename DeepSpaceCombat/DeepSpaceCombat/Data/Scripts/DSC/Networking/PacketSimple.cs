@@ -51,6 +51,8 @@ namespace DSC
 
             if( Text == "testcommand"){
                 MyVisualScriptLogicProvider.SendChatMessage("Test command received on server");
+
+                return false;
             }
 
             return true; // relay packet to other clients (only works if server receives it)
