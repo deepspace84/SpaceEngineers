@@ -9,6 +9,7 @@ using Sandbox.ModAPI;
 using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
+using VRage.Input;
 using VRage.Game.Entity;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
@@ -16,6 +17,7 @@ using VRageMath;
 using VRage.ObjectBuilders;
 using VRage.Collections;
 using Sandbox.Game.SessionComponents;
+using DSC.NET;
 
 //Sandbox.ModAPI.Ingame.IMyTerminalBlock or Sandbox.ModAPI.IMyTerminalBlock ?
 
@@ -35,8 +37,7 @@ namespace DSC
         private bool _isInitialized; // Is this instance is initialized
         private bool _isClientRegistered; // Is this instance a client
         private bool _isServerRegistered; // Is this instance a server
-        private readonly Action<byte[]> _messageHandler = new Action<byte[]>(HandleMessage); // _messageHandler definition
-
+        public Networking Networking = new Networking(DSC_Config.ConnectionId);
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
@@ -77,6 +78,16 @@ namespace DSC
                 // Main init failure
                 VRage.Utils.MyLog.Default.WriteLine("##Mod## ERROR " + ex.Message);
             }
+        }
+
+        /*
+         * BeforeStart
+         * 
+         * Init networking
+         */
+        public override void BeforeStart()
+        {
+            Networking.Register();
         }
 
         /*
@@ -128,6 +139,21 @@ namespace DSC
 
 
         /*
+         * UpdateAfterSimulation
+         * 
+         * UpdateAfterSimulation override
+         */
+        public override void UpdateAfterSimulation()
+        {
+            // example for testing ingame, press L at any point when in a world with this mod loaded
+            // then the server player/console/log will have the message you sent
+            if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
+            {
+                Networking.SendToServer(new PacketSimple("L was pressed", 5000));
+            }
+        }
+
+        /*
          * UnloadData
          * 
          * UnloadData override
@@ -137,31 +163,30 @@ namespace DSC
             ClientLogger.WriteStop("Shutting down");
             ServerLogger.WriteStop("Shutting down");
 
+            // Unregister Client log
             if (_isClientRegistered)
             {
+                // Unregister client message handler
                 if (MyAPIGateway.Utilities != null)
                 {
                     MyAPIGateway.Utilities.MessageEntered -= GotMessage;
-                }
-
-                if (!_isServerRegistered) // if not the server, also need to unregister the messagehandler.
-                {
-                    ClientLogger.WriteStop("UnregisterMessageHandler");
-                    MyAPIGateway.Multiplayer.UnregisterMessageHandler(DSC_Config.ConnectionId, _messageHandler);
                 }
 
                 ClientLogger.WriteStop("Log Closed");
                 ClientLogger.Terminate();
             }
 
+            // Unregister Server log
             if (_isServerRegistered)
             {
-                ServerLogger.WriteStop("UnregisterMessageHandler");
-                MyAPIGateway.Multiplayer.UnregisterMessageHandler(DSC_Config.ConnectionId, _messageHandler);
-
                 ServerLogger.WriteStop("Log Closed");
                 ServerLogger.Terminate();
             }
+
+            // Unregister networking
+            Networking?.Unregister();
+            Networking = null;
+
 
             base.UnloadData();
         }
@@ -186,12 +211,6 @@ namespace DSC
 
             MyAPIGateway.Utilities.MessageEntered += GotMessage;
 
-            if (MyAPIGateway.Multiplayer.MultiplayerActive && !_isServerRegistered) // if not the server, also need to register the messagehandler.
-            {
-                ClientLogger.WriteStart("RegisterMessageHandler");
-                MyAPIGateway.Multiplayer.RegisterMessageHandler(DSC_Config.ConnectionId, _messageHandler);
-            }
-
             ClientLogger.Flush();
         }
 
@@ -211,9 +230,6 @@ namespace DSC
             if (ServerLogger.IsActive)
                 VRage.Utils.MyLog.Default.WriteLine(string.Format("##Mod## DSC Server Logging File: {0}", ServerLogger.LogFile));
 
-            ServerLogger.WriteStart("RegisterMessageHandler");
-            MyAPIGateway.Multiplayer.RegisterMessageHandler(DSC_Config.ConnectionId, _messageHandler);
-
             ServerLogger.Flush();
         }
 
@@ -224,71 +240,17 @@ namespace DSC
         #region message handlers
 
         /*
-         * HandleMessage
-         * Message processing on our server i think?!? :D TODO
-         * 
-         */
-        private static void HandleMessage(byte[] message)
-        {
-            DeepSpaceCombat.Instance.ServerLogger.WriteVerbose("HandleMessage");
-            DeepSpaceCombat.Instance.ClientLogger.WriteVerbose("HandleMessage");
-            MyVisualScriptLogicProvider.SendChatMessage("MessageHandler got a message");
-            //ConnectionHelper.ProcessData(message);
-
-            // TODO MESSAGE HANDLING IS HERE
-        }
-
-        /*
          * GotMessage
          * Local message handler function TODO
          * 
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
-            try
-            {
-                // here is where we nail the echo back on commands "return" also exits us from processMessage
-                if (ProcessMessage(messageText)) { sendToOthers = false; }
-            }
-            catch (Exception ex)
-            {
-                ClientLogger.WriteException(ex);
-                MyAPIGateway.Utilities.ShowMessage("Error", "An exception has been logged in the file: {0}", ClientLogger.LogFileName);
-            }
-        }
 
-
-        /*
-         * ProcessMessage
-         * Local message processing TODO
-         * 
-         */
-        private bool ProcessMessage(string messageText)
-        {
-
-            
-            if (MyAPIGateway.Session.Player.IsAdmin())
-            {
-                try
-                {
-                    Object test = new Object();
-                    byte[] byteData = MyAPIGateway.Utilities.SerializeToBinary(test);
-                    MyAPIGateway.Multiplayer.SendMessageToServer(DSC_Config.ConnectionId, byteData);
-                }
-                catch (Exception ex)
-                {
-                    Instance.ClientLogger.WriteException(ex, "Could not send message to Server.");
-                    //TODO: send exception detail to Server.
-                }
-            }
-            
-
-
-            // it didnt start with help or anything else that matters so return false and get us out of here;
-            return false;
         }
 
         #endregion
+
 
 
     }
