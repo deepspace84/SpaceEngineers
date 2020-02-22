@@ -17,7 +17,6 @@ using VRageMath;
 using VRage.ObjectBuilders;
 using VRage.Collections;
 using Sandbox.Game.SessionComponents;
-using DSC.NET;
 
 //Sandbox.ModAPI.Ingame.IMyTerminalBlock or Sandbox.ModAPI.IMyTerminalBlock ?
 
@@ -33,7 +32,6 @@ namespace DSC
     {
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
-
         private bool _isInitialized; // Is this instance is initialized
         private bool _isClientRegistered; // Is this instance a client
         private bool _isServerRegistered; // Is this instance a server
@@ -41,6 +39,8 @@ namespace DSC
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
+
+        Dictionary<string, long> BlockReference = new Dictionary<string, long>();
 
         #region ingame overrides
 
@@ -206,9 +206,10 @@ namespace DSC
         {
             _isInitialized = true; // Set this first to block any other calls from UpdateAfterSimulation().
             _isClientRegistered = true;
-            ClientLogger.Init("DSC_Client.Log", false, 0); // comment this out if logging is not required for the Client.
+            ClientLogger.Init("DSC_Client.Log", false, 0); // comment this out if logging is not required for the Client. "AppData\Roaming\SpaceEngineers\Storage"
             ClientLogger.WriteStart("DSC MOD Client Log Started");
 
+            // Register client message handler
             MyAPIGateway.Utilities.MessageEntered += GotMessage;
 
             ClientLogger.Flush();
@@ -247,11 +248,68 @@ namespace DSC
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
 
+            if(messageText == "!testcommand")
+            {
+                // Testbereich
+                Networking.SendToServer(new PacketSimple("testcommand", 5000));
+                MyVisualScriptLogicProvider.SendChatMessage("Test command sent to server");
+            }
+            else
+            {
+                sendToOthers = false;
+            }
+
+
         }
 
         #endregion
 
 
+        #region block reference
+
+        private bool addBlockRef(string blockName)
+        {
+            //
+            DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+
+            // Get all entities
+            MyConcurrentHashSet<MyEntity> allEntities = MyEntities.GetEntities();
+            foreach (IMyEntity entity in allEntities)
+            {
+                //Get All grid-entities
+                if (entity is IMyCubeGrid)
+                {
+                    IMyCubeGrid grid = (IMyCubeGrid)entity;
+
+                    //Possible Null-Pointer-Exception
+                    try
+                    {
+                        //Get Terminal Blocks. (Use FatBlocks instead?)
+                        List<Sandbox.ModAPI.Ingame.IMyTerminalBlock> blocks = new List<Sandbox.ModAPI.Ingame.IMyTerminalBlock>();
+                        Sandbox.ModAPI.Ingame.IMyGridTerminalSystem gts = MyAPIGateway.TerminalActionsHelper.GetTerminalSystemForGrid(grid);
+                        gts.GetBlocks(blocks);
+
+                        foreach (Sandbox.ModAPI.Ingame.IMyTerminalBlock block in blocks)
+                        {
+                            //Look for tagged Terminal blocks
+                            if (block.CustomName.Contains(blockName))
+                            {
+                                BlockReference[block.CustomName] = block.EntityId;
+                                MyVisualScriptLogicProvider.SendChatMessage("Added Entry to BlockReference: " + block.CustomName + " -> " + block.EntityId.ToString());
+
+                                return true;
+                            }
+                        }
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message, "SYSTEM", 0, "Red"); }
+                }
+            }
+
+            return false;
+        }
+
+
+        #endregion
 
     }
 }

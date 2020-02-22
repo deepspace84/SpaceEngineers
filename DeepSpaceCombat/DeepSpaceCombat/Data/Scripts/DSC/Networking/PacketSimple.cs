@@ -1,8 +1,27 @@
 ﻿using ProtoBuf;
 using Sandbox.ModAPI;
 using VRage.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using Sandbox.Definitions;
+using Sandbox.Game;
+using Sandbox.Game.Entities;
+using SpaceEngineers.Game.ModAPI;
+using VRage.Game;
+using VRage.Game.Components;
+using VRage.Input;
+using VRage.Game.Entity;
+using VRage.Game.ModAPI;
+using VRage.ModAPI;
+using VRageMath;
+using VRage.ObjectBuilders;
+using VRage.Collections;
+using Sandbox.Game.SessionComponents;
 
-namespace DSC.NET
+
+namespace DSC
 {
     // An example packet extending another packet.
     // Note that it must be ProtoIncluded in PacketBase for it to work.
@@ -29,6 +48,10 @@ namespace DSC.NET
             var msg = $"PacketSimple received: Text='{Text}'; Number={Number}";
             MyLog.Default.WriteLineAndConsole(msg);
             MyAPIGateway.Utilities.ShowNotification(msg, Number);
+
+            if( Text == "testcommand"){
+                MyVisualScriptLogicProvider.SendChatMessage("Test command received on server");
+            }
 
             return true; // relay packet to other clients (only works if server receives it)
         }
