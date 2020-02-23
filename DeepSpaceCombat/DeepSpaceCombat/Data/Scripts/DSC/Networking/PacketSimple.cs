@@ -49,8 +49,22 @@ namespace DSC
             MyLog.Default.WriteLineAndConsole(msg);
             MyAPIGateway.Utilities.ShowNotification(msg, Number);
 
+            // if(DeepSpaceCombat.Instance._isClientRegistered)
+
             if( Text == "testcommand"){
-                MyVisualScriptLogicProvider.SendChatMessage("Test command received on server");
+                if (MyAPIGateway.Session.IsServer)
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage("Test command received on Session.IsServer");
+                }
+                if(MyAPIGateway.Utilities.IsDedicated)
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage("Test command received on Utilities.IsDedicated");
+                }
+                if (MyAPIGateway.Session != null && MyAPIGateway.Session.Player != null)
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage("Test command received on Player Side name=>"+MyAPIGateway.Session.Player.DisplayName);
+                }
+                
 
                 return false;
             }

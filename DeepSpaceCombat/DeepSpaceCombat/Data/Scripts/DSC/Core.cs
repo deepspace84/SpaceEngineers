@@ -33,15 +33,14 @@ namespace DSC
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
         private bool _isInitialized; // Is this instance is initialized
-        private bool _isClientRegistered; // Is this instance a client
-        private bool _isServerRegistered; // Is this instance a server
+        public bool _isClientRegistered; // Is this instance a client
+        public bool _isServerRegistered; // Is this instance a server
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
-        Dictionary<string, long> BlockReference = new Dictionary<string, long>();
-
+ 
         #region ingame overrides
 
         /*
@@ -149,7 +148,7 @@ namespace DSC
             // then the server player/console/log will have the message you sent
             if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
             {
-                Networking.SendToServer(new PacketSimple("L was pressed", 5000));
+                Networking.SendToServer(new PacketSimple("testcommand", 5000));
             }
         }
 
@@ -236,7 +235,7 @@ namespace DSC
 
 
         #endregion
-
+        
 
         #region message handlers
 
@@ -248,68 +247,12 @@ namespace DSC
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
 
-            if(messageText == "!testcommand")
-            {
-                // Testbereich
-                Networking.SendToServer(new PacketSimple("testcommand", 5000));
-                MyVisualScriptLogicProvider.SendChatMessage("Test command sent to server");
-            }
-            else
-            {
-                sendToOthers = false;
-            }
-
-
         }
 
         #endregion
 
 
-        #region block reference
-
-        private bool addBlockRef(string blockName)
-        {
-            //
-            DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
-
-            // Get all entities
-            MyConcurrentHashSet<MyEntity> allEntities = MyEntities.GetEntities();
-            foreach (IMyEntity entity in allEntities)
-            {
-                //Get All grid-entities
-                if (entity is IMyCubeGrid)
-                {
-                    IMyCubeGrid grid = (IMyCubeGrid)entity;
-
-                    //Possible Null-Pointer-Exception
-                    try
-                    {
-                        //Get Terminal Blocks. (Use FatBlocks instead?)
-                        List<Sandbox.ModAPI.Ingame.IMyTerminalBlock> blocks = new List<Sandbox.ModAPI.Ingame.IMyTerminalBlock>();
-                        Sandbox.ModAPI.Ingame.IMyGridTerminalSystem gts = MyAPIGateway.TerminalActionsHelper.GetTerminalSystemForGrid(grid);
-                        gts.GetBlocks(blocks);
-
-                        foreach (Sandbox.ModAPI.Ingame.IMyTerminalBlock block in blocks)
-                        {
-                            //Look for tagged Terminal blocks
-                            if (block.CustomName.Contains(blockName))
-                            {
-                                BlockReference[block.CustomName] = block.EntityId;
-                                MyVisualScriptLogicProvider.SendChatMessage("Added Entry to BlockReference: " + block.CustomName + " -> " + block.EntityId.ToString());
-
-                                return true;
-                            }
-                        }
-                    }
-                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message, "SYSTEM", 0, "Red"); }
-                }
-            }
-
-            return false;
-        }
-
-
-        #endregion
+  
 
     }
 }
