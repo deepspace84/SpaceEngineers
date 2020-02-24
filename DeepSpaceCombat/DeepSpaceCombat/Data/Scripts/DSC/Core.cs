@@ -94,7 +94,6 @@ namespace DSC
                 ammoDefinition.MaxTrajectory = DSC_Config.missileExplosionRange;
                 ammoDefinition.MissileInitialSpeed = DSC_Config.missileMinSpeed;
                 ammoDefinition.DesiredSpeed = DSC_Config.missileMaxSpeed;
-                MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
             }
             catch (Exception ex)
             {
@@ -111,6 +110,7 @@ namespace DSC
         public override void BeforeStart()
         {
             Networking.Register();
+            MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
         }
 
         /*
@@ -170,10 +170,12 @@ namespace DSC
         {
             // example for testing ingame, press L at any point when in a world with this mod loaded
             // then the server player/console/log will have the message you sent
+            /*
             if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
             {
                 Networking.SendToServer(new PacketSimple("testcommand", 5000));
             }
+            */
         }
 
         /*
@@ -209,6 +211,10 @@ namespace DSC
             // Unregister networking
             Networking?.Unregister();
             Networking = null;
+
+            // Unregister player connected
+            MyVisualScriptLogicProvider.PlayerConnected -= PlayerConnected;
+
 
 
             base.UnloadData();
@@ -300,18 +306,20 @@ namespace DSC
                 DSC_Blocks.Instance.AddBlockWithName("DSC_Start");
                 DSC_Grids.Instance.AddGridWithName("DSC_End");
                 
-                MyVisualScriptLogicProvider.SendChatMessage($"Blocks found: " + $"{DSC_Blocks.Instance.GetBlockWithName("DSC_Start")> 0 && DSC_Grids.Instance.GetGridWithName("DSC_End") > 0}");
+                MyVisualScriptLogicProvider.SendChatMessage($"Blocks found: " + $"" +
+                    $"{DSC_Blocks.Instance.GetBlockWithName("DSC_Start")> 0 && DSC_Grids.Instance.GetGridWithName("DSC_End") > 0}");
 
                 messageHandled = true;
             }
             else if (command.Equals("csc".Replace(" ", ""))) // create search contract
             {
                 DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000, 
-                    DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), 0, 60 * 10,
+                    DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), -10, 60 * 10,
                     DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!");
 
                 long id = searchContract.StartContract();
                 
+
                 
                 // MyVisualScriptLogicProvider.RemoveContract(id);
 
@@ -320,7 +328,7 @@ namespace DSC
 
             if (!messageHandled)
             {
-                MyVisualScriptLogicProvider.SendChatMessage($"Command {messageText} not found");
+                MyVisualScriptLogicProvider.SendChatMessage($"Command {messageText} not found","",0,"Red");
                 PrintHelp();
             }
 
@@ -355,12 +363,14 @@ namespace DSC
             if (player != null)
             {
                 VRage.MyLanguagesEnum lang = MyAPIGateway.Session.Config.Language;
-                ClientLogger.WriteInfo($"Player {playerId} found :).");
-                Networking.SendToServer(new PacketSimple(lang.ToString(), (int)lang));
+                MyVisualScriptLogicProvider.SendChatMessage($"Player {playerId} found, language {lang}.", "", playerId, "Blue");
+                Networking.SendToServer(new PackageLanguage(playerId, (byte)lang));
+                MyVisualScriptLogicProvider.SendChatMessage($"PLAYER= {playerId}, LANG= {PlayerLanguages[playerId]}", "", playerId, "Blue");
             }
             else
             {
                 ClientLogger.WriteInfo($"Player {playerId} not found.");
+                MyVisualScriptLogicProvider.SendChatMessage($"Player {playerId} not found :(.", "", playerId, "Blue");
             }
         }
 

@@ -18,7 +18,12 @@ namespace DSC
             long contractId;
             MyVisualScriptLogicProvider.AddSearchContract(_startBlockId, _reward, _collateral, _duration, _targetGridId, _searchRadius, out contractId);
 
-            MyVisualScriptLogicProvider.SendChatMessage(_description,"", 0, "Red");
+            if(contractId > 0)
+                MyVisualScriptLogicProvider.SendChatMessage(_description,"", 0, "Green");
+            else
+            {
+                PrintError();
+            }
             
             return contractId;
         }

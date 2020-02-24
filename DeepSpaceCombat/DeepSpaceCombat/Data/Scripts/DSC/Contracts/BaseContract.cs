@@ -56,5 +56,10 @@ namespace DSC
         }
 
         public abstract long StartContract();
+
+        protected void PrintError()
+        {
+            MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "", 0, "Red");
+        }
     }
 }
