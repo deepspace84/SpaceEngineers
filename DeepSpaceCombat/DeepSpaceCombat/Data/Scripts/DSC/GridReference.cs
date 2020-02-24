@@ -13,33 +13,33 @@ using VRage.Game.ModAPI;
 
 namespace DSC
 {
-    class DSC_Blocks
+    class DSC_Grids
     {
-        private static DSC_Blocks _instance;
-        public Dictionary<string, long> _blockReference = new Dictionary<string, long>();
+        private static DSC_Grids _instance;
+        public Dictionary<string, long> _gridReference = new Dictionary<string, long>();
 
-        public static DSC_Blocks Instance
+        public static DSC_Grids Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new DSC_Blocks();
+                    _instance = new DSC_Grids();
                 return _instance;
             }
         }
 
-        public readonly string FileName = "DSC_Blocks.txt";
+        public readonly string FileName = "DSC_Grids.txt";
 
-        public Dictionary<string, long> BlockReference
+        public Dictionary<string, long> GridReference
         { 
             get
             {
-                return _blockReference;
+                return _gridReference;
             }
         }
 
         // Constructor
-        private DSC_Blocks()
+        private DSC_Grids()
         {
             _instance = this;
         }
@@ -50,18 +50,18 @@ namespace DSC
         public void load()
         {
             // Load last block reference
-            if (MyAPIGateway.Utilities.GetVariable< Dictionary<string, long>>(FileName, out _blockReference))
+            if (MyAPIGateway.Utilities.GetVariable< Dictionary<string, long>>(FileName, out _gridReference))
             {
                 DeepSpaceCombat.Instance.ServerLogger.WriteInfo($"Blocklist: Loaded from savegame (Filename: {FileName})");
 
                 // Loop through all blocks
-                foreach (KeyValuePair<string, long> entry in _blockReference)
+                foreach (KeyValuePair<string, long> entry in _gridReference)
                 {
                     // Check if this block still exists
                     if(null == MyAPIGateway.Entities.GetEntityById(entry.Value))
                     {
                         // Remove block from reference
-                        _blockReference.Remove(entry.Key);
+                        _gridReference.Remove(entry.Key);
                         DeepSpaceCombat.Instance.ServerLogger.WriteWarning($"Blocklist: Block with name {entry.Key} did not exist, so its deleted from BlockReference (Filename: {FileName})");
                     }
                 }
@@ -78,26 +78,26 @@ namespace DSC
         // Save data
         public void unload()
         {
-            MyAPIGateway.Utilities.SetVariable(FileName, _blockReference);
+            MyAPIGateway.Utilities.SetVariable(FileName, _gridReference);
             DeepSpaceCombat.Instance.ServerLogger.WriteInfo($"Blocklist: Saved to savegame (Filename: {FileName})");
         }
 
         #endregion
 
 
-        #region block functions
+        #region grid functions
 
         /// <summary>
-        /// Checks if the block with that name exists and returns a list of ids
+        /// Checks if the grid with that name exists and returns the id
         /// </summary>
-        /// <param name="blockName">Name of block to be found</param>
+        /// <param name="gridName">Name of block to be found</param>
         /// <returns>List of block ids with that name</returns>
-        public List<long> FindBlocksWithID(string blockName)
+        public List<long> FindGridsWithID(string gridName)
         {
             List<long> reference = new List<long>();
 
             // Check for missing blockname
-            if (null == blockName || blockName == "")
+            if (null == gridName || gridName == "")
                 return null;
 
             // Get Reader
@@ -117,19 +117,8 @@ namespace DSC
                     //Possible Null-Pointer-Exception
                     try
                     {
-                        //Get Terminal Blocks. (Use FatBlocks instead?)
-                        List<Sandbox.ModAPI.Ingame.IMyTerminalBlock> blocks = new List<Sandbox.ModAPI.Ingame.IMyTerminalBlock>();
-                        Sandbox.ModAPI.Ingame.IMyGridTerminalSystem gts = MyAPIGateway.TerminalActionsHelper.GetTerminalSystemForGrid(grid);
-                        gts.GetBlocks(blocks);
-
-                        foreach (Sandbox.ModAPI.Ingame.IMyTerminalBlock block in blocks)
-                        {
-                            //Look for tagged Terminal blocks
-                            if (block.CustomName.Contains(blockName))
-                            {
-                                reference.Add(block.EntityId);
-                            }
-                        }
+                        if (grid.CustomName.Equals(gridName))
+                            reference.Add(grid.EntityId);
                     }
                     catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message, "SYSTEM", 0, "Red"); }
                 }
@@ -139,30 +128,30 @@ namespace DSC
         }
 
         /// <summary>
-        /// Searches for the block with name blockName
+        /// Searches for the grids with name gridName
         /// </summary>
-        /// <param name="blockName">Name of the block to search</param>
+        /// <param name="gridName">Name of the grid to search</param>
         /// <returns>
-        /// -2, if blockName is empty or null
-        /// -1, if multiple blocks where found
-        /// else the block id as long
+        /// -2, if gridName is empty or null
+        /// -1, if multiple grids where found
+        /// else the grid id as long
         /// </returns>
-        public long AddBlockWithName(string blockName)
+        public long AddGridWithName(string gridName)
         {
             // Check for missing blockname
-            if (string.IsNullOrEmpty(blockName))
+            if (string.IsNullOrEmpty(gridName))
                 return -2;
 
             long result = -1;
-            List<long> blocks = FindBlocksWithID(blockName);
+            List<long> blocks = FindGridsWithID(gridName);
             // Check if we found only one block! Blockreferences are unique
             if(blocks.Count == 1)
             {
                 // Check if this block is allready added
-                if (!_blockReference.ContainsKey(blockName))
+                if (!_gridReference.ContainsKey(gridName))
                 {
                     // Add block to reference
-                    _blockReference.Add(blockName, blocks[0]);
+                    _gridReference.Add(gridName, blocks[0]);
                 }
                 result = blocks[0];
             }
@@ -171,47 +160,47 @@ namespace DSC
         }
 
         /// <summary>
-        /// Searches for the block with name blockName
+        /// Searches for the grid with name gridName
         /// </summary>
-        /// <param name="blockName">Name of the block to search</param>
+        /// <param name="gridName">Name of the grid to search</param>
         /// <returns>
-        /// -2, if blockName is empty or null
-        /// -1, if blockName is not in _blockReference list
+        /// -2, if gridName is empty or null
+        /// -1, if gridName is not in _gridReference list
         /// else the block id as long
         /// </returns>
-        public long GetBlockWithName(string blockName)
+        public long GetGridWithName(string gridName)
         {
             // Check for missing blockname
-            if (string.IsNullOrEmpty(blockName))
+            if (string.IsNullOrEmpty(gridName))
                 return -2;
 
             // Check if block exists
-            if (_blockReference.ContainsKey(blockName))
+            if (_gridReference.ContainsKey(gridName))
             {
                 // Return id
-                return _blockReference[blockName];
+                return _gridReference[gridName];
             }
 
             return -1;
         }
         /// <summary>
-        /// Searches for the block with name blockName
+        /// Searches for the grid with name gridName
         /// </summary>
-        /// <param name="blockName">Name of the block to search</param>
+        /// <param name="gridName">Name of the grid to search</param>
         /// <returns>
-        /// true, if blockName was in the list
-        /// false, if blockName was empty, null or not found
+        /// true, if gridName was in the list
+        /// false, if gridName was empty, null or not found
         /// </returns>
-        public bool RemoveBlockWithName(string blockName)
+        public bool RemoveGridWithName(string gridName)
         {
             // Check for missing blockname
-            if (string.IsNullOrEmpty(blockName))
+            if (string.IsNullOrEmpty(gridName))
                 return false;
 
             // Check if block exists
-            if (_blockReference.ContainsKey(blockName))
+            if (_gridReference.ContainsKey(gridName))
             {
-                _blockReference.Remove(blockName);
+                _gridReference.Remove(gridName);
                 return true;
             }
 

@@ -33,14 +33,36 @@ namespace DSC
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
         private bool _isInitialized; // Is this instance is initialized
-        public bool _isClientRegistered; // Is this instance a client
-        public bool _isServerRegistered; // Is this instance a server
+        private bool _isClientRegistered;
+        private bool _isServerRegistered;
+
+        public bool IsClientRegistered // Is this instance a client
+        {
+            get
+            {
+                return _isClientRegistered;
+            }
+        }
+        
+        public bool IsServerRegistered // Is this instance a server
+        {
+            get
+            {
+                return _isServerRegistered;
+            }
+        }
+
+        private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
+        private DSC_Blocks blockReference;
+
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
- 
+        public Dictionary<long, byte> PlayerLanguages = new Dictionary<long, byte>(); // PlayerId, Language as byte (German = 3)
+
+
         #region ingame overrides
 
         /*
@@ -50,6 +72,7 @@ namespace DSC
          */
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
+            MyVisualScriptLogicProvider.SendChatMessage("Deep Space Combat initialized");
 
             // TODO Do we need this?
             if (MyAPIGateway.Utilities == null)
@@ -72,7 +95,7 @@ namespace DSC
                 ammoDefinition.MissileInitialSpeed = DSC_Config.missileMinSpeed;
                 ammoDefinition.DesiredSpeed = DSC_Config.missileMaxSpeed;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Main init failure
                 VRage.Utils.MyLog.Default.WriteLine("##Mod## ERROR " + ex.Message);
@@ -87,6 +110,7 @@ namespace DSC
         public override void BeforeStart()
         {
             Networking.Register();
+            MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
         }
 
         /*
@@ -108,22 +132,22 @@ namespace DSC
                 {
                     if (MyAPIGateway.Session.OnlineMode.Equals(MyOnlineModeEnum.OFFLINE)) // pretend single player instance is also server.
                     {
-                         InitServer();
+                        InitServer();
                     }
 
                     if (!MyAPIGateway.Session.OnlineMode.Equals(MyOnlineModeEnum.OFFLINE) && MyAPIGateway.Multiplayer.IsServer && !MyAPIGateway.Utilities.IsDedicated)
                     {
-                         InitServer();
+                        InitServer();
                     }
 
-                     InitClient();
+                    InitClient();
                 }
 
                 // Dedicated Server.
                 if (!_isInitialized && MyAPIGateway.Utilities != null && MyAPIGateway.Multiplayer != null
                     && MyAPIGateway.Session != null && MyAPIGateway.Utilities.IsDedicated && MyAPIGateway.Multiplayer.IsServer)
                 {
-                     InitServer();
+                    InitServer();
                     return;
                 }
 
@@ -146,10 +170,12 @@ namespace DSC
         {
             // example for testing ingame, press L at any point when in a world with this mod loaded
             // then the server player/console/log will have the message you sent
+            /*
             if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
             {
                 Networking.SendToServer(new PacketSimple("testcommand", 5000));
             }
+            */
         }
 
         /*
@@ -185,6 +211,10 @@ namespace DSC
             // Unregister networking
             Networking?.Unregister();
             Networking = null;
+
+            // Unregister player connected
+            MyVisualScriptLogicProvider.PlayerConnected -= PlayerConnected;
+
 
 
             base.UnloadData();
@@ -235,7 +265,7 @@ namespace DSC
 
 
         #endregion
-        
+
 
         #region message handlers
 
@@ -246,13 +276,106 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
+            foreach (char c in _commandStartChars)
+            {
+                if (messageText.StartsWith(c.ToString()))
+                {
+                    HandleCommand(messageText.TrimStart(c));
+                    sendToOthers = false;
+                    return;
+                }
+            }
+            sendToOthers = true;
+        }
 
+        private void HandleCommand(string messageText)
+        {
+            string command = messageText.ToLower().Replace(" ", "");
+            bool messageHandled = false;
+            if (command.Equals("test"))
+            {
+                messageHandled = true;
+            }
+            if (command.Equals("help"))
+            {
+                PrintHelp();
+                messageHandled = true;
+            }
+            else if (command.Equals("fg".Replace(" ", ""))) // find grids
+            {
+                DSC_Blocks.Instance.AddBlockWithName("DSC_Start");
+                DSC_Grids.Instance.AddGridWithName("DSC_End");
+                
+                MyVisualScriptLogicProvider.SendChatMessage($"Blocks found: " + $"" +
+                    $"{DSC_Blocks.Instance.GetBlockWithName("DSC_Start")> 0 && DSC_Grids.Instance.GetGridWithName("DSC_End") > 0}");
+
+                messageHandled = true;
+            }
+            else if (command.Equals("csc".Replace(" ", ""))) // create search contract
+            {
+                DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000, 
+                    DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), -10, 60 * 10,
+                    DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!");
+
+                long id = searchContract.StartContract();
+                
+
+                
+                // MyVisualScriptLogicProvider.RemoveContract(id);
+
+                messageHandled = true;
+            }
+
+            if (!messageHandled)
+            {
+                MyVisualScriptLogicProvider.SendChatMessage($"Command {messageText} not found","",0,"Red");
+                PrintHelp();
+            }
+
+        }
+
+        /// <summary>
+        /// Help that prints all commands
+        /// </summary>
+        private void PrintHelp()
+        {
+            // TODO
+            MyVisualScriptLogicProvider.SendChatMessage("Supported commands:\n");
         }
 
         #endregion
 
 
-  
+        #region handler
+
+        private void PlayerConnected(long playerId)
+        {
+            if (PlayerLanguages.Keys.Contains<long>(playerId))
+            {
+                ClientLogger.WriteInfo($"Player {playerId} already in list.");
+                return;
+            }
+
+            List<IMyPlayer> allPlayers = new List<IMyPlayer>();
+            MyAPIGateway.Multiplayer.Players.GetPlayers(allPlayers);
+            IMyPlayer player = allPlayers.Find(p => p.IdentityId == playerId);
+
+            if (player != null)
+            {
+                VRage.MyLanguagesEnum lang = MyAPIGateway.Session.Config.Language;
+                MyVisualScriptLogicProvider.SendChatMessage($"Player {playerId} found, language {lang}.", "", playerId, "Blue");
+                Networking.SendToServer(new PackageLanguage(playerId, (byte)lang));
+                MyVisualScriptLogicProvider.SendChatMessage($"PLAYER= {playerId}, LANG= {PlayerLanguages[playerId]}", "", playerId, "Blue");
+            }
+            else
+            {
+                ClientLogger.WriteInfo($"Player {playerId} not found.");
+                MyVisualScriptLogicProvider.SendChatMessage($"Player {playerId} not found :(.", "", playerId, "Blue");
+            }
+        }
+
+        #endregion
+
 
     }
 }
