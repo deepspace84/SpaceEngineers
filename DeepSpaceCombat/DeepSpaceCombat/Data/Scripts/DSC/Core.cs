@@ -40,7 +40,9 @@ namespace DSC
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
-        Dictionary<string, long> BlockReference = new Dictionary<string, long>();
+        public Dictionary<string, long> BlockReference = new Dictionary<string, long>();
+        public Dictionary<long, byte> PlayerLanguages = new Dictionary<long, byte>(); // PlayerId, Language as byte (German = 3)
+
 
         #region ingame overrides
 
@@ -77,6 +79,32 @@ namespace DSC
             {
                 // Main init failure
                 VRage.Utils.MyLog.Default.WriteLine("##Mod## ERROR " + ex.Message);
+            }
+
+            MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
+        }
+
+        private void PlayerConnected(long playerId)
+        {
+            if (PlayerLanguages.Keys.Contains<long>(playerId))
+            {
+                ClientLogger.WriteInfo($"Player {playerId} already in list.");
+                return;
+            }
+
+            List<IMyPlayer> allPlayers = new List<IMyPlayer>();
+            MyAPIGateway.Multiplayer.Players.GetPlayers(allPlayers);
+            IMyPlayer player = allPlayers.Find(p => p.IdentityId == playerId);
+
+            if (player != null)
+            {
+                VRage.MyLanguagesEnum lang = MyAPIGateway.Session.Config.Language;
+                ClientLogger.WriteInfo($"Player {playerId} found :).");
+                Networking.SendToServer(new PacketSimple(lang.ToString(), (int)lang));
+            }
+            else
+            {
+                ClientLogger.WriteInfo($"Player {playerId} not found.");
             }
         }
 
