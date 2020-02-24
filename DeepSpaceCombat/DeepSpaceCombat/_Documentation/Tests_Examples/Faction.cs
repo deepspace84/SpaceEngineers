@@ -13,6 +13,7 @@ using VRage.ModAPI;
 using VRageMath;
 using VRage.ObjectBuilders;
 using VRage.Collections;
+using System.Linq;
 
 namespace DSCDEV
 {
@@ -30,7 +31,8 @@ namespace DSCDEV
         private List<long> lMemberlist; // Memberlist
         private int iFactionScore; // FactionScore
         private Dictionary<string, int> licences;
-
+        public static Dictionary<MyDefinitionId, HashSet<MyDefinitionId>> variantGroups = new Dictionary<MyDefinitionId, HashSet<MyDefinitionId>>(MyDefinitionId.Comparer);
+        
         public Faction()
         {
         }
@@ -141,6 +143,22 @@ namespace DSCDEV
             }
 
             return false;
+        }
+
+        private static void PrepareCache()
+        {
+            foreach (var cube in MyDefinitionManager.Static.GetAllDefinitions().OfType<MyCubeBlockDefinition>())
+            {
+                if (cube.BlockStages != null && cube.BlockStages.Length > 0)
+                {
+                    var ids = new HashSet<MyDefinitionId>(cube.BlockStages, MyDefinitionId.Comparer);
+                    ids.Add(cube.Id);
+                    foreach (var id in ids)
+                    {
+                        variantGroups[id] = ids;
+                    }
+                }
+            }
         }
 
         // Players
