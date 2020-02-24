@@ -55,11 +55,12 @@ namespace DSC
             _description = description;
         }
 
-        public abstract long StartContract();
+        public abstract bool StartContract();
 
-        protected void PrintError()
+        public static bool CreateFromXML(string file)
         {
-            MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "", 0, "Red");
+            // MyAPIGateway.Utilities.SerializeToXML
+            return false;
         }
     }
 }

@@ -4,7 +4,7 @@ using Sandbox.ModAPI;
 namespace DSC
 {
     // tag numbers in ProtoInclude collide with numbers from ProtoMember in the same class, therefore they must be unique.
-    [ProtoInclude(1000, typeof(PacketSimple))]
+    [ProtoInclude(1000, typeof(PacketCommand))]
     [ProtoContract]
     public abstract class PacketBase
     {

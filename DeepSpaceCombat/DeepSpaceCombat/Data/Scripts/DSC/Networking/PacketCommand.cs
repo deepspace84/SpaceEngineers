@@ -26,28 +26,28 @@ namespace DSC
     // An example packet extending another packet.
     // Note that it must be ProtoIncluded in PacketBase for it to work.
     [ProtoContract]
-    public class PackageLanguage : PacketBase
+    public class PacketCommand : PacketBase
     {
-        public PackageLanguage() { } // Empty constructor required for deserialization
+        public PacketCommand() { } // Empty constructor required for deserialization
 
         // tag numbers in this class won't collide with tag numbers from the base class
         [ProtoMember(1)]
-        public long User;
+        public string Text;
 
         [ProtoMember(2)]
-        public byte Lang;
+        public long PlayerId;
 
-        public PackageLanguage(long user, byte lang)
+        public PacketCommand(string text, long playerId)
         {
-            User = user;
-            Lang = lang;
+            Text = text;
+            PlayerId = playerId;
         }
 
         public override bool Received()
         {
-            DeepSpaceCombat.Instance.PlayerLanguages.Add(User, Lang);
+            CommandHandler.HandleCommand(Text, PlayerId);
 
-            return false; // relay packet to other clients (only works if server receives it)
+            return false;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DSC
     class DSC_Blocks
     {
         private static DSC_Blocks _instance;
-        public Dictionary<string, long> _blockReference = new Dictionary<string, long>();
+        private Dictionary<string, long> _blockReference = new Dictionary<string, long>();
 
         public static DSC_Blocks Instance
         {
@@ -47,7 +47,7 @@ namespace DSC
         #region load/unload
 
         // Load all saved data
-        public void load()
+        public void Load()
         {
             // Load last block reference
             if (MyAPIGateway.Utilities.GetVariable< Dictionary<string, long>>(FileName, out _blockReference))
@@ -76,7 +76,7 @@ namespace DSC
         }
 
         // Save data
-        public void unload()
+        public void Save()
         {
             MyAPIGateway.Utilities.SetVariable(FileName, _blockReference);
             DeepSpaceCombat.Instance.ServerLogger.WriteInfo($"Blocklist: Saved to savegame (Filename: {FileName})");

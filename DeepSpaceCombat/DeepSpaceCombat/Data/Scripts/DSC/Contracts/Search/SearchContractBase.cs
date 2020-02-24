@@ -1,8 +1,10 @@
 ﻿using Sandbox.Game;
 using Sandbox.ModAPI;
+using Sandbox.ModAPI.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VRage.Game.ModAPI;
 
 namespace DSC
 {
@@ -13,19 +15,13 @@ namespace DSC
         {
         }
 
-        public override long StartContract()
+        public override bool StartContract()
         {
-            long contractId;
-            MyVisualScriptLogicProvider.AddSearchContract(_startBlockId, _reward, _collateral, _duration, _targetGridId, _searchRadius, out contractId);
+            IMyContractSearch contract;
+            contract = new MyContractSearch(_startBlockId, _reward, _collateral, _duration, _targetGridId, _searchRadius);
+            MyAddContractResultWrapper result = MyAPIGateway.ContractSystem.AddContract(contract);
 
-            if(contractId > 0)
-                MyVisualScriptLogicProvider.SendChatMessage(_description,"", 0, "Green");
-            else
-            {
-                PrintError();
-            }
-            
-            return contractId;
+            return result.Success;
         }
     }
 }
