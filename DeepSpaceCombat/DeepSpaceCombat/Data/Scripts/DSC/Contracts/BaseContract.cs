@@ -3,9 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DeepSpaceCombat.Data.Scripts.DSC.Contracts
+namespace DSC
 {
-    abstract class BaseContract
+    /// <summary>
+    /// Base class for all contracts
+    /// </summary>
+    abstract class DSC_BaseContract
     {
         protected string _name;
         protected int _reward;
@@ -40,7 +43,7 @@ namespace DeepSpaceCombat.Data.Scripts.DSC.Contracts
             }
         }
 
-        protected BaseContract(string name, int reward, long startBlockId, int collateral, int duration, long targetGridId, double searchRadius, string description)
+        protected DSC_BaseContract(string name, int reward, long startBlockId, int collateral, int duration, long targetGridId, double searchRadius, string description)
         {
             _name = name;
             _reward = reward;

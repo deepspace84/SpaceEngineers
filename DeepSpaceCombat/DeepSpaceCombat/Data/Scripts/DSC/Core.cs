@@ -33,18 +33,18 @@ namespace DSC
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
         private bool _isInitialized; // Is this instance is initialized
-        private bool _isClientRegistered; // Is this instance a client
-        public bool IsClientRegistered
+        private bool _isClientRegistered;
+        private bool _isServerRegistered;
+
+        public bool IsClientRegistered // Is this instance a client
         {
             get
             {
                 return _isClientRegistered;
             }
         }
-
-        private bool _isServerRegistered; // Is this instance a server
-
-        public bool IsServerRegistered
+        
+        public bool IsServerRegistered // Is this instance a server
         {
             get
             {
@@ -52,12 +52,14 @@ namespace DSC
             }
         }
 
+        private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
+        private DSC_Blocks blockReference;
+
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
-        public Dictionary<string, long> BlockReference = new Dictionary<string, long>();
         public Dictionary<long, byte> PlayerLanguages = new Dictionary<long, byte>(); // PlayerId, Language as byte (German = 3)
 
 
@@ -70,6 +72,7 @@ namespace DSC
          */
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
+            MyVisualScriptLogicProvider.SendChatMessage("Deep Space Combat initialized");
 
             // TODO Do we need this?
             if (MyAPIGateway.Utilities == null)
@@ -91,14 +94,13 @@ namespace DSC
                 ammoDefinition.MaxTrajectory = DSC_Config.missileExplosionRange;
                 ammoDefinition.MissileInitialSpeed = DSC_Config.missileMinSpeed;
                 ammoDefinition.DesiredSpeed = DSC_Config.missileMaxSpeed;
+                MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Main init failure
                 VRage.Utils.MyLog.Default.WriteLine("##Mod## ERROR " + ex.Message);
             }
-
-            MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
         }
 
         /*
@@ -130,22 +132,22 @@ namespace DSC
                 {
                     if (MyAPIGateway.Session.OnlineMode.Equals(MyOnlineModeEnum.OFFLINE)) // pretend single player instance is also server.
                     {
-                         InitServer();
+                        InitServer();
                     }
 
                     if (!MyAPIGateway.Session.OnlineMode.Equals(MyOnlineModeEnum.OFFLINE) && MyAPIGateway.Multiplayer.IsServer && !MyAPIGateway.Utilities.IsDedicated)
                     {
-                         InitServer();
+                        InitServer();
                     }
 
-                     InitClient();
+                    InitClient();
                 }
 
                 // Dedicated Server.
                 if (!_isInitialized && MyAPIGateway.Utilities != null && MyAPIGateway.Multiplayer != null
                     && MyAPIGateway.Session != null && MyAPIGateway.Utilities.IsDedicated && MyAPIGateway.Multiplayer.IsServer)
                 {
-                     InitServer();
+                    InitServer();
                     return;
                 }
 
@@ -257,7 +259,7 @@ namespace DSC
 
 
         #endregion
-        
+
 
         #region message handlers
 
@@ -268,7 +270,69 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
+            foreach (char c in _commandStartChars)
+            {
+                if (messageText.StartsWith(c.ToString()))
+                {
+                    HandleCommand(messageText.TrimStart(c));
+                    sendToOthers = false;
+                    return;
+                }
+            }
+            sendToOthers = true;
+        }
 
+        private void HandleCommand(string messageText)
+        {
+            string command = messageText.ToLower().Replace(" ", "");
+            bool messageHandled = false;
+            if (command.Equals("test"))
+            {
+                messageHandled = true;
+            }
+            if (command.Equals("help"))
+            {
+                PrintHelp();
+                messageHandled = true;
+            }
+            else if (command.Equals("fg".Replace(" ", ""))) // find grids
+            {
+                DSC_Blocks.Instance.AddBlockWithName("DSC_Start");
+                DSC_Grids.Instance.AddGridWithName("DSC_End");
+                
+                MyVisualScriptLogicProvider.SendChatMessage($"Blocks found: " + $"{DSC_Blocks.Instance.GetBlockWithName("DSC_Start")> 0 && DSC_Grids.Instance.GetGridWithName("DSC_End") > 0}");
+
+                messageHandled = true;
+            }
+            else if (command.Equals("csc".Replace(" ", ""))) // create search contract
+            {
+                DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000, 
+                    DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), 0, 60 * 10,
+                    DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!");
+
+                long id = searchContract.StartContract();
+                
+                
+                // MyVisualScriptLogicProvider.RemoveContract(id);
+
+                messageHandled = true;
+            }
+
+            if (!messageHandled)
+            {
+                MyVisualScriptLogicProvider.SendChatMessage($"Command {messageText} not found");
+                PrintHelp();
+            }
+
+        }
+
+        /// <summary>
+        /// Help that prints all commands
+        /// </summary>
+        private void PrintHelp()
+        {
+            // TODO
+            MyVisualScriptLogicProvider.SendChatMessage("Supported commands:\n");
         }
 
         #endregion
