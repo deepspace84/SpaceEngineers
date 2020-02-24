@@ -1,13 +1,26 @@
 ﻿using Sandbox.Game;
+using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DSC
 {
-    static class CommandHandler
+    class CommandHandler
     {
-        public static void HandleCommand(string messageText, long playerId)
+        private static CommandHandler _instance;
+
+        public static CommandHandler Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new CommandHandler();
+                return _instance;
+            }
+        }
+
+        public void HandleCommand(string messageText, long playerId)
         {
             string command = messageText.ToLower().Replace(" ", "");
             bool messageHandled = false;
@@ -32,33 +45,22 @@ namespace DSC
             }
             else if (command.Equals("csc".Replace(" ", ""))) // create search contract
             {
-                DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000,
+                if (MyAPIGateway.Session.IsServer)
+                {
+                    DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000,
                     DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), 0, 60 * 10,
                     DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!");
 
-                bool contract = searchContract.StartContract();
-                if (contract)
-                    MyVisualScriptLogicProvider.SendChatMessage(searchContract.Description, "[Server]", playerId, "Green");
-                else
-                {
-                    MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "[Server]", playerId, "Red");
+                    bool contract = searchContract.StartContract();
+                    if (contract)
+                        MyVisualScriptLogicProvider.SendChatMessage($"Contract Started: {searchContract.Name}\n {searchContract.Description}",
+                            "[Server]", playerId, "Green");
+                    else
+                    {
+                        MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "[Server]", playerId, "Red");
+                    }
+                    messageHandled = true;
                 }
-                messageHandled = true;
-            }
-            else if (command.Equals("csc2".Replace(" ", ""))) // create search contract
-            {
-                DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000,
-                    DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), 10, 60 * 10,
-                    DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!");
-
-                bool contract = searchContract.StartContract();
-                if (contract)
-                    MyVisualScriptLogicProvider.SendChatMessage(searchContract.Description, "[Server]", playerId, "Green");
-                else
-                {
-                    MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "[Server]", playerId, "Red");
-                }
-                messageHandled = true;
             }
             else if (command.Equals("load gb".Replace(" ", ""))) // load grids/blocks
             {

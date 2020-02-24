@@ -165,7 +165,7 @@ namespace DSC
         /// <param name="gridName">Name of the grid to search</param>
         /// <returns>
         /// -2, if gridName is empty or null
-        /// -1, if gridName is not in _gridReference list
+        /// -1, if multiple grids where found
         /// else the block id as long
         /// </returns>
         public long GetGridWithName(string gridName)
@@ -181,7 +181,7 @@ namespace DSC
                 return _gridReference[gridName];
             }
 
-            return -1;
+            return AddGridWithName(gridName);
         }
         /// <summary>
         /// Searches for the grid with name gridName
