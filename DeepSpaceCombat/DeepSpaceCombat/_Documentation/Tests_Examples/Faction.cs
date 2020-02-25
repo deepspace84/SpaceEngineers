@@ -135,11 +135,6 @@ namespace DSCDEV
                     iFactionScore = 0;
                     MyAPIGateway.Utilities.SetVariable<int>("faction_" + tag + "_score", 0);
                 }
-
-
-
-
-
             }
 
             return false;
