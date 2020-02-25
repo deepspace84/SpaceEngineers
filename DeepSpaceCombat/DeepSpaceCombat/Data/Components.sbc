@@ -21,5 +21,86 @@
             <DropProbability>0</DropProbability>
             <Health>100000</Health>
         </Component>
+
+        <Component>
+          <Id>
+            <TypeId>Component</TypeId>
+            <SubtypeId>LicenceT1</SubtypeId>
+          </Id>
+          <DisplayName>Licence Tier 1</DisplayName>
+          <Icon>Textures\licence_t1.dds</Icon>
+          <Size>
+            <X>1</X>
+            <Y>0.7</Y>
+            <Z>0.4</Z>
+          </Size>
+          <Mass>50</Mass>
+          <Volume>5</Volume>
+          <Model>Models\Components\gravity_generator_components_component.mwm</Model>
+          <PhysicalMaterial>Metal</PhysicalMaterial>
+          <MaxIntegrity>5000</MaxIntegrity>
+          <DropProbability>0</DropProbability>
+          <Health>100000</Health>
+        </Component>
+      <Component>
+        <Id>
+          <TypeId>Component</TypeId>
+          <SubtypeId>LicenceT2</SubtypeId>
+        </Id>
+        <DisplayName>Licence Tier 2</DisplayName>
+        <Icon>Textures\licence_t2.dds</Icon>
+        <Size>
+          <X>1</X>
+          <Y>0.7</Y>
+          <Z>0.4</Z>
+        </Size>
+        <Mass>50</Mass>
+        <Volume>5</Volume>
+        <Model>Models\Components\gravity_generator_components_component.mwm</Model>
+        <PhysicalMaterial>Metal</PhysicalMaterial>
+        <MaxIntegrity>5000</MaxIntegrity>
+        <DropProbability>0</DropProbability>
+        <Health>100000</Health>
+      </Component>
+      <Component>
+        <Id>
+          <TypeId>Component</TypeId>
+          <SubtypeId>LicenceT3</SubtypeId>
+        </Id>
+        <DisplayName>Licence Tier 3</DisplayName>
+        <Icon>Textures\licence_t3.dds</Icon>
+        <Size>
+          <X>1</X>
+          <Y>0.7</Y>
+          <Z>0.4</Z>
+        </Size>
+        <Mass>50</Mass>
+        <Volume>5</Volume>
+        <Model>Models\Components\gravity_generator_components_component.mwm</Model>
+        <PhysicalMaterial>Metal</PhysicalMaterial>
+        <MaxIntegrity>5000</MaxIntegrity>
+        <DropProbability>0</DropProbability>
+        <Health>100000</Health>
+      </Component>
+      <Component>
+        <Id>
+          <TypeId>Component</TypeId>
+          <SubtypeId>LicenceT4</SubtypeId>
+        </Id>
+        <DisplayName>Licence Tier 4</DisplayName>
+        <Icon>Textures\licence_t4.dds</Icon>
+        <Size>
+          <X>1</X>
+          <Y>0.7</Y>
+          <Z>0.4</Z>
+        </Size>
+        <Mass>50</Mass>
+        <Volume>5</Volume>
+        <Model>Models\Components\gravity_generator_components_component.mwm</Model>
+        <PhysicalMaterial>Metal</PhysicalMaterial>
+        <MaxIntegrity>5000</MaxIntegrity>
+        <DropProbability>0</DropProbability>
+        <Health>100000</Health>
+      </Component>
     </Components>
 </Definitions>

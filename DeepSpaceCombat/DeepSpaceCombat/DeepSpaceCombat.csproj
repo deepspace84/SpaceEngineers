@@ -128,6 +128,7 @@
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\bin\Debug\zh-CN\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\bin\Release\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\obj\Debug\TempPE\" />
+    <Folder Include="_Utils\Textures\" />
   </ItemGroup>
 
 </Project>
