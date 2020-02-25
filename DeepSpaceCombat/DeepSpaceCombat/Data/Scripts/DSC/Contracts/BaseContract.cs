@@ -1,6 +1,8 @@
 ﻿using Sandbox.Game;
+using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace DSC
@@ -60,6 +62,11 @@ namespace DSC
         public static bool CreateFromXML(string file)
         {
             // MyAPIGateway.Utilities.SerializeToXML
+            using (TextReader reader = MyAPIGateway.Utilities.ReadFileInGlobalStorage(file))
+            {
+                MyAPIGateway.Utilities.SerializeFromXML<Object>(reader.ReadToEnd());
+
+            }
             return false;
         }
     }
