@@ -110,13 +110,11 @@ namespace DSC
             foreach (IMyEntity ent in entList)
             {
                 MyCubeGrid grid = ent as MyCubeGrid;
-                long gridId = grid.EntityId;
-                if (grid.DisplayNameText.Equals(gridName))
+
+                if (gridName.Equals(grid.DisplayName))
                 {
                     reference.Add(grid.EntityId);
                 }
-                    
-
             }
 
             return reference;

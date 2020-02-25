@@ -35,8 +35,9 @@ namespace DSC
             }
             else if (command.Equals("fg".Replace(" ", ""))) // find grids
             {
-                DSC_Blocks.Instance.AddBlockWithName("DSC_Start");
-                DSC_Grids.Instance.AddGridWithName("DSC_End");
+                long blockID = DSC_Blocks.Instance.AddBlockWithName("DSC_Start");
+                long gridID = DSC_Grids.Instance.AddGridWithName("DSC_End");
+                MyVisualScriptLogicProvider.SendChatMessage($"Block found: "+blockID.ToString()+" | grid: "+gridID.ToString(), "[Server]", playerId);
 
                 MyVisualScriptLogicProvider.SendChatMessage($"Blocks found: " + 
                     $"{DSC_Blocks.Instance.GetBlockWithName("DSC_Start") > 0 && DSC_Grids.Instance.GetGridWithName("DSC_End") > 0}", "[Server]", playerId);

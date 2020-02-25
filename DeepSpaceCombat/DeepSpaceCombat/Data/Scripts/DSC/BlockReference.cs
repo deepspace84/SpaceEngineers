@@ -116,7 +116,7 @@ namespace DSC
                 foreach (MyCubeBlock fb in grid.GetFatBlocks())
                 {
                     //Look for tagged Terminal blocks
-                    if (fb.DisplayNameText.Equals(blockName))
+                    if (blockName.Equals(fb.DisplayNameText))
                     {
                         reference.Add(fb.EntityId);
                     }
