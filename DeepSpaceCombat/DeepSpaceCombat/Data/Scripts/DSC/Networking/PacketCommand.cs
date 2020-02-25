@@ -45,7 +45,10 @@ namespace DSC
 
         public override bool Received()
         {
-            CommandHandler.HandleCommand(Text, PlayerId);
+            if (MyAPIGateway.Session.IsServer)
+            {
+                CommandHandler.Instance.HandleCommand(Text, PlayerId);
+            }
 
             return false;
         }

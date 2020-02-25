@@ -23,7 +23,9 @@ namespace DSC
             get
             {
                 if (_instance == null)
+                {
                     _instance = new DSC_Blocks();
+                }
                 return _instance;
             }
         }
@@ -41,7 +43,6 @@ namespace DSC
         // Constructor
         private DSC_Blocks()
         {
-            _instance = this;
         }
 
         #region load/unload
@@ -176,7 +177,7 @@ namespace DSC
         /// <param name="blockName">Name of the block to search</param>
         /// <returns>
         /// -2, if blockName is empty or null
-        /// -1, if blockName is not in _blockReference list
+        /// -1, if multiple blocks where found
         /// else the block id as long
         /// </returns>
         public long GetBlockWithName(string blockName)
@@ -190,6 +191,10 @@ namespace DSC
             {
                 // Return id
                 return _blockReference[blockName];
+            }
+            else
+            {
+                return AddBlockWithName(blockName);
             }
 
             return -1;
