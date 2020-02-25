@@ -100,28 +100,23 @@ namespace DSC
             if (null == gridName || gridName == "")
                 return null;
 
-            // Get Reader
-            DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+            // Get all grid entities
+            HashSet<IMyEntity> entList = new HashSet<IMyEntity>();
+            MyAPIGateway.Entities.GetEntities(entList, e => e is IMyCubeGrid);
+            if (entList.Count == 0)
+                return null;
 
-            // Get all entities
-            MyConcurrentHashSet<MyEntity> allEntities = MyEntities.GetEntities();
-
-            // Loop through all entities
-            foreach (IMyEntity entity in allEntities)
+            // Loop through all Grids
+            foreach (IMyEntity ent in entList)
             {
-                //Get All grid-entities
-                if (entity is IMyCubeGrid)
+                MyCubeGrid grid = ent as MyCubeGrid;
+                long gridId = grid.EntityId;
+                if (grid.DisplayNameText.Equals(gridName))
                 {
-                    IMyCubeGrid grid = (IMyCubeGrid)entity;
-
-                    //Possible Null-Pointer-Exception
-                    try
-                    {
-                        if (grid.CustomName.Equals(gridName))
-                            reference.Add(grid.EntityId);
-                    }
-                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message, "SYSTEM", 0, "Red"); }
+                    reference.Add(grid.EntityId);
                 }
+                    
+
             }
 
             return reference;

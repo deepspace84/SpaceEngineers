@@ -101,38 +101,25 @@ namespace DSC
             if (null == blockName || blockName == "")
                 return null;
 
-            // Get Reader
-            DictionaryValuesReader<MyDefinitionId, MyDefinitionBase> defset = MyDefinitionManager.Static.GetAllDefinitions();
+            // Get all grid entities
+            HashSet<IMyEntity> entList = new HashSet<IMyEntity>();
+            MyAPIGateway.Entities.GetEntities(entList, e => e is IMyCubeGrid);
+            if (entList.Count == 0)
+                return null;
 
-            // Get all entities
-            MyConcurrentHashSet<MyEntity> allEntities = MyEntities.GetEntities();
-
-            // Loop through all entities
-            foreach (IMyEntity entity in allEntities)
+            // Loop through all Grids
+            foreach (IMyEntity ent in entList)
             {
-                //Get All grid-entities
-                if (entity is IMyCubeGrid)
+                MyCubeGrid grid = ent as MyCubeGrid;
+                long gridId = grid.EntityId;
+
+                foreach (MyCubeBlock fb in grid.GetFatBlocks())
                 {
-                    IMyCubeGrid grid = (IMyCubeGrid)entity;
-
-                    //Possible Null-Pointer-Exception
-                    try
+                    //Look for tagged Terminal blocks
+                    if (fb.DisplayNameText.Equals(blockName))
                     {
-                        //Get Terminal Blocks. (Use FatBlocks instead?)
-                        List<Sandbox.ModAPI.Ingame.IMyTerminalBlock> blocks = new List<Sandbox.ModAPI.Ingame.IMyTerminalBlock>();
-                        Sandbox.ModAPI.Ingame.IMyGridTerminalSystem gts = MyAPIGateway.TerminalActionsHelper.GetTerminalSystemForGrid(grid);
-                        gts.GetBlocks(blocks);
-
-                        foreach (Sandbox.ModAPI.Ingame.IMyTerminalBlock block in blocks)
-                        {
-                            //Look for tagged Terminal blocks
-                            if (block.CustomName.Contains(blockName))
-                            {
-                                reference.Add(block.EntityId);
-                            }
-                        }
+                        reference.Add(fb.EntityId);
                     }
-                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("Error: " + ex.Message, "SYSTEM", 0, "Red"); }
                 }
             }
 
