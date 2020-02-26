@@ -93,7 +93,7 @@ namespace DSC
         /// </summary>
         /// <param name="blockName">Name of block to be found</param>
         /// <returns>List of block ids with that name</returns>
-        public List<long> FindBlocksWithID(string blockName)
+        public List<long> FindBlocksWithName(string blockName)
         {
             List<long> reference = new List<long>();
 
@@ -106,6 +106,8 @@ namespace DSC
             MyAPIGateway.Entities.GetEntities(entList, e => e is IMyCubeGrid);
             if (entList.Count == 0)
                 return null;
+
+            // IMyEntity myEntity = MyAPIGateway.Entities.GetEntityByName(blockName);not wirking if multiple blocks with that name exists
 
             // Loop through all Grids
             foreach (IMyEntity ent in entList)
@@ -142,7 +144,7 @@ namespace DSC
                 return -2;
 
             long result = -1;
-            List<long> blocks = FindBlocksWithID(blockName);
+            List<long> blocks = FindBlocksWithName(blockName);
             // Check if we found only one block! Blockreferences are unique
             if(blocks.Count == 1)
             {

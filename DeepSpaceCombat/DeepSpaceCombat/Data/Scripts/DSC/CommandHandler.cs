@@ -38,7 +38,7 @@ namespace DSC
         {
             bool messageHandled = false;
             //string command = messageText.ToLower().Replace(" ", "");//TODO: use exact message. ToLower and replace make it impossible to use commands containing parameters.
-            string[] scommand = messageText.Split(" ");
+            string[] scommand = messageText.Split(' ');
             if (null == scommand) { scommand = new string[1];scommand[0] = messageText; }
             List<string> lcommand = new List<string>();
             foreach (string s in scommand)
@@ -79,7 +79,19 @@ namespace DSC
                         MyVisualScriptLogicProvider.SendChatMessage($"Block found: " + blockID.ToString() + " | grid: " + gridID.ToString(), "[Server]", playerId);
                         break;
                     case ECommand.SearchContract:
-                        //TODO: Implement equivalent to existing...
+                        DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000,
+                            DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), 0, 60 * 10,
+                            DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!",
+                            playerId);
+
+                        bool contract = searchContract.StartContract();
+                        if (contract)
+                            MyVisualScriptLogicProvider.SendChatMessage($"Contract Started: {searchContract.Name}\n {searchContract.Description}",
+                                "[Server]", playerId, "Green");
+                        else
+                        {
+                            MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "[Server]", playerId, "Red");
+                        }
                         break;
                     case ECommand.Load:
                         //TODO: Implement equivalent to existing... use parameter to select what is to be loaded
@@ -117,7 +129,8 @@ namespace DSC
                 {
                     DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000,
                     DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), 0, 60 * 10,
-                    DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!");
+                    DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!",
+                    playerId);
 
                     bool contract = searchContract.StartContract();
                     if (contract)

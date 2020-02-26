@@ -92,7 +92,7 @@ namespace DSC
         /// </summary>
         /// <param name="gridName">Name of block to be found</param>
         /// <returns>List of block ids with that name</returns>
-        public List<long> FindGridsWithID(string gridName)
+        public List<long> FindGridsWithName(string gridName)
         {
             List<long> reference = new List<long>();
 
@@ -136,7 +136,7 @@ namespace DSC
                 return -2;
 
             long result = -1;
-            List<long> blocks = FindGridsWithID(gridName);
+            List<long> blocks = FindGridsWithName(gridName);
             // Check if we found only one block! Blockreferences are unique
             if(blocks.Count == 1)
             {

@@ -276,7 +276,7 @@ namespace DSC
             //foreach (char c in _commandStartChars)
             //{
             //    if (messageText.StartsWith(c.ToString()))
-            if (messageText.StartsWith(_commandStart))
+            if (messageText.StartsWith(_commandStart.ToString()))
             {
                 Networking.SendToServer(new PacketCommand(messageText.TrimStart(_commandStart), MyAPIGateway.Session.Player.IdentityId));
                 sendToOthers = false;
