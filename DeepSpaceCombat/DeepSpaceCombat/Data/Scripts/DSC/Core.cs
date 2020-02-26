@@ -9,6 +9,7 @@ using Sandbox.ModAPI;
 //using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
+using VRage.Input;
 //using VRage.Input;
 //using VRage.Game.Entity;
 //using VRage.Game.ModAPI;
@@ -53,14 +54,12 @@ namespace DSC
         //private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
         private char _commandStart = '#';
 
-        private DSC_Blocks blockReference;
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
-        public CommandHandler CMDHandler = new CommandHandler(); 
+        public CommandHandler CMDHandler = new CommandHandler();
+        public DSC_Players Players = new DSC_Players();
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
-
-        public Dictionary<long, byte> PlayerLanguages = new Dictionary<long, byte>(); // PlayerId, Language as byte (German = 3)
 
         #region ingame overrides
 
@@ -108,7 +107,7 @@ namespace DSC
             base.BeforeStart();
 
             Networking.Register();
-            MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
+            MyVisualScriptLogicProvider.PlayerConnected += Players.PlayerConnected;
         }
 
         /*
@@ -169,12 +168,13 @@ namespace DSC
             base.UpdateAfterSimulation();
             // example for testing ingame, press L at any point when in a world with this mod loaded
             // then the server player/console/log will have the message you sent
-            /*
-            if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
-            {
-                Networking.SendToServer(new PacketSimple("testcommand", 5000));
-            }
-            */
+            
+            //if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
+            //{
+            //    MyVisualScriptLogicProvider.SendChatMessage("L pressed, New player connected ", "[Server]");
+            //    Players.PlayerConnected(MyAPIGateway.Session.Player.IdentityId);
+            //}
+            
         }
 
         /*
@@ -212,7 +212,7 @@ namespace DSC
             Networking = null;
 
             // Unregister player connected
-            MyVisualScriptLogicProvider.PlayerConnected -= PlayerConnected;
+            MyVisualScriptLogicProvider.PlayerConnected -= Players.PlayerConnected;
 
             base.UnloadData();
         }
@@ -286,21 +286,5 @@ namespace DSC
         }
         #endregion
 
-        #region player handler
-
-        private void PlayerConnected(long playerId)
-        {
-            if (PlayerLanguages.Keys.Contains<long>(playerId))
-            {
-                return;
-            }
-
-            VRage.MyLanguagesEnum lang = MyAPIGateway.Session.Config.Language;
-            MyVisualScriptLogicProvider.SendChatMessage($"Player {playerId} found, language {lang}.", "", playerId, "Blue");
-            Networking.SendToServer(new PackagePlayerLanguage(playerId, (byte)lang)); 
-            MyVisualScriptLogicProvider.SendChatMessage($"Player {playerId}, language {PlayerLanguages[playerId]}.", "", playerId, "Blue");
-        }
-
-        #endregion
     }
 }

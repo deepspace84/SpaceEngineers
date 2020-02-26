@@ -19,7 +19,7 @@ using VRageMath;
 using VRage.ObjectBuilders;
 using VRage.Collections;
 using Sandbox.Game.SessionComponents;
-
+using VRage;
 
 namespace DSC
 {
@@ -32,20 +32,20 @@ namespace DSC
 
         // tag numbers in this class won't collide with tag numbers from the base class
         [ProtoMember(1)]
-        public long User;
+        public long PlayerId;
 
         [ProtoMember(2)]
-        public byte Lang;
+        public MyLanguagesEnum Lang;
 
-        public PackagePlayerLanguage(long user, byte lang)
+        public PackagePlayerLanguage(long playerId, MyLanguagesEnum lang)
         {
-            User = user;
+            PlayerId = playerId;
             Lang = lang;
         }
 
         public override bool Received()
         {
-            DeepSpaceCombat.Instance.PlayerLanguages.Add(User, Lang);
+            DeepSpaceCombat.Instance.Players.AddPlayer(PlayerId, Lang);
 
             return false; // relay packet to other clients (only works if server receives it)
         }

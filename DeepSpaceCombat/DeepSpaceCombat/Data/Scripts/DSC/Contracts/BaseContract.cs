@@ -90,7 +90,6 @@ namespace DSC
                     player.TryGetBalanceInfo(out balance);
 
                     player.RequestChangeBalance(_reward);
-                    MyVisualScriptLogicProvider.SendChatMessage($"Player account changed {balance + _reward}", "[Server]", _playerId);
 
                     result = MyAPIGateway.ContractSystem.AddContract(_contract).Success;
 
@@ -110,7 +109,7 @@ namespace DSC
                 }
                 finally
                 {
-                    block.ChangeOwner(ownerID, VRage.Game.MyOwnershipShareModeEnum.All);                    
+                    block.ChangeOwner(ownerID, VRage.Game.MyOwnershipShareModeEnum.All);
                 }
             }
 

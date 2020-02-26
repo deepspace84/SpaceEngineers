@@ -27,7 +27,8 @@ namespace DSC
             FindGrids = 2,
             SearchContract = 3,
             Load = 4,
-            Save = 5//,
+            Save = 5,
+            ReloadBlocksAndGrids = 6
             //fg=2,
             //csc=3
         };
@@ -98,6 +99,9 @@ namespace DSC
                         break;
                     case ECommand.Save:
                         //TODO: Implement equivalent to existing... use parameter to select what is to be saved
+                        break;
+                    case ECommand.ReloadBlocksAndGrids:
+                        // TODO delete grids/blocks from lists and research them
                         break;
                     default:
                         messageHandled = false;
