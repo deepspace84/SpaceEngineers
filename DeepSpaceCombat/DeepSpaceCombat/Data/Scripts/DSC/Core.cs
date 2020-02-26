@@ -63,6 +63,8 @@ namespace DSC
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
+        private ulong counter=0;
+
         #region ingame overrides
 
         /*
@@ -170,13 +172,35 @@ namespace DSC
             base.UpdateAfterSimulation();
             // example for testing ingame, press L at any point when in a world with this mod loaded
             // then the server player/console/log will have the message you sent
-            
+
             //if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
             //{
             //    MyVisualScriptLogicProvider.SendChatMessage("L pressed, New player connected ", "[Server]");
             //    Players.PlayerConnected(MyAPIGateway.Session.Player.IdentityId);
             //}
-            
+
+
+            if(counter++ % 1800 == 0){
+                if (IsServerRegistered && _isInitialized)
+                {
+                    try
+                    {
+                        long blockID = BlockRef.AddBlockWithName("DSC_Start");
+                        long gridID = GridRef.AddGridWithName("DSC_End");
+                        long contract_id;
+                        MyVisualScriptLogicProvider.AddSearchContract(blockID, 5000, 0, 0, gridID, 50, out contract_id);
+                        if (contract_id > 0)
+                        {
+                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract added: " + contract_id.ToString(), "[Server]", 0);
+                        }
+                        else
+                        {
+                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract failed: ", "[Server]", 0);
+                        }
+                    }
+                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("ERROR: " + ex.Message, "[Server]", 0); }
+                }
+            }
         }
 
         /*
