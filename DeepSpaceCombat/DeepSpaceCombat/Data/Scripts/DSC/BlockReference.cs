@@ -186,8 +186,6 @@ namespace DSC
             {
                 return AddBlockWithName(blockName);
             }
-
-            return -1;
         }
         /// <summary>
         /// Searches for the block with name blockName

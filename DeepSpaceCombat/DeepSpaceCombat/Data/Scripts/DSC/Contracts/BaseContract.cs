@@ -65,51 +65,71 @@ namespace DSC
             _playerId = playerId;
         }
 
+        /// <summary>
+        /// TODO syncronize -> maybe different people want to create contract on same block/grid
+        /// </summary>
+        /// <returns></returns>
         public bool StartContract()
         {
             MyCubeBlock block = MyAPIGateway.Entities.GetEntityById(_startBlockId) as MyCubeBlock;
+            MyCubeGrid grid = MyAPIGateway.Entities.GetEntityById(_targetGridId) as MyCubeGrid;
+
+            VRage.Collections.ListReader<MyCubeBlock> gridBlocks = grid.GetFatBlocks();
+            Dictionary<MyCubeBlock, long> dictBlockUser = new Dictionary<MyCubeBlock, long>(); // dictionary for all cubeblocks and owner ids
+
+            
+
             bool result = false;
 
             IMyPlayer player = Util.FindPlayerById(_playerId);
 
-            if(player == null)
+            if (player == null)
             {
                 MyVisualScriptLogicProvider.SendChatMessage($"Player could not be found", "[Server]", _playerId);
             }
 
             long balance = -1;
 
-            lock (block)
+            long blockOwnerID = block.OwnerId;
+            try
             {
-                long ownerID = block.OwnerId;
-                try
+                // change owner of block and then get the owner as player
+                block.ChangeOwner(_playerId, VRage.Game.MyOwnershipShareModeEnum.All);
+                foreach (MyCubeBlock b in gridBlocks)
                 {
-                    // change owner of block and then get the owner as player
-                    block.ChangeOwner(_playerId, VRage.Game.MyOwnershipShareModeEnum.All);
+                    dictBlockUser.Add(b, b.OwnerId);
+                    b.ChangeOwner(_playerId, VRage.Game.MyOwnershipShareModeEnum.All);
+                }
 
-                    player.TryGetBalanceInfo(out balance);
+                // need to recalcualte owners 
+                grid.RecalculateOwners();
 
-                    player.RequestChangeBalance(_reward);
+                player.TryGetBalanceInfo(out balance);
 
-                    result = MyAPIGateway.ContractSystem.AddContract(_contract).Success;
+                player.RequestChangeBalance(_reward);
+
+                result = MyAPIGateway.ContractSystem.AddContract(_contract).Success;
+
+            }
+            catch
+            {
+                MyVisualScriptLogicProvider.SendChatMessage($"Something went wrong {_playerId} : {balance} ", "[Server]", _playerId);
+                if (balance >= 0)
+                {
+                    long newBalance = -1;
+                    player.TryGetBalanceInfo(out newBalance);
+
+                    if (newBalance > 0 && balance != newBalance)
+                        player.RequestChangeBalance(balance - newBalance);
 
                 }
-                catch
+            }
+            finally
+            {
+                block.ChangeOwner(blockOwnerID, VRage.Game.MyOwnershipShareModeEnum.All);
+                foreach (KeyValuePair<MyCubeBlock, long> pair in dictBlockUser)
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage($"Something went wrong {_playerId} : {balance} ", "[Server]", _playerId);
-                    if (balance >= 0)
-                    {
-                        long newBalance = -1;
-                        player.TryGetBalanceInfo(out newBalance);
-
-                        if (newBalance > 0 && balance != newBalance)
-                            player.RequestChangeBalance(balance - newBalance);
-
-                    }
-                }
-                finally
-                {
-                    block.ChangeOwner(ownerID, VRage.Game.MyOwnershipShareModeEnum.All);
+                    pair.Key.ChangeOwner(pair.Value, VRage.Game.MyOwnershipShareModeEnum.All);
                 }
             }
 
@@ -122,7 +142,6 @@ namespace DSC
             using (TextReader reader = MyAPIGateway.Utilities.ReadFileInGlobalStorage(file))
             {
                 MyAPIGateway.Utilities.SerializeFromXML<Object>(reader.ReadToEnd());
-
             }
             return false;
         }

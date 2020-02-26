@@ -88,9 +88,10 @@ namespace DSC
                             contractName = lcommand[3];
                         try
                         {
-                            blockID = DeepSpaceCombat.Instance.BlockRef.AddBlockWithName(startBlock);
-                            gridID = DeepSpaceCombat.Instance.GridRef.AddGridWithName(searchGrid);
+                            blockID = DeepSpaceCombat.Instance.BlockRef.GetBlockWithName(startBlock);
+                            gridID = DeepSpaceCombat.Instance.GridRef.GetGridWithName(searchGrid);
                             DSC_SearchContractBase searchContract = new DSC_SearchContractBase(contractName, 1000, blockID, 0, 60 * 10, gridID, 10, "Find the Target!", playerId);
+
                             bool contract = searchContract.StartContract();
                             if (contract)
                                 MyVisualScriptLogicProvider.SendChatMessage($"Contract Started: {searchContract.Name}\n {searchContract.Description}","[Server]", playerId, "Green");
