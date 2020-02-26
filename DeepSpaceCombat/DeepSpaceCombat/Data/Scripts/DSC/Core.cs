@@ -188,8 +188,8 @@ namespace DSC
                         long blockID = BlockRef.AddBlockWithName("DSC_Start");
                         long gridID = GridRef.AddGridWithName("DSC_End");
                         long contract_id;
-                        MyVisualScriptLogicProvider.AddSearchContract(blockID, 5000, 0, 0, gridID, 50, out contract_id);
-                        if (contract_id > 0)
+                        bool contractAdded = MyVisualScriptLogicProvider.AddSearchContract(blockID, 5000, 0, 0, gridID, 50, out contract_id);
+                        if (contractAdded)
                         {
                             MyVisualScriptLogicProvider.SendChatMessage("Auto Contract added: " + contract_id.ToString(), "[Server]", 0);
                         }
