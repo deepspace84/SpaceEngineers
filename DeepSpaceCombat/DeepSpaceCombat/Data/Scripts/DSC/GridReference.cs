@@ -13,7 +13,8 @@ using VRage.Game.ModAPI;
 
 namespace DSC
 {
-    class DSC_Grids
+    //Class name should equal filename
+    public class DSC_Grids
     {
         private static DSC_Grids _instance;
         private Dictionary<string, long> _gridReference = new Dictionary<string, long>();
@@ -39,7 +40,7 @@ namespace DSC
         }
 
         // Constructor
-        private DSC_Grids()
+        public DSC_Grids()
         {
             _instance = this;
         }

@@ -56,6 +56,8 @@ namespace DSC
 
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
         public CommandHandler CMDHandler = new CommandHandler();
+        public DSC_Blocks BlockRef = new DSC_Blocks();
+        public DSC_Grids GridRef = new DSC_Grids();
         public DSC_Players Players = new DSC_Players();
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.

@@ -51,6 +51,8 @@ namespace DSC
             ECommand cmd;
             if(Enum.TryParse<ECommand>(lcommand[0],true,out cmd))//Ignore Case
             {
+                long gridID = 0;
+                long blockID = 0;
                 messageHandled = true;
                 switch(cmd)
                 {
@@ -61,38 +63,43 @@ namespace DSC
                         PrintHelp(playerId);
                         break;
                     case ECommand.FindGrids:
-                        string startBlock = "DSC_Start";
+                        string findBlock = "DSC_Start";
                         if (lcommand.Count > 1)
-                            startBlock = lcommand[1];
-                        long blockID = 0l;
+                            findBlock = lcommand[1];
+                        string findGrid = "DSC_End";
+                        if (lcommand.Count > 1)
+                            findGrid = lcommand[1];
                         try
                         {
-                            blockID = DSC_Blocks.Instance.AddBlockWithName(startBlock);//TODO: Use same instanceing as for CommandHandler @see Core.cs
-                        } catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("ERROR: "+ex.Message, "[Server]", playerId); }
-                        string searchGrid = "DSC_End";
-                        if (lcommand.Count > 1)
-                            searchGrid = lcommand[1];
-                        long gridID = 0l;
-                        try
-                        {
-                            gridID = DSC_Grids.Instance.AddGridWithName(searchGrid);//TODO: Use same instanceing as for CommandHandler @see Core.cs
+                            blockID = DeepSpaceCombat.Instance.BlockRef.AddBlockWithName(findBlock);
+                            gridID = DeepSpaceCombat.Instance.GridRef.AddGridWithName(findGrid);
                         } catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("ERROR: " + ex.Message, "[Server]", playerId); }
                         MyVisualScriptLogicProvider.SendChatMessage($"Block found: " + blockID.ToString() + " | grid: " + gridID.ToString(), "[Server]", playerId);
                         break;
                     case ECommand.SearchContract:
-                        DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000,
-                            DSC_Blocks.Instance.GetBlockWithName("DSC_Start"), 0, 60 * 10,
-                            DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!",
-                            playerId);
-
-                        bool contract = searchContract.StartContract();
-                        if (contract)
-                            MyVisualScriptLogicProvider.SendChatMessage($"Contract Started: {searchContract.Name}\n {searchContract.Description}",
-                                "[Server]", playerId, "Green");
-                        else
+                        string startBlock = "DSC_Start";
+                        if (lcommand.Count > 1)
+                            startBlock = lcommand[1];
+                        string searchGrid = "DSC_End";
+                        if (lcommand.Count > 1)
+                            searchGrid = lcommand[1];
+                        string contractName = "Test";
+                        if (lcommand.Count > 2)
+                            contractName = lcommand[2];
+                        try
                         {
-                            MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "[Server]", playerId, "Red");
+                            blockID = DeepSpaceCombat.Instance.BlockRef.AddBlockWithName(startBlock);
+                            gridID = DeepSpaceCombat.Instance.GridRef.AddGridWithName(searchGrid);
+                            DSC_SearchContractBase searchContract = new DSC_SearchContractBase(contractName, 1000, blockID, 0, 60 * 10, gridID, 10, "Find the Target!", playerId);
+                            bool contract = searchContract.StartContract();
+                            if (contract)
+                                MyVisualScriptLogicProvider.SendChatMessage($"Contract Started: {searchContract.Name}\n {searchContract.Description}","[Server]", playerId, "Green");
+                            else
+                            {
+                                MyVisualScriptLogicProvider.SendChatMessage("Creation of the contract failed", "[Server]", playerId, "Red");
+                            }
                         }
+                        catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("ERROR: " + ex.Message, "[Server]", playerId); }
                         break;
                     case ECommand.Load:
                         //TODO: Implement equivalent to existing... use parameter to select what is to be loaded

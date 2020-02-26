@@ -13,7 +13,8 @@ using VRage.Game.ModAPI;
 
 namespace DSC
 {
-    class DSC_Blocks
+    //Class name should equal filename
+    public class DSC_Blocks
     {
         private static DSC_Blocks _instance;
         private Dictionary<string, long> _blockReference = new Dictionary<string, long>();
@@ -41,7 +42,7 @@ namespace DSC
         }
 
         // Constructor
-        private DSC_Blocks()
+        public DSC_Blocks()
         {
         }
 
