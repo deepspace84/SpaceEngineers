@@ -67,8 +67,8 @@ namespace DSC
                         if (lcommand.Count > 1)
                             findBlock = lcommand[1];
                         string findGrid = "DSC_End";
-                        if (lcommand.Count > 1)
-                            findGrid = lcommand[1];
+                        if (lcommand.Count > 2)
+                            findGrid = lcommand[2];
                         try
                         {
                             blockID = DeepSpaceCombat.Instance.BlockRef.AddBlockWithName(findBlock);
@@ -81,11 +81,11 @@ namespace DSC
                         if (lcommand.Count > 1)
                             startBlock = lcommand[1];
                         string searchGrid = "DSC_End";
-                        if (lcommand.Count > 1)
-                            searchGrid = lcommand[1];
-                        string contractName = "Test";
                         if (lcommand.Count > 2)
-                            contractName = lcommand[2];
+                            searchGrid = lcommand[2];
+                        string contractName = "Test";
+                        if (lcommand.Count > 3)
+                            contractName = lcommand[3];
                         try
                         {
                             blockID = DeepSpaceCombat.Instance.BlockRef.AddBlockWithName(startBlock);
