@@ -47,7 +47,8 @@ namespace DSC
         {
             if (MyAPIGateway.Session.IsServer)
             {
-                CommandHandler.Instance.HandleCommand(Text, PlayerId);
+                //CommandHandler.Instance.HandleCommand(Text, PlayerId);
+                DeepSpaceCombat.Instance.CMDHandler.HandleCommand(Text, PlayerId);
             }
 
             return false;

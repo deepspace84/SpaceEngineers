@@ -4,7 +4,7 @@
     class DSC_Config
     {
         // Actual Mod Version
-        public static double modVersion = 0.00001;
+        public static double modVersion = 0.42;
 
         // This is used to indicate the base communication version.
         // If we change Message classes or add a new Message class in any way, we need to update this number.

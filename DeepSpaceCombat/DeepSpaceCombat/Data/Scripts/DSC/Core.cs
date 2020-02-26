@@ -1,32 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+//using System.Text.RegularExpressions;
 using Sandbox.Definitions;
 using Sandbox.Game;
-using Sandbox.Game.Entities;
+//using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
-using SpaceEngineers.Game.ModAPI;
+//using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
-using VRage.Input;
-using VRage.Game.Entity;
-using VRage.Game.ModAPI;
-using VRage.ModAPI;
-using VRageMath;
-using VRage.ObjectBuilders;
-using VRage.Collections;
-using Sandbox.Game.SessionComponents;
+//using VRage.Input;
+//using VRage.Game.Entity;
+//using VRage.Game.ModAPI;
+//using VRage.ModAPI;
+//using VRageMath;
+//using VRage.ObjectBuilders;
+//using VRage.Collections;
+//using Sandbox.Game.SessionComponents;
 
 //Sandbox.ModAPI.Ingame.IMyTerminalBlock or Sandbox.ModAPI.IMyTerminalBlock ?
 
 namespace DSC
 {
     // This object is always present, from the world load to world unload.
-    // NOTE: all clients and server run mod scripts, keep that in mind.
     // The MyUpdateOrder arg determines what update overrides are actually called.
-    // Remove any method that you don't need, none of them are required, they're only there to show what you can use.
-    // Also remove all comments you've read to avoid the overload of comments that is this file.
     [MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation | MyUpdateOrder.AfterSimulation)]
     public class DeepSpaceCombat : MySessionComponentBase
     {
@@ -52,16 +49,18 @@ namespace DSC
             }
         }
 
-        private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
-        private DSC_Blocks blockReference;
+        //Use a single command char to avoid unneccesary loops/code. 
+        //private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
+        private char _commandStart = '#';
 
+        private DSC_Blocks blockReference;
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
+        public CommandHandler CMDHandler = new CommandHandler(); 
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
         public Dictionary<long, byte> PlayerLanguages = new Dictionary<long, byte>(); // PlayerId, Language as byte (German = 3)
-
 
         #region ingame overrides
 
@@ -72,17 +71,14 @@ namespace DSC
          */
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
+            base.Init(sessionComponent);
+
             MyVisualScriptLogicProvider.SendChatMessage("Deep Space Combat initialized");
 
-            // TODO Do we need this?
-            if (MyAPIGateway.Utilities == null)
-            {
-                MyAPIGateway.Utilities = MyAPIUtilities.Static;
-            }
-
-            // TODO used in ship speed, keep it? :P
-            if (Instance == null)
-                Instance = this;
+            // TODO Do we need this? used in ship speed, keep it? :P
+            if (MyAPIGateway.Utilities == null) {MyAPIGateway.Utilities = MyAPIUtilities.Static;}
+            //Repeated in UpdateBeforeSimulation()
+            //if (Instance == null) { Instance = this; }
 
             try
             {
@@ -109,6 +105,8 @@ namespace DSC
          */
         public override void BeforeStart()
         {
+            base.BeforeStart();
+
             Networking.Register();
             MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
         }
@@ -123,8 +121,7 @@ namespace DSC
             try
             {
                 // Check if Instance exists
-                if (Instance == null)
-                    Instance = this;
+                if (Instance == null) { Instance = this; }
 
                 // This needs to wait until the MyAPIGateway.Session.Player is created, as running on a Dedicated server can cause issues.
                 // It would be nicer to just read a property that indicates this is a dedicated server, and simply return.
@@ -151,6 +148,7 @@ namespace DSC
                     return;
                 }
 
+                //TODO: Why not before everything else?
                 base.UpdateBeforeSimulation();
             }
             catch (Exception ex)
@@ -168,6 +166,7 @@ namespace DSC
          */
         public override void UpdateAfterSimulation()
         {
+            base.UpdateAfterSimulation();
             // example for testing ingame, press L at any point when in a world with this mod loaded
             // then the server player/console/log will have the message you sent
             /*
@@ -176,7 +175,6 @@ namespace DSC
                 Networking.SendToServer(new PacketSimple("testcommand", 5000));
             }
             */
-
         }
 
         /*
@@ -216,11 +214,8 @@ namespace DSC
             // Unregister player connected
             MyVisualScriptLogicProvider.PlayerConnected -= PlayerConnected;
 
-
-
             base.UnloadData();
         }
-
         #endregion
 
 
@@ -277,20 +272,19 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
-            foreach (char c in _commandStartChars)
+            //DZ changed command-start to a single char. delete commented lines when checked
+            //foreach (char c in _commandStartChars)
+            //{
+            //    if (messageText.StartsWith(c.ToString()))
+            if (messageText.StartsWith(_commandStart))
             {
-                if (messageText.StartsWith(c.ToString()))
-                {
-                    Networking.SendToServer(new PacketCommand(messageText.TrimStart(c), MyAPIGateway.Session.Player.IdentityId));
-                    sendToOthers = false;
-                    return;
-                }
+                Networking.SendToServer(new PacketCommand(messageText.TrimStart(_commandStart), MyAPIGateway.Session.Player.IdentityId));
+                sendToOthers = false;
             }
-            sendToOthers = true;
+            //}
+            else { sendToOthers = true; }
         }
-
         #endregion
-
 
         #region player handler
 
@@ -308,7 +302,5 @@ namespace DSC
         }
 
         #endregion
-
-
     }
 }

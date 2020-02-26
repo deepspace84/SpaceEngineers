@@ -61,7 +61,7 @@ namespace DSC
         /// <param name="packet"></param>
         public void SendToServer(PacketBase packet)
         {
-            var bytes = MyAPIGateway.Utilities.SerializeToBinary(packet);
+            byte[] bytes = MyAPIGateway.Utilities.SerializeToBinary(packet);
 
             MyAPIGateway.Multiplayer.SendMessageToServer(PacketId, bytes);
         }
