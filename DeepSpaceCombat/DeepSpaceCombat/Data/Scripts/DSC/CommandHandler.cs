@@ -3,6 +3,7 @@ using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VRage.Game.ModAPI;
 
 namespace DSC
 {
@@ -28,7 +29,9 @@ namespace DSC
             SearchContract = 3,
             Load = 4,
             Save = 5,
-            ReloadBlocksAndGrids = 6
+            ReloadBlocksAndGrids = 6,
+            Players = 7,
+            Get_NPC = 8
             //fg=2,
             //csc=3
         };
@@ -86,14 +89,17 @@ namespace DSC
                         string contractName = "Test";
                         if (lcommand.Count > 3)
                             contractName = lcommand[3];
+                        int reward = 1000;
+                        if (lcommand.Count > 4)
+                            contractName = lcommand[4];
                         try
                         {
                             blockID = DeepSpaceCombat.Instance.BlockRef.GetBlockWithName(startBlock);
                             gridID = DeepSpaceCombat.Instance.GridRef.GetGridWithName(searchGrid);
-                            DSC_SearchContractBase searchContract = new DSC_SearchContractBase(contractName, 1000, blockID, 0, 60 * 10, gridID, 10, "Find the Target!", playerId);
+                            DSC_SearchContractBase searchContract = new DSC_SearchContractBase(contractName, reward, blockID, 0, 60 * 10, gridID, 10, "Find the Target!", playerId);
 
-                            bool contract = searchContract.StartContract();
-                            if (contract)
+                            MyAddContractResultWrapper result = searchContract.StartContract();
+                            if (result.Success)
                                 MyVisualScriptLogicProvider.SendChatMessage($"Contract Started: {searchContract.Name}\n {searchContract.Description}","[Server]", playerId, "Green");
                             else
                             {
@@ -111,6 +117,12 @@ namespace DSC
                     case ECommand.ReloadBlocksAndGrids:
                         // TODO delete grids/blocks from lists and research them
                         break;
+                    case ECommand.Players:
+
+                        break;
+                    case ECommand.Get_NPC:
+                        DeepSpaceCombat.Instance.GetNPC();
+                        break;
                     default:
                         messageHandled = false;
                         break;
@@ -124,6 +136,7 @@ namespace DSC
             //Below is to be replaced, but kept until finished.
 
             //else if (command.Equals("fg".Replace(" ", ""))) // find grids
+            
             if (lcommand[0].Equals("fg"))
             {   
                 long blockID = DSC_Blocks.Instance.AddBlockWithName("DSC_Start");
@@ -144,8 +157,8 @@ namespace DSC
                     DSC_Grids.Instance.GetGridWithName("DSC_End"), 10, "Find the Target!",
                     playerId);
 
-                    bool contract = searchContract.StartContract();
-                    if (contract)
+                    MyAddContractResultWrapper result = searchContract.StartContract();
+                    if (result.Success)
                         MyVisualScriptLogicProvider.SendChatMessage($"Contract Started: {searchContract.Name}\n {searchContract.Description}",
                             "[Server]", playerId, "Green");
                     else

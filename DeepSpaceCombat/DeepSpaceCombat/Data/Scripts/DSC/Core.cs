@@ -1,23 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-//using System.Text.RegularExpressions;
 using Sandbox.Definitions;
 using Sandbox.Game;
-//using Sandbox.Game.Entities;
+using Sandbox.Game.World;
 using Sandbox.ModAPI;
-//using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
-using VRage.Input;
-//using VRage.Input;
-//using VRage.Game.Entity;
-//using VRage.Game.ModAPI;
-//using VRage.ModAPI;
-//using VRageMath;
-//using VRage.ObjectBuilders;
-//using VRage.Collections;
-//using Sandbox.Game.SessionComponents;
+using VRage.Game.ModAPI;
 
 //Sandbox.ModAPI.Ingame.IMyTerminalBlock or Sandbox.ModAPI.IMyTerminalBlock ?
 
@@ -41,7 +30,7 @@ namespace DSC
                 return _isClientRegistered;
             }
         }
-        
+
         public bool IsServerRegistered // Is this instance a server
         {
             get
@@ -49,6 +38,8 @@ namespace DSC
                 return _isServerRegistered;
             }
         }
+
+        public long NPCId { get; private set; } // NPC to create contracts
 
         //Use a single command char to avoid unneccesary loops/code. 
         //private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
@@ -63,7 +54,7 @@ namespace DSC
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
-        private ulong counter=0;
+        private ulong counter = 0;
 
         #region ingame overrides
 
@@ -76,10 +67,10 @@ namespace DSC
         {
             base.Init(sessionComponent);
 
-            MyVisualScriptLogicProvider.SendChatMessage("Deep Space Combat initialized");
+            MyVisualScriptLogicProvider.SendChatMessage("Deep Space Combat initialized", "[Server]");
 
             // TODO Do we need this? used in ship speed, keep it? :P
-            if (MyAPIGateway.Utilities == null) {MyAPIGateway.Utilities = MyAPIUtilities.Static;}
+            if (MyAPIGateway.Utilities == null) { MyAPIGateway.Utilities = MyAPIUtilities.Static; }
             //Repeated in UpdateBeforeSimulation()
             //if (Instance == null) { Instance = this; }
 
@@ -180,22 +171,24 @@ namespace DSC
             //}
 
 
-            if(counter++ % 1800 == 0){
-                if (IsServerRegistered && _isInitialized)
+            if (counter++ % (60 * 20) == 0)
+            {
+                if (IsServerRegistered && _isInitialized && NPCId > 0)
                 {
                     try
                     {
                         long blockID = BlockRef.AddBlockWithName("DSC_Start");
                         long gridID = GridRef.AddGridWithName("DSC_End");
-                        long contract_id;
-                        bool contractAdded = MyVisualScriptLogicProvider.AddSearchContract(blockID, 5000, 0, 0, gridID, 50, out contract_id);
-                        if (contractAdded)
+                        DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000, blockID, 0, 60 * 10, gridID, 10, "Find the Target!", NPCId);
+                        MyAddContractResultWrapper result = searchContract.StartContract();
+
+                        if (result.Success)
                         {
-                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract added: " + contract_id.ToString(), "[Server]", 0);
+                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract added: " + result.ContractId.ToString(), "[Server]", 0);
                         }
                         else
                         {
-                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract failed: ", "[Server]", 0);
+                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract failed: ", "[Server]", 0, "RED");
                         }
                     }
                     catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("ERROR: " + ex.Message, "[Server]", 0); }
@@ -282,9 +275,26 @@ namespace DSC
             if (ServerLogger.IsActive)
                 VRage.Utils.MyLog.Default.WriteLine(string.Format("##Mod## DSC Server Logging File: {0}", ServerLogger.LogFile));
 
+            GetNPC();
+
             ServerLogger.Flush();
         }
 
+        public void GetNPC()
+        {
+            List<long> members = Util.GetNPCs();
+
+            if (members != null && members.Count > 0)
+            {
+                NPCId = members[0];
+                MyVisualScriptLogicProvider.SendChatMessage($"INFO: NPC faction found", "[Server]");
+            }
+            else
+            {
+                MyVisualScriptLogicProvider.SendChatMessage($"ERROR: Please add at least one NPC to the faction 'DSC' and write '#Get_NPC'", "[Server]");
+                ServerLogger.WriteInfo("Please add at least one NPC to the faction 'DSC' and write '#get npc'");
+            }
+        }
 
         #endregion
 

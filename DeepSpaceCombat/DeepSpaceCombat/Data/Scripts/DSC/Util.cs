@@ -1,8 +1,10 @@
-﻿using Sandbox.ModAPI;
+﻿using Sandbox.Game;
+using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using VRage.Game.ModAPI;
+using VRage.ModAPI;
 
 namespace DSC
 {
@@ -19,5 +21,14 @@ namespace DSC
 
             return null;
         }
+
+        public static List<long> GetNPCs()
+        {
+            List<long> res = MyVisualScriptLogicProvider.GetFactionMembers("DSC");
+            // TODO create faction and ann npc
+
+            return MyVisualScriptLogicProvider.GetFactionMembers("DSC");
+        }
+
     }
 }

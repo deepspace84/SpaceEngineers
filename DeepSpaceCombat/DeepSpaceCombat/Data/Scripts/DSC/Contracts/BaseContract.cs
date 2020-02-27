@@ -1,5 +1,6 @@
 ﻿using Sandbox.Game;
 using Sandbox.Game.Entities;
+using Sandbox.Game.GameSystems.BankingAndCurrency;
 using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace DSC
         /// TODO syncronize -> maybe different people want to create contract on same block/grid
         /// </summary>
         /// <returns></returns>
-        public bool StartContract()
+        public MyAddContractResultWrapper StartContract()
         {
             MyCubeBlock block = MyAPIGateway.Entities.GetEntityById(_startBlockId) as MyCubeBlock;
             MyCubeGrid grid = MyAPIGateway.Entities.GetEntityById(_targetGridId) as MyCubeGrid;
@@ -77,51 +78,51 @@ namespace DSC
             VRage.Collections.ListReader<MyCubeBlock> gridBlocks = grid.GetFatBlocks();
             Dictionary<MyCubeBlock, long> dictBlockUser = new Dictionary<MyCubeBlock, long>(); // dictionary for all cubeblocks and owner ids
 
-            
-
-            bool result = false;
-
-            IMyPlayer player = Util.FindPlayerById(_playerId);
-
-            if (player == null)
-            {
-                MyVisualScriptLogicProvider.SendChatMessage($"Player could not be found", "[Server]", _playerId);
-            }
+            MyAddContractResultWrapper result = new MyAddContractResultWrapper();
 
             long balance = -1;
-
             long blockOwnerID = block.OwnerId;
+            IMyPlayer player = Util.FindPlayerById(_playerId);
             try
             {
                 // change owner of block and then get the owner as player
                 block.ChangeOwner(_playerId, VRage.Game.MyOwnershipShareModeEnum.All);
                 foreach (MyCubeBlock b in gridBlocks)
                 {
-                    dictBlockUser.Add(b, b.OwnerId);
+                    dictBlockUser.Add(b, blockOwnerID);
                     b.ChangeOwner(_playerId, VRage.Game.MyOwnershipShareModeEnum.All);
                 }
-
-                // need to recalcualte owners 
+                
+                // need to recalcualte owners
                 grid.RecalculateOwners();
 
-                player.TryGetBalanceInfo(out balance);
+                if (player != null) // dont care about NPC
+                    player.TryGetBalanceInfo(out balance);
+                MyAPIGateway.Players.RequestChangeBalance(_playerId, _reward);
 
-                player.RequestChangeBalance(_reward);
-
-                result = MyAPIGateway.ContractSystem.AddContract(_contract).Success;
+                result = MyAPIGateway.ContractSystem.AddContract(_contract);
 
             }
             catch
             {
-                MyVisualScriptLogicProvider.SendChatMessage($"Something went wrong {_playerId} : {balance} ", "[Server]", _playerId);
+                if(player != null)
+                    MyVisualScriptLogicProvider.SendChatMessage($"Something went wrong {_playerId} : {balance} ", "[Server]", _playerId);
+                else
+                    MyVisualScriptLogicProvider.SendChatMessage($"Something went wrong {_playerId} : {balance} ", "[Server]");
+
                 if (balance >= 0)
                 {
                     long newBalance = -1;
-                    player.TryGetBalanceInfo(out newBalance);
+                    if (player != null) {
+                        player.TryGetBalanceInfo(out newBalance);
 
-                    if (newBalance > 0 && balance != newBalance)
-                        player.RequestChangeBalance(balance - newBalance);
-
+                        if (newBalance > 0 && balance != newBalance)
+                            player.RequestChangeBalance(balance - newBalance);
+                    }
+                    else
+                    {
+                        MyAPIGateway.Players.RequestChangeBalance(_playerId, -Reward);
+                    }
                 }
             }
             finally
