@@ -31,7 +31,8 @@ namespace DSC
             Save = 5,
             ReloadBlocksAndGrids = 6,
             Players = 7,
-            Get_NPC = 8
+            Get_NPC = 8,
+            Research = 9,
             //fg=2,
             //csc=3
         };
@@ -122,6 +123,9 @@ namespace DSC
                         break;
                     case ECommand.Get_NPC:
                         DeepSpaceCombat.Instance.GetNPC();
+                        break;
+                    case ECommand.Research:
+                        DeepSpaceCombat.Instance.Factions.Research(lcommand, playerId);
                         break;
                     default:
                         messageHandled = false;
