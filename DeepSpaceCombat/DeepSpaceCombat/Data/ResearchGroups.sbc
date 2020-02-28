@@ -1,1025 +1,199 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<ResearchGroups>
-		<!-- Delte original research groups -->
-		<!--
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="0" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="1" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="3" />
-			<Members>      
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="4" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="5" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="6" />
-			<Members>      
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="7" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="8" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-		<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="9" />
-			<Members>
-			</Members>
-		</ResearchGroup>    
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="13" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="14" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="15" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="16" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="17" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="19" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="21" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="22" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="23" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="24" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="25" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="26" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="27" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="28" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="29" />
-			<Members>
-			</Members>
-		</ResearchGroup>
-		-->
-		<!-- New difinitions -->
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L0" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockArmorBlock" />
-				<BlockId Type="MyObjectBuilder_Refinery" Subtype="Blast Furnace" />
-				<BlockId Type="MyObjectBuilder_Assembler" Subtype="BasicAssembler" />
-				<BlockId Type="MyObjectBuilder_SolarPanel" Subtype="LargeBlockSolarPanel" />
-				<BlockId Type="MyObjectBuilder_WindTurbine" Subtype="LargeBlockWindTurbine" />
-				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLockers" />
-				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallLight" />
-				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockSmallContainer" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L1" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockInteriorWall" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockArmorRoundSlope" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCouch" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCouchCorner" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockDesk" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockDeskCorner" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockDeskChairless" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockDeskChairlessCorner" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockBathroomOpen" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockBathroom" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockToilet" />		
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Shower" />
-				<BlockId Type="MyObjectBuilder_Kitchen" Subtype="LargeBlockKitchen" />
-				<BlockId Type="MyObjectBuilder_Planter" Subtype="LargeBlockPlanters" />
-				<BlockId Type="MyObjectBuilder_VendingMachine" Subtype="FoodDispenser" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L2" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorBlock" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorRoundSlope" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorRoundCorner" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorSlope2Base" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorCorner2Base" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L3" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Assembler" Subtype="LargeAssembler" />
-				<BlockId Type="MyObjectBuilder_Refinery" Subtype="LargeRefinery" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L4" />
-			<Members>
-			<BlockId Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEffectivenessModule" />
-			<BlockId Type="MyObjectBuilder_UpgradeModule" Subtype="LargeProductivityModule" />
-			<BlockId Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEnergyModule" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L5" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_BatteryBlock" Subtype="LargeBlockBatteryBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L6" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKitLarge" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L7" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MedicalRoom" Subtype="LargeMedicalRoom" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L8" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_AirVent" Subtype="" />
-				<BlockId Type="MyObjectBuilder_HydrogenEngine" Subtype="LargeHydrogenEngine" />
-				<BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L9" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Reactor" Subtype="LargeBlockSmallGenerator" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L10" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_GravityGenerator" Subtype="" />
-				<BlockId Type="MyObjectBuilder_GravityGeneratorSphere" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L11" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_JumpDrive" Subtype="LargeJumpDrive" />
-				<BlockId Type="MyObjectBuilder_SpaceBall" Subtype="SpaceBallLarge" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L12" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassLarge" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L13" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_InteriorTurret" Subtype="LargeInteriorTurret" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L14" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_LargeGatlingTurret" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L15" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L16" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_LandingGear" Subtype="LargeBlockLandingGear" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L17" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallAtmosphericThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L18" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeAtmosphericThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L19" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallHydrogenThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L20" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLargeContainer" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L21" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="Wheel1x1" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="RealWheel1x1" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="RealWheel1x1mirrored" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension1x1" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension1x1mirrored" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L22" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="Wheel3x3" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="RealWheel" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="RealWheelmirrored" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension3x3" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension3x3mirrored" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L23" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="Wheel5x5" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="RealWheel5x5" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="RealWheel5x5mirrored" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension5x5" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension5x5mirrored" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L24" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ReflectorLight" Subtype="RotatingLightLarge" />
-				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_1corner" />
-				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_2corner" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L25" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ReflectorLight" Subtype="LargeBlockFrontLight" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L26" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Drill" Subtype="LargeBlockDrill" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L27" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ShipWelder" Subtype="LargeShipWelder" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L28" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ShipGrinder" Subtype="LargeShipGrinder" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L29" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_TerminalBlock" Subtype="ControlPanel" />
-				<BlockId Type="MyObjectBuilder_ButtonPanel" Subtype="ButtonPanelLarge" />
-				<BlockId Type="MyObjectBuilder_CameraBlock" Subtype="LargeCameraBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L30" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ExtendedPistonBase" Subtype="LargePistonBase" />
-				<BlockId Type="MyObjectBuilder_PistonBase" Subtype="SmallPistonBase" />
-				<BlockId Type="MyObjectBuilder_PistonTop" Subtype="LargePistonTop" />
-				<BlockId Type="MyObjectBuilder_MotorStator" Subtype="LargeStator" />
-				<BlockId Type="MyObjectBuilder_MotorRotor" Subtype="LargeRotor" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L31" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MotorAdvancedStator" Subtype="LargeAdvancedStator" />
-				<BlockId Type="MyObjectBuilder_MotorAdvancedRotor" Subtype="LargeAdvancedRotor" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="32" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Projector" Subtype="LargeBlockConsole" />
-				<BlockId Type="MyObjectBuilder_Projector" Subtype="LargeProjector" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L33" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SensorBlock" Subtype="LargeBlockSensor" />
-				<BlockId Type="MyObjectBuilder_SoundBlock" Subtype="LargeBlockSoundBlock" />
-				<BlockId Type="MyObjectBuilder_Jukebox" Subtype="Jukebox" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L34" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MyProgrammableBlock" Subtype="LargeProgrammableBlock" />
-				<BlockId Type="MyObjectBuilder_TimerBlock" Subtype="TimerBlockLarge" />
-			</Members>
-		</ResearchGroup>		
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L35" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_1" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_2" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_Flat_1" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_Flat_2" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="LargeLCDPanel" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="LargeLCDPanelWide" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="LargeTextPanel" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="TransparentLCDLarge" />
-				<BlockId Type="MyObjectBuilder_LCDPanelsBlock" Subtype="LabEquipment" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L36" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Beacon" Subtype="LargeBlockBeacon" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L37" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_RadioAntenna" Subtype="LargeBlockRadioAntenna" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L38" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_LaserAntenna" Subtype="LargeBlockLaserAntenna" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L39" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Door" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L40" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_AirtightSlideDoor" Subtype="LargeBlockSlideDoor" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L41" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_AirtightHangarDoor" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L42" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_OreDetector" Subtype="LargeOreDetector" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L43" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Slope" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="WindowWall" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="WindowWallLeft" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="WindowWallRight" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Slope" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Inv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Inv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideLeft" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideLeftInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideRight" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideRightInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Face" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Face" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Side" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2FlatInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1FlatInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window3x3Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window3x3FlatInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window2x3Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window2x3FlatInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1SideInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeStairs" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="GratedStairs" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="GratedHalfStairs" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="GratedHalfStairsMirrored" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="RailingHalfRight" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="RailingHalfLeft" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L44" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeCoverWall" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeCoverWallHalf" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeInteriorPillar" />
-				<BlockId Type="MyObjectBuilder_Passage" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L45" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Reactor" Subtype="LargeBlockLargeGenerator" />	
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L46" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Warhead" Subtype="LargeWarhead" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L47" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpit" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitIndustrial" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitSeat" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="PassengerSeatLarge" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L48" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Gyro" Subtype="LargeBlockGyro" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L49" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="CockpitOpen" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitLarge" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L50" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeHydrogenThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L51" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L52" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L53" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Parachute" Subtype="LgParachute" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L54" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_LargeMissileTurret" Subtype="" />
-				<BlockId Type="MyObjectBuilder_Decoy" Subtype="LargeDecoy" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L55" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_RemoteControl" Subtype="LargeBlockRemoteControl" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L56" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_OxygenTank" Subtype="LargeHydrogenTank" />
-				<BlockId Type="MyObjectBuilder_OxygenTank" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L57" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Conveyor" Subtype="LargeBlockConveyor" />
-				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTube" />
-				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurved" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L58" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeBlockConveyorSorter" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L59" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ShipConnector" Subtype="Connector" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L60" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MergeBlock" Subtype="LargeShipMergeBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L61" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Ladder2" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L62" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SafeZoneBlock" Subtype="SafeZoneBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L63" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CryoChamber" Subtype="LargeBlockBed" />
-				<BlockId Type="MyObjectBuilder_CryoChamber" Subtype="LargeBlockCryoChamber" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L64" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_OxygenFarm" Subtype="LargeBlockOxygenFarm" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="L65" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Collector" Subtype="Collector" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S0" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorBlock" />
-				<BlockId Type="MyObjectBuilder_LandingGear" Subtype="SmallBlockLandingGear" />
-				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockSmallLight" />
-				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockSmallContainer" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension1x1" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension1x1mirrored" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallWheel1x1" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel1x1" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel1x1mirrored" />
-				<BlockId Type="MyObjectBuilder_SolarPanel" Subtype="SmallBlockSolarPanel" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpit" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S1" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpitIndustrial" />
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="PassengerSeatSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S2" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ReflectorLight" Subtype="SmallBlockFrontLight" />
-				<BlockId Type="MyObjectBuilder_ReflectorLight" Subtype="RotatingLightSmall" />
-				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_1corner" />
-				<BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_2corner" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S3" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundSlope" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundCorner" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S4" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallHeavyBlockArmorRoundCorner" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallHeavyBlockArmorRoundSlope" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallHeavyBlockArmorBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S5" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockMediumContainer" />
-			</Members>
-		</ResearchGroup>		
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S6" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheelmirrored" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallWheel3x3" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension3x3" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension3x3mirrored" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S7" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension5x5" />
-				<BlockId Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension5x5mirrored" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel5x5" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel5x5mirrored" />
-				<BlockId Type="MyObjectBuilder_Wheel" Subtype="SmallWheel5x5" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S8" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Cockpit" Subtype="DBSmallBlockFighterCockpit" />
-				<BlockId Type="MyObjectBuilder_RemoteControl" Subtype="SmallBlockRemoteControl" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S9" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ButtonPanel" Subtype="ButtonPanelSmall" />
-				<BlockId Type="MyObjectBuilder_CameraBlock" Subtype="SmallCameraBlock" />
-				<BlockId Type="MyObjectBuilder_TerminalBlock" Subtype="SmallControlPanel" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S10" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SensorBlock" Subtype="SmallBlockSensor" />
-				<BlockId Type="MyObjectBuilder_SoundBlock" Subtype="SmallBlockSoundBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S11" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MyProgrammableBlock" Subtype="SmallProgrammableBlock" />
-				<BlockId Type="MyObjectBuilder_TimerBlock" Subtype="TimerBlockSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S12" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_OreDetector" Subtype="SmallBlockOreDetector" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S13" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Beacon" Subtype="SmallBlockBeacon" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S14" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_RadioAntenna" Subtype="SmallBlockRadioAntenna" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S15" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_LaserAntenna" Subtype="SmallBlockLaserAntenna" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S16" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockSmallBatteryBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S17" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockBatteryBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S18" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKit" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S19" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_AirVent" Subtype="SmallAirVent" />
-				<BlockId Type="MyObjectBuilder_HydrogenEngine" Subtype="SmallHydrogenEngine" />
-				<BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="OxygenGeneratorSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S20" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_OxygenTank" Subtype="SmallHydrogenTank" />
-				<BlockId Type="MyObjectBuilder_OxygenTank" Subtype="OxygenTankSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S21" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MotorRotor" Subtype="SmallRotor" />
-				<BlockId Type="MyObjectBuilder_MotorStator" Subtype="SmallStator" />
-				<BlockId Type="MyObjectBuilder_PistonBase" Subtype="SmallPistonBase" />
-				<BlockId Type="MyObjectBuilder_PistonTop" Subtype="SmallPistonTop" />
-				<BlockId Type="MyObjectBuilder_ExtendedPistonBase" Subtype="SmallPistonBase" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S22" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MotorAdvancedStator" Subtype="SmallAdvancedStator" />
-				<BlockId Type="MyObjectBuilder_MotorAdvancedRotor" Subtype="SmallAdvancedRotor" />
-			</Members>
-		</ResearchGroup>		
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S23" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_MergeBlock" Subtype="SmallShipMergeBlock" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S24" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockLargeContainer" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S25" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Conveyor" Subtype="SmallBlockConveyor" />
-				<BlockId Type="MyObjectBuilder_Conveyor" Subtype="SmallShipConveyorHub" />
-				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmall" />
-				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmallCurved" />
-				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeMedium" />
-				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurvedMedium" />
-				<BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorFrameMedium" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S26" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallBlockConveyorSorter" />
-				<BlockId Type="MyObjectBuilder_ConveyorSorter" Subtype="MediumBlockConveyorSorter" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S27" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorMedium" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">		
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S28" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Collector" Subtype="CollectorSmall" />
-				<!-- ConnectorSmall = Ejector -->
-				<BlockId Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S29" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Reactor" Subtype="SmallBlockSmallGenerator" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S30" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Reactor" Subtype="SmallBlockLargeGenerator" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S31" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Warhead" Subtype="SmallWarhead" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S32" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallAtmosphericThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S33" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeAtmosphericThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S34" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallHydrogenThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S35" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeHydrogenThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S36" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S37" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeThrust" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S38" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Gyro" Subtype="SmallBlockGyro" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S39" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CryoChamber" Subtype="SmallBlockCryoChamber" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S40" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Parachute" Subtype="SmParachute" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S41" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_1" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_2" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_Flat_1" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_Flat_2" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="SmallLCDPanel" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="SmallLCDPanelWide" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="SmallTextPanel" />
-				<BlockId Type="MyObjectBuilder_TextPanel" Subtype="TransparentLCDSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S42" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Drill" Subtype="SmallBlockDrill" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S43" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ShipWelder" Subtype="SmallShipWelder" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S44" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_ShipGrinder" Subtype="SmallShipGrinder" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S45" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SmallGatlingGun" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">		
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S46" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S47" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SmallMissileLauncher" Subtype="" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S48" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Decoy" Subtype="SmallDecoy" />
-				<BlockId Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallMissileTurret" />
-				<BlockId Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallRocketLauncherReload" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S49" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Projector" Subtype="SmallProjector" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S50" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Slope" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Inv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Face" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideLeft" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideLeftInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideRight" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideRightInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Slope" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Face" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Side" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1SideInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Inv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2FlatInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1FlatInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow3x3Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow3x3FlatInv" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow2x3Flat" />
-				<BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow2x3FlatInv" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S51" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_Ladder2" Subtype="LadderSmall" />
-			</Members>
-		</ResearchGroup>
-		<ResearchGroup xsi:type="ResearchGroup">
-			<Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="S52" />
-			<Members>
-				<BlockId Type="MyObjectBuilder_SpaceBall" Subtype="SpaceBallSmall" />
-				<BlockId Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassSmall" />
-			</Members>
-		</ResearchGroup>
-	</ResearchGroups>
+  <ResearchGroups>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="0" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Assembler" Subtype="BasicAssembler" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="1" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockArmorBlock" />
+        <BlockId Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorBlock" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="3" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallLight" />
+        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockSmallLight" />
+        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_1corner" />
+        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_2corner" />
+        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_1corner" />
+        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_2corner" />        
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="4" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Assembler" Subtype="LargeAssembler" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="5" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockInteriorWall" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="6" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Beacon" Subtype="LargeBlockBeacon" />
+        <BlockId Type="MyObjectBuilder_Beacon" Subtype="SmallBlockBeacon" />        
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="7" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Reactor" Subtype="SmallBlockSmallGenerator" />
+        <BlockId Type="MyObjectBuilder_Reactor" Subtype="SmallBlockLargeGenerator" />
+        <BlockId Type="MyObjectBuilder_Reactor" Subtype="LargeBlockSmallGenerator" />
+        <BlockId Type="MyObjectBuilder_Reactor" Subtype="LargeBlockLargeGenerator" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="8" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_LargeGatlingTurret" Subtype="" />
+        <BlockId Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret" />
+        <BlockId Type="MyObjectBuilder_LargeMissileTurret" Subtype="" />
+        <BlockId Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallMissileTurret" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="9" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Refinery" Subtype="Blast Furnace" enabled = "false"/>
+      </Members>
+    </ResearchGroup>    
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="13" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_RadioAntenna" Subtype="SmallBlockRadioAntenna" />
+        <BlockId Type="MyObjectBuilder_RadioAntenna" Subtype="LargeBlockRadioAntenna" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="14" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_LandingGear" Subtype="LargeBlockLandingGear" />
+        <BlockId Type="MyObjectBuilder_LandingGear" Subtype="SmallBlockLandingGear" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="15" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="OxygenGeneratorSmall" />
+        <BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="" />
+        <BlockId Type="MyObjectBuilder_OxygenFarm" Subtype="LargeBlockOxygenFarm" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="16" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpit" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitSeat" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpit" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="DBSmallBlockFighterCockpit" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="CockpitOpen" />
+        <BlockId Type="MyObjectBuilder_RemoteControl" Subtype="LargeBlockRemoteControl" />
+        <BlockId Type="MyObjectBuilder_RemoteControl" Subtype="SmallBlockRemoteControl" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitIndustrial" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpitIndustrial" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitSmall" />
+        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitLarge" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="17" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher" />
+        <BlockId Type="MyObjectBuilder_SmallMissileLauncher" Subtype="" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="19" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="OxygenGeneratorSmall" />
+        <BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="" enabled = "false"/>
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="21" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_OxygenTank" Subtype="LargeHydrogenTank" />
+        <BlockId Type="MyObjectBuilder_OxygenTank" Subtype="SmallHydrogenTank" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="22" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_BatteryBlock" Subtype="LargeBlockBatteryBlock" />
+        <BlockId Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockBatteryBlock" />
+        <BlockId Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockSmallBatteryBlock" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="23" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Refinery" Subtype="LargeRefinery" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="24" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockSmallContainer" />
+        <BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockMediumContainer" />
+        <BlockId Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockLargeContainer" />
+        <BlockId Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockSmallContainer" />
+        <BlockId Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLargeContainer" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="25" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Conveyor" Subtype="SmallBlockConveyor" />
+        <BlockId Type="MyObjectBuilder_Conveyor" Subtype="LargeBlockConveyor" />
+        <BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTube" />
+        <BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurved" />
+        <BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmall" />
+        <BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmallCurved" />
+        <BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeMedium" />
+        <BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurvedMedium" />
+        <BlockId Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorFrameMedium" />
+        <BlockId Type="MyObjectBuilder_Conveyor" Subtype="SmallShipConveyorHub" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="26" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_GravityGenerator" Subtype="" />
+        <BlockId Type="MyObjectBuilder_GravityGeneratorSphere" Subtype="" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="27" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_SolarPanel" Subtype="LargeBlockSolarPanel" />
+        <BlockId Type="MyObjectBuilder_SolarPanel" Subtype="SmallBlockSolarPanel" />
+        <BlockId Type="MyObjectBuilder_WindTurbine" Subtype="LargeBlockWindTurbine" />
+      </Members>
+    </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="28" enabled = "false"/>
+      <Members>
+        <BlockId Type="MyObjectBuilder_Door" Subtype="" />
+        <BlockId Type="MyObjectBuilder_AirtightSlideDoor" Subtype="LargeBlockSlideDoor" />
+      </Members>
+    </ResearchGroup>
+      <ResearchGroup xsi:type="ResearchGroup">
+          <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="29" enabled = "false"/>
+          <Members>
+              <BlockId Type="MyObjectBuilder_SoundBlock" Subtype="SmallBlockSoundBlock" />
+              <BlockId Type="MyObjectBuilder_SoundBlock" Subtype="LargeBlockSoundBlock" />
+          </Members>
+      </ResearchGroup>
+  </ResearchGroups>
 </Definitions>

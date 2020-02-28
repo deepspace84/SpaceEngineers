@@ -1,1793 +1,1807 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<ResearchBlocks>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_AirtightHangarDoor" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L40</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_AirtightSlideDoor" Subtype="LargeBlockSlideDoor" />
-			<UnlockedByGroups>
-				<GroupSubtype>L39</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_AirVent" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L7</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Assembler" Subtype="LargeAssembler" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_BatteryBlock" Subtype="LargeBlockBatteryBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Beacon" Subtype="LargeBlockBeacon" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ButtonPanel" Subtype="ButtonPanelLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CameraBlock" Subtype="LargeCameraBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>L5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLockers" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLargeContainer" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpit" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitIndustrial" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitSeat" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockDesk" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockDeskCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCouch" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCouchCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockBathroomOpen" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockBathroom" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockToilet" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="CockpitOpen" />
-			<UnlockedByGroups>
-				<GroupSubtype>L47</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L47</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="PassengerSeatLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Collector" Subtype="Collector" />
-			<UnlockedByGroups>
-				<GroupSubtype>L59</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Conveyor" Subtype="LargeBlockConveyor" />
-			<UnlockedByGroups>
-				<GroupSubtype>L20</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTube" />
-			<UnlockedByGroups>
-				<GroupSubtype>L20</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurved" />
-			<UnlockedByGroups>
-				<GroupSubtype>L20</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeBlockConveyorSorter" />
-			<UnlockedByGroups>
-				<GroupSubtype>L57</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CryoChamber" Subtype="LargeBlockBed" />
-			<UnlockedByGroups>
-				<GroupSubtype>L7</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CryoChamber" Subtype="LargeBlockCryoChamber" />
-			<UnlockedByGroups>
-				<GroupSubtype>L7</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Catwalk" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkStraight" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkWall" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkRailingEnd" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkRailingHalfLeft" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkRailingHalfRight" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="GratedStairs" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="GratedHalfStairs" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="GratedHalfStairsMirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockArmorRoundSlope" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockInteriorWall" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeStairs" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeRamp" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalk" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalk2Sides" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalkCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalkPlate" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeCoverWall" />
-			<UnlockedByGroups>
-				<GroupSubtype>L43</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeCoverWallHalf" />
-			<UnlockedByGroups>
-				<GroupSubtype>L43</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeInteriorPillar" />
-			<UnlockedByGroups>
-				<GroupSubtype>L43</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeWindowSquare" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeWindowEdge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingStraight" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingDouble" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingDiagonal" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingHalfLeft" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingHalfRight" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ReflectorLight" Subtype="RotatingLightLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Shower" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockDeskChairless" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockDeskChairlessCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Slope" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="WindowWall" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="WindowWallLeft" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="WindowWallRight" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Slope" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Inv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Inv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideLeft" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideLeftInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideRight" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideRightInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Face" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Face" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Side" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window3x3Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window3x3FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window2x3Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window2x3FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1SideInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorRoundSlope" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeHeavyBlockArmorRoundCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>		
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Decoy" Subtype="LargeDecoy" />
-			<UnlockedByGroups>
-				<GroupSubtype>L15</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Door" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Drill" Subtype="LargeBlockDrill" />
-			<UnlockedByGroups>
-				<GroupSubtype>L20</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_PistonBase" Subtype="LargePistonBase" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ExtendedPistonBase" Subtype="LargePistonBase" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_GravityGenerator" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L8</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_GravityGeneratorSphere" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L8</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Gyro" Subtype="LargeBlockGyro" />
-			<UnlockedByGroups>
-				<GroupSubtype>L17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_HydrogenEngine" Subtype="LargeHydrogenEngine" />
-			<UnlockedByGroups>
-				<GroupSubtype>L7</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_1corner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_2corner" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_InteriorTurret" Subtype="LargeInteriorTurret" />
-			<UnlockedByGroups>
-				<GroupSubtype>L5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Jukebox" Subtype="Jukebox" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_JumpDrive" Subtype="LargeJumpDrive" />
-			<UnlockedByGroups>
-				<GroupSubtype>L10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Kitchen" Subtype="LargeBlockKitchen" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Ladder2" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L39</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LandingGear" Subtype="LargeBlockLandingGear" />
-			<UnlockedByGroups>
-				<GroupSubtype>L5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LargeGatlingTurret" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L14</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LargeMissileTurret" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L15</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LaserAntenna" Subtype="LargeBlockLaserAntenna" />
-			<UnlockedByGroups>
-				<GroupSubtype>L37</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LCDPanelsBlock" Subtype="LabEquipment" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LCDPanelsBlock" Subtype="MedicalStation" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OreDetector" Subtype="LargeOreDetector" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OxygenFarm" Subtype="LargeBlockOxygenFarm" />
-			<UnlockedByGroups>
-				<GroupSubtype>L56</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OxygenGenerator" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L7</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OxygenTank" Subtype="LargeHydrogenTank" />
-			<UnlockedByGroups>
-				<GroupSubtype>L8</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OxygenTank" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L8</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OxygenTank" Subtype="SmallHydrogenTank" />
-			<UnlockedByGroups>
-				<GroupSubtype>S19</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MedicalRoom" Subtype="LargeMedicalRoom" />
-			<UnlockedByGroups>
-				<GroupSubtype>L6</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MergeBlock" Subtype="LargeShipMergeBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>L30</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorAdvancedStator" Subtype="LargeAdvancedStator" />
-			<UnlockedByGroups>
-				<GroupSubtype>L30</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorAdvancedRotor" Subtype="LargeAdvancedRotor" />
-			<UnlockedByGroups>
-				<GroupSubtype>L30</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorStator" Subtype="LargeStator" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorRotor" Subtype="LargeRotor" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension1x1" />
-			<UnlockedByGroups>
-				<GroupSubtype>L16</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension3x3" />
-			<UnlockedByGroups>
-				<GroupSubtype>L21</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension5x5" />
-			<UnlockedByGroups>
-				<GroupSubtype>L22</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension1x1mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>L16</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension3x3mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>L21</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension5x5mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>L22</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MyProgrammableBlock" Subtype="LargeProgrammableBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Parachute" Subtype="LgParachute" />
-			<UnlockedByGroups>
-				<GroupSubtype>L48</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Passage" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>L43</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_PistonTop" Subtype="LargePistonTop" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Planter" Subtype="LargeBlockPlanters" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Projector" Subtype="LargeBlockConsole" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Projector" Subtype="LargeProjector" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_RadioAntenna" Subtype="LargeBlockRadioAntenna" />
-			<UnlockedByGroups>
-				<GroupSubtype>L36</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Reactor" Subtype="LargeBlockSmallGenerator" />
-			<UnlockedByGroups>
-				<GroupSubtype>L8</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Reactor" Subtype="LargeBlockLargeGenerator" />
-			<UnlockedByGroups>
-				<GroupSubtype>L9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Refinery" Subtype="LargeRefinery" />
-			<UnlockedByGroups>
-				<GroupSubtype>L0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ReflectorLight" Subtype="LargeBlockFrontLight" />
-			<UnlockedByGroups>
-				<GroupSubtype>L24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_RemoteControl" Subtype="LargeBlockRemoteControl" />
-			<UnlockedByGroups>
-				<GroupSubtype>L49</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SafeZoneBlock" Subtype="SafeZoneBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>L45</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SensorBlock" Subtype="LargeBlockSensor" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ShipConnector" Subtype="Connector" />
-			<UnlockedByGroups>
-				<GroupSubtype>L57</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ShipGrinder" Subtype="LargeShipGrinder" />
-			<UnlockedByGroups>
-				<GroupSubtype>L27</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ShipWelder" Subtype="LargeShipWelder" />
-			<UnlockedByGroups>
-				<GroupSubtype>L26</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher" />
-			<UnlockedByGroups>
-				<GroupSubtype>L14</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SoundBlock" Subtype="LargeBlockSoundBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>L29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SpaceBall" Subtype="SpaceBallLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKitLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SurvivalKit" Subtype="SurvivalKit" />
-			<UnlockedByGroups>
-				<GroupSubtype>S17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TerminalBlock" Subtype="ControlPanel" />
-			<UnlockedByGroups>
-				<GroupSubtype>L5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_1" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_2" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_Flat_1" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_Flat_2" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="LargeLCDPanel" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="LargeLCDPanelWide" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="LargeTextPanel" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="TransparentLCDLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallAtmosphericThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>L16</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeAtmosphericThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>L17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallHydrogenThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>L18</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeHydrogenThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>L19</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TimerBlock" Subtype="TimerBlockLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEnergyModule" />
-			<UnlockedByGroups>
-				<GroupSubtype>L3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_UpgradeModule" Subtype="LargeProductivityModule" />
-			<UnlockedByGroups>
-				<GroupSubtype>L3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEffectivenessModule" />
-			<UnlockedByGroups>
-				<GroupSubtype>L3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_VendingMachine" Subtype="FoodDispenser" />
-			<UnlockedByGroups>
-				<GroupSubtype>L1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassLarge" />
-			<UnlockedByGroups>
-				<GroupSubtype>L10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Warhead" Subtype="LargeWarhead" />
-			<UnlockedByGroups>
-				<GroupSubtype>L45</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel1x1" />
-			<UnlockedByGroups>
-				<GroupSubtype>L16</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel" />
-			<UnlockedByGroups>
-				<GroupSubtype>L21</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel5x5" />
-			<UnlockedByGroups>
-				<GroupSubtype>L22</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="Wheel1x1" />
-			<UnlockedByGroups>
-				<GroupSubtype>L16</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="Wheel3x3" />
-			<UnlockedByGroups>
-				<GroupSubtype>L21</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="Wheel5x5" />
-			<UnlockedByGroups>
-				<GroupSubtype>L22</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel1x1mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>L16</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="RealWheelmirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>L21</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel5x5mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>L22</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_AirVent" Subtype="SmallAirVent" />
-			<UnlockedByGroups>
-				<GroupSubtype>S17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockSmallBatteryBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockBatteryBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>S16</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Beacon" Subtype="SmallBlockBeacon" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ButtonPanel" Subtype="ButtonPanelSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CameraBlock" Subtype="SmallCameraBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockMediumContainer" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CargoContainer" Subtype="SmallBlockLargeContainer" />
-			<UnlockedByGroups>
-				<GroupSubtype>S5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="DBSmallBlockFighterCockpit" />
-			<UnlockedByGroups>
-				<GroupSubtype>S1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpitIndustrial" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Cockpit" Subtype="PassengerSeatSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Collector" Subtype="CollectorSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S27</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Conveyor" Subtype="SmallBlockConveyor" />
-			<UnlockedByGroups>
-				<GroupSubtype>S24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Conveyor" Subtype="SmallShipConveyorHub" />
-			<UnlockedByGroups>
-				<GroupSubtype>S24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmallCurved" />
-			<UnlockedByGroups>
-				<GroupSubtype>S24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeMedium" />
-			<UnlockedByGroups>
-				<GroupSubtype>S24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurvedMedium" />
-			<UnlockedByGroups>
-				<GroupSubtype>S24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorFrameMedium" />
-			<UnlockedByGroups>
-				<GroupSubtype>S24</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallBlockConveyorSorter" />
-			<UnlockedByGroups>
-				<GroupSubtype>S25</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ConveyorSorter" Subtype="MediumBlockConveyorSorter" />
-			<UnlockedByGroups>
-				<GroupSubtype>S25</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CryoChamber" Subtype="SmallBlockCryoChamber" />
-			<UnlockedByGroups>
-				<GroupSubtype>S18</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundSlope" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundCornerInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>		
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallHeavyBlockArmorBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallHeavyBlockArmorRoundSlope" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallHeavyBlockArmorRoundCorner" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>	
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Slope" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Inv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Face" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideLeft" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideLeftInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideRight" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideRightInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Slope" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Face" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Side" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1SideInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Inv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow3x3Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow3x3FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow2x3Flat" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow2x3FlatInv" />
-			<UnlockedByGroups>
-				<GroupSubtype>S3</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Decoy" Subtype="SmallDecoy" />
-			<UnlockedByGroups>
-				<GroupSubtype>S47</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Drill" Subtype="SmallBlockDrill" />
-			<UnlockedByGroups>
-				<GroupSubtype>S5</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ExtendedPistonBase" Subtype="SmallPistonBase" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Gyro" Subtype="SmallBlockGyro" />
-			<UnlockedByGroups>
-				<GroupSubtype>S32</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_HydrogenEngine" Subtype="SmallHydrogenEngine" />
-			<UnlockedByGroups>
-				<GroupSubtype>S17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_1corner" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_2corner" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Ladder2" Subtype="LadderSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret" />
-			<UnlockedByGroups>
-				<GroupSubtype>S45</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallMissileTurret" />
-			<UnlockedByGroups>
-				<GroupSubtype>S47</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_LaserAntenna" Subtype="SmallBlockLaserAntenna" />
-			<UnlockedByGroups>
-				<GroupSubtype>S14</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MergeBlock" Subtype="SmallShipMergeBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>S22</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorAdvancedStator" Subtype="SmallAdvancedStator" />
-			<UnlockedByGroups>
-				<GroupSubtype>S21</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorAdvancedRotor" Subtype="SmallAdvancedRotor" />
-			<UnlockedByGroups>
-				<GroupSubtype>S21</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorRotor" Subtype="SmallRotor" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorStator" Subtype="SmallStator" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension3x3" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension5x5" />
-			<UnlockedByGroups>
-				<GroupSubtype>S6</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension3x3mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension5x5mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>S6</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_MyProgrammableBlock" Subtype="SmallProgrammableBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OreDetector" Subtype="SmallBlockOreDetector" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OxygenGenerator" Subtype="OxygenGeneratorSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_OxygenTank" Subtype="OxygenTankSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S19</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Parachute" Subtype="SmParachute" />
-			<UnlockedByGroups>
-				<GroupSubtype>S38</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_PistonBase" Subtype="SmallPistonBase" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_PistonTop" Subtype="SmallPistonTop" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Projector" Subtype="SmallProjector" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_RadioAntenna" Subtype="SmallBlockRadioAntenna" />
-			<UnlockedByGroups>
-				<GroupSubtype>S13</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Reactor" Subtype="SmallBlockSmallGenerator" />
-			<UnlockedByGroups>
-				<GroupSubtype>S19</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Reactor" Subtype="SmallBlockLargeGenerator" />
-			<UnlockedByGroups>
-				<GroupSubtype>S29</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ReflectorLight" Subtype="SmallBlockFrontLight" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ReflectorLight" Subtype="RotatingLightSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_RemoteControl" Subtype="SmallBlockRemoteControl" />
-			<UnlockedByGroups>
-				<GroupSubtype>S1</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SensorBlock" Subtype="SmallBlockSensor" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorMedium" />
-			<UnlockedByGroups>
-				<GroupSubtype>S25</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S27</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ShipGrinder" Subtype="SmallShipGrinder" />
-			<UnlockedByGroups>
-				<GroupSubtype>S43</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_ShipWelder" Subtype="SmallShipWelder" />
-			<UnlockedByGroups>
-				<GroupSubtype>S42</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SmallGatlingGun" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>S17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SmallMissileLauncher" Subtype="" />
-			<UnlockedByGroups>
-				<GroupSubtype>S45</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallRocketLauncherReload" />
-			<UnlockedByGroups>
-				<GroupSubtype>S47</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SoundBlock" Subtype="SmallBlockSoundBlock" />
-			<UnlockedByGroups>
-				<GroupSubtype>S9</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_SpaceBall" Subtype="SpaceBallSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S19</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TerminalBlock" Subtype="SmallControlPanel" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_1" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_2" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_Flat_1" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_Flat_2" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="SmallLCDPanel" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="SmallLCDPanelWide" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="SmallTextPanel" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TextPanel" Subtype="TransparentLCDSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallAtmosphericThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>S17</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeAtmosphericThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>S32</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>S35</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>S36</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_TimerBlock" Subtype="TimerBlockSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S10</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeHydrogenThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>S34</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallHydrogenThrust" />
-			<UnlockedByGroups>
-				<GroupSubtype>S33</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassSmall" />
-			<UnlockedByGroups>
-				<GroupSubtype>S19</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Warhead" Subtype="SmallWarhead" />
-			<UnlockedByGroups>
-				<GroupSubtype>S30</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel5x5" />
-			<UnlockedByGroups>
-				<GroupSubtype>S6</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheelmirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel5x5mirrored" />
-			<UnlockedByGroups>
-				<GroupSubtype>S6</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="SmallWheel3x3" />
-			<UnlockedByGroups>
-				<GroupSubtype>S0</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-		<ResearchBlock xsi:type="ResearchBlock">
-			<Id Type="MyObjectBuilder_Wheel" Subtype="SmallWheel5x5" />
-			<UnlockedByGroups>
-				<GroupSubtype>S6</GroupSubtype>
-			</UnlockedByGroups>
-		</ResearchBlock>
-	</ResearchBlocks>
+  <ResearchBlocks>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_BatteryBlock" Subtype="LargeBlockBatteryBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockBatteryBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_BatteryBlock" Subtype="SmallBlockSmallBatteryBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockArmorRoundSlope" />      
+      <UnlockedByGroups>
+        <GroupSubtype>1</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundSlope" />      
+      <UnlockedByGroups>
+        <GroupSubtype>1</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockArmorRoundCorner" />
+      <UnlockedByGroups>
+        <GroupSubtype>1</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundCorner" />
+      <UnlockedByGroups>
+        <GroupSubtype>1</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockArmorRoundCornerInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>1</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallBlockArmorRoundCornerInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>1</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TerminalBlock" Subtype="ControlPanel" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MyProgrammableBlock" Subtype="SmallProgrammableBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TerminalBlock" Subtype="SmallControlPanel" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_LargeGatlingTurret" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_LargeMissileTurret" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallMissileTurret" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_InteriorTurret" Subtype="LargeInteriorTurret" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Passage" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Ladder2" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Ladder2" Subtype="LadderSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Door" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_RadioAntenna" Subtype="LargeBlockRadioAntenna" />
+      <UnlockedByGroups>
+        <GroupSubtype>6</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Beacon" Subtype="LargeBlockBeacon" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Beacon" Subtype="SmallBlockBeacon" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_SafeZoneBlock" Subtype="SafeZoneBlock" />
+        <UnlockedByGroups>
+            <GroupSubtype>26</GroupSubtype>            
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ReflectorLight" Subtype="LargeBlockFrontLight" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_InteriorLight" Subtype="SmallLight" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockSmallLight" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_1corner" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_2corner" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_1corner" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_2corner" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeWindowSquare" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeWindowEdge" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeStairs" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeRamp" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalk" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalk2Sides" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalkCorner" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeSteelCatwalkPlate" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeCoverWall" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeCoverWallHalf" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Warhead" Subtype="LargeWarhead" />
+      <UnlockedByGroups>
+        <GroupSubtype>7</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Warhead" Subtype="SmallWarhead" />
+      <UnlockedByGroups>
+        <GroupSubtype>7</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Decoy" Subtype="LargeDecoy" />
+      <UnlockedByGroups>
+        <GroupSubtype>8</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Decoy" Subtype="SmallDecoy" />
+      <UnlockedByGroups>
+        <GroupSubtype>8</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeInteriorPillar" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Projector" Subtype="LargeProjector" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Projector" Subtype="SmallProjector" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Refinery" Subtype="LargeRefinery" />
+      <UnlockedByGroups>
+        <GroupSubtype>9</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Assembler" Subtype="LargeAssembler" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+        <GroupSubtype>9</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_OreDetector" Subtype="LargeOreDetector" />
+      <UnlockedByGroups>
+        <GroupSubtype>9</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MedicalRoom" Subtype="LargeMedicalRoom" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_GravityGenerator" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>        
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_GravityGeneratorSphere" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>        
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_JumpDrive" Subtype="LargeJumpDrive" />
+      <UnlockedByGroups>
+        <GroupSubtype>26</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpit" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitSeat" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpit" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="DBSmallBlockFighterCockpit" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="CockpitOpen" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="PassengerSeatLarge" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="PassengerSeatSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CryoChamber" Subtype="LargeBlockCryoChamber" />
+      <UnlockedByGroups>
+        <GroupSubtype>15</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CryoChamber" Subtype="SmallBlockCryoChamber" />
+      <UnlockedByGroups>
+        <GroupSubtype>15</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ReflectorLight" Subtype="SmallBlockFrontLight" />
+      <UnlockedByGroups>
+        <GroupSubtype>0</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SmallMissileLauncher" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallRocketLauncherReload" />
+      <UnlockedByGroups>
+        <GroupSubtype>17</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SmallGatlingGun" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Drill" Subtype="SmallBlockDrill" />
+      <UnlockedByGroups>
+        <GroupSubtype>9</GroupSubtype>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Drill" Subtype="LargeBlockDrill" />
+      <UnlockedByGroups>
+        <GroupSubtype>9</GroupSubtype>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_OreDetector" Subtype="SmallBlockOreDetector" />
+      <UnlockedByGroups>
+        <GroupSubtype>9</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SensorBlock" Subtype="SmallBlockSensor" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SensorBlock" Subtype="LargeBlockSensor" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SoundBlock" Subtype="SmallBlockSoundBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SoundBlock" Subtype="LargeBlockSoundBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="SmallTextPanel" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="SmallLCDPanelWide" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="SmallLCDPanel" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_1" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_2" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_Flat_1" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="LargeBlockCorner_LCD_Flat_2" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_1" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_2" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_Flat_1" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="SmallBlockCorner_LCD_Flat_2" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_OxygenTank" Subtype="OxygenTankSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>15</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="LargeTextPanel" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="LargeLCDPanel" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TextPanel" Subtype="LargeLCDPanelWide" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_RadioAntenna" Subtype="SmallBlockRadioAntenna" />
+      <UnlockedByGroups>
+        <GroupSubtype>6</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_RemoteControl" Subtype="LargeBlockRemoteControl" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_RemoteControl" Subtype="SmallBlockRemoteControl" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_AirVent" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>15</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_AirVent" Subtype="SmallAirVent" />
+      <UnlockedByGroups>
+        <GroupSubtype>15</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_OxygenTank" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>15</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_OxygenTank" Subtype="LargeHydrogenTank" />
+      <UnlockedByGroups>
+        <GroupSubtype>19</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_OxygenTank" Subtype="SmallHydrogenTank" />
+      <UnlockedByGroups>
+        <GroupSubtype>19</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_UpgradeModule" Subtype="LargeProductivityModule" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+        <GroupSubtype>23</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEffectivenessModule" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+        <GroupSubtype>23</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_UpgradeModule" Subtype="LargeEnergyModule" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+        <GroupSubtype>23</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeHydrogenThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>21</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallHydrogenThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>21</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeHydrogenThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>21</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallHydrogenThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>21</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockLargeAtmosphericThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="LargeBlockSmallAtmosphericThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockLargeAtmosphericThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Thrust" Subtype="SmallBlockSmallAtmosphericThrust" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CameraBlock" Subtype="SmallCameraBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CameraBlock" Subtype="LargeCameraBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Gyro" Subtype="LargeBlockGyro" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Gyro" Subtype="SmallBlockGyro" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Reactor" Subtype="SmallBlockSmallGenerator" />
+      <UnlockedByGroups>
+        <GroupSubtype>23</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Reactor" Subtype="SmallBlockLargeGenerator" />
+      <UnlockedByGroups>
+        <GroupSubtype>23</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Reactor" Subtype="LargeBlockSmallGenerator" />
+      <UnlockedByGroups>
+        <GroupSubtype>23</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Reactor" Subtype="LargeBlockLargeGenerator" />
+      <UnlockedByGroups>
+        <GroupSubtype>23</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_HydrogenEngine" Subtype="LargeHydrogenEngine" />
+      <UnlockedByGroups>
+        <GroupSubtype>19</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_HydrogenEngine" Subtype="SmallHydrogenEngine" />
+      <UnlockedByGroups>
+        <GroupSubtype>19</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_PistonBase" Subtype="LargePistonBase" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ExtendedPistonBase" Subtype="LargePistonBase" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_PistonTop" Subtype="LargePistonTop" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_PistonBase" Subtype="SmallPistonBase" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ExtendedPistonBase" Subtype="SmallPistonBase" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_PistonTop" Subtype="SmallPistonTop" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorStator" Subtype="LargeStator" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension3x3" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension5x5" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension1x1" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension3x3" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension5x5" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension1x1" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension3x3mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension5x5mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="Suspension1x1mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension3x3mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension5x5mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorSuspension" Subtype="SmallSuspension1x1mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorRotor" Subtype="LargeRotor" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorStator" Subtype="SmallStator" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorRotor" Subtype="SmallRotor" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorAdvancedStator" Subtype="LargeAdvancedStator" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorAdvancedRotor" Subtype="LargeAdvancedRotor" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorAdvancedStator" Subtype="SmallAdvancedStator" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MotorAdvancedRotor" Subtype="SmallAdvancedRotor" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ButtonPanel" Subtype="ButtonPanelLarge" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ButtonPanel" Subtype="ButtonPanelSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TimerBlock" Subtype="TimerBlockLarge" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_TimerBlock" Subtype="TimerBlockSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Slope" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Inv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Face" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideLeft" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideLeftInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideRight" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2SideRightInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Slope" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Face" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Side" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1SideInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Inv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x2FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window1x1FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window3x3Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window3x3FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window2x3Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="Window2x3FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Slope" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Inv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Face" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideLeft" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideLeftInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideRight" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2SideRightInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Slope" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Face" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Side" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1SideInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Inv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x2FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow1x1FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow3x3Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow3x3FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow2x3Flat" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="SmallWindow2x3FlatInv" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Conveyor" Subtype="SmallBlockConveyor" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Conveyor" Subtype="LargeBlockConveyor" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Collector" Subtype="Collector" />
+      <UnlockedByGroups>
+        <GroupSubtype>25</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Collector" Subtype="CollectorSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>25</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ShipConnector" Subtype="Connector" />
+      <UnlockedByGroups>
+        <GroupSubtype>25</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ShipConnector" Subtype="ConnectorMedium" />
+      <UnlockedByGroups>
+        <GroupSubtype>25</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTube" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeMedium" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorFrameMedium" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurved" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeSmallCurved" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorConnector" Subtype="ConveyorTubeCurvedMedium" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Conveyor" Subtype="SmallShipConveyorHub" />
+      <UnlockedByGroups>
+        <GroupSubtype>24</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeBlockConveyorSorter" />
+      <UnlockedByGroups>
+        <GroupSubtype>25</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorSorter" Subtype="MediumBlockConveyorSorter" />
+      <UnlockedByGroups>
+        <GroupSubtype>25</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallBlockConveyorSorter" />
+      <UnlockedByGroups>
+        <GroupSubtype>25</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassLarge" />
+      <UnlockedByGroups>
+        <GroupSubtype>26</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_VirtualMass" Subtype="VirtualMassSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>26</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SpaceBall" Subtype="SpaceBallLarge" />
+      <UnlockedByGroups>
+        <GroupSubtype>26</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_SpaceBall" Subtype="SpaceBallSmall" />
+      <UnlockedByGroups>
+        <GroupSubtype>26</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel1x1" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel5x5" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel1x1" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel5x5" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel1x1mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheelmirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallRealWheel5x5mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel1x1mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="RealWheelmirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="RealWheel5x5mirrored" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="Wheel1x1" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallWheel1x1" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="Wheel3x3" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallWheel3x3" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="Wheel5x5" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Wheel" Subtype="SmallWheel5x5" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ShipGrinder" Subtype="LargeShipGrinder" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ShipGrinder" Subtype="SmallShipGrinder" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ShipWelder" Subtype="LargeShipWelder" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_ShipWelder" Subtype="SmallShipWelder" />
+      <UnlockedByGroups>
+        <GroupSubtype>16</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MergeBlock" Subtype="LargeShipMergeBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MergeBlock" Subtype="SmallShipMergeBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_MyProgrammableBlock" Subtype="LargeProgrammableBlock" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_LaserAntenna" Subtype="LargeBlockLaserAntenna" />
+      <UnlockedByGroups>
+        <GroupSubtype>13</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_LaserAntenna" Subtype="SmallBlockLaserAntenna" />
+      <UnlockedByGroups>
+        <GroupSubtype>13</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_AirtightHangarDoor" Subtype="" />
+      <UnlockedByGroups>
+        <GroupSubtype>28</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_AirtightSlideDoor" Subtype="LargeBlockSlideDoor" />
+      <UnlockedByGroups>
+        <GroupSubtype>22</GroupSubtype>
+        <GroupSubtype>27</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Parachute" Subtype="LgParachute" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Parachute" Subtype="SmParachute" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockDesk" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockDeskCorner" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+	<ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockDeskChairless" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CubeBlock" Subtype="LargeBlockDeskChairlessCorner" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Kitchen" Subtype="LargeBlockKitchen" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CryoChamber" Subtype="LargeBlockBed" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLockerRoom" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLockerRoomCorner" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Planter" Subtype="LargeBlockPlanters" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCouch" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+	    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCouchCorner" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_CargoContainer" Subtype="LargeBlockLockers" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockBathroomOpen" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+	    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockBathroom" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockToilet" />
+      <UnlockedByGroups>
+        <GroupSubtype>5</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Projector" Subtype="LargeBlockConsole" />
+      <UnlockedByGroups>
+        <GroupSubtype>3</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpitIndustrial" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitIndustrial" />
+      <UnlockedByGroups>
+        <GroupSubtype>14</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_Jukebox" Subtype="Jukebox" />
+        <UnlockedByGroups>
+            <GroupSubtype>29</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitSmall" />
+        <UnlockedByGroups>
+            <GroupSubtype>14</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_Cockpit" Subtype="OpenCockpitLarge" />
+        <UnlockedByGroups>
+            <GroupSubtype>14</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_LCDPanelsBlock" Subtype="LabEquipment" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="Shower" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="WindowWall" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="WindowWallLeft" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="WindowWallRight" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_LCDPanelsBlock" Subtype="MedicalStation" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_TextPanel" Subtype="TransparentLCDLarge" />
+        <UnlockedByGroups>
+            <GroupSubtype>3</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_TextPanel" Subtype="TransparentLCDSmall" />
+        <UnlockedByGroups>
+            <GroupSubtype>3</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="Catwalk" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkCorner" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkStraight" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkWall" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkRailingEnd" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+      <ResearchBlock xsi:type="ResearchBlock">
+          <Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkRailingHalfLeft" />
+          <UnlockedByGroups>
+              <GroupSubtype>5</GroupSubtype>
+          </UnlockedByGroups>
+      </ResearchBlock>
+      <ResearchBlock xsi:type="ResearchBlock">
+          <Id Type="MyObjectBuilder_CubeBlock" Subtype="CatwalkRailingHalfRight" />
+          <UnlockedByGroups>
+              <GroupSubtype>5</GroupSubtype>
+          </UnlockedByGroups>
+      </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="GratedStairs" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="GratedHalfStairs" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="GratedHalfStairsMirrored" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingStraight" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingDouble" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingCorner" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingDiagonal" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingHalfLeft" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_CubeBlock" Subtype="RailingHalfRight" />
+        <UnlockedByGroups>
+            <GroupSubtype>5</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_ReflectorLight" Subtype="RotatingLightLarge" />
+        <UnlockedByGroups>
+            <GroupSubtype>3</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_ReflectorLight" Subtype="RotatingLightSmall" />
+        <UnlockedByGroups>
+            <GroupSubtype>3</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+    <ResearchBlock xsi:type="ResearchBlock">
+        <Id Type="MyObjectBuilder_VendingMachine" Subtype="FoodDispenser" />
+        <UnlockedByGroups>
+            <GroupSubtype>0</GroupSubtype>
+        </UnlockedByGroups>
+    </ResearchBlock>
+  </ResearchBlocks>
 </Definitions>
