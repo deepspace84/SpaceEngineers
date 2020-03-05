@@ -125,7 +125,7 @@ namespace DSC
                         DeepSpaceCombat.Instance.GetNPC();
                         break;
                     case ECommand.Research:
-                        DeepSpaceCombat.Instance.Factions.Research(lcommand, playerId);
+                        //DeepSpaceCombat.Instance.Factions.Research(lcommand, playerId);
                         break;
                     default:
                         messageHandled = false;

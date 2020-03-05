@@ -51,6 +51,7 @@ namespace DSC
         public DSC_Grids GridRef = new DSC_Grids();
         public DSC_Players Players = new DSC_Players();
         public DSC_Factions Factions = new DSC_Factions();
+        public DSC_TechTree Techtree = new DSC_TechTree();
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
@@ -101,6 +102,8 @@ namespace DSC
         public override void BeforeStart()
         {
             base.BeforeStart();
+
+
 
             Networking.Register();
             MyVisualScriptLogicProvider.PlayerConnected += Players.PlayerConnected;
@@ -198,6 +201,21 @@ namespace DSC
         }
 
         /*
+         * SaveData
+         * 
+         * SaveData override
+         */
+        public override void SaveData()
+        {
+            if (_isServerRegistered)
+            {
+                // Save Factions data to savegame
+                Factions.Save();
+            }
+
+        }
+
+        /*
          * UnloadData
          * 
          * UnloadData override
@@ -263,6 +281,7 @@ namespace DSC
             MyAPIGateway.Utilities.MessageEntered += GotMessage;
 
             ClientLogger.Flush();
+
         }
 
         /*
@@ -284,10 +303,10 @@ namespace DSC
             // Get neutral npc
             GetNPC();
 
+            ServerLogger.Flush();
+
             // Load faction data
             Factions.load();
-
-            ServerLogger.Flush();
         }
 
         public void GetNPC()

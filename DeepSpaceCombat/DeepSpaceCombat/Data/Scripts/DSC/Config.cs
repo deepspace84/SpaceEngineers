@@ -28,8 +28,5 @@
         public static float missileMaxSpeed = 360;
         public static float missileExplosionRange = 2500;
 
-
-
-
     }
 }
