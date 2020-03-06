@@ -64,7 +64,6 @@ namespace DSCDEV
                     //MyVisualScriptLogicProvider.ResearchListWhitelist(true);
                     //MyVisualScriptLogicProvider.BlockBuilt += Event_Block_Built;
                     //MyAPIGateway.Entities.OnEntityAdd += Event_OnEntityAdd;     
-
                 }
                 else
                 {
