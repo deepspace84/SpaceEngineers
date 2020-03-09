@@ -10,6 +10,7 @@ using VRage.ModAPI;
 using Sandbox.Game.Entities;
 using VRage.Game.Entity;
 using Sandbox.Game.Multiplayer;
+using Sandbox.Definitions;
 
 namespace DSC
 {
@@ -35,36 +36,16 @@ namespace DSC
          */
         public void load()
         {
-            // Load Storage
-            /*
-            string xmlValue;
-            if (1==2 && MyAPIGateway.Utilities.GetVariable("DSC_Storage_Factions", out xmlValue))
-            {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Load xml=>" + xmlValue);
-                Storage = MyAPIGateway.Utilities.SerializeFromXML<DSC_Storage_Factions>(xmlValue);
-            }
-            else
-            {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No Storage exists on loading");
-                // Create default values
-                Storage = new DSC_Storage_Factions
-                {
-                    FactionsPlayer = new Dictionary<string, long>(),
-                    FactionsNPC = new Dictionary<string, long>(),
-                    FactionPlayers = new Dictionary<long, List<long>>(),
-                    FactionTechs = new Dictionary<long, List<string>>(),
-                    FactionBlocks = new Dictionary<long, List<string>>(),
-                };
-            }
-            */
+
+            // Check if file exists
             if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_FACTIONS", typeof(DSC_Storage_Factions)))
             {
                 try
                 {
                     var reader = MyAPIGateway.Utilities.ReadBinaryFileInWorldStorage("DSC_FACTIONS", typeof(DSC_Storage_Factions));
                     Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
-
-                    //runningScripts = MyAPIGateway.Utilities.SerializeFromXML<Dictionary<long, long>>(serialized);
+                    reader.Dispose();
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Storage found and loaded");
                 }
                 catch (Exception e)
                 {
@@ -73,11 +54,12 @@ namespace DSC
             }
             else
             {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No Storage found, create default");
                 // Create default values
                 Storage = new DSC_Storage_Factions
                 {
-                    FactionsPlayer = new Dictionary<string, long>(),
-                    FactionsNPC = new Dictionary<string, long>(),
+                    PlayerFactions = new Dictionary<string, long>(),
+                    NPCFactions = new Dictionary<string, long>(),
                     FactionPlayers = new Dictionary<long, List<long>>(),
                     FactionTechs = new Dictionary<long, List<string>>(),
                     FactionBlocks = new Dictionary<long, List<string>>(),
@@ -95,53 +77,17 @@ namespace DSC
             AddGridHandlers();
         }
 
-        public void FactionStateChaned(MyFactionStateChange change, long fromFactionId, long toFactionId, long playerId, long senderId)
-        {
-
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState=> change:"+change.ToString()+" | fromFaction:"+ fromFactionId.ToString()+" | toFaction:"+toFactionId.ToString()+" | player:"+playerId.ToString()+" | sender:"+senderId.ToString());
-
-            //MyFactionCollection.
-
-
-            //MyFactionStateChange
-            /*
-        RemoveFaction = 0,
-        SendPeaceRequest = 1,
-        CancelPeaceRequest = 2,
-        AcceptPeace = 3,
-        DeclareWar = 4,
-        SendFriendRequest = 5,
-        CancelFriendRequest = 6,
-        AcceptFriendRequest = 7,
-        FactionMemberSendJoin = 8,
-        FactionMemberCancelJoin = 9,
-        FactionMemberAcceptJoin = 10,
-        FactionMemberKick = 11,
-        FactionMemberPromote = 12,
-        FactionMemberDemote = 13,
-        FactionMemberLeave = 14,
-        FactionMemberNotPossibleJoin = 15
-        */
-        }
-
         /*
          * Save all data to savegame 
          */
         public void Save()
          {
             // Save Storage
-            
-
             byte[] serialized = MyAPIGateway.Utilities.SerializeToBinary<DSC_Storage_Factions>(Storage);
             System.IO.BinaryWriter writer = MyAPIGateway.Utilities.WriteBinaryFileInWorldStorage("DSC_FACTIONS", typeof(DSC_Storage_Factions));
             writer.Write(serialized);
-
-            /*
-            var xmlValue = MyAPIGateway.Utilities.SerializeToXML(Storage);
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Unload xml=>" + xmlValue);
-
-            MyAPIGateway.Utilities.SetVariable("DSC_Storage_Factions", xmlValue);
-            */
+            writer.Flush();
+            writer.Dispose();
         }
 
         /*
@@ -199,7 +145,7 @@ namespace DSC
         }
 
         // Add new techlevel to faction
-        public bool AddTechLevel(long factionID, string techLevel)
+        private bool AddTechLevel(long factionID, string techLevel)
         {
             // Check if techlevel exists
             if (DeepSpaceCombat.Instance.Techtree.TechLevels.ContainsKey(techLevel))
@@ -216,7 +162,7 @@ namespace DSC
             return false;
         }
 
-        public bool RemoveTechLevel(long factionID, string techLevel)
+        private bool RemoveTechLevel(long factionID, string techLevel)
         {
 
             // Check if techlevel exists
@@ -234,7 +180,7 @@ namespace DSC
             return false;
         }
 
-        public bool checkTechBlockFaction(long factionID, string techBlock)
+        private bool checkTechBlockFaction(long factionID, string techBlock)
         {
             // Check if hashset with this types exists
             if (Storage.FactionBlocks[factionID].Contains(techBlock))
@@ -242,17 +188,6 @@ namespace DSC
 
             return false;
         }
-
-        /*
-        public bool checkTechBlockPlayer(long playerID, string techBlock)
-        {
-            // Check if hashset with this types exists
-            if (Storage.FactionBlocks[factionID].Contains(techBlock))
-                return true;
-
-            return false;
-        }
-        */
 
         /* Events
          * --------------------------
@@ -279,16 +214,35 @@ namespace DSC
         // Event - New block added to grid | Progression check
         private void GridBlockAddedEvent(IMySlimBlock block)
         {
-            try
+            MyVisualScriptLogicProvider.SendChatMessage("Blocktype=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
+
+            // Check if block is in definitions
+            if (!DSC_BlockDefinitions.AllBlocks.Contains(block.BlockDefinition.ToString()))
             {
-                MyVisualScriptLogicProvider.SendChatMessage("Build by=>" + block.BuiltBy.ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(block.BuiltBy) + " | ", "[Server]");
+                MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
             }
-            catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("ERROR: " + ex.Message, "[Server]", 0); }
 
-            MyVisualScriptLogicProvider.SendChatMessage("Def=>" + block.BlockDefinition.ToString(), "[Server]", 0);
+            // Check if player is in a player faction, if not dont allow building at all
+            if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
+            {
+                // Remove block
+                block.CubeGrid.RemoveBlock(block);
 
 
+                return;
+            }
 
+            // Check if block building is allowed
+            if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+            {
+                MyVisualScriptLogicProvider.SendChatMessage("You are not allowed to build this block!", "[Server]", block.BuiltBy);
+
+                // Check block components
+                //MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, , 1);
+
+                // Remove block
+                block.CubeGrid.RemoveBlock(block);
+            }
         }
 
         #endregion
@@ -300,23 +254,47 @@ namespace DSC
         // Add a new faction to the storage
         public bool AddFaction(string factionTag, bool isNPC)
         {
-            if (null != factionTag)
+            if (null == factionTag)
                 return false;
 
+            // Check if faction exists
             if (MyAPIGateway.Session.Factions.FactionTagExists(factionTag))
             {
-
+                // get faction object and check if the id is allready added
                 IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(factionTag);
+
+                if (Storage.PlayerFactions.ContainsValue(factionObj.FactionId) || Storage.NPCFactions.ContainsValue(factionObj.FactionId))
+                    return false;
+
                 if(null != factionObj)
                 {
-
+                    // Check if it should be a npc faction
                     if (isNPC)
                     {
-                        Storage.FactionsNPC.Add(factionTag, factionObj.FactionId);
+                        Storage.NPCFactions.Add(factionTag, factionObj.FactionId);
                     }
                     else
                     {
-                        Storage.FactionsPlayer.Add(factionTag, factionObj.FactionId);
+                        // Add Faction PlayerFactions
+                        Storage.PlayerFactions.Add(factionTag, factionObj.FactionId);
+
+                        // Load all existing players and save them to the FactionPlayers reference
+                        //Storage.FactionPlayers.Add(factionObj.FactionId, MyVisualScriptLogicProvider.GetFactionMembers(factionTag));
+
+                        foreach(long playerId in factionObj.Members.Keys)
+                        {
+                            // Only add real players
+                            if (MyAPIGateway.Players.TryGetSteamId(playerId) > 0)
+                            {
+                                // Add to FactionPlayers list
+                                Storage.FactionPlayers[factionObj.FactionId].Add(playerId);
+
+                                // Add players to PlayersToFaction
+                                Storage.PlayersToFaction.Add(playerId, factionObj.FactionId);
+
+                            }
+                        }
+
                     }
 
                 }
@@ -326,6 +304,34 @@ namespace DSC
 
             return false;
         }
+
+        private void FactionStateChaned(MyFactionStateChange change, long fromFactionId, long toFactionId, long playerId, long senderId)
+        {
+
+            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState=> change:" + change.ToString() + " | fromFaction:" + fromFactionId.ToString() + " | toFaction:" + toFactionId.ToString() + " | player:" + playerId.ToString() + " | sender:" + senderId.ToString());
+            //MyAPIGateway.Session.Factions.;
+
+            //MyFactionStateChange
+            /*
+        RemoveFaction = 0,
+        SendPeaceRequest = 1,
+        CancelPeaceRequest = 2,
+        AcceptPeace = 3,
+        DeclareWar = 4,
+        SendFriendRequest = 5,
+        CancelFriendRequest = 6,
+        AcceptFriendRequest = 7,
+        FactionMemberSendJoin = 8,
+        FactionMemberCancelJoin = 9,
+        FactionMemberAcceptJoin = 10,
+        FactionMemberKick = 11,
+        FactionMemberPromote = 12,
+        FactionMemberDemote = 13,
+        FactionMemberLeave = 14,
+        FactionMemberNotPossibleJoin = 15
+        */
+        }
+
 
         #endregion
     }

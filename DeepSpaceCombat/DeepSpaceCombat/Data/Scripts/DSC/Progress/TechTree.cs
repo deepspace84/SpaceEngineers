@@ -11,11 +11,14 @@ namespace DSC
 
         public DSC_TechTree()
         {
-            TechLevels.Add("L0",new DSC_TechLevel("L0", "", new List<string>() {
-                DSC_BlockDefinitions.lightArmor,
-                DSC_BlockDefinitions.lightArmorCorner,
-                DSC_BlockDefinitions.lightArmorCorner2,
-                DSC_BlockDefinitions.lightArmorRoundSlope,
+            TechLevels.Add("L0", new DSC_TechLevel("L0", "", new List<string>() {
+                DSC_BlockDefinitions.CubeBlock_LargeBlockArmorBlock[0],
+            }));
+
+            TechLevels.Add("L1", new DSC_TechLevel("L1", "L0", new List<string>() {
+                DSC_BlockDefinitions.CubeBlock_LargeBlockArmorSlope[3],
+                DSC_BlockDefinitions.CubeBlock_LargeBlockArmorCorner[3],
+                DSC_BlockDefinitions.CubeBlock_LargeBlockArmorCornerInv[3],
             }));
         }
 

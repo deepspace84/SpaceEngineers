@@ -1,4 +1,6 @@
-﻿using Sandbox.Game;
+﻿using Sandbox.Definitions;
+using Sandbox.Game;
+using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
@@ -32,7 +34,8 @@ namespace DSC
             ReloadBlocksAndGrids = 6,
             Players = 7,
             Get_NPC = 8,
-            Research = 9,
+            AddFaction = 9,
+            Dev = 10,
             //fg=2,
             //csc=3
         };
@@ -124,8 +127,25 @@ namespace DSC
                     case ECommand.Get_NPC:
                         DeepSpaceCombat.Instance.GetNPC();
                         break;
-                    case ECommand.Research:
-                        //DeepSpaceCombat.Instance.Factions.Research(lcommand, playerId);
+                    case ECommand.AddFaction:
+                        DeepSpaceCombat.Instance.Factions.AddFaction(lcommand[1], false);
+                        break;
+                    case ECommand.Dev:
+
+                        foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
+                        {
+                            var cubeDef = def as MyCubeBlockDefinition;
+                            if (cubeDef != null)
+                            {
+                                
+
+                                MyCubeBlockDefinition.Component[] test = cubeDef.Components;
+                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("public static string[] " + cubeDef.Id.ToString().Replace("/", "_") + " = {\"" + cubeDef.DisplayNameText + "\",\"" + cubeDef.Id.ToString() + "\",\""+ test[0].Definition.ToString() + "\"};");
+                                
+                                
+                            }
+                        }
+
                         break;
                     default:
                         messageHandled = false;

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarTracker", "SolarTracker\SolarTracker.csproj", "{E2F4B77D-D4F5-4414-8226-D19A22EFAF1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2F4B77D-D4F5-4414-8226-D19A22EFAF1B}.Debug|x64.ActiveCfg = Debug|x64
+		{E2F4B77D-D4F5-4414-8226-D19A22EFAF1B}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35F32A7A-A1FA-4A6E-9476-44BDCB1EA0EA}
+	EndGlobalSection
+EndGlobal
