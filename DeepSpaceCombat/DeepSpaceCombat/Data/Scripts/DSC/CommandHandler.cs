@@ -132,17 +132,16 @@ namespace DSC
                         break;
                     case ECommand.Dev:
 
-                        foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
+                        if (lcommand[1].Equals("blockdef"))
                         {
-                            var cubeDef = def as MyCubeBlockDefinition;
-                            if (cubeDef != null)
+                            foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
                             {
-                                
-
-                                MyCubeBlockDefinition.Component[] test = cubeDef.Components;
-                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("public static string[] " + cubeDef.Id.ToString().Replace("/", "_") + " = {\"" + cubeDef.DisplayNameText + "\",\"" + cubeDef.Id.ToString() + "\",\""+ test[0].Definition.ToString() + "\"};");
-                                
-                                
+                                var cubeDef = def as MyCubeBlockDefinition;
+                                if (cubeDef != null)
+                                {
+                                    MyCubeBlockDefinition.Component[] test = cubeDef.Components;
+                                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("public static string[] " + cubeDef.Id.ToString().Replace("/", "_") + " = {\"" + cubeDef.DisplayNameText + "\",\"" + cubeDef.Id.ToString() + "\",\"" + test[0].Definition.ToString() + "\"};");
+                                }
                             }
                         }
 
