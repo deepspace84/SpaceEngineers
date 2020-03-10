@@ -139,8 +139,16 @@ namespace DSC
                                 var cubeDef = def as MyCubeBlockDefinition;
                                 if (cubeDef != null)
                                 {
-                                    MyCubeBlockDefinition.Component[] test = cubeDef.Components;
-                                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("public static string[] " + cubeDef.Id.ToString().Replace("/", "_") + " = {\"" + cubeDef.DisplayNameText + "\",\"" + cubeDef.Id.ToString() + "\",\"" + test[0].Definition.ToString() + "\"};");
+
+                                    // Get component definition
+                                    MyCubeBlockDefinition.Component[] compDef = cubeDef.Components;
+
+                                    // Prepare readable name
+                                    string name = cubeDef.Id.ToString().Replace("/", "_");
+                                    name.Replace("MyObjectBuilder_", "");
+
+                                    // Print new definition to server log
+                                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("{ \""+name+"\", new DSC_BlockDef(\""+ cubeDef.Id.ToString() + "\",\""+ cubeDef.DisplayNameText + "\",\""+ compDef[0].Definition.ToString() + "\", \"\", 0)}");
                                 }
                             }
                         }
