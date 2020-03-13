@@ -24,6 +24,10 @@ namespace DSC
         public Dictionary<long, List<string>> FactionTechs = new Dictionary<long, List<string>>(); // factionID - TechLevelName
         [ProtoMember(6)]
         public Dictionary<long, List<string>> FactionBlocks = new Dictionary<long, List<string>>(); // factionID - LIST->BlockTechName
+        [ProtoMember(7)]
+        public Dictionary<long, List<long>> PlayersToPCU = new Dictionary<long, List<long>>(); // playerID - LIST->blockIDs
+        [ProtoMember(8)]
+        public Dictionary<string, int> FactionPCU = new Dictionary<string, int>(); // factionID -  PCU-Level
 
 
         internal DSC_Storage_Factions Clone()
@@ -36,6 +40,7 @@ namespace DSC
                 PlayersToFaction = PlayersToFaction,
                 FactionTechs = FactionTechs,
                 FactionBlocks = FactionBlocks,
+                PlayersToPCU = PlayersToPCU,
             };
         }
 
