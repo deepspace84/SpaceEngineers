@@ -114,6 +114,9 @@
     <None Update="_DLL\Sandbox.Game.dll">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="_Documentation\Techtree-Dateien\xaml_1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
