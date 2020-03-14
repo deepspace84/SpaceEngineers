@@ -216,8 +216,8 @@ namespace DSC
         {
             MyVisualScriptLogicProvider.SendChatMessage("Blocktype=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
 
-            // Check if block is in definitions
-            if (!DSC_BlockDefinitions.AllBlocks.Contains(block.BlockDefinition.ToString()))
+            // Check if block is in definitions # TODO WE USE ANOTHER KEY
+            if (!DSC_Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
             {
                 MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
             }
