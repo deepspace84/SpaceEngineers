@@ -6,7 +6,7 @@ using System.Text;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
 
-namespace DSC
+namespace DSC_TEST
 {
     public class Util
     {

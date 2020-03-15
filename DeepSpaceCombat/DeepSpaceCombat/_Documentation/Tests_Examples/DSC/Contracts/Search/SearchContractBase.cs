@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using VRage.Game.ModAPI;
 
-namespace DSC
+namespace DSC_TEST
 {
     class DSC_SearchContractBase : DSC_BaseContract
     {

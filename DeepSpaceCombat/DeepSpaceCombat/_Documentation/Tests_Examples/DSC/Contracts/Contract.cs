@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DSC
+namespace DSC_TEST
 {
     class Contract
     {

@@ -21,7 +21,7 @@ using VRage.Collections;
 using Sandbox.Game.SessionComponents;
 using VRage;
 
-namespace DSC
+namespace DSC_TEST
 {
     // An example packet extending another packet.
     // Note that it must be ProtoIncluded in PacketBase for it to work.

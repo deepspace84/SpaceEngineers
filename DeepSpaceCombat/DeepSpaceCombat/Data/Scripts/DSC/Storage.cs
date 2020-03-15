@@ -13,9 +13,9 @@ namespace DSC
          * Faction data 
          */
         [ProtoMember(1)]
-        public Dictionary<string, long> PlayerFactions = new Dictionary<string, long>(); // factionTag - factionID
+        public Dictionary<long, string> PlayerFactions = new Dictionary<long, string>(); // factionTag - factionID
         [ProtoMember(2)]
-        public Dictionary<string, long> NPCFactions = new Dictionary<string, long>(); // factionTag - factionID
+        public Dictionary<long, string> NPCFactions = new Dictionary<long, string>(); // factionTag - factionID
         [ProtoMember(3)]
         public Dictionary<long, List<long>> FactionPlayers = new Dictionary<long, List<long>>(); // factionID - LIST->playerID
         [ProtoMember(4)]
@@ -41,6 +41,29 @@ namespace DSC
                 FactionTechs = FactionTechs,
                 FactionBlocks = FactionBlocks,
                 PlayersToPCU = PlayersToPCU,
+            };
+        }
+
+    }
+
+    [ProtoContract]
+    [Serializable]
+    public class DSC_Storage_Reference
+    {
+
+        [ProtoMember(1)]
+        public Dictionary<string, long> Blocks = new Dictionary<string, long>(); // blockName - blockId
+        [ProtoMember(2)]
+        public Dictionary<string, long> Grids = new Dictionary<string, long>(); // gridName - gridId
+
+
+
+        internal DSC_Storage_Reference Clone()
+        {
+            return new DSC_Storage_Reference
+            {
+                Blocks = Blocks,
+                Grids = Grids
             };
         }
 

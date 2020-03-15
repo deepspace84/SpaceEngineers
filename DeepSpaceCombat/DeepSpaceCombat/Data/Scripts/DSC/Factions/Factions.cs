@@ -38,28 +38,28 @@ namespace DSC
         {
 
             // Check if file exists
-            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_FACTIONS", typeof(DSC_Storage_Factions)))
+            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions)))
             {
                 try
                 {
-                    var reader = MyAPIGateway.Utilities.ReadBinaryFileInWorldStorage("DSC_FACTIONS", typeof(DSC_Storage_Factions));
+                    var reader = MyAPIGateway.Utilities.ReadBinaryFileInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
                     Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
                     reader.Dispose();
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Storage found and loaded");
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DSC_Storage_Factions found and loaded");
                 }
                 catch (Exception e)
                 {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_FACTIONS loading failed");
+                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Storage_Factions loading failed");
                 }
             }
             else
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No Storage found, create default");
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No DSC_Storage_Factions found, create default");
                 // Create default values
                 Storage = new DSC_Storage_Factions
                 {
-                    PlayerFactions = new Dictionary<string, long>(),
-                    NPCFactions = new Dictionary<string, long>(),
+                    PlayerFactions = new Dictionary<long, string>(),
+                    NPCFactions = new Dictionary<long, string>(),
                     FactionPlayers = new Dictionary<long, List<long>>(),
                     FactionTechs = new Dictionary<long, List<string>>(),
                     FactionBlocks = new Dictionary<long, List<string>>(),
@@ -84,7 +84,7 @@ namespace DSC
          {
             // Save Storage
             byte[] serialized = MyAPIGateway.Utilities.SerializeToBinary<DSC_Storage_Factions>(Storage);
-            System.IO.BinaryWriter writer = MyAPIGateway.Utilities.WriteBinaryFileInWorldStorage("DSC_FACTIONS", typeof(DSC_Storage_Factions));
+            System.IO.BinaryWriter writer = MyAPIGateway.Utilities.WriteBinaryFileInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
             writer.Write(serialized);
             writer.Flush();
             writer.Dispose();
@@ -199,6 +199,23 @@ namespace DSC
             var grid = ent as MyCubeGrid;
             if (grid?.Physics == null) return;
 
+            // Check if its the first block
+            if(grid.BlocksCount == 1)
+            {
+                IMySlimBlock block = grid.CubeBlocks.FirstElement();
+
+                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage("You are not allowed to build this block!", "[Server]", block.BuiltBy);
+
+                    // Add item back to player
+                    MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DSC_Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
+
+                    // Remove block
+                    block.CubeGrid.RemoveBlock(block);
+                }
+            }
+
             grid.OnBlockAdded += GridBlockAddedEvent;
         }
 
@@ -216,7 +233,7 @@ namespace DSC
         {
             MyVisualScriptLogicProvider.SendChatMessage("Blocktype=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
 
-            // Check if block is in definitions # TODO WE USE ANOTHER KEY
+            // Check if block is in definitions
             if (!DSC_Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
             {
                 MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
@@ -228,6 +245,8 @@ namespace DSC
                 // Remove block
                 block.CubeGrid.RemoveBlock(block);
 
+                // Add item back to player
+                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DSC_Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent , 1);
 
                 return;
             }
@@ -237,8 +256,8 @@ namespace DSC
             {
                 MyVisualScriptLogicProvider.SendChatMessage("You are not allowed to build this block!", "[Server]", block.BuiltBy);
 
-                // Check block components
-                //MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, , 1);
+                // Add item back to player
+                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DSC_Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
 
                 // Remove block
                 block.CubeGrid.RemoveBlock(block);
@@ -263,7 +282,7 @@ namespace DSC
                 // get faction object and check if the id is allready added
                 IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(factionTag);
 
-                if (Storage.PlayerFactions.ContainsValue(factionObj.FactionId) || Storage.NPCFactions.ContainsValue(factionObj.FactionId))
+                if (Storage.PlayerFactions.ContainsKey(factionObj.FactionId) || Storage.NPCFactions.ContainsKey(factionObj.FactionId))
                     return false;
 
                 if(null != factionObj)
@@ -271,12 +290,12 @@ namespace DSC
                     // Check if it should be a npc faction
                     if (isNPC)
                     {
-                        Storage.NPCFactions.Add(factionTag, factionObj.FactionId);
+                        Storage.NPCFactions.Add(factionObj.FactionId, factionTag);
                     }
                     else
                     {
                         // Add Faction PlayerFactions
-                        Storage.PlayerFactions.Add(factionTag, factionObj.FactionId);
+                        Storage.PlayerFactions.Add(factionObj.FactionId, factionTag);
 
                         // Load all existing players and save them to the FactionPlayers reference
                         //Storage.FactionPlayers.Add(factionObj.FactionId, MyVisualScriptLogicProvider.GetFactionMembers(factionTag));
@@ -305,8 +324,43 @@ namespace DSC
             return false;
         }
 
+
+
         private void FactionStateChaned(MyFactionStateChange change, long fromFactionId, long toFactionId, long playerId, long senderId)
         {
+
+            // Player entered Faction
+            if(change == MyFactionStateChange.FactionMemberAcceptJoin)
+            {
+                // Check if faction exists in storage
+                if (Storage.PlayerFactions.ContainsKey(toFactionId))
+                {
+                    // Add player to reference
+                    Storage.FactionPlayers[toFactionId].Add(playerId);
+                    Storage.PlayersToFaction.Add(playerId, toFactionId);
+
+                    // Calculate PCU TODO
+
+                }
+            }
+
+
+            // Player left Faction
+            if (change == MyFactionStateChange.FactionMemberLeave)
+            {
+                // Check if faction exists in storage
+                if (Storage.PlayerFactions.ContainsKey(toFactionId))
+                {
+                    // Remove Player from references
+                    Storage.FactionPlayers[toFactionId].Remove(playerId);
+                    Storage.PlayersToFaction.Remove(playerId);
+
+                    // Remove PCU TODO
+
+                }
+            }
+
+
 
             DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState=> change:" + change.ToString() + " | fromFaction:" + fromFactionId.ToString() + " | toFaction:" + toFactionId.ToString() + " | player:" + playerId.ToString() + " | sender:" + senderId.ToString());
             //MyAPIGateway.Session.Factions.;

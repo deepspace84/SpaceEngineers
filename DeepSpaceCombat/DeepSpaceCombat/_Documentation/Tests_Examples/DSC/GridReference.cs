@@ -11,7 +11,7 @@ using VRage.ModAPI;
 using VRage.Game.Entity;
 using VRage.Game.ModAPI;
 
-namespace DSC
+namespace DSC_TEST
 {
     //Class name should equal filename
     public class DSC_Grids

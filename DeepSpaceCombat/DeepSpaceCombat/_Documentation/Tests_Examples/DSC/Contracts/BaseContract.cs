@@ -10,7 +10,7 @@ using System.Text;
 using VRage.Game.ModAPI;
 using VRage.Game.ModAPI.Ingame;
 
-namespace DSC
+namespace DSC_TEST
 {
     /// <summary>
     /// Base class for all contracts

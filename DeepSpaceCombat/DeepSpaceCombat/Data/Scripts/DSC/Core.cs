@@ -39,17 +39,13 @@ namespace DSC
             }
         }
 
-        public long NPCId { get; private set; } // NPC to create contracts
-
         //Use a single command char to avoid unneccesary loops/code. 
         //private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
         private char _commandStart = '#';
 
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
         public CommandHandler CMDHandler = new CommandHandler();
-        public DSC_Blocks BlockRef = new DSC_Blocks();
-        public DSC_Grids GridRef = new DSC_Grids();
-        public DSC_Players Players = new DSC_Players();
+        public DSC_Reference DSCReference = new DSC_Reference();
         public DSC_Factions Factions = new DSC_Factions();
         public DSC_TechTree Techtree = new DSC_TechTree();
 
@@ -103,10 +99,7 @@ namespace DSC
         {
             base.BeforeStart();
 
-
-
             Networking.Register();
-            MyVisualScriptLogicProvider.PlayerConnected += Players.PlayerConnected;
         }
 
         /*
@@ -164,40 +157,7 @@ namespace DSC
          */
         public override void UpdateAfterSimulation()
         {
-            base.UpdateAfterSimulation();
-            // example for testing ingame, press L at any point when in a world with this mod loaded
-            // then the server player/console/log will have the message you sent
-
-            //if (MyAPIGateway.Input.IsNewKeyPressed(MyKeys.L))
-            //{
-            //    MyVisualScriptLogicProvider.SendChatMessage("L pressed, New player connected ", "[Server]");
-            //    Players.PlayerConnected(MyAPIGateway.Session.Player.IdentityId);
-            //}
-
-
-            if (counter++ % (60 * 20) == 0)
-            {
-                if (IsServerRegistered && _isInitialized && NPCId > 0)
-                {
-                    try
-                    {
-                        long blockID = BlockRef.AddBlockWithName("DSC_Start");
-                        long gridID = GridRef.AddGridWithName("DSC_End");
-                        DSC_SearchContractBase searchContract = new DSC_SearchContractBase("Test", 1000, blockID, 0, 60 * 10, gridID, 10, "Find the Target!", NPCId);
-                        MyAddContractResultWrapper result = searchContract.StartContract();
-
-                        if (result.Success)
-                        {
-                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract added: " + result.ContractId.ToString(), "[Server]", 0);
-                        }
-                        else
-                        {
-                            MyVisualScriptLogicProvider.SendChatMessage("Auto Contract failed: ", "[Server]", 0, "RED");
-                        }
-                    }
-                    catch (Exception ex) { MyVisualScriptLogicProvider.SendChatMessage("ERROR: " + ex.Message, "[Server]", 0); }
-                }
-            }
+ 
         }
 
         /*
@@ -211,6 +171,9 @@ namespace DSC
             {
                 // Save Factions data to savegame
                 Factions.Save();
+
+                // Save reference data to savegame
+                DSCReference.Save();
             }
 
         }
@@ -248,14 +211,15 @@ namespace DSC
                 // Factions
                 Factions.unload();
                 Factions = null;
+
+                // Reference
+                DSCReference.Unload();
+                DSCReference = null;
             }
 
             // Unregister networking
             Networking?.Unregister();
             Networking = null;
-
-            // Unregister player connected
-            MyVisualScriptLogicProvider.PlayerConnected -= Players.PlayerConnected;
 
             base.UnloadData();
         }
@@ -300,15 +264,16 @@ namespace DSC
             if (ServerLogger.IsActive)
                 VRage.Utils.MyLog.Default.WriteLine(string.Format("##Mod## DSC Server Logging File: {0}", ServerLogger.LogFile));
 
-            // Get neutral npc
-            GetNPC();
-
             ServerLogger.Flush();
+
+            // Load Reference data
+            DSCReference.Load();
 
             // Load faction data
             Factions.load();
         }
 
+        /*
         public void GetNPC()
         {
             List<long> members = Util.GetNPCs();
@@ -324,7 +289,7 @@ namespace DSC
                 ServerLogger.WriteInfo("Please add at least one NPC to the faction 'DSC' and write '#get npc'");
             }
         }
-
+        */
         #endregion
 
 

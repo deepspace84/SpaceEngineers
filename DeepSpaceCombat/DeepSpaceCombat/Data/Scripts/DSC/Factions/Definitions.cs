@@ -13,55 +13,51 @@ namespace DSC
     {
 
         public static Dictionary<string, DSC_BlockDef> Blocks = new Dictionary<string, DSC_BlockDef>() {
-            { "MyObjectBuilder_CubeBlock/LargeBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorBlock","Light Armor Block","SteelPlate", "", 0)},
 
+            // Large Light Armor +
+            { "MyObjectBuilder_CubeBlock/LargeBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorBlock","Light Armor Block","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorSlope","Light Armor Slope","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorCorner","Light Armor Corner","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorCornerInv","Light Armor Inv. Corner","SteelPlate", "", 0)},
-
-            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorBlock","Heavy Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope","Heavy Armor Slope","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCorner","Heavy Armor Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCornerInv","Heavy Armor Inv. Corner","SteelPlate", "", 0)},
-
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorBlock","Light Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorSlope","Light Armor Slope","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCorner","Light Armor Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCornerInv","Light Armor Inv. Corner","SteelPlate", "", 0)},
-
-            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorBlock","Heavy Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope","Heavy Armor Slope","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner","Heavy Armor Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCornerInv","Heavy Armor Inv. Corner","SteelPlate", "", 0)},
-
             { "MyObjectBuilder_CubeBlock/LargeHalfArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHalfArmorBlock","Half Light Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyHalfArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyHalfArmorBlock","Half Heavy Armor Block","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeHalfSlopeArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHalfSlopeArmorBlock","Half Slope Light Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyHalfSlopeArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyHalfSlopeArmorBlock","Half Slope Heavy Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/HalfArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HalfArmorBlock","Half Light Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/HeavyHalfArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HeavyHalfArmorBlock","Half Heavy Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/HalfSlopeArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HalfSlopeArmorBlock","Half Slope Light Armor Block","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/HeavyHalfSlopeArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HeavyHalfSlopeArmorBlock","Half Slope Heavy Armor Block","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorRoundSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorRoundSlope","Round Armor Slope","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorRoundCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorRoundCorner","Round Armor Corner","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorRoundCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorRoundCornerInv","Round Armor Inv. Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundSlope","Heavy Armor Round Slope","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCorner","Heavy Armor Round Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCornerInv","Heavy Armor Round Inv. Corner","SteelPlate", "", 0)},
-
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorRoundSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorRoundSlope","Round Armor Slope","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCorner","Round Armor Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCornerInv","Round Armor Inv. Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundSlope","Heavy Armor Round Slope","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCorner","Heavy Armor Round Corner","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCornerInv","Heavy Armor Round Inv. Corner","SteelPlate", "", 0)},
-
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorSlope2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorSlope2Base","Light Armor Slope 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorSlope2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorSlope2Tip","Light Armor Slope 2x1x1 Tip","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorCorner2Base","Light Armor Corner 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorCorner2Tip","Light Armor Corner 2x1x1 Tip","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorInvCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorInvCorner2Base","Light Armor Inv. Corner 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorInvCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorInvCorner2Tip","Light Armor Inv. Corner 2x1x1 Tip","SteelPlate", "", 0)},
+
+            // Small Light Armor +
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorBlock","Light Armor Block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorSlope","Light Armor Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCorner","Light Armor Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCornerInv","Light Armor Inv. Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorRoundSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorRoundSlope","Round Armor Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCorner","Round Armor Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorRoundCornerInv","Round Armor Inv. Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Base","Light Armor Slope 2x1x1 Base","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Tip","Light Armor Slope 2x1x1 Tip","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Base","Light Armor Corner 2x1x1 Base","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Tip","Light Armor Corner 2x1x1 Tip","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Base","Light Armor Inv. Corner 2x1x1 Base","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Tip","Light Armor Inv. Corner 2x1x1 Tip","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/HalfArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HalfArmorBlock","Half Light Armor Block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/HalfSlopeArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HalfSlopeArmorBlock","Half Slope Light Armor Block","SteelPlate", "", 0)},
+
+            // Large Heavy Armor
+            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorBlock","Heavy Armor Block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope","Heavy Armor Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCorner","Heavy Armor Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCornerInv","Heavy Armor Inv. Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyHalfArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyHalfArmorBlock","Half Heavy Armor Block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyHalfSlopeArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyHalfSlopeArmorBlock","Half Slope Heavy Armor Block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundSlope","Heavy Armor Round Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCorner","Heavy Armor Round Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorRoundCornerInv","Heavy Armor Round Inv. Corner","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope2Base","Heavy Armor Slope 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorSlope2Tip","Heavy Armor Slope 2x1x1 Tip","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorCorner2Base","Heavy Armor Corner 2x1x1 Base","SteelPlate", "", 0)},
@@ -69,21 +65,86 @@ namespace DSC
             { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorInvCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorInvCorner2Base","Heavy Armor Inv. Corner 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorInvCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeHeavyBlockArmorInvCorner2Tip","Heavy Armor Inv. Corner 2x1x1 Tip","SteelPlate", "", 0)},
 
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Base","Light Armor Slope 2x1x1 Base","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorSlope2Tip","Light Armor Slope 2x1x1 Tip","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Base","Light Armor Corner 2x1x1 Base","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorCorner2Tip","Light Armor Corner 2x1x1 Tip","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Base","Light Armor Inv. Corner 2x1x1 Base","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallBlockArmorInvCorner2Tip","Light Armor Inv. Corner 2x1x1 Tip","SteelPlate", "", 0)},
+            // Small Heavy Armor
+            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorBlock","Heavy Armor Block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope","Heavy Armor Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner","Heavy Armor Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCornerInv","Heavy Armor Inv. Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundSlope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundSlope","Heavy Armor Round Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCorner", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCorner","Heavy Armor Round Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCornerInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorRoundCornerInv","Heavy Armor Round Inv. Corner","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope2Base","Heavy Armor Slope 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope2Tip","Heavy Armor Slope 2x1x1 Tip","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner2Base","Heavy Armor Corner 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorCorner2Tip","Heavy Armor Corner 2x1x1 Tip","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorInvCorner2Base", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorInvCorner2Base","Heavy Armor Inv. Corner 2x1x1 Base","SteelPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorInvCorner2Tip", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorInvCorner2Tip","Heavy Armor Inv. Corner 2x1x1 Tip","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/HeavyHalfArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HeavyHalfArmorBlock","Half Heavy Armor Block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/HeavyHalfSlopeArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/HeavyHalfSlopeArmorBlock","Half Slope Heavy Armor Block","SteelPlate", "", 0)},
+
+            // Production Blocks
+            { "MyObjectBuilder_Assembler/BasicAssembler", new DSC_BlockDef("MyObjectBuilder_Assembler/BasicAssembler","Basic Assembler","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_Assembler/LargeAssembler", new DSC_BlockDef("MyObjectBuilder_Assembler/LargeAssembler","Assembler","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_Assembler/LargeAssembler2x", new DSC_BlockDef("MyObjectBuilder_Assembler/LargeAssembler2x","Enhanced Assembler","Tech2x", "", 0)}, // +
+            { "MyObjectBuilder_Assembler/LargeAssembler4x", new DSC_BlockDef("MyObjectBuilder_Assembler/LargeAssembler4x","Proficient Assembler","Tech4x", "", 0)}, // +
+            { "MyObjectBuilder_Assembler/LargeAssembler8x", new DSC_BlockDef("MyObjectBuilder_Assembler/LargeAssembler8x","Elite Assembler","Tech8x", "", 0)}, // +
+
+            { "MyObjectBuilder_Refinery/LargeRefinery", new DSC_BlockDef("MyObjectBuilder_Refinery/LargeRefinery","Refinery","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_Refinery/Blast Furnace", new DSC_BlockDef("MyObjectBuilder_Refinery/Blast Furnace","Basic Refinery","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_Refinery/LargeRefinery2x", new DSC_BlockDef("MyObjectBuilder_Refinery/LargeRefinery2x","Enhanced Refinery","Tech2x", "", 0)}, // +
+            { "MyObjectBuilder_Refinery/LargeRefinery4x", new DSC_BlockDef("MyObjectBuilder_Refinery/LargeRefinery4x","Proficient Refinery","Tech4x", "", 0)}, // +
+            { "MyObjectBuilder_Refinery/LargeRefinery8x", new DSC_BlockDef("MyObjectBuilder_Refinery/LargeRefinery8x","Elite Refinery","Tech8x", "", 0)}, // +
+
+            { "MyObjectBuilder_UpgradeModule/LargeProductivityModule", new DSC_BlockDef("MyObjectBuilder_UpgradeModule/LargeProductivityModule","Speed Module","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_UpgradeModule/LargeEffectivenessModule", new DSC_BlockDef("MyObjectBuilder_UpgradeModule/LargeEffectivenessModule","Yield Module","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_UpgradeModule/LargeEnergyModule", new DSC_BlockDef("MyObjectBuilder_UpgradeModule/LargeEnergyModule","Power Efficiency Module","SteelPlate", "", 0)}, // +
+
+            { "MyObjectBuilder_Refinery/StoneIncinerator", new DSC_BlockDef("MyObjectBuilder_Refinery/StoneIncinerator","Stone Incinerator","SteelPlate", "", 0)}, // TODO Brauchen wir nicht?!?
+            { "MyObjectBuilder_Refinery/StoneIncineratorSmall", new DSC_BlockDef("MyObjectBuilder_Refinery/StoneIncineratorSmall","Stone Incinerator","SteelPlate", "", 0)}, // TODO Brauchen wir nicht?!?
+
+
+            // Survival Kit & Medi Station
+            { "MyObjectBuilder_SurvivalKit/SurvivalKitLarge", new DSC_BlockDef("MyObjectBuilder_SurvivalKit/SurvivalKitLarge","Survival kit","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_SurvivalKit/SurvivalKit", new DSC_BlockDef("MyObjectBuilder_SurvivalKit/SurvivalKit","Survival kit","SteelPlate", "", 0)}, // +
+
+
+            // Energy Blocks
+            { "MyObjectBuilder_SolarPanel/LargeBlockSolarPanel", new DSC_BlockDef("MyObjectBuilder_SolarPanel/LargeBlockSolarPanel","Solar Panel","SteelPlate", "", 0)}, // +
+            { "MyObjectBuilder_SolarPanel/SmallBlockSolarPanel", new DSC_BlockDef("MyObjectBuilder_SolarPanel/SmallBlockSolarPanel","Solar Panel","SteelPlate", "", 0)}, // +
+
+
+            // Cargo
+            { "MyObjectBuilder_CargoContainer/SmallBlockSmallContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockSmallContainer","Small Cargo Container","InteriorPlate", "", 0)}, //+
+            { "MyObjectBuilder_CargoContainer/SmallBlockMediumContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockMediumContainer","Medium Cargo Container","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockLargeContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockLargeContainer","Large Cargo Container","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_CargoContainer/LargeBlockSmallContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockSmallContainer","Small Cargo Container","InteriorPlate", "", 0)}, //+
+            { "MyObjectBuilder_CargoContainer/LargeBlockLargeContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockLargeContainer","Large Cargo Container","InteriorPlate", "", 0)},
+
+
+
+
+            // Interior
+            { "MyObjectBuilder_CargoContainer/LargeBlockLockers", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockLockers","Lockers","InteriorPlate", "", 0)}, // +
+
+
+            // Lights
+            { "MyObjectBuilder_ReflectorLight/RotatingLightLarge", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/RotatingLightLarge","Rotating Light","Construction", "", 0)},
+            { "MyObjectBuilder_ReflectorLight/RotatingLightSmall", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/RotatingLightSmall","Rotating Light","Construction", "", 0)},
+            { "MyObjectBuilder_InteriorLight/SmallLight", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallLight","Interior Light","Construction", "", 0)}, // +
+            { "MyObjectBuilder_InteriorLight/SmallBlockSmallLight", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallBlockSmallLight","Interior Light","Construction", "", 0)}, //+
+            { "MyObjectBuilder_InteriorLight/LargeBlockLight_1corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/LargeBlockLight_1corner","Corner Light","Construction", "", 0)},
+            { "MyObjectBuilder_InteriorLight/LargeBlockLight_2corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/LargeBlockLight_2corner","Corner Light - Double","Construction", "", 0)},
+            { "MyObjectBuilder_InteriorLight/SmallBlockLight_1corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallBlockLight_1corner","Corner Light","Construction", "", 0)},
+            { "MyObjectBuilder_InteriorLight/SmallBlockLight_2corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallBlockLight_2corner","Corner Light - Double","Construction", "", 0)},
+
+
+
+
+
 
 
             { "MyObjectBuilder_MyProgrammableBlock/SmallProgrammableBlock", new DSC_BlockDef("MyObjectBuilder_MyProgrammableBlock/SmallProgrammableBlock","Programmable block","SteelPlate", "", 0)},
+            { "MyObjectBuilder_MyProgrammableBlock/LargeProgrammableBlock", new DSC_BlockDef("MyObjectBuilder_MyProgrammableBlock/LargeProgrammableBlock","Programmable block","SteelPlate", "", 0)},
 
             { "MyObjectBuilder_Projector/LargeProjector", new DSC_BlockDef("MyObjectBuilder_Projector/LargeProjector","Projector","SteelPlate", "", 0)},
             { "MyObjectBuilder_Projector/SmallProjector", new DSC_BlockDef("MyObjectBuilder_Projector/SmallProjector","Projector","SteelPlate", "", 0)},
@@ -100,15 +161,12 @@ namespace DSC
             { "MyObjectBuilder_TimerBlock/TimerBlockLarge", new DSC_BlockDef("MyObjectBuilder_TimerBlock/TimerBlockLarge","Timer Block","InteriorPlate", "", 0)},
             { "MyObjectBuilder_TimerBlock/TimerBlockSmall", new DSC_BlockDef("MyObjectBuilder_TimerBlock/TimerBlockSmall","Timer Block","InteriorPlate", "", 0)},
 
-            { "MyObjectBuilder_MyProgrammableBlock/LargeProgrammableBlock", new DSC_BlockDef("MyObjectBuilder_MyProgrammableBlock/LargeProgrammableBlock","Programmable block","SteelPlate", "", 0)},
-
             { "MyObjectBuilder_RadioAntenna/LargeBlockRadioAntenna", new DSC_BlockDef("MyObjectBuilder_RadioAntenna/LargeBlockRadioAntenna","Antenna","SteelPlate", "", 0)},
+            { "MyObjectBuilder_RadioAntenna/SmallBlockRadioAntenna", new DSC_BlockDef("MyObjectBuilder_RadioAntenna/SmallBlockRadioAntenna","Antenna","SteelPlate", "", 0)},
 
             { "MyObjectBuilder_Beacon/LargeBlockBeacon", new DSC_BlockDef("MyObjectBuilder_Beacon/LargeBlockBeacon","Beacon","SteelPlate", "", 0)},
             { "MyObjectBuilder_Beacon/SmallBlockBeacon", new DSC_BlockDef("MyObjectBuilder_Beacon/SmallBlockBeacon","Beacon","SteelPlate", "", 0)},
-
-            { "MyObjectBuilder_RadioAntenna/SmallBlockRadioAntenna", new DSC_BlockDef("MyObjectBuilder_RadioAntenna/SmallBlockRadioAntenna","Antenna","SteelPlate", "", 0)},
-
+            
             { "MyObjectBuilder_RemoteControl/LargeBlockRemoteControl", new DSC_BlockDef("MyObjectBuilder_RemoteControl/LargeBlockRemoteControl","Remote Control","InteriorPlate", "", 0)},
             { "MyObjectBuilder_RemoteControl/SmallBlockRemoteControl", new DSC_BlockDef("MyObjectBuilder_RemoteControl/SmallBlockRemoteControl","Remote Control","InteriorPlate", "", 0)},
 
@@ -119,22 +177,19 @@ namespace DSC
             { "MyObjectBuilder_TerminalBlock/SmallControlPanel", new DSC_BlockDef("MyObjectBuilder_TerminalBlock/SmallControlPanel","Control Panel","SteelPlate", "", 0)},
 
             { "MyObjectBuilder_Cockpit/LargeBlockCockpit", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockCockpit","Control Stations","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_Cockpit/SmallBlockCockpit", new DSC_BlockDef("MyObjectBuilder_Cockpit/SmallBlockCockpit","Cockpit","SteelPlate", "", 0)},
 
             { "MyObjectBuilder_Cockpit/LargeBlockCockpitSeat", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockCockpitSeat","Cockpit","SteelPlate", "", 0)},
+            { "MyObjectBuilder_Cockpit/SmallBlockCockpit", new DSC_BlockDef("MyObjectBuilder_Cockpit/SmallBlockCockpit","Cockpit","SteelPlate", "", 0)},
 
             { "MyObjectBuilder_Cockpit/DBSmallBlockFighterCockpit", new DSC_BlockDef("MyObjectBuilder_Cockpit/DBSmallBlockFighterCockpit","Fighter Cockpit","Construction", "", 0)},
-
             { "MyObjectBuilder_Cockpit/CockpitOpen", new DSC_BlockDef("MyObjectBuilder_Cockpit/CockpitOpen","Flight Seat","InteriorPlate", "", 0)},
-
-            { "MyObjectBuilder_Cockpit/OpenCockpitSmall", new DSC_BlockDef("MyObjectBuilder_Cockpit/OpenCockpitSmall","Control Seat","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_Cockpit/OpenCockpitLarge", new DSC_BlockDef("MyObjectBuilder_Cockpit/OpenCockpitLarge","Control Seat","InteriorPlate", "", 0)},
 
             { "MyObjectBuilder_Gyro/LargeBlockGyro", new DSC_BlockDef("MyObjectBuilder_Gyro/LargeBlockGyro","Gyroscope","SteelPlate", "", 0)},
             { "MyObjectBuilder_Gyro/SmallBlockGyro", new DSC_BlockDef("MyObjectBuilder_Gyro/SmallBlockGyro","Gyroscope","SteelPlate", "", 0)},
 
-            
-            
+            { "MyObjectBuilder_Cockpit/OpenCockpitSmall", new DSC_BlockDef("MyObjectBuilder_Cockpit/OpenCockpitSmall","Control Seat","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_Cockpit/OpenCockpitLarge", new DSC_BlockDef("MyObjectBuilder_Cockpit/OpenCockpitLarge","Control Seat","InteriorPlate", "", 0)},
+
             { "MyObjectBuilder_Cockpit/LargeBlockDesk", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockDesk","Desk","InteriorPlate", "", 0)},
             { "MyObjectBuilder_Cockpit/LargeBlockDeskCorner", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockDeskCorner","Desk Corner","InteriorPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/LargeBlockDeskChairless", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockDeskChairless","Chairless Desk","InteriorPlate", "", 0)},
@@ -146,7 +201,7 @@ namespace DSC
             { "MyObjectBuilder_Planter/LargeBlockPlanters", new DSC_BlockDef("MyObjectBuilder_Planter/LargeBlockPlanters","Planters","InteriorPlate", "", 0)},
             { "MyObjectBuilder_Cockpit/LargeBlockCouch", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockCouch","Couch","InteriorPlate", "", 0)},
             { "MyObjectBuilder_Cockpit/LargeBlockCouchCorner", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockCouchCorner","Corner Couch","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/LargeBlockLockers", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockLockers","Lockers","InteriorPlate", "", 0)},
+            
             { "MyObjectBuilder_Cockpit/LargeBlockBathroomOpen", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockBathroomOpen","Toilet","InteriorPlate", "", 0)},
             { "MyObjectBuilder_Cockpit/LargeBlockBathroom", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockBathroom","Bathroom","InteriorPlate", "", 0)},
             { "MyObjectBuilder_Cockpit/LargeBlockToilet", new DSC_BlockDef("MyObjectBuilder_Cockpit/LargeBlockToilet","Toilet Seat","InteriorPlate", "", 0)},
@@ -179,8 +234,7 @@ namespace DSC
             { "MyObjectBuilder_CubeBlock/RailingDiagonal", new DSC_BlockDef("MyObjectBuilder_CubeBlock/RailingDiagonal","Railing Diagonal","Construction", "", 0)},
             { "MyObjectBuilder_CubeBlock/RailingHalfRight", new DSC_BlockDef("MyObjectBuilder_CubeBlock/RailingHalfRight","Railing Half Right","Construction", "", 0)},
             { "MyObjectBuilder_CubeBlock/RailingHalfLeft", new DSC_BlockDef("MyObjectBuilder_CubeBlock/RailingHalfLeft","Railing Half Left","Construction", "", 0)},
-            { "MyObjectBuilder_ReflectorLight/RotatingLightLarge", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/RotatingLightLarge","Rotating Light","Construction", "", 0)},
-            { "MyObjectBuilder_ReflectorLight/RotatingLightSmall", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/RotatingLightSmall","Rotating Light","Construction", "", 0)},
+
             { "MyObjectBuilder_CubeBlock/Freight1", new DSC_BlockDef("MyObjectBuilder_CubeBlock/Freight1","Freight 1","InteriorPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/Freight2", new DSC_BlockDef("MyObjectBuilder_CubeBlock/Freight2","Freight 2","InteriorPlate", "", 0)},
             { "MyObjectBuilder_CubeBlock/Freight3", new DSC_BlockDef("MyObjectBuilder_CubeBlock/Freight3","Freight 3","InteriorPlate", "", 0)},
@@ -210,8 +264,7 @@ namespace DSC
             { "MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine","Hydrogen Engine","SteelPlate", "", 0)},
             { "MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine","Hydrogen Engine","SteelPlate", "", 0)},
             { "MyObjectBuilder_WindTurbine/LargeBlockWindTurbine", new DSC_BlockDef("MyObjectBuilder_WindTurbine/LargeBlockWindTurbine","Wind Turbine","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_SolarPanel/LargeBlockSolarPanel", new DSC_BlockDef("MyObjectBuilder_SolarPanel/LargeBlockSolarPanel","Solar Panel","SteelPlate", "", 0)},
-            { "MyObjectBuilder_SolarPanel/SmallBlockSolarPanel", new DSC_BlockDef("MyObjectBuilder_SolarPanel/SmallBlockSolarPanel","Solar Panel","SteelPlate", "", 0)},
+
             { "MyObjectBuilder_GravityGenerator/(null)", new DSC_BlockDef("MyObjectBuilder_GravityGenerator/(null)","Gravity Generator","SteelPlate", "", 0)},
             { "MyObjectBuilder_GravityGeneratorSphere/(null)", new DSC_BlockDef("MyObjectBuilder_GravityGeneratorSphere/(null)","Spherical Gravity Generator","SteelPlate", "", 0)},
             { "MyObjectBuilder_VirtualMass/VirtualMassLarge", new DSC_BlockDef("MyObjectBuilder_VirtualMass/VirtualMassLarge","Artificial Mass","SteelPlate", "", 0)},
@@ -249,23 +302,14 @@ namespace DSC
             { "MyObjectBuilder_TextPanel/LargeLCDPanelWide", new DSC_BlockDef("MyObjectBuilder_TextPanel/LargeLCDPanelWide","Wide LCD panel","InteriorPlate", "", 0)},
             { "MyObjectBuilder_ReflectorLight/LargeBlockFrontLight", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/LargeBlockFrontLight","Spotlight","SteelPlate", "", 0)},
             { "MyObjectBuilder_ReflectorLight/SmallBlockFrontLight", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/SmallBlockFrontLight","Spotlight","SteelPlate", "", 0)},
-            { "MyObjectBuilder_InteriorLight/SmallLight", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallLight","Interior Light","Construction", "", 0)},
-            { "MyObjectBuilder_InteriorLight/SmallBlockSmallLight", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallBlockSmallLight","Interior Light","Construction", "", 0)},
-            { "MyObjectBuilder_InteriorLight/LargeBlockLight_1corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/LargeBlockLight_1corner","Corner Light","Construction", "", 0)},
-            { "MyObjectBuilder_InteriorLight/LargeBlockLight_2corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/LargeBlockLight_2corner","Corner Light - Double","Construction", "", 0)},
-            { "MyObjectBuilder_InteriorLight/SmallBlockLight_1corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallBlockLight_1corner","Corner Light","Construction", "", 0)},
-            { "MyObjectBuilder_InteriorLight/SmallBlockLight_2corner", new DSC_BlockDef("MyObjectBuilder_InteriorLight/SmallBlockLight_2corner","Corner Light - Double","Construction", "", 0)},
+            
             { "MyObjectBuilder_OxygenTank/OxygenTankSmall", new DSC_BlockDef("MyObjectBuilder_OxygenTank/OxygenTankSmall","Oxygen Tank","SteelPlate", "", 0)},
             { "MyObjectBuilder_OxygenTank/(null)", new DSC_BlockDef("MyObjectBuilder_OxygenTank/(null)","Oxygen Tank","SteelPlate", "", 0)},
             { "MyObjectBuilder_OxygenTank/LargeHydrogenTank", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeHydrogenTank","Hydrogen Tank","SteelPlate", "", 0)},
             { "MyObjectBuilder_OxygenTank/SmallHydrogenTank", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTank","Hydrogen Tank","SteelPlate", "", 0)},
             { "MyObjectBuilder_AirVent/(null)", new DSC_BlockDef("MyObjectBuilder_AirVent/(null)","Air Vent","SteelPlate", "", 0)},
             { "MyObjectBuilder_AirVent/SmallAirVent", new DSC_BlockDef("MyObjectBuilder_AirVent/SmallAirVent","Air Vent","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/SmallBlockSmallContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockSmallContainer","Small Cargo Container","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/SmallBlockMediumContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockMediumContainer","Medium Cargo Container","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/SmallBlockLargeContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockLargeContainer","Large Cargo Container","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/LargeBlockSmallContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockSmallContainer","Small Cargo Container","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/LargeBlockLargeContainer", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockLargeContainer","Large Cargo Container","InteriorPlate", "", 0)},
+
             { "MyObjectBuilder_Conveyor/SmallBlockConveyor", new DSC_BlockDef("MyObjectBuilder_Conveyor/SmallBlockConveyor","Small Conveyor","InteriorPlate", "", 0)},
             { "MyObjectBuilder_Conveyor/LargeBlockConveyor", new DSC_BlockDef("MyObjectBuilder_Conveyor/LargeBlockConveyor","Conveyor Junction","InteriorPlate", "", 0)},
             { "MyObjectBuilder_Collector/Collector", new DSC_BlockDef("MyObjectBuilder_Collector/Collector","Collector","SteelPlate", "", 0)},
@@ -297,18 +341,15 @@ namespace DSC
             { "MyObjectBuilder_MedicalRoom/LargeMedicalRoom", new DSC_BlockDef("MyObjectBuilder_MedicalRoom/LargeMedicalRoom","Medical Room","InteriorPlate", "", 0)},
             { "MyObjectBuilder_CryoChamber/LargeBlockCryoChamber", new DSC_BlockDef("MyObjectBuilder_CryoChamber/LargeBlockCryoChamber","Cryo Chamber","InteriorPlate", "", 0)},
             { "MyObjectBuilder_CryoChamber/SmallBlockCryoChamber", new DSC_BlockDef("MyObjectBuilder_CryoChamber/SmallBlockCryoChamber","Cryo Chamber","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_Refinery/LargeRefinery", new DSC_BlockDef("MyObjectBuilder_Refinery/LargeRefinery","Refinery","SteelPlate", "", 0)},
-            { "MyObjectBuilder_Refinery/Blast Furnace", new DSC_BlockDef("MyObjectBuilder_Refinery/Blast Furnace","Basic Refinery","SteelPlate", "", 0)},
+
             { "MyObjectBuilder_OxygenGenerator/(null)", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/(null)","O2/H2 Generator","SteelPlate", "", 0)},
             { "MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall","O2/H2 Generator","SteelPlate", "", 0)},
-            { "MyObjectBuilder_Assembler/LargeAssembler", new DSC_BlockDef("MyObjectBuilder_Assembler/LargeAssembler","Assembler","SteelPlate", "", 0)},
-            { "MyObjectBuilder_Assembler/BasicAssembler", new DSC_BlockDef("MyObjectBuilder_Assembler/BasicAssembler","Basic Assembler","SteelPlate", "", 0)},
-            { "MyObjectBuilder_SurvivalKit/SurvivalKitLarge", new DSC_BlockDef("MyObjectBuilder_SurvivalKit/SurvivalKitLarge","Survival kit","SteelPlate", "", 0)},
-            { "MyObjectBuilder_SurvivalKit/SurvivalKit", new DSC_BlockDef("MyObjectBuilder_SurvivalKit/SurvivalKit","Survival kit","SteelPlate", "", 0)},
+
+
+
+            
             { "MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm", new DSC_BlockDef("MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm","Oxygen Farm","SteelPlate", "", 0)},
-            { "MyObjectBuilder_UpgradeModule/LargeProductivityModule", new DSC_BlockDef("MyObjectBuilder_UpgradeModule/LargeProductivityModule","Speed Module","SteelPlate", "", 0)},
-            { "MyObjectBuilder_UpgradeModule/LargeEffectivenessModule", new DSC_BlockDef("MyObjectBuilder_UpgradeModule/LargeEffectivenessModule","Yield Module","SteelPlate", "", 0)},
-            { "MyObjectBuilder_UpgradeModule/LargeEnergyModule", new DSC_BlockDef("MyObjectBuilder_UpgradeModule/LargeEnergyModule","Power Efficiency Module","SteelPlate", "", 0)},
+
             { "MyObjectBuilder_Thrust/SmallBlockSmallThrust", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallThrust","Ion Thrusters","SteelPlate", "", 0)},
             { "MyObjectBuilder_Thrust/SmallBlockLargeThrust", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeThrust","Large Ion Thruster","SteelPlate", "", 0)},
             { "MyObjectBuilder_Thrust/LargeBlockSmallThrust", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallThrust","Ion Thrusters","SteelPlate", "", 0)},
@@ -411,6 +452,256 @@ namespace DSC
             { "MyObjectBuilder_CubeBlock/SmallWindow3x3FlatInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallWindow3x3FlatInv","Window 3x3 Flat Inv.","Girder", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallWindow2x3Flat", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallWindow2x3Flat","Window 2x3 Flat","Girder", "", 0)},
             { "MyObjectBuilder_CubeBlock/SmallWindow2x3FlatInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SmallWindow2x3FlatInv","Window 2x3 Flat Inv.","Girder", "", 0)},
+            { "MyObjectBuilder_CargoContainer/DSC_PCU_0", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_0","DSC_PCU_0","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_CargoContainer/DSC_PCU_1", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_1","DSC_PCU_1","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_CargoContainer/DSC_PCU_2", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_2","DSC_PCU_2","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_CargoContainer/DSC_PCU_3", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_3","DSC_PCU_3","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_negative_Half_Slope_Large", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_negative_Half_Slope_Large","Light Armor Negative Half Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_Tiny_Corner_Large", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_Tiny_Corner_Large","Light Armor Tiny Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_half_slope_top_Large", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_half_slope_top_Large","Light Armor Half Slope Top","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_half_slope_Large", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_half_slope_Large","Light Armor Half Slope Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_slope_tip_Corner_Large", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_slope_tip_Corner_Large","Light Armor Half Slope tip","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_Slope_Straight_Corner_Large", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_Slope_Straight_Corner_Large","Light Armor Straight Slope Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_negative_Half_Slope_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_negative_Half_Slope_Small","Light Armor Negative Half Slope","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_Tiny_Corner_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_Tiny_Corner_Small","Light Armor Tiny Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_half_slope_top_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_half_slope_top_Small","Light Armor Half Slope Top","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_half_slope_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_half_slope_Small","Light Armor Half Slope Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_slope_tip_Corner_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_slope_tip_Corner_Small","Light Armor Half Slope tip","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_LA_Slope_Straight_Corner_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_LA_Slope_Straight_Corner_Small","Light Armor Straight Slope Corner","SteelPlate", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_WindowCenterd", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_WindowCenterd","Centered Window","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_Half_Sloped_Window", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_Half_Sloped_Window","Half 2x1 Sloped Window","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_Half_Sloped_WindowInv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_Half_Sloped_WindowInv","Half 2x1 Sloped Window inset","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope","Angled Sloped Window","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope_inset", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope_inset","Angled Sloped Window Inset","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope_inv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope_inv","Angled Sloped Window Inv","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope_inset_inv", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope_inset_inv","Angled Sloped Window Inset Inv","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_WindowCenterd_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_WindowCenterd_Small","Centered Window","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_Half_Sloped_Window_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_Half_Sloped_Window_Small","Half 2x1 Sloped Window","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_Half_Sloped_WindowInv_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_Half_Sloped_WindowInv_Small","Half 2x1 Sloped Window inset","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope_Small","Angled Sloped Window","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope_inset_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope_inset_Small","Angled Sloped Window Inset","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope_inv_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope_inv_Small","Angled Sloped Window Inv","Girder", "", 0)},
+            { "MyObjectBuilder_CubeBlock/SS_wierd_slope_inset_inv_Small", new DSC_BlockDef("MyObjectBuilder_CubeBlock/SS_wierd_slope_inset_inv_Small","Angled Sloped Window Inset Inv","Girder", "", 0)},
+
+            { "MyObjectBuilder_Thrust/SmallBlockSmallAtmosphericThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallAtmosphericThrust2x","Enhanced Atmospheric Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeAtmosphericThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeAtmosphericThrust2x","Enhanced Atmospheric Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallAtmosphericThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallAtmosphericThrust2x","Enhanced Atmospheric Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeAtmosphericThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeAtmosphericThrust2x","Enhanced Atmospheric Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallAtmosphericThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallAtmosphericThrust4x","Proficient Atmospheric Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeAtmosphericThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeAtmosphericThrust4x","Proficient Atmospheric Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallAtmosphericThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallAtmosphericThrust4x","Proficient Atmospheric Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeAtmosphericThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeAtmosphericThrust4x","Proficient Atmospheric Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallAtmosphericThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallAtmosphericThrust8x","Elite Atmospheric Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeAtmosphericThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeAtmosphericThrust8x","Elite Atmospheric Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallAtmosphericThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallAtmosphericThrust8x","Elite Atmospheric Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeAtmosphericThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeAtmosphericThrust8x","Elite Atmospheric Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/SmallBlockSmallBatteryBlock2x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/SmallBlockSmallBatteryBlock2x","Enhanced Battery","Tech2x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/SmallBlockBatteryBlock2x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/SmallBlockBatteryBlock2x","Enhanced Battery","Tech2x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/LargeBlockBatteryBlock2x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/LargeBlockBatteryBlock2x","Enhanced Battery","Tech2x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/SmallBlockSmallBatteryBlock4x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/SmallBlockSmallBatteryBlock4x","Proficient Battery","Tech4x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/SmallBlockBatteryBlock4x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/SmallBlockBatteryBlock4x","Proficient Battery","Tech4x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/LargeBlockBatteryBlock4x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/LargeBlockBatteryBlock4x","Proficient Battery","Tech4x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/SmallBlockSmallBatteryBlock8x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/SmallBlockSmallBatteryBlock8x","Elite Battery","Tech8x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/SmallBlockBatteryBlock8x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/SmallBlockBatteryBlock8x","Elite Battery","Tech8x", "", 0)},
+            { "MyObjectBuilder_BatteryBlock/LargeBlockBatteryBlock8x", new DSC_BlockDef("MyObjectBuilder_BatteryBlock/LargeBlockBatteryBlock8x","Elite Battery","Tech8x", "", 0)},
+            { "MyObjectBuilder_Beacon/LargeBlockBeacon2x", new DSC_BlockDef("MyObjectBuilder_Beacon/LargeBlockBeacon2x","Enhanced Beacon","Tech2x", "", 0)},
+            { "MyObjectBuilder_Beacon/SmallBlockBeacon2x", new DSC_BlockDef("MyObjectBuilder_Beacon/SmallBlockBeacon2x","Enhanced Beacon","Tech2x", "", 0)},
+            { "MyObjectBuilder_Beacon/LargeBlockBeacon4x", new DSC_BlockDef("MyObjectBuilder_Beacon/LargeBlockBeacon4x","Proficient Beacon","Tech4x", "", 0)},
+            { "MyObjectBuilder_Beacon/SmallBlockBeacon4x", new DSC_BlockDef("MyObjectBuilder_Beacon/SmallBlockBeacon4x","Proficient Beacon","Tech4x", "", 0)},
+            { "MyObjectBuilder_Beacon/LargeBlockBeacon8x", new DSC_BlockDef("MyObjectBuilder_Beacon/LargeBlockBeacon8x","Elite Beacon","Tech8x", "", 0)},
+            { "MyObjectBuilder_Beacon/SmallBlockBeacon8x", new DSC_BlockDef("MyObjectBuilder_Beacon/SmallBlockBeacon8x","Elite Beacon","Tech8x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/LargeBlockLargeContainer2x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockLargeContainer2x","Enhanced Large Quantum Container","Tech2x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockLargeContainer2x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockLargeContainer2x","Enhanced Large Quantum Container","Tech2x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/LargeBlockLargeContainer4x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockLargeContainer4x","Proficient Large Quantum Container","Tech4x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockLargeContainer4x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockLargeContainer4x","Proficient Large Quantum Container","Tech4x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/LargeBlockLargeContainer8x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockLargeContainer8x","Timelord Large Quantum Container","Tech8x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockLargeContainer8x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockLargeContainer8x","Timelord Large Quantum Container","Tech8x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockMediumContainer2x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockMediumContainer2x","Enhanced Medium Quantum Container","Tech2x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockMediumContainer4x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockMediumContainer4x","Proficient Medium Quantum Container","Tech4x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockMediumContainer8x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockMediumContainer8x","Elite Medium Quantum Container","Tech8x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/LargeBlockSmallContainer2x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockSmallContainer2x","Enhanced Small Quantum Container","Tech2x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockSmallContainer2x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockSmallContainer2x","Enhanced Small Quantum Container","Tech2x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/LargeBlockSmallContainer4x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockSmallContainer4x","Proficient Small Quantum Container","Tech4x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockSmallContainer4x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockSmallContainer4x","Proficient Small Quantum Container","Tech4x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/LargeBlockSmallContainer8x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/LargeBlockSmallContainer8x","Elite Small Quantum Container","Tech8x", "", 0)},
+            { "MyObjectBuilder_CargoContainer/SmallBlockSmallContainer8x", new DSC_BlockDef("MyObjectBuilder_CargoContainer/SmallBlockSmallContainer8x","Elite Small Quantum Container","Tech8x", "", 0)},
+            { "MyObjectBuilder_OreDetector/LargeOreDetector2x", new DSC_BlockDef("MyObjectBuilder_OreDetector/LargeOreDetector2x","Enhanced Ore Detector","Tech2x", "", 0)},
+            { "MyObjectBuilder_OreDetector/SmallBlockOreDetector2x", new DSC_BlockDef("MyObjectBuilder_OreDetector/SmallBlockOreDetector2x","Enhanced Ore Detector","Tech2x", "", 0)},
+            { "MyObjectBuilder_OreDetector/LargeOreDetector4x", new DSC_BlockDef("MyObjectBuilder_OreDetector/LargeOreDetector4x","Proficient Ore Detector","Tech4x", "", 0)},
+            { "MyObjectBuilder_OreDetector/SmallBlockOreDetector4x", new DSC_BlockDef("MyObjectBuilder_OreDetector/SmallBlockOreDetector4x","Proficient Ore Detector","Tech4x", "", 0)},
+            { "MyObjectBuilder_OreDetector/LargeOreDetector8x", new DSC_BlockDef("MyObjectBuilder_OreDetector/LargeOreDetector8x","Elite Ore Detector","Tech8x", "", 0)},
+            { "MyObjectBuilder_OreDetector/SmallBlockOreDetector8x", new DSC_BlockDef("MyObjectBuilder_OreDetector/SmallBlockOreDetector8x","Elite Ore Detector","Tech8x", "", 0)},
+            { "MyObjectBuilder_Drill/SmallBlockDrill2x", new DSC_BlockDef("MyObjectBuilder_Drill/SmallBlockDrill2x","Enhanced Drill","Tech2x", "", 0)},
+            { "MyObjectBuilder_Drill/LargeBlockDrill2x", new DSC_BlockDef("MyObjectBuilder_Drill/LargeBlockDrill2x","Enhanced Drill","Tech2x", "", 0)},
+            { "MyObjectBuilder_Drill/SmallBlockDrill4x", new DSC_BlockDef("MyObjectBuilder_Drill/SmallBlockDrill4x","Proficient Drill","Tech4x", "", 0)},
+            { "MyObjectBuilder_Drill/LargeBlockDrill4x", new DSC_BlockDef("MyObjectBuilder_Drill/LargeBlockDrill4x","Proficient Drill","Tech4x", "", 0)},
+            { "MyObjectBuilder_Drill/SmallBlockDrill8x", new DSC_BlockDef("MyObjectBuilder_Drill/SmallBlockDrill8x","Elite Drill","Tech8x", "", 0)},
+            { "MyObjectBuilder_Drill/LargeBlockDrill8x", new DSC_BlockDef("MyObjectBuilder_Drill/LargeBlockDrill8x","Elite Drill","Tech8x", "", 0)},
+            { "MyObjectBuilder_SmallGatlingGun/SmallGatlingGun2x", new DSC_BlockDef("MyObjectBuilder_SmallGatlingGun/SmallGatlingGun2x","Enhanced Gatling Gun","Tech2x", "", 0)},
+            { "MyObjectBuilder_SmallGatlingGun/SmallGatlingGun4x", new DSC_BlockDef("MyObjectBuilder_SmallGatlingGun/SmallGatlingGun4x","Proficient Gatling Gun","Tech4x", "", 0)},
+            { "MyObjectBuilder_SmallGatlingGun/SmallGatlingGun8x", new DSC_BlockDef("MyObjectBuilder_SmallGatlingGun/SmallGatlingGun8x","Elite Gatling Gun","Tech8x", "", 0)},
+            { "MyObjectBuilder_LargeGatlingTurret/LargeGatlingTurret2x", new DSC_BlockDef("MyObjectBuilder_LargeGatlingTurret/LargeGatlingTurret2x","Enhanced Gatling Turret","Tech2x", "", 0)},
+            { "MyObjectBuilder_LargeGatlingTurret/SmallGatlingTurret2x", new DSC_BlockDef("MyObjectBuilder_LargeGatlingTurret/SmallGatlingTurret2x","Enhanced Gatling Turret","Tech2x", "", 0)},
+            { "MyObjectBuilder_LargeGatlingTurret/LargeGatlingTurret4x", new DSC_BlockDef("MyObjectBuilder_LargeGatlingTurret/LargeGatlingTurret4x","Proficient Gatling Turret","Tech4x", "", 0)},
+            { "MyObjectBuilder_LargeGatlingTurret/SmallGatlingTurret4x", new DSC_BlockDef("MyObjectBuilder_LargeGatlingTurret/SmallGatlingTurret4x","Proficient Gatling Turret","Tech4x", "", 0)},
+            { "MyObjectBuilder_LargeGatlingTurret/LargeGatlingTurret8x", new DSC_BlockDef("MyObjectBuilder_LargeGatlingTurret/LargeGatlingTurret8x","Elite Gatling Turret","Tech8x", "", 0)},
+            { "MyObjectBuilder_LargeGatlingTurret/SmallGatlingTurret8x", new DSC_BlockDef("MyObjectBuilder_LargeGatlingTurret/SmallGatlingTurret8x","Elite Gatling Turret","Tech8x", "", 0)},
+            { "MyObjectBuilder_ShipGrinder/SmallShipGrinder2x", new DSC_BlockDef("MyObjectBuilder_ShipGrinder/SmallShipGrinder2x","Enhanced Grinder","Tech2x", "", 0)},
+            { "MyObjectBuilder_ShipGrinder/LargeShipGrinder2x", new DSC_BlockDef("MyObjectBuilder_ShipGrinder/LargeShipGrinder2x","Enhanced Grinder","Tech2x", "", 0)},
+            { "MyObjectBuilder_ShipGrinder/SmallShipGrinder4x", new DSC_BlockDef("MyObjectBuilder_ShipGrinder/SmallShipGrinder4x","Proficient Grinder","Tech4x", "", 0)},
+            { "MyObjectBuilder_ShipGrinder/LargeShipGrinder4x", new DSC_BlockDef("MyObjectBuilder_ShipGrinder/LargeShipGrinder4x","Proficient Grinder","Tech4x", "", 0)},
+            { "MyObjectBuilder_ShipGrinder/SmallShipGrinder8x", new DSC_BlockDef("MyObjectBuilder_ShipGrinder/SmallShipGrinder8x","Elite Grinder","Tech8x", "", 0)},
+            { "MyObjectBuilder_ShipGrinder/LargeShipGrinder8x", new DSC_BlockDef("MyObjectBuilder_ShipGrinder/LargeShipGrinder8x","Elite Grinder","Tech8x", "", 0)},
+            { "MyObjectBuilder_Gyro/SmallBlockGyro2x", new DSC_BlockDef("MyObjectBuilder_Gyro/SmallBlockGyro2x","Enhanced Gyroscope","Tech2x", "", 0)},
+            { "MyObjectBuilder_Gyro/LargeBlockGyro2x", new DSC_BlockDef("MyObjectBuilder_Gyro/LargeBlockGyro2x","Enhanced Gyroscope","Tech2x", "", 0)},
+            { "MyObjectBuilder_Gyro/SmallBlockGyro4x", new DSC_BlockDef("MyObjectBuilder_Gyro/SmallBlockGyro4x","Proficient Gyroscope","Tech4x", "", 0)},
+            { "MyObjectBuilder_Gyro/LargeBlockGyro4x", new DSC_BlockDef("MyObjectBuilder_Gyro/LargeBlockGyro4x","Proficient Gyroscope","Tech4x", "", 0)},
+            { "MyObjectBuilder_Gyro/SmallBlockGyro8x", new DSC_BlockDef("MyObjectBuilder_Gyro/SmallBlockGyro8x","Elite Gyroscope","Tech8x", "", 0)},
+            { "MyObjectBuilder_Gyro/LargeBlockGyro8x", new DSC_BlockDef("MyObjectBuilder_Gyro/LargeBlockGyro8x","Elite Gyroscope","Tech8x", "", 0)},
+            { "MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine2x", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine2x","Enhanced Hydrogen Engine","Tech2x", "", 0)},
+            { "MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine2x", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine2x","Enhanced Hydrogen Engine","Tech2x", "", 0)},
+            { "MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine4x", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine4x","Proficient Hydrogen Engine","Tech4x", "", 0)},
+            { "MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine4x", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine4x","Proficient Hydrogen Engine","Tech4x", "", 0)},
+            { "MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine8x", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/LargeHydrogenEngine8x","Elite Hydrogen Engine","Tech8x", "", 0)},
+            { "MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine8x", new DSC_BlockDef("MyObjectBuilder_HydrogenEngine/SmallHydrogenEngine8x","Elite Hydrogen Engine","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank","Small Hydrogen Tank","SteelPlate", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall","Small Hydrogen Tank","SteelPlate", "", 0)},
+            { "MyObjectBuilder_OxygenTank/LargeHydrogenTank2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeHydrogenTank2x","Enhanced Hydrogen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank2x","Enhanced Small Hydrogen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallHydrogenTank2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTank2x","Enhanced Hydrogen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall2x","Enhanced Small Hydrogen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/LargeHydrogenTank4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeHydrogenTank4x","Proficient Hydrogen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank4x","Proficient Small Hydrogen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallHydrogenTank4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTank4x","Proficient Hydrogen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall4x","Proficient Small Hydrogen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/LargeHydrogenTank8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeHydrogenTank8x","Elite Hydrogen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeHydrogenTank8x","Elite Small Hydrogen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallHydrogenTank8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTank8x","Elite Hydrogen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallHydrogenTankSmall8x","Elite Small Hydrogen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallHydrogenThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallHydrogenThrust2x","Enhanced Hydrogen Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeHydrogenThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeHydrogenThrust2x","Enhanced Hydrogen Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallHydrogenThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallHydrogenThrust2x","Enhanced Hydrogen Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeHydrogenThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeHydrogenThrust2x","Enhanced Hydrogen Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallHydrogenThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallHydrogenThrust4x","Proficient Hydrogen Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeHydrogenThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeHydrogenThrust4x","Proficient Hydrogen Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallHydrogenThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallHydrogenThrust4x","Proficient Hydrogen Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeHydrogenThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeHydrogenThrust4x","Proficient Hydrogen Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallHydrogenThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallHydrogenThrust8x","Elite Hydrogen Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeHydrogenThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeHydrogenThrust8x","Elite Hydrogen Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallHydrogenThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallHydrogenThrust8x","Elite Hydrogen Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeHydrogenThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeHydrogenThrust8x","Elite Hydrogen Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_InteriorTurret/LargeInteriorTurret2x", new DSC_BlockDef("MyObjectBuilder_InteriorTurret/LargeInteriorTurret2x","Enhanced Interior Turret","Tech2x", "", 0)},
+            { "MyObjectBuilder_InteriorTurret/LargeInteriorTurret4x", new DSC_BlockDef("MyObjectBuilder_InteriorTurret/LargeInteriorTurret4x","Proficient Interior Turret","Tech4x", "", 0)},
+            { "MyObjectBuilder_InteriorTurret/LargeInteriorTurret8x", new DSC_BlockDef("MyObjectBuilder_InteriorTurret/LargeInteriorTurret8x","Elite Interior Turret","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallThrust2x","Enhanced Ion Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeThrust2x","Enhanced Ion Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallThrust2x","Enhanced Ion Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeThrust2x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeThrust2x","Enhanced Ion Thruster","Tech2x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallThrust4x","Proficient Ion Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeThrust4x","Proficient Ion Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallThrust4x","Proficient Ion Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeThrust4x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeThrust4x","Proficient Ion Thruster","Tech4x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockSmallThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockSmallThrust8x","Elite Ion Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/SmallBlockLargeThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/SmallBlockLargeThrust8x","Elite Ion Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockSmallThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockSmallThrust8x","Elite Ion Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_Thrust/LargeBlockLargeThrust8x", new DSC_BlockDef("MyObjectBuilder_Thrust/LargeBlockLargeThrust8x","Elite Ion Thruster","Tech8x", "", 0)},
+            { "MyObjectBuilder_JumpDrive/SmallJumpDrive", new DSC_BlockDef("MyObjectBuilder_JumpDrive/SmallJumpDrive","Jump Drive","SteelPlate", "", 0)},
+            { "MyObjectBuilder_JumpDrive/LargeJumpDrive2x", new DSC_BlockDef("MyObjectBuilder_JumpDrive/LargeJumpDrive2x","Enhanced Jump Drive","Tech2x", "", 0)},
+            { "MyObjectBuilder_JumpDrive/SmallJumpDrive2x", new DSC_BlockDef("MyObjectBuilder_JumpDrive/SmallJumpDrive2x","Enhanced Jump Drive","Tech2x", "", 0)},
+            { "MyObjectBuilder_JumpDrive/LargeJumpDrive4x", new DSC_BlockDef("MyObjectBuilder_JumpDrive/LargeJumpDrive4x","Proficient Jump Drive","Tech4x", "", 0)},
+            { "MyObjectBuilder_JumpDrive/SmallJumpDrive4x", new DSC_BlockDef("MyObjectBuilder_JumpDrive/SmallJumpDrive4x","Proficient Jump Drive","Tech4x", "", 0)},
+            { "MyObjectBuilder_JumpDrive/LargeJumpDrive8x", new DSC_BlockDef("MyObjectBuilder_JumpDrive/LargeJumpDrive8x","Elite Jump Drive","Tech8x", "", 0)},
+            { "MyObjectBuilder_JumpDrive/SmallJumpDrive8x", new DSC_BlockDef("MyObjectBuilder_JumpDrive/SmallJumpDrive8x","Elite Jump Drive","Tech8x", "", 0)},
+            { "MyObjectBuilder_LargeMissileTurret/LargeMissileTurret2x", new DSC_BlockDef("MyObjectBuilder_LargeMissileTurret/LargeMissileTurret2x","Enhanced Missile Turret","Tech2x", "", 0)},
+            { "MyObjectBuilder_LargeMissileTurret/SmallMissileTurret2x", new DSC_BlockDef("MyObjectBuilder_LargeMissileTurret/SmallMissileTurret2x","Enhanced Missile Turret","Tech2x", "", 0)},
+            { "MyObjectBuilder_LargeMissileTurret/LargeMissileTurret4x", new DSC_BlockDef("MyObjectBuilder_LargeMissileTurret/LargeMissileTurret4x","Proficient Missile Turret","Tech4x", "", 0)},
+            { "MyObjectBuilder_LargeMissileTurret/SmallMissileTurret4x", new DSC_BlockDef("MyObjectBuilder_LargeMissileTurret/SmallMissileTurret4x","Proficient Missile Turret","Tech4x", "", 0)},
+            { "MyObjectBuilder_LargeMissileTurret/LargeMissileTurret8x", new DSC_BlockDef("MyObjectBuilder_LargeMissileTurret/LargeMissileTurret8x","Elite Missile Turret","Tech8x", "", 0)},
+            { "MyObjectBuilder_LargeMissileTurret/SmallMissileTurret8x", new DSC_BlockDef("MyObjectBuilder_LargeMissileTurret/SmallMissileTurret8x","Elite Missile Turret","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm2x", new DSC_BlockDef("MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm2x","Enhanced Oxygen Farm","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm4x", new DSC_BlockDef("MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm4x","Proficient Oxygen Farm","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm8x", new DSC_BlockDef("MyObjectBuilder_OxygenFarm/LargeBlockOxygenFarm8x","Elite Oxygen Farm","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenGenerator/OxygenGeneratorLarge2x", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/OxygenGeneratorLarge2x","Enhanced O2/H2 Generator","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall2x", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall2x","Enhanced O2/H2 Generator","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenGenerator/OxygenGeneratorLarge4x", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/OxygenGeneratorLarge4x","Proficient O2/H2 Generator","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall4x", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall4x","Proficient O2/H2 Generator","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenGenerator/OxygenGeneratorLarge8x", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/OxygenGeneratorLarge8x","Elite O2/H2 Generator","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall8x", new DSC_BlockDef("MyObjectBuilder_OxygenGenerator/OxygenGeneratorSmall8x","Elite O2/H2 Generator","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/LargeOxygenTank", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeOxygenTank","Large Oxygen Tank","SteelPlate", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeOxygenTank", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeOxygenTank","Large Oxygen Tank","SteelPlate", "", 0)},
+            { "MyObjectBuilder_OxygenTank/OxygenTankDefault2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/OxygenTankDefault2x","Enhanced Oxygen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/LargeOxygenTank2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeOxygenTank2x","Enhanced Large Oxygen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/OxygenTankSmall2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/OxygenTankSmall2x","Enhanced Oxygen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeOxygenTank2x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeOxygenTank2x","Enhanced Large Oxygen Tank","Tech2x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/OxygenTankDefault4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/OxygenTankDefault4x","Proficient Oxygen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeOxygenTank4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeOxygenTank4x","Proficient Large Oxygen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/OxygenTankSmall4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/OxygenTankSmall4x","Proficient Large Oxygen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/LargeOxygenTank4x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeOxygenTank4x","Proficient Oxygen Tank","Tech4x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/OxygenTankDefault8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/OxygenTankDefault8x","Elite Oxygen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/LargeOxygenTank8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/LargeOxygenTank8x","Elite Large Oxygen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/OxygenTankSmall8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/OxygenTankSmall8x","Elite Oxygen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_OxygenTank/SmallLargeOxygenTank8x", new DSC_BlockDef("MyObjectBuilder_OxygenTank/SmallLargeOxygenTank8x","Elite Large Oxygen Tank","Tech8x", "", 0)},
+            { "MyObjectBuilder_Reactor/SmallBlockSmallGenerator2x", new DSC_BlockDef("MyObjectBuilder_Reactor/SmallBlockSmallGenerator2x","Enhanced Reactor","Tech2x", "", 0)},
+            { "MyObjectBuilder_Reactor/SmallBlockLargeGenerator2x", new DSC_BlockDef("MyObjectBuilder_Reactor/SmallBlockLargeGenerator2x","Enhanced Reactor","Tech2x", "", 0)},
+            { "MyObjectBuilder_Reactor/LargeBlockSmallGenerator2x", new DSC_BlockDef("MyObjectBuilder_Reactor/LargeBlockSmallGenerator2x","Enhanced Reactor","Tech2x", "", 0)},
+            { "MyObjectBuilder_Reactor/LargeBlockLargeGenerator2x", new DSC_BlockDef("MyObjectBuilder_Reactor/LargeBlockLargeGenerator2x","Enhanced Reactor","Tech2x", "", 0)},
+            { "MyObjectBuilder_Reactor/SmallBlockSmallGenerator4x", new DSC_BlockDef("MyObjectBuilder_Reactor/SmallBlockSmallGenerator4x","Proficient Reactor","Tech4x", "", 0)},
+            { "MyObjectBuilder_Reactor/SmallBlockLargeGenerator4x", new DSC_BlockDef("MyObjectBuilder_Reactor/SmallBlockLargeGenerator4x","Proficient Reactor","Tech4x", "", 0)},
+            { "MyObjectBuilder_Reactor/LargeBlockSmallGenerator4x", new DSC_BlockDef("MyObjectBuilder_Reactor/LargeBlockSmallGenerator4x","Proficient Reactor","Tech4x", "", 0)},
+            { "MyObjectBuilder_Reactor/LargeBlockLargeGenerator4x", new DSC_BlockDef("MyObjectBuilder_Reactor/LargeBlockLargeGenerator4x","Proficient Reactor","Tech4x", "", 0)},
+            { "MyObjectBuilder_Reactor/SmallBlockSmallGenerator8x", new DSC_BlockDef("MyObjectBuilder_Reactor/SmallBlockSmallGenerator8x","Elite Reactor","Tech8x", "", 0)},
+            { "MyObjectBuilder_Reactor/SmallBlockLargeGenerator8x", new DSC_BlockDef("MyObjectBuilder_Reactor/SmallBlockLargeGenerator8x","Elite Reactor","Tech8x", "", 0)},
+            { "MyObjectBuilder_Reactor/LargeBlockSmallGenerator8x", new DSC_BlockDef("MyObjectBuilder_Reactor/LargeBlockSmallGenerator8x","Elite Reactor","Tech8x", "", 0)},
+            { "MyObjectBuilder_Reactor/LargeBlockLargeGenerator8x", new DSC_BlockDef("MyObjectBuilder_Reactor/LargeBlockLargeGenerator8x","Elite Reactor","Tech8x", "", 0)},
+
+            { "MyObjectBuilder_SmallMissileLauncher/LargeMissileLauncher2x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncher/LargeMissileLauncher2x","Enhanced Rocket Launcher","Tech2x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncher/SmallMissileLauncherSmall2x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncher/SmallMissileLauncherSmall2x","Enhanced Rocket Launcher","Tech2x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncher/LargeMissileLauncher4x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncher/LargeMissileLauncher4x","Proficient Rocket Launcher","Tech4x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncher/SmallMissileLauncherSmall4x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncher/SmallMissileLauncherSmall4x","Proficient Rocket Launcher","Tech4x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncher/LargeMissileLauncher8x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncher/LargeMissileLauncher8x","Elite Rocket Launcher","Tech8x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncher/SmallMissileLauncherSmall8x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncher/SmallMissileLauncherSmall8x","Elite Rocket Launcher","Tech8x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncherReload/SmallRocketLauncherReload2x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncherReload/SmallRocketLauncherReload2x","Enhanced Reloadable Rocket Launcher","Tech2x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncherReload/SmallRocketLauncherReload4x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncherReload/SmallRocketLauncherReload4x","Proficient Reloadable Rocket Launcher","Tech4x", "", 0)},
+            { "MyObjectBuilder_SmallMissileLauncherReload/SmallRocketLauncherReload8x", new DSC_BlockDef("MyObjectBuilder_SmallMissileLauncherReload/SmallRocketLauncherReload8x","Elite Reloadable Rocket Launcher","Tech8x", "", 0)},
+            { "MyObjectBuilder_SafeZoneBlock/SafeZoneBlock2x", new DSC_BlockDef("MyObjectBuilder_SafeZoneBlock/SafeZoneBlock2x","Enhanced SafeZone","Tech2x", "", 0)},
+            { "MyObjectBuilder_SafeZoneBlock/SafeZoneBlock4x", new DSC_BlockDef("MyObjectBuilder_SafeZoneBlock/SafeZoneBlock4x","Proficient SafeZone","Tech4x", "", 0)},
+            { "MyObjectBuilder_SafeZoneBlock/SafeZoneBlock8x", new DSC_BlockDef("MyObjectBuilder_SafeZoneBlock/SafeZoneBlock8x","Elite SafeZone","Tech8x", "", 0)},
+            { "MyObjectBuilder_SolarPanel/SmallBlockSolarPanel2x", new DSC_BlockDef("MyObjectBuilder_SolarPanel/SmallBlockSolarPanel2x","Enhanced Solar Panel","Tech2x", "", 0)},
+            { "MyObjectBuilder_SolarPanel/LargeBlockSolarPanel2x", new DSC_BlockDef("MyObjectBuilder_SolarPanel/LargeBlockSolarPanel2x","Enhanced Solar Panel","Tech2x", "", 0)},
+            { "MyObjectBuilder_SolarPanel/SmallBlockSolarPanel4x", new DSC_BlockDef("MyObjectBuilder_SolarPanel/SmallBlockSolarPanel4x","Proficient Solar Panel","Tech4x", "", 0)},
+            { "MyObjectBuilder_SolarPanel/LargeBlockSolarPanel4x", new DSC_BlockDef("MyObjectBuilder_SolarPanel/LargeBlockSolarPanel4x","Proficient Solar Panel","Tech4x", "", 0)},
+            { "MyObjectBuilder_SolarPanel/SmallBlockSolarPanel8x", new DSC_BlockDef("MyObjectBuilder_SolarPanel/SmallBlockSolarPanel8x","Elite Solar Panel","Tech8x", "", 0)},
+            { "MyObjectBuilder_SolarPanel/LargeBlockSolarPanel8x", new DSC_BlockDef("MyObjectBuilder_SolarPanel/LargeBlockSolarPanel8x","Elite Solar Panel","Tech8x", "", 0)},
+            { "MyObjectBuilder_ReflectorLight/LargeBlockFrontLight2x", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/LargeBlockFrontLight2x","Enhanced Spotlight","Tech2x", "", 0)},
+            { "MyObjectBuilder_ReflectorLight/SmallBlockFrontLight2x", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/SmallBlockFrontLight2x","Enhanced Spotlight","Tech2x", "", 0)},
+            { "MyObjectBuilder_ReflectorLight/LargeBlockFrontLight4x", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/LargeBlockFrontLight4x","Proficient Spotlight","Tech4x", "", 0)},
+            { "MyObjectBuilder_ReflectorLight/SmallBlockFrontLight4x", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/SmallBlockFrontLight4x","Proficient Spotlight","Tech4x", "", 0)},
+            { "MyObjectBuilder_ReflectorLight/LargeBlockFrontLight8x", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/LargeBlockFrontLight8x","Elite Spotlight","Tech8x", "", 0)},
+            { "MyObjectBuilder_ReflectorLight/SmallBlockFrontLight8x", new DSC_BlockDef("MyObjectBuilder_ReflectorLight/SmallBlockFrontLight8x","Elite Spotlight","Tech8x", "", 0)},
+
+            { "MyObjectBuilder_ShipWelder/SmallShipWelder2x", new DSC_BlockDef("MyObjectBuilder_ShipWelder/SmallShipWelder2x","Enhanced Welder","Tech2x", "", 0)},
+            { "MyObjectBuilder_ShipWelder/LargeShipWelder2x", new DSC_BlockDef("MyObjectBuilder_ShipWelder/LargeShipWelder2x","Enhanced Welder","Tech2x", "", 0)},
+            { "MyObjectBuilder_ShipWelder/SmallShipWelder4x", new DSC_BlockDef("MyObjectBuilder_ShipWelder/SmallShipWelder4x","Proficient Welder","Tech4x", "", 0)},
+            { "MyObjectBuilder_ShipWelder/LargeShipWelder4x", new DSC_BlockDef("MyObjectBuilder_ShipWelder/LargeShipWelder4x","Proficient Welder","Tech4x", "", 0)},
+            { "MyObjectBuilder_ShipWelder/SmallShipWelder8x", new DSC_BlockDef("MyObjectBuilder_ShipWelder/SmallShipWelder8x","Elite Welder","Tech8x", "", 0)},
+            { "MyObjectBuilder_ShipWelder/LargeShipWelder8x", new DSC_BlockDef("MyObjectBuilder_ShipWelder/LargeShipWelder8x","Elite Welder","Tech8x", "", 0)},
+            { "MyObjectBuilder_WindTurbine/LargeBlockWindTurbine2x", new DSC_BlockDef("MyObjectBuilder_WindTurbine/LargeBlockWindTurbine2x","Enhanced Wind Turbine","Tech2x", "", 0)},
+            { "MyObjectBuilder_WindTurbine/LargeBlockWindTurbine4x", new DSC_BlockDef("MyObjectBuilder_WindTurbine/LargeBlockWindTurbine4x","Proficient Wind Turbine","Tech4x", "", 0)},
+            { "MyObjectBuilder_WindTurbine/LargeBlockWindTurbine8x", new DSC_BlockDef("MyObjectBuilder_WindTurbine/LargeBlockWindTurbine8x","Elite Wind Turbine","Tech8x", "", 0)},
+            { "MyObjectBuilder_AdvancedDoor/RotaryAirlock", new DSC_BlockDef("MyObjectBuilder_AdvancedDoor/RotaryAirlock","Rotary Airlock Door","SteelPlate", "", 0)},
+            { "MyObjectBuilder_AdvancedDoor/RotaryAirlockSmallGrid", new DSC_BlockDef("MyObjectBuilder_AdvancedDoor/RotaryAirlockSmallGrid","Rotary Airlock Door","SteelPlate", "", 0)},
+            { "MyObjectBuilder_AdvancedDoor/RotaryAirlockCorner", new DSC_BlockDef("MyObjectBuilder_AdvancedDoor/RotaryAirlockCorner","Rotary Airlock Corner Door","SteelPlate", "", 0)},
+            { "MyObjectBuilder_AdvancedDoor/RotaryAirlockCornerSmallGrid", new DSC_BlockDef("MyObjectBuilder_AdvancedDoor/RotaryAirlockCornerSmallGrid","Rotary Airlock Corner Door","SteelPlate", "", 0)},
+            { "MyObjectBuilder_ExtendedPistonBase/1x1LargePistonBase", new DSC_BlockDef("MyObjectBuilder_ExtendedPistonBase/1x1LargePistonBase","1x1 Piston","SteelPlate", "", 0)},
+            { "MyObjectBuilder_ExtendedPistonBase/1x5LargePistonBase", new DSC_BlockDef("MyObjectBuilder_ExtendedPistonBase/1x5LargePistonBase","1x5 Piston","SteelPlate", "", 0)},
+            { "MyObjectBuilder_ExtendedPistonBase/3x3SmallPistonBase", new DSC_BlockDef("MyObjectBuilder_ExtendedPistonBase/3x3SmallPistonBase","3x3 Small Piston","SteelPlate", "", 0)},
+            { "MyObjectBuilder_Conveyor/AQD_LG_ConveyorT", new DSC_BlockDef("MyObjectBuilder_Conveyor/AQD_LG_ConveyorT","Conveyor T Junction","SteelPlate", "", 0)},
+            { "MyObjectBuilder_Conveyor/AQD_LG_ConveyorX", new DSC_BlockDef("MyObjectBuilder_Conveyor/AQD_LG_ConveyorX","Conveyor X Junction","SteelPlate", "", 0)},
+            { "MyObjectBuilder_ConveyorConnector/AQD_LG_ConveyorStraightArmored", new DSC_BlockDef("MyObjectBuilder_ConveyorConnector/AQD_LG_ConveyorStraightArmored","Conveyor Straight Armored","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_ConveyorConnector/AQD_LG_ConveyorCornerArmored", new DSC_BlockDef("MyObjectBuilder_ConveyorConnector/AQD_LG_ConveyorCornerArmored","Conveyor Corner Armored","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_Conveyor/AQD_LG_ConveyorTArmored", new DSC_BlockDef("MyObjectBuilder_Conveyor/AQD_LG_ConveyorTArmored","Conveyor T Armored","SteelPlate", "", 0)},
+            { "MyObjectBuilder_Conveyor/AQD_LG_ConveyorXArmored", new DSC_BlockDef("MyObjectBuilder_Conveyor/AQD_LG_ConveyorXArmored","Conveyor X Armored","InteriorPlate", "", 0)},
+            { "MyObjectBuilder_CargoContainer/AQD_LG_ConveyorAccess", new DSC_BlockDef("MyObjectBuilder_CargoContainer/AQD_LG_ConveyorAccess","Conveyor Access","InteriorPlate", "", 0)},
         };
 
     }
@@ -419,7 +710,7 @@ namespace DSC
     {
         public readonly string blockDefId; // DefinitionId as String
         public readonly string blockText; // Display Text
-        public readonly string buildComponent; // Initial build component
+        public readonly MyDefinitionId buildComponent; // Initial build component
         public readonly string extraComponent; // Extra component
         public readonly int extraCompCount; // Component count
 
@@ -428,7 +719,7 @@ namespace DSC
         public DSC_BlockDef(string BlockDefId, string BlockText, string BuildComponent, string ExtraComponent, int ExtraCompCount){
             blockDefId = BlockDefId;
             blockText = BlockText;
-            buildComponent = BuildComponent;
+            buildComponent = MyVisualScriptLogicProvider.GetDefinitionId("Component", BuildComponent);
             extraComponent = ExtraComponent;
             extraCompCount = ExtraCompCount;
         }
