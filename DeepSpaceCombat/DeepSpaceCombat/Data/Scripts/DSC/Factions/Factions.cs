@@ -199,20 +199,25 @@ namespace DSC
             var grid = ent as MyCubeGrid;
             if (grid?.Physics == null) return;
 
+            
+
             // Check if its the first block
             if(grid.BlocksCount == 1)
             {
                 IMySlimBlock block = grid.CubeBlocks.FirstElement();
 
+                if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
+                {
+                    block.CubeGrid.RemoveBlock(block);
+                    return;
+                }
+
                 if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("You are not allowed to build this block!", "[Server]", block.BuiltBy);
-
-                    // Add item back to player
-                    MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DSC_Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
-
                     // Remove block
                     block.CubeGrid.RemoveBlock(block);
+
+                    return;
                 }
             }
 

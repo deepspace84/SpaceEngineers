@@ -40,13 +40,12 @@ namespace DSC
         }
 
         //Use a single command char to avoid unneccesary loops/code. 
-        //private char[] _commandStartChars = { '#' }; // Array of strings, with what the commands starts
         private char _commandStart = '#';
 
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
         public CommandHandler CMDHandler = new CommandHandler();
-        //public DSC_Reference DSCReference = new DSC_Reference();
-        //public DSC_Factions Factions = new DSC_Factions();
+        public DSC_Reference DSCReference = new DSC_Reference();
+        public DSC_Factions Factions = new DSC_Factions();
         public DSC_TechTree Techtree = new DSC_TechTree();
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
@@ -170,10 +169,10 @@ namespace DSC
             if (_isServerRegistered)
             {
                 // Save Factions data to savegame
-                //Factions.Save();
+                Factions.Save();
 
                 // Save reference data to savegame
-                //DSCReference.Save();
+                DSCReference.Save();
             }
 
         }
@@ -209,12 +208,12 @@ namespace DSC
                 ServerLogger.Terminate();
 
                 // Factions
-                //Factions.unload();
-                //Factions = null;
+                Factions.unload();
+                Factions = null;
 
                 // Reference
-                //DSCReference.Unload();
-                //DSCReference = null;
+                DSCReference.Unload();
+                DSCReference = null;
             }
 
             // Unregister networking
@@ -267,10 +266,15 @@ namespace DSC
             ServerLogger.Flush();
 
             // Load Reference data
-            //DSCReference.Load();
+            DSCReference.Load();
+
+            // Load tech tree
+            Techtree.load();
 
             // Load faction data
-            //Factions.load();
+            Factions.load();
+
+
         }
 
         /*

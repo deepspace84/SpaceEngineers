@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sandbox.Game;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,9 +10,12 @@ namespace DSC
         public Dictionary<string, DSC_TechLevel> TechLevels = new Dictionary<string, DSC_TechLevel>();
 
 
-        public DSC_TechTree()
+        public DSC_TechTree(){}
+
+        public void load()
         {
-            /*
+            try
+            {
             TechLevels.Add("Basic", new DSC_TechLevel("LBasic", "", 1, new List<string>() {
                 // Light Armor
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockArmorBlock"].blockDefId,
@@ -31,39 +35,35 @@ namespace DSC
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockArmorInvCorner2Tip"].blockDefId,
 
 
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/BasicAssembler"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SurvivalKitLarge"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockSolarPanel"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/Blast Furnace"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockLockers"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockSmallContainer"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallLight"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Assembler/BasicAssembler"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_SurvivalKit/SurvivalKitLarge"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_SolarPanel/LargeBlockSolarPanel"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Refinery/Blast Furnace"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_CargoContainer/LargeBlockLockers"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_CargoContainer/LargeBlockSmallContainer"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_InteriorLight/SmallLight"].blockDefId,
             }));
 
             TechLevels.Add("LA1", new DSC_TechLevel("LA1", "LBasic", 1, new List<string>() {
                 // Assemblers
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeAssembler"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeAssembler2x"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeAssembler4x"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeAssembler8x"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Assembler/LargeAssembler"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Assembler/LargeAssembler2x"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Assembler/LargeAssembler4x"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Assembler/LargeAssembler8x"].blockDefId,
 
                 // Refineries
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeRefinery"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeRefinery2x"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeRefinery4x"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeRefinery8x"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Refinery/LargeRefinery"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Refinery/LargeRefinery2x"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Refinery/LargeRefinery4x"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_Refinery/LargeRefinery8x"].blockDefId,
             }));
 
-            TechLevels.Add("LA2", new DSC_TechLevel("LA2", "LA1", 1, new List<string>() {
+                TechLevels.Add("LA2", new DSC_TechLevel("LA2", "LA1", 1, new List<string>() {
                 // Modules
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeProductivityModule"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeEffectivenessModule"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeEnergyModule"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_UpgradeModule/LargeProductivityModule"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_UpgradeModule/LargeEffectivenessModule"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_UpgradeModule/LargeEnergyModule"].blockDefId,
             }));
-
-
-
-
 
             TechLevels.Add("SBasic", new DSC_TechLevel("SBasic", "", 1, new List<string>() {
                 // Light Armor
@@ -83,12 +83,19 @@ namespace DSC
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/HeavyHalfArmorBlock"].blockDefId,
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/HeavyHalfSlopeArmorBlock"].blockDefId,
 
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SurvivalKit"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallBlockSolarPanel"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallBlockSmallContainer"].blockDefId,
-                DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallBlockSmallLight"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_SurvivalKit/SurvivalKit"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_SolarPanel/SmallBlockSolarPanel"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_CargoContainer/SmallBlockSmallContainer"].blockDefId,
+                DSC_Definitions.Blocks["MyObjectBuilder_InteriorLight/SmallBlockSmallLight"].blockDefId,
             }));
-            */
+            
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Error Loading Techtree");
+            }
+
+
         }
 
     }

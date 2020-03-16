@@ -45,7 +45,7 @@ namespace DSC
         }
 
     }
-    /*
+    
     [ProtoContract]
     [Serializable]
     public class DSC_Storage_Reference
@@ -68,5 +68,5 @@ namespace DSC
         }
 
     }
-    */
+    
 }
