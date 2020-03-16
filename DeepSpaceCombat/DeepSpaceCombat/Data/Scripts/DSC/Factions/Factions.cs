@@ -129,14 +129,15 @@ namespace DSC
         // Rebuild tech blocks dependend on current TechLevels
         private void RebuildTechBlocks()
         {
-            // Delete old entries
-            Storage.FactionBlocks.Clear();
 
             // Loop through factions
             foreach (long factionID in Storage.FactionTechs.Keys)
             {
+                // Delete old entries
+                Storage.FactionBlocks[factionID].Clear();
+
                 // Loop through all tech levels and add block list
-                foreach(string techLevel in Storage.FactionTechs[factionID])
+                foreach (string techLevel in Storage.FactionTechs[factionID])
                 {
                     // Add list 
                     Storage.FactionBlocks[factionID].AddList(DeepSpaceCombat.Instance.Techtree.TechLevels[techLevel].Blocks);
@@ -278,53 +279,86 @@ namespace DSC
         // Add a new faction to the storage
         public bool AddFaction(string factionTag, bool isNPC)
         {
-            if (null == factionTag)
-                return false;
 
-            // Check if faction exists
-            if (MyAPIGateway.Session.Factions.FactionTagExists(factionTag))
+            try
             {
-                // get faction object and check if the id is allready added
-                IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(factionTag);
 
-                if (Storage.PlayerFactions.ContainsKey(factionObj.FactionId) || Storage.NPCFactions.ContainsKey(factionObj.FactionId))
+                if (null == factionTag)
                     return false;
 
-                if(null != factionObj)
+                // Debug
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction Tag not null =>"+factionTag.ToString());
+
+                // Check if faction exists
+                if (MyAPIGateway.Session.Factions.FactionTagExists(factionTag))
                 {
-                    // Check if it should be a npc faction
-                    if (isNPC)
-                    {
-                        Storage.NPCFactions.Add(factionObj.FactionId, factionTag);
-                    }
-                    else
-                    {
-                        // Add Faction PlayerFactions
-                        Storage.PlayerFactions.Add(factionObj.FactionId, factionTag);
+                    // Debug
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction tag exists");
 
-                        // Load all existing players and save them to the FactionPlayers reference
-                        //Storage.FactionPlayers.Add(factionObj.FactionId, MyVisualScriptLogicProvider.GetFactionMembers(factionTag));
+                    // get faction object and check if the id is allready added
+                    IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(factionTag);
 
-                        foreach(long playerId in factionObj.Members.Keys)
+                    if (null != factionObj)
+                    {
+                        if (Storage.PlayerFactions.ContainsKey(factionObj.FactionId) || Storage.NPCFactions.ContainsKey(factionObj.FactionId))
+                            return false;
+                        // Debug
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction not in storage");
+
+                        // Debug
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction object not null");
+
+                        // Check if it should be a npc faction
+                        if (isNPC)
                         {
-                            // Only add real players
-                            if (MyAPIGateway.Players.TryGetSteamId(playerId) > 0)
+                            Storage.NPCFactions.Add(factionObj.FactionId, factionTag);
+                        }
+                        else
+                        {
+                            // Debug
+                            if(DeepSpaceCombat.Instance.isDebug)DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction Added");
+
+                            // Add Faction PlayerFactions
+                            Storage.PlayerFactions.Add(factionObj.FactionId, factionTag);
+
+                            // Prepare defaults
+                            Storage.FactionBlocks.Add(factionObj.FactionId, new List<string>());
+                            Storage.FactionPlayers.Add(factionObj.FactionId, new List<long>());
+                            Storage.FactionTechs.Add(factionObj.FactionId, new List<string>());
+
+                            // Add Faction Default tech
+                            AddTechLevel(factionObj.FactionId, "LBasic");
+                            AddTechLevel(factionObj.FactionId, "SBasic");
+
+                            // Load all existing players and save them to the FactionPlayers reference
+                            //Storage.FactionPlayers.Add(factionObj.FactionId, MyVisualScriptLogicProvider.GetFactionMembers(factionTag));
+
+                            foreach (long playerId in factionObj.Members.Keys)
                             {
-                                // Add to FactionPlayers list
-                                Storage.FactionPlayers[factionObj.FactionId].Add(playerId);
+                                // Only add real players
+                                if (MyAPIGateway.Players.TryGetSteamId(playerId) > 0)
+                                {
+                                    // Add to FactionPlayers list
+                                    Storage.FactionPlayers[factionObj.FactionId].Add(playerId);
 
-                                // Add players to PlayersToFaction
-                                Storage.PlayersToFaction.Add(playerId, factionObj.FactionId);
-
+                                    // Add players to PlayersToFaction
+                                    Storage.PlayersToFaction.Add(playerId, factionObj.FactionId);
+                                }
                             }
+
                         }
 
                     }
 
+                    return true;
                 }
 
-                return true;
             }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Add faction failed");
+            }
+            
 
             return false;
         }

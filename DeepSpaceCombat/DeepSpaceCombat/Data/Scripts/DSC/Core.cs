@@ -42,6 +42,8 @@ namespace DSC
         //Use a single command char to avoid unneccesary loops/code. 
         private char _commandStart = '#';
 
+        public bool isDebug = true;
+
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
         public CommandHandler CMDHandler = new CommandHandler();
         public DSC_Reference DSCReference = new DSC_Reference();
@@ -259,7 +261,8 @@ namespace DSC
             _isServerRegistered = true;
             ServerLogger.Init("DSC_Server.Log", false, 0); // comment this out if logging is not required for the Server.
             ServerLogger.WriteStart("DSC MOD Server Log Started");
-            ServerLogger.WriteInfo("DSC MOD Server Version {0}", DSC_Config.ModCommunicationVersion);
+            ServerLogger.WriteInfo("DSC MOD Server Version {0}", DSC_Config.modVersion.ToString());
+            ServerLogger.WriteInfo("DSC MOD Communiction Server Version {0}", DSC_Config.ModCommunicationVersion);
             if (ServerLogger.IsActive)
                 VRage.Utils.MyLog.Default.WriteLine(string.Format("##Mod## DSC Server Logging File: {0}", ServerLogger.LogFile));
 

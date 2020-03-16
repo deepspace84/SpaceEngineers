@@ -48,7 +48,7 @@ namespace DSC
                         PrintHelp(playerId);
                         break;
                     case ECommand.AddFaction:
-                        //DeepSpaceCombat.Instance.Factions.AddFaction(lcommand[1], false);
+                        DeepSpaceCombat.Instance.Factions.AddFaction(lcommand[1], false);
                         break;
                     case ECommand.Dev:
 
