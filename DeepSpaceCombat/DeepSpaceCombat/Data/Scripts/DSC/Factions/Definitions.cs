@@ -724,12 +724,4 @@ namespace DSC
             extraCompCount = ExtraCompCount;
         }
     }
-
-    public class DSC_ComponentDef
-    {
-        public static string Construction = MyVisualScriptLogicProvider.GetDefinitionId("Component", "Construction").ToString();
-        public static string InteriorPlate = MyVisualScriptLogicProvider.GetDefinitionId("Component", "InteriorPlate").ToString();
-        public static string SteelPlate = MyVisualScriptLogicProvider.GetDefinitionId("Component", "SteelPlate").ToString();
-        public static string Girder = MyVisualScriptLogicProvider.GetDefinitionId("Component", "Girder").ToString();
-    }
 }

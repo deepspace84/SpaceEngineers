@@ -6,11 +6,12 @@ namespace DSC
 {
     public class DSC_TechTree
     {
-        public readonly Dictionary<string, DSC_TechLevel> TechLevels = new Dictionary<string, DSC_TechLevel>();
+        public Dictionary<string, DSC_TechLevel> TechLevels = new Dictionary<string, DSC_TechLevel>();
 
 
         public DSC_TechTree()
         {
+            /*
             TechLevels.Add("Basic", new DSC_TechLevel("LBasic", "", 1, new List<string>() {
                 // Light Armor
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockArmorBlock"].blockDefId,
@@ -87,6 +88,7 @@ namespace DSC
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallBlockSmallContainer"].blockDefId,
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallBlockSmallLight"].blockDefId,
             }));
+            */
         }
 
     }

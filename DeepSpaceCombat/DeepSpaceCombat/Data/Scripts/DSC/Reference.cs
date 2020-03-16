@@ -13,6 +13,7 @@ using VRage.Game.ModAPI;
 
 namespace DSC
 {
+    /*
     //Class name should equal filename
     public class DSC_Reference
     {
@@ -332,4 +333,5 @@ namespace DSC
 
         #endregion
     }
+    */
 }
