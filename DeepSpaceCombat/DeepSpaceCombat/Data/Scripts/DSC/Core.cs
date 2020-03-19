@@ -50,6 +50,8 @@ namespace DSC
         public DSC_Factions Factions = new DSC_Factions();
         public DSC_TechTree Techtree = new DSC_TechTree();
 
+        public long NPCPlayerID;
+
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
@@ -70,8 +72,6 @@ namespace DSC
 
             // TODO Do we need this? used in ship speed, keep it? :P
             if (MyAPIGateway.Utilities == null) { MyAPIGateway.Utilities = MyAPIUtilities.Static; }
-            //Repeated in UpdateBeforeSimulation()
-            //if (Instance == null) { Instance = this; }
 
             try
             {
@@ -268,6 +268,9 @@ namespace DSC
 
             ServerLogger.Flush();
 
+            // Check for default faction / npc data
+            CheckDefaultFactionNPC();
+
             // Load Reference data
             DSCReference.Load();
 
@@ -323,5 +326,48 @@ namespace DSC
         }
         #endregion
 
+        #region core functions
+
+        private void CheckDefaultFactionNPC()
+        {
+            // Check if faction exists
+            if (MyAPIGateway.Session.Factions.FactionTagExists(DSC_Config.MainFaction))
+            {
+                // Get faction
+                IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(DSC_Config.MainFaction);
+
+                // Check for npc player
+                bool check = false;
+                foreach (long playerId in factionObj.Members.Keys)
+                {
+                    if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.MainFactionNPC)
+                    {
+                        NPCPlayerID = playerId;
+                        check = true;
+                        if(isDebug) ServerLogger.WriteInfo("NPC Player found");
+                    }
+                }
+
+                // Player not found
+                if (!check)
+                {
+                    MyAPIGateway.Session.Factions.AddNewNPCToFaction(factionObj.FactionId, DSC_Config.MainFactionNPC);
+
+                    foreach (long playerId in factionObj.Members.Keys)
+                    {
+                        if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.MainFactionNPC)
+                        {
+                            if (isDebug) ServerLogger.WriteInfo("NPC Player was not found, so added");
+                            NPCPlayerID = playerId;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ServerLogger.WriteError("NO NPC FACTION FOUND!! CRITICAL!!!");
+            }
+        }
+        #endregion
     }
 }

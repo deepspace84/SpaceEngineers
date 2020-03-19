@@ -1,4 +1,7 @@
-﻿namespace DSC
+﻿using System;
+using System.Collections.Generic;
+
+namespace DSC
 {
 
     class DSC_Config
@@ -28,5 +31,18 @@
         public static float missileMaxSpeed = 360;
         public static float missileExplosionRange = 2500;
 
+
+        // Main neutral faction
+        public static string MainFaction = "SRI";
+        public static string MainFactionNPC = "Marvin";
+
+        // Research Blocks
+        public static Dictionary<string, List<int>> ResearchBlocks = new Dictionary<string, List<int>>() // Blockname, techArea
+        {
+            {"DSC_MainBase_Res_0", new List<int>(){0,1}},
+        };
+
+        // Research steps for 5 Factions
+        public static float[] ResearchSteps = new float[]{1, 0.8f, 0.6f, 0.5f, 0.4f};
     }
 }

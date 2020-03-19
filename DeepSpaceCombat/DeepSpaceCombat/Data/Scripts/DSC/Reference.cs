@@ -110,8 +110,6 @@ namespace DSC
             if (entList.Count == 0)
                 return null;
 
-            // IMyEntity myEntity = MyAPIGateway.Entities.GetEntityByName(blockName);not wirking if multiple blocks with that name exists
-
             // Loop through all Grids
             foreach (IMyEntity ent in entList)
             {

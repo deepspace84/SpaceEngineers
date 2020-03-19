@@ -16,7 +16,7 @@ namespace DSC
         {
             try
             {
-            TechLevels.Add("Basic", new DSC_TechLevel("LBasic", "", 1, new List<string>() {
+            TechLevels.Add("LBasic", new DSC_TechLevel("LBasic", "", 1, 0, new List<string>() {
                 // Light Armor
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockArmorBlock"].blockDefId,
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/LargeBlockArmorSlope"].blockDefId,
@@ -44,7 +44,7 @@ namespace DSC
                 DSC_Definitions.Blocks["MyObjectBuilder_InteriorLight/SmallLight"].blockDefId,
             }));
 
-            TechLevels.Add("LA1", new DSC_TechLevel("LA1", "LBasic", 1, new List<string>() {
+            TechLevels.Add("LA1", new DSC_TechLevel("LA1", "LBasic", 100, 0, new List<string>() {
                 // Assemblers
                 DSC_Definitions.Blocks["MyObjectBuilder_Assembler/LargeAssembler"].blockDefId,
                 DSC_Definitions.Blocks["MyObjectBuilder_Assembler/LargeAssembler2x"].blockDefId,
@@ -58,14 +58,14 @@ namespace DSC
                 DSC_Definitions.Blocks["MyObjectBuilder_Refinery/LargeRefinery8x"].blockDefId,
             }));
 
-                TechLevels.Add("LA2", new DSC_TechLevel("LA2", "LA1", 1, new List<string>() {
+                TechLevels.Add("LA2", new DSC_TechLevel("LA2", "LA1", 200, 0, new List<string>() {
                 // Modules
                 DSC_Definitions.Blocks["MyObjectBuilder_UpgradeModule/LargeProductivityModule"].blockDefId,
                 DSC_Definitions.Blocks["MyObjectBuilder_UpgradeModule/LargeEffectivenessModule"].blockDefId,
                 DSC_Definitions.Blocks["MyObjectBuilder_UpgradeModule/LargeEnergyModule"].blockDefId,
             }));
 
-            TechLevels.Add("SBasic", new DSC_TechLevel("SBasic", "", 1, new List<string>() {
+            TechLevels.Add("SBasic", new DSC_TechLevel("SBasic", "", 1, 0, new List<string>() {
                 // Light Armor
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorBlock"].blockDefId,
                 DSC_Definitions.Blocks["MyObjectBuilder_CubeBlock/SmallHeavyBlockArmorSlope"].blockDefId,
@@ -106,17 +106,19 @@ namespace DSC
 
         public readonly string TechLevelName;
         public readonly string DependsOn;
-        public readonly int SpaceCredits;
+        public readonly int ResearchPoints;
         public readonly List<string> Blocks = new List<string>();
+        public readonly int TechArea;
 
         public DSC_TechLevel() { }
 
-        public DSC_TechLevel(string techLevelName, string dependsOn, int spaceCredits, List<string> blocks)
+        public DSC_TechLevel(string techLevelName, string dependsOn, int researchPoints, int techArea, List<string> blocks)
         {
             TechLevelName = techLevelName;
             DependsOn = dependsOn;
-            SpaceCredits = spaceCredits;
+            ResearchPoints = researchPoints;
             Blocks = blocks;
+            TechArea = techArea;
         }
     }
 }

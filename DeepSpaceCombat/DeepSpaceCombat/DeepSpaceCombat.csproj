@@ -127,6 +127,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Scripts\DSC\Contracts\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\.vs\Grind Progression\v14\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\bin\Debug\zh-CN\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\bin\Release\" />

@@ -17,7 +17,8 @@ namespace DSC
             Test = 0,
             Help = 1,
             AddFaction = 2,
-            Dev = 3,
+            FreeBuild = 3,
+            Dev = 4
         };
 
         public CommandHandler() { }
@@ -50,7 +51,15 @@ namespace DSC
                     case ECommand.AddFaction:
                         DeepSpaceCombat.Instance.Factions.AddFaction(lcommand[1], false);
                         break;
+                    case ECommand.FreeBuild:
+                        DeepSpaceCombat.Instance.Factions.freeBuild = !DeepSpaceCombat.Instance.Factions.freeBuild;
+                        break;
                     case ECommand.Dev:
+
+                        if (lcommand[1].Equals("test"))
+                        {
+                                                        
+                        }
 
                         if (lcommand[1].Equals("blockdef"))
                         {

@@ -12,6 +12,10 @@ namespace DSC
     public static class DSC_Definitions
     {
 
+        public static Dictionary<string, MyDefinitionId> Compontents = new Dictionary<string, MyDefinitionId>() {
+            {"ResearchPoint", MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")}
+        };
+
         public static Dictionary<string, DSC_BlockDef> Blocks = new Dictionary<string, DSC_BlockDef>() {
 
             // Large Light Armor +
