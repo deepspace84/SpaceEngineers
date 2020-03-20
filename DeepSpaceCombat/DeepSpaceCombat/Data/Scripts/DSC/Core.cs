@@ -282,24 +282,6 @@ namespace DSC
 
 
         }
-
-        /*
-        public void GetNPC()
-        {
-            List<long> members = Util.GetNPCs();
-
-            if (members != null && members.Count > 0)
-            {
-                NPCId = members[0];
-                MyVisualScriptLogicProvider.SendChatMessage($"INFO: NPC faction found", "[Server]");
-            }
-            else
-            {
-                MyVisualScriptLogicProvider.SendChatMessage($"ERROR: Please add at least one NPC to the faction 'DSC' and write '#Get_NPC'", "[Server]");
-                ServerLogger.WriteInfo("Please add at least one NPC to the faction 'DSC' and write '#get npc'");
-            }
-        }
-        */
         #endregion
 
 
