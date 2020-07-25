@@ -127,12 +127,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Scripts\DSC\Contracts\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\.vs\Grind Progression\v14\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\bin\Debug\zh-CN\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\bin\Release\" />
     <Folder Include="_Examples\GrindToLearn\Data\Scripts\GrindProgression\obj\Debug\TempPE\" />
     <Folder Include="_Utils\Textures\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 </Project>

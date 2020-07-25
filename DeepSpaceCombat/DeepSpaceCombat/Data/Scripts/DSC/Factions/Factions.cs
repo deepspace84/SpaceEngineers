@@ -19,7 +19,6 @@ namespace DSC
 {
     public class DSC_Factions
     {
-        private static DSC_Factions _instance;
         private DSC_Storage_Factions Storage;
         private Dictionary<long, List<string>> FactionNextTech = new Dictionary<long, List<string>>();
 
@@ -29,21 +28,13 @@ namespace DSC
 
         public bool freeBuild = false;
 
-        public static DSC_Factions Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new DSC_Factions();
-                return _instance;
-            }
-        }
+        public DSC_Factions(){}
 
         #region load/unload/save functions for the core.cs
         /*
          * Load all data from savegame and register handlers 
          */
-        public void load()
+        public void Load()
         {
             // Check if file exists
             if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions)))
@@ -118,7 +109,7 @@ namespace DSC
         /*
          * Unregister handlers 
          */
-         public void unload()
+         public void Unload()
          {
             // Remove Area handlers
             MyVisualScriptLogicProvider.AreaTrigger_Entered -= Event_Area_Entered;
@@ -192,13 +183,11 @@ namespace DSC
          * --------------------------
          */
 
-        //Event - Add grid handler to new grid #TODO Check also the first block
+        //Event - Add grid handler to new grid
         private void AddGridEvent(IMyEntity ent)
         {
             var grid = ent as MyCubeGrid;
             if (grid?.Physics == null) return;
-
-            
 
             // Check if its the first block
             if(grid.BlocksCount == 1)
@@ -213,6 +202,8 @@ namespace DSC
 
                 if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
                 {
+                    MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500 ,MyFontEnum.Red, block.BuiltBy);
+
                     // Remove block
                     block.CubeGrid.RemoveBlock(block);
 
@@ -228,17 +219,16 @@ namespace DSC
         {
             var grid = ent as MyCubeGrid;
             if (grid?.Physics == null) return;
-
+            
             grid.OnBlockAdded -= GridBlockAddedEvent;
         }
 
         // Event - New block added to grid | Progression check
         private void GridBlockAddedEvent(IMySlimBlock block)
         {
-            MyVisualScriptLogicProvider.SendChatMessage("Blocktype=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
 
             // Check if block is in definitions
-            if (!DSC_Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
+            if (!DeepSpaceCombat.Instance.Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
             {
                 MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
             }
@@ -250,7 +240,7 @@ namespace DSC
                 block.CubeGrid.RemoveBlock(block);
 
                 // Add item back to player
-                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DSC_Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent , 1);
+                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent , 1);
 
                 return;
             }
@@ -258,10 +248,10 @@ namespace DSC
             // Check if block building is allowed
             if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
             {
-                MyVisualScriptLogicProvider.SendChatMessage("You are not allowed to build this block!", "[Server]", block.BuiltBy);
+                MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500 ,MyFontEnum.Red, block.BuiltBy);
 
                 // Add item back to player
-                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DSC_Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
+                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
 
                 // Remove block
                 block.CubeGrid.RemoveBlock(block);
@@ -678,10 +668,10 @@ namespace DSC
                     DSC_ResearchContract contract = ResearchStationsContracts[areaName][contractId];
 
                     // Check user inventory
-                    if(MyVisualScriptLogicProvider.GetPlayersInventoryItemAmount(playerId, DSC_Definitions.Compontents["ResearchPoint"]) >= contract.ResearchPoints)
+                    if(MyVisualScriptLogicProvider.GetPlayersInventoryItemAmount(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"]) >= contract.ResearchPoints)
                     {
                         // Remove Research points
-                        MyVisualScriptLogicProvider.RemoveFromPlayersInventory(playerId, DSC_Definitions.Compontents["ResearchPoint"], contract.ResearchPoints);
+                        MyVisualScriptLogicProvider.RemoveFromPlayersInventory(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"], contract.ResearchPoints);
 
                         // Add techlevel to faction and recalculate everything
                         AddTechLevel(contract.FactionId, contract.TechLevel);

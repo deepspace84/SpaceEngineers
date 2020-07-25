@@ -9,14 +9,16 @@ using Sandbox.Game.EntityComponents;
 namespace DSC
 { 
     
-    public static class DSC_Definitions
+    public class DSC_Definitions
     {
 
-        public static Dictionary<string, MyDefinitionId> Compontents = new Dictionary<string, MyDefinitionId>() {
+        public DSC_Definitions() { }
+
+        public Dictionary<string, MyDefinitionId> Compontents { get; } = new Dictionary<string, MyDefinitionId>() {
             {"ResearchPoint", MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")}
         };
 
-        public static Dictionary<string, DSC_BlockDef> Blocks = new Dictionary<string, DSC_BlockDef>() {
+        public Dictionary<string, DSC_BlockDef> Blocks { get; } = new Dictionary<string, DSC_BlockDef>() {
 
             // Large Light Armor +
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorBlock","Light Armor Block","SteelPlate", "", 0)},

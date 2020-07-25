@@ -17,21 +17,7 @@ namespace DSC
     //Class name should equal filename
     public class DSC_Reference
     {
-        private static DSC_Reference _instance;
         private DSC_Storage_Reference Storage;
-
-        public static DSC_Reference Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new DSC_Reference();
-                }
-                return _instance;
-            }
-        }
-
 
         // Constructor
         public DSC_Reference(){}

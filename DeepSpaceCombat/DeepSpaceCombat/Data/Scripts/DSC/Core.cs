@@ -9,7 +9,6 @@ using VRage.Game.Components;
 using VRage.Game.ModAPI;
 
 
-
 namespace DSC
 {
     // This object is always present, from the world load to world unload.
@@ -22,6 +21,7 @@ namespace DSC
         private bool _isInitialized; // Is this instance is initialized
         private bool _isClientRegistered;
         private bool _isServerRegistered;
+        private int tick_timer = 0;
 
         public bool IsClientRegistered // Is this instance a client
         {
@@ -48,9 +48,11 @@ namespace DSC
         public CommandHandler CMDHandler = new CommandHandler();
         public DSC_Reference DSCReference = new DSC_Reference();
         public DSC_Factions Factions = new DSC_Factions();
+        public DSC_Definitions Definitions = new DSC_Definitions();
         public DSC_TechTree Techtree = new DSC_TechTree();
 
         public long NPCPlayerID;
+        public long EnemyPlayerID;
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
@@ -110,6 +112,7 @@ namespace DSC
          */
         public override void UpdateBeforeSimulation()
         {
+            // Init Block
             try
             {
                 // Check if Instance exists
@@ -148,6 +151,9 @@ namespace DSC
                 ClientLogger.WriteException(ex);
                 ServerLogger.WriteException(ex);
             }
+
+
+
         }
 
 
@@ -158,7 +164,11 @@ namespace DSC
          */
         public override void UpdateAfterSimulation()
         {
- 
+            tick_timer += 1;
+            if (tick_timer % 60 == 0)
+            {
+
+            }
         }
 
         /*
@@ -189,7 +199,7 @@ namespace DSC
             ClientLogger.WriteStop("Shutting down");
             ServerLogger.WriteStop("Shutting down");
 
-            // Unregister Client log
+            // Unregister Client
             if (_isClientRegistered)
             {
                 // Unregister client message handler
@@ -202,7 +212,7 @@ namespace DSC
                 ClientLogger.Terminate();
             }
 
-            // Unregister Server log
+            // Unregister Server
             if (_isServerRegistered)
             {
                 // Logger
@@ -210,12 +220,13 @@ namespace DSC
                 ServerLogger.Terminate();
 
                 // Factions
-                Factions.unload();
+                Factions.Unload();
                 Factions = null;
 
                 // Reference
                 DSCReference.Unload();
                 DSCReference = null;
+
             }
 
             // Unregister networking
@@ -275,11 +286,10 @@ namespace DSC
             DSCReference.Load();
 
             // Load tech tree
-            Techtree.load();
+            Techtree.Load();
 
             // Load faction data
-            Factions.load();
-
+            Factions.Load();
 
         }
         #endregion
@@ -312,7 +322,7 @@ namespace DSC
 
         private void CheckDefaultFactionNPC()
         {
-            // Check if faction exists
+            // Check if faction exists NPC
             if (MyAPIGateway.Session.Factions.FactionTagExists(DSC_Config.MainFaction))
             {
                 // Get faction
@@ -349,7 +359,48 @@ namespace DSC
             {
                 ServerLogger.WriteError("NO NPC FACTION FOUND!! CRITICAL!!!");
             }
+
+
+
+            // Check if faction exists ENEMY
+            if (MyAPIGateway.Session.Factions.FactionTagExists(DSC_Config.EnemyFaction))
+            {
+                // Get faction
+                IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(DSC_Config.EnemyFaction);
+
+                // Check for npc player
+                bool check = false;
+                foreach (long playerId in factionObj.Members.Keys)
+                {
+                    if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.EnemyFactionNPC)
+                    {
+                        EnemyPlayerID = playerId;
+                        check = true;
+                        if (isDebug) ServerLogger.WriteInfo("Enemy Player found");
+                    }
+                }
+
+                // Player not found
+                if (!check)
+                {
+                    MyAPIGateway.Session.Factions.AddNewNPCToFaction(factionObj.FactionId, DSC_Config.EnemyFactionNPC);
+
+                    foreach (long playerId in factionObj.Members.Keys)
+                    {
+                        if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.EnemyFactionNPC)
+                        {
+                            if (isDebug) ServerLogger.WriteInfo("Enemy Player was not found, so added");
+                            EnemyPlayerID = playerId;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ServerLogger.WriteError("NO Enemy FACTION FOUND!! CRITICAL!!!");
+            }
         }
+
         #endregion
     }
 }

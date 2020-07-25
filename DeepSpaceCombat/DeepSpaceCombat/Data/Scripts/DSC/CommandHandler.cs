@@ -56,9 +56,15 @@ namespace DSC
                         break;
                     case ECommand.Dev:
 
-                        if (lcommand[1].Equals("test"))
+                        if (lcommand[1].Equals("spawn"))
                         {
-                                                        
+                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Testspawn called");
+                            DeepSpaceCombat.Instance.SpawnManager.Spawn("TestSpawn", "DSC_TestVehicle");
+                        }
+
+                        if (lcommand[1].Equals("check"))
+                        {
+                            DeepSpaceCombat.Instance.SpawnManager.WriteStorage();
                         }
 
                         if (lcommand[1].Equals("blockdef"))

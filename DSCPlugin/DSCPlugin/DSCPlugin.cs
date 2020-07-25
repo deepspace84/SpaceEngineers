@@ -9,6 +9,9 @@ using System.Net;
 using System.Collections.Specialized;
 using System.Text;
 using ProtoBuf;
+using System.Net.Http;
+//using Newtonsoft.Json;
+
 
 namespace DSCPlugin
 {
@@ -20,6 +23,9 @@ namespace DSCPlugin
 
         private DSC_Storage_Factions Storage;
 
+        private static readonly HttpClient RemoteClient = new HttpClient();
+        private int tickTimer = 0;
+
         /// <inheritdoc />
 
         public override void Init(ITorchBase torch)
@@ -29,49 +35,79 @@ namespace DSCPlugin
 
         }
 
-        public override void Save()
+        public override void Update()
         {
 
-            // Check if file exists
-            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions)))
+            if(tickTimer % 1200 == 0)
             {
-                try
+
+
+
+                // Check if file exists
+                if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions)))
                 {
-                    var reader = MyAPIGateway.Utilities.ReadBinaryFileInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
-                    Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
-                    reader.Dispose();
+                    try
+                    {
+                        var reader = MyAPIGateway.Utilities.ReadBinaryFileInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
+                        Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
+                        reader.Dispose();
 
-                    // Send data to website
-                    MyAPIGateway.Utilities.InvokeOnGameThread(() => {
+                        // Send data to website
+                        
+                        SendDataAsync(Storage.ToString());
 
-                        using (var wb = new WebClient())
-                        {
-                            var data = new NameValueCollection();
-                            data["username"] = "myUser";
-                            data["password"] = "myPassword";
+                    }
+                    catch (Exception e)
+                    {
 
-                            var response = wb.UploadValues("", "POST", data);
-                            string responseInString = Encoding.UTF8.GetString(response);
-                        }
-                    });
-
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-
+                    SendDataAsync("failed");
                 }
+
+                
+                Log.Info("Update");
+
+                
             }
-            else
-            {
-                    
-            }
 
 
-            Log.Info("Update");
-
+            tickTimer++;
         }
 
+        #region debug data
+
+        
+        public async System.Threading.Tasks.Task SendDataAsync(string Information)
+        {
+            
+
+            // Read in data from savegame
+            
+
+            
+            var values = new Dictionary<string, string>
+                {
+                { "login", "1" },
+                { "thing2", "world" },
+                { "data",  Information}
+                };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await RemoteClient.PostAsync("https://deep-space-combat.de/lib/remote.pl", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            Log.Info("Response"+responseString);
+            
     }
+
+
+        #endregion
+}
 
     [ProtoContract]
     [Serializable]

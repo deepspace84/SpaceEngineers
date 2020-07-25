@@ -15,7 +15,7 @@ using VRage.ObjectBuilders;
 using VRage.Collections;
 using Sandbox.Game.SessionComponents;
 
-namespace DSC
+namespace DSC_TEST
 {
     /*
      * Contracts Class
