@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace DSC
 {
 
-    class DSC_Config
+    public class DSC_Config
     {
         // Actual Mod Version
         public static double modVersion = 0.42;

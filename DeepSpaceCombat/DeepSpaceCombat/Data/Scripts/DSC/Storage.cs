@@ -26,7 +26,10 @@ namespace DSC
         public Dictionary<long, List<string>> FactionBlocks = new Dictionary<long, List<string>>(); // factionID - LIST->BlockTechName
         [ProtoMember(7)]
         public Dictionary<long, List<long>> PlayersToPCU = new Dictionary<long, List<long>>(); // playerID - LIST->blockIDs
-
+        [ProtoMember(8)]
+        public Dictionary<long, ulong> PlayerDamage = new Dictionary<long, ulong>(); // playerID - TotalDamage
+        [ProtoMember(9)]
+        public Dictionary<long, ulong> FactionDamage = new Dictionary<long, ulong>(); // factionID - TotalDamage
 
         internal DSC_Storage_Factions Clone()
         {
@@ -38,6 +41,8 @@ namespace DSC
                 PlayersToFaction = PlayersToFaction,
                 FactionTechs = FactionTechs,
                 FactionBlocks = FactionBlocks,
+                PlayerDamage = PlayerDamage,
+                FactionDamage = FactionDamage
             };
         }
 

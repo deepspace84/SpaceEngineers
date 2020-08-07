@@ -167,7 +167,7 @@ namespace DSC
             tick_timer += 1;
             if (tick_timer % 60 == 0)
             {
-
+                Factions.DamageController();
             }
         }
 
@@ -215,10 +215,6 @@ namespace DSC
             // Unregister Server
             if (_isServerRegistered)
             {
-                // Logger
-                ServerLogger.WriteStop("Log Closed");
-                ServerLogger.Terminate();
-
                 // Factions
                 Factions.Unload();
                 Factions = null;
@@ -227,6 +223,9 @@ namespace DSC
                 DSCReference.Unload();
                 DSCReference = null;
 
+                // Logger
+                ServerLogger.WriteStop("Log Closed");
+                ServerLogger.Terminate();
             }
 
             // Unregister networking
@@ -304,16 +303,11 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
-            //DZ changed command-start to a single char. delete commented lines when checked
-            //foreach (char c in _commandStartChars)
-            //{
-            //    if (messageText.StartsWith(c.ToString()))
             if (messageText.StartsWith(_commandStart.ToString()))
             {
                 Networking.SendToServer(new PacketCommand(messageText.TrimStart(_commandStart), MyAPIGateway.Session.Player.IdentityId));
                 sendToOthers = false;
             }
-            //}
             else { sendToOthers = true; }
         }
         #endregion

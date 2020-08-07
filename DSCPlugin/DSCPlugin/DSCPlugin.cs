@@ -10,7 +10,10 @@ using System.Collections.Specialized;
 using System.Text;
 using ProtoBuf;
 using System.Net.Http;
-//using Newtonsoft.Json;
+using System.IO;
+using VRage.FileSystem;
+using Sandbox.Game.World;
+using Newtonsoft.Json;
 
 
 namespace DSCPlugin
@@ -26,6 +29,22 @@ namespace DSCPlugin
         private static readonly HttpClient RemoteClient = new HttpClient();
         private int tickTimer = 0;
 
+
+        BinaryReader ReadStorage(string file, Type callingType)
+        {
+            if (file.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
+            {
+                throw new FileNotFoundException();
+            }
+            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_server_e8_alpha\\Instance\\Saves\\Epsilon 8 Alpha\\Storage\\2033950117.sbm_DSC", file));
+            if (stream != null)
+            {
+                return new BinaryReader(stream);
+            }
+            throw new FileNotFoundException();
+        }
+
+
         /// <inheritdoc />
 
         public override void Init(ITorchBase torch)
@@ -38,39 +57,38 @@ namespace DSCPlugin
         public override void Update()
         {
 
-            if(tickTimer % 1200 == 0)
+            if (tickTimer % 1200 == 0)
             {
 
-
-
                 // Check if file exists
-                if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions)))
+                //if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions)))
+                //{
+                try
                 {
-                    try
-                    {
-                        var reader = MyAPIGateway.Utilities.ReadBinaryFileInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
-                        Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
-                        reader.Dispose();
+                    var reader = ReadStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
+                    Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
+                    reader.Dispose();
 
-                        // Send data to website
-                        
-                        SendDataAsync(Storage.ToString());
+                    // Send data to website
 
-                    }
-                    catch (Exception e)
-                    {
+                    string output = JsonConvert.SerializeObject(Storage);
+                    SendDataAsync(output);
 
-                    }
                 }
+                catch (Exception e)
+                {
+                    Log.Info("Update failed with exception=>" + e.ToString());
+                }
+                /*}
                 else
                 {
                     SendDataAsync("failed");
-                }
+                }*/
 
-                
+
                 Log.Info("Update");
 
-                
+
             }
 
 
@@ -79,15 +97,15 @@ namespace DSCPlugin
 
         #region debug data
 
-        
+
         public async System.Threading.Tasks.Task SendDataAsync(string Information)
         {
-            
+
 
             // Read in data from savegame
-            
 
-            
+
+
             var values = new Dictionary<string, string>
                 {
                 { "login", "1" },
@@ -101,13 +119,15 @@ namespace DSCPlugin
 
             var responseString = await response.Content.ReadAsStringAsync();
 
-            Log.Info("Response"+responseString);
-            
-    }
+            Log.Info("Response" + responseString);
+
+        }
+
+
 
 
         #endregion
-}
+    }
 
     [ProtoContract]
     [Serializable]
@@ -130,7 +150,10 @@ namespace DSCPlugin
         public Dictionary<long, List<string>> FactionBlocks = new Dictionary<long, List<string>>(); // factionID - LIST->BlockTechName
         [ProtoMember(7)]
         public Dictionary<long, List<long>> PlayersToPCU = new Dictionary<long, List<long>>(); // playerID - LIST->blockIDs
-
+        [ProtoMember(8)]
+        public Dictionary<long, int> PlayerDamage = new Dictionary<long, int>(); // playerID - TotalDamage
+        [ProtoMember(9)]
+        public Dictionary<long, int> FactionDamage = new Dictionary<long, int>(); // factionID - TotalDamage
 
         internal DSC_Storage_Factions Clone()
         {
@@ -142,8 +165,9 @@ namespace DSCPlugin
                 PlayersToFaction = PlayersToFaction,
                 FactionTechs = FactionTechs,
                 FactionBlocks = FactionBlocks,
+                PlayerDamage = PlayerDamage,
+                FactionDamage = FactionDamage
             };
         }
-
     }
 }

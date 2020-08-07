@@ -18,7 +18,8 @@ namespace DSC
             Help = 1,
             AddFaction = 2,
             FreeBuild = 3,
-            Dev = 4
+            Dev = 4,
+            MyDamage = 5
         };
 
         public CommandHandler() { }
@@ -53,18 +54,19 @@ namespace DSC
                         break;
                     case ECommand.FreeBuild:
                         DeepSpaceCombat.Instance.Factions.freeBuild = !DeepSpaceCombat.Instance.Factions.freeBuild;
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild=>"+ DeepSpaceCombat.Instance.Factions.freeBuild.ToString());
                         break;
                     case ECommand.Dev:
 
                         if (lcommand[1].Equals("spawn"))
                         {
                             DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Testspawn called");
-                            DeepSpaceCombat.Instance.SpawnManager.Spawn("TestSpawn", "DSC_TestVehicle");
+                            //DeepSpaceCombat.Instance.SpawnManager.Spawn("TestSpawn", "DSC_TestVehicle");
                         }
 
                         if (lcommand[1].Equals("check"))
                         {
-                            DeepSpaceCombat.Instance.SpawnManager.WriteStorage();
+                            //DeepSpaceCombat.Instance.SpawnManager.WriteStorage();
                         }
 
                         if (lcommand[1].Equals("blockdef"))
@@ -88,6 +90,16 @@ namespace DSC
                                     }
                                 }
                             }
+                        }
+
+                        break;
+
+                    case ECommand.MyDamage:
+
+                        // Check if player exists
+                        if (DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage.ContainsKey(playerId))
+                        {
+                            MyVisualScriptLogicProvider.SendChatMessage("Your total damage is "+ DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId].ToString("#,##0"), "[Server]", playerId);
                         }
 
                         break;

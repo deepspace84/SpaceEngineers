@@ -94,12 +94,13 @@ namespace DSC
             HashSet<IMyEntity> entList = new HashSet<IMyEntity>();
             MyAPIGateway.Entities.GetEntities(entList, e => e is IMyCubeGrid);
             if (entList.Count == 0)
-                return null;
+                return reference;
 
             // Loop through all Grids
             foreach (IMyEntity ent in entList)
             {
                 MyCubeGrid grid = ent as MyCubeGrid;
+                if (grid == null) continue;
                 long gridId = grid.EntityId;
 
                 foreach (MyCubeBlock fb in grid.GetFatBlocks())
@@ -126,23 +127,32 @@ namespace DSC
         /// </returns>
         public long AddBlockWithName(string blockName)
         {
+
             // Check for missing blockname
             if (string.IsNullOrEmpty(blockName))
                 return -2;
 
             long result = -1;
-            List<long> blocks = FindBlocksWithName(blockName);
-            // Check if we found only one block! Blockreferences are unique
-            if(blocks.Count == 1)
-            {
-                // Check if this block is allready added
-                if (!Storage.Blocks.ContainsKey(blockName))
+
+            try { 
+                List<long> blocks = FindBlocksWithName(blockName);
+                // Check if we found only one block! Blockreferences are unique
+                if(blocks.Count == 1)
                 {
-                    // Add block to reference
-                    Storage.Blocks.Add(blockName, blocks[0]);
+                    // Check if this block is allready added
+                    if (!Storage.Blocks.ContainsKey(blockName))
+                    {
+                        // Add block to reference
+                        Storage.Blocks.Add(blockName, blocks[0]);
+                    }
+                    result = blocks[0];
                 }
-                result = blocks[0];
             }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Storage_Reference AddBlockFailed");
+            }
+
 
             return result;
         }
