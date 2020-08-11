@@ -39,6 +39,9 @@ namespace DSC
         public static string EnemyFaction = "GOG"; // Guardians of the Galaxy
         public static string EnemyFactionNPC = "Groot";
 
+        // Damage 
+        public static int DamageAllyMultiplier = 10;
+
         // Research Blocks
         public static Dictionary<string, List<int>> ResearchBlocks = new Dictionary<string, List<int>>() // Blockname, techArea
         {
