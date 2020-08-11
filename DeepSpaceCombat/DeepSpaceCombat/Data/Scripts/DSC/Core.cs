@@ -21,7 +21,7 @@ namespace DSC
         private bool _isInitialized; // Is this instance is initialized
         private bool _isClientRegistered;
         private bool _isServerRegistered;
-        private int tick_timer = 0;
+        public ulong TickCounter { get; private set; }
 
         public bool IsClientRegistered // Is this instance a client
         {
@@ -57,7 +57,7 @@ namespace DSC
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
 
-        private ulong counter = 0;
+        
 
         #region ingame overrides
 
@@ -69,6 +69,9 @@ namespace DSC
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
             base.Init(sessionComponent);
+
+            // Set TickCounter always to zero at startup
+            TickCounter = 0;
 
             MyVisualScriptLogicProvider.SendChatMessage("Deep Space Combat initialized", "[Server]");
 
@@ -164,8 +167,8 @@ namespace DSC
          */
         public override void UpdateAfterSimulation()
         {
-            tick_timer += 1;
-            if (tick_timer % 60 == 0)
+            TickCounter += 1;
+            if (TickCounter % 60 == 0)
             {
                 Factions.DamageController();
             }

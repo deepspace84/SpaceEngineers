@@ -14,19 +14,70 @@ using Sandbox.Definitions;
 using VRageMath;
 using Sandbox.Game.EntityComponents;
 using Sandbox.ModAPI.Contracts;
+using VRage.Collections;
+using System.Linq;
+using Sandbox.Game.Entities.Cube;
+using Sandbox.ModAPI.Weapons;
 
 namespace DSC
 {
     public class DSC_Factions
     {
-        private DSC_Storage_Factions Storage;
+        public DSC_Storage_Factions Storage;
         private Dictionary<long, List<string>> FactionNextTech = new Dictionary<long, List<string>>();
 
         private Dictionary<string, List<long>> ResearchStationsPlayers = new Dictionary<string, List<long>>();
         private Dictionary<string, Dictionary<long, DSC_ResearchContract>> ResearchStationsContracts = new Dictionary<string, Dictionary<long, DSC_ResearchContract>>();
 
+        private readonly ConcurrentCachingList<DamageEvent> _preDamageEvents = new ConcurrentCachingList<DamageEvent>();
 
         public bool freeBuild = false;
+
+
+        // Damage strut
+        private struct DamageEvent
+        {
+            public readonly long ShipId;
+            public readonly long BlockId;
+            public readonly long PlayerId;
+            public readonly long Tick;
+
+            public DamageEvent(long shipId, long blockId, long playerId, long tick)
+            {
+                ShipId = shipId;
+                BlockId = blockId;
+                PlayerId = playerId;
+                Tick = tick;
+            }
+
+            private bool Equals(DamageEvent other)
+            {
+                return ShipId == other.ShipId && BlockId == other.BlockId && PlayerId == other.PlayerId && Tick + 2 >= other.Tick;
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (ReferenceEquals(null, obj)) return false;
+                return obj is DamageEvent && Equals((DamageEvent)obj);
+            }
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    int hashCode = ShipId.GetHashCode();
+                    hashCode = (hashCode * 397) ^ BlockId.GetHashCode();
+                    hashCode = (hashCode * 397) ^ PlayerId.GetHashCode();
+                    hashCode = (hashCode * 397) ^ Tick.GetHashCode();
+                    return hashCode;
+                }
+            }
+
+            public override string ToString()
+            {
+                return $"{ShipId} | {BlockId} | {PlayerId} | {Tick}";
+            }
+        }
 
         public DSC_Factions(){}
 
@@ -60,8 +111,13 @@ namespace DSC
                     PlayerFactions = new Dictionary<long, string>(),
                     NPCFactions = new Dictionary<long, string>(),
                     FactionPlayers = new Dictionary<long, List<long>>(),
+                    PlayersToFaction = new Dictionary<long, long>(),
                     FactionTechs = new Dictionary<long, List<string>>(),
                     FactionBlocks = new Dictionary<long, List<string>>(),
+                    PlayersToPCU = new Dictionary<long, List<long>>(),
+                    PlayerDamage = new Dictionary<long, ulong>(),
+                    FactionDamage = new Dictionary<long, ulong>(),
+                    
                 };
             }
 
@@ -90,6 +146,9 @@ namespace DSC
 
             // Register Contract handlers
             MyAPIGateway.ContractSystem.CustomActivateContract += Event_CustomActivateContract;
+
+            // Register Damage handlers
+            MyAPIGateway.Session.DamageSystem.RegisterBeforeDamageHandler(1, BeforeDamageHandler);
 
         }
 
@@ -124,6 +183,9 @@ namespace DSC
 
             // Remove Contract handlers
             MyAPIGateway.ContractSystem.CustomActivateContract -= Event_CustomActivateContract;
+
+            // Clear damage caching
+            _preDamageEvents?.ClearList();
         }
          #endregion
 
@@ -769,7 +831,182 @@ namespace DSC
         }
 
         #endregion
+
+        #region Damage controller
+
+        // Damage handler
+        private void BeforeDamageHandler(object target, ref MyDamageInformation info)
+        {
+
+            if (info.IsDeformation) return;
+            IMySlimBlock block = target as IMySlimBlock;
+            if (block == null) return;
+            long blockId = 0;
+            IMyCubeBlock fatBlock = block.FatBlock;
+            if (fatBlock != null) blockId = fatBlock.EntityId;
+
+            ProcessPreDamageReporting(new DamageEvent(block.CubeGrid.EntityId, blockId, info.AttackerId, (int)DeepSpaceCombat.Instance.TickCounter), info);
+        }
+
+        // Check for duplicate events
+        private void ProcessPreDamageReporting(DamageEvent damage, MyDamageInformation info)
+        {
+            if (_preDamageEvents.Contains(damage)) return;
+            _preDamageEvents.Add(damage);
+            _preDamageEvents.ApplyAdditions();
+            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::ProcessPreDamageReporting success");
+            IdentifyDamageDealer(damage.ShipId, damage.BlockId, info);
+        }
+
+        private void IdentifyDamageDealer(long damagedEntity, long damagedBlock, MyDamageInformation damageInfo)
+        {
+            // Deformation damage must be allowed here since it handles grid collision damage
+            // One idea may be scan loaded mods and grab their damage types for their ammo as well?  We'll see... 
+            // Missiles from vanilla launchers track their damage id back to the player, so if unowned or npc owned, they will have no owner - need to entity track missiles, woo! (on entity add)
+
+            try
+            {
+                
+                if (damageInfo.AttackerId == 0)
+                {
+                    // If the attacker is unkown its not a player so we don't track it
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyDamageDealer no attacker identified");
+                    return;
+                }
+
+                IMyEntity attackingEntity;
+                if (!MyAPIGateway.Entities.TryGetEntityById(damageInfo.AttackerId, out attackingEntity)) return;
+                FindTheAsshole(damagedEntity, damagedBlock, attackingEntity, damageInfo);
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DamageController::IdentifyDamageDealer");
+            }
+        }
+
+
+        private void FindTheAsshole(long damagedEntity, long damagedBlock, IMyEntity attacker, MyDamageInformation damageInfo)
+        {
+            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole called");
+
+            if (attacker.GetType() == typeof(MyWarhead))
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole => Warhead detected =>Entity:"+attacker.EntityId.ToString()+" Attacker:" + damageInfo.AttackerId.ToString()+" - "+MyVisualScriptLogicProvider.GetPlayersName(damageInfo.AttackerId));
+                
+                return;
+            }
+
+            if (attacker.GetType() == typeof(MyCubeGrid))
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole MyCubeGrid");
+                IdentifyOffendingIdentityFromEntity(damagedEntity, damagedBlock, attacker, damageInfo);
+                return;
+            }
+
+            if (attacker is IMyLargeTurretBase)
+            {
+                IdentifyOffendingIdentityFromEntity(damagedEntity, damagedBlock, attacker, damageInfo);
+                return;
+            }
+
+            IMyCharacter myCharacter = attacker as IMyCharacter;
+            if (myCharacter != null)
+            {
+                AddToDamageQueue(damagedEntity, damagedBlock, myCharacter.EntityId, damageInfo);
+                return;
+            }
+
+            IMyAutomaticRifleGun myAutomaticRifle = attacker as IMyAutomaticRifleGun;
+            if (myAutomaticRifle != null)
+            {
+                AddToDamageQueue(damagedEntity, damagedBlock, myAutomaticRifle.OwnerIdentityId, damageInfo);
+                return;
+            }
+
+            IMyAngleGrinder myAngleGrinder = attacker as IMyAngleGrinder;
+            if (myAngleGrinder != null)
+            {
+                AddToDamageQueue(damagedEntity, damagedBlock, myAngleGrinder.OwnerIdentityId, damageInfo);
+                return;
+            }
+
+            IMyHandDrill myHandDrill = attacker as IMyHandDrill;
+            if (myHandDrill != null)
+            {
+                AddToDamageQueue(damagedEntity, damagedBlock, myHandDrill.OwnerIdentityId, damageInfo);
+                return;
+            }
+
+            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole Asshole not identified =>  It was a: "+ attacker.GetType().ToString());
+        }
+
+
+
+        private void IdentifyOffendingIdentityFromEntity(long damagedEntity, long damagedBlock, IMyEntity offendingEntity, MyDamageInformation damageInfo)
+        {
+            try
+            {
+                IMyCubeGrid myCubeGrid = offendingEntity?.GetTopMostParent() as IMyCubeGrid;
+                if (myCubeGrid == null) return;
+                if (myCubeGrid.BigOwners.Count == 0)
+                {   // This should only trigger when a player is being a cheeky fucker
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => No owners found");
+                    return;
+                }
+
+                IMyIdentity myIdentity = GetIdentityById(myCubeGrid.BigOwners.FirstOrDefault());
+                if (myIdentity != null)
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => Owner found");
+                    AddToDamageQueue(damagedEntity, damagedBlock, myIdentity.IdentityId, damageInfo);
+                    return;
+                }
+
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => Could not find Identity =>" + myCubeGrid.BigOwners.FirstOrDefault().ToString());
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DamageController::IdentifyOffendingIdentityFromEntity");
+            }
+        }
+
+
+        private void AddToDamageQueue(long shipId, long blockId, long playerId, MyDamageInformation damageInfo)
+        {
+            MyCubeBlock block = MyAPIGateway.Entities.GetEntityById(blockId) as MyCubeBlock;
+            if (null != block)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => block entity found->"+ block.OwnerId+ " - "+MyVisualScriptLogicProvider.GetPlayersName(block.OwnerId));
+            }
+            else
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => blockId->"+blockId+" Entity not found");
+            }
+
+            MyCubeGrid grid = MyAPIGateway.Entities.GetEntityById(shipId) as MyCubeGrid;
+            if (null != grid)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => Grid entity found");
+            }
+            else
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => grid->" + blockId + " Entity not found->"+shipId+" -- " + grid.BigOwners.FirstOrDefault().ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(grid.BigOwners.FirstOrDefault()));
+            }
+
+
+        }
+
+        private IMyIdentity GetIdentityById(long playerId)
+        {
+            List<IMyIdentity> identityList = new List<IMyIdentity>();
+            MyAPIGateway.Players.GetAllIdentites(identityList);
+            return identityList.FirstOrDefault(x => x.IdentityId == playerId);
+        }
+        #endregion
+
+
     }
+
 
     public class DSC_ResearchContract
     {
