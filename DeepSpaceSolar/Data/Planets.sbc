@@ -2258,8 +2258,8 @@
   
   	<!-- Titan Moon Weather Settings -->
 	
-	<WeatherFrequencyMin>600</WeatherFrequencyMin>
-	<WeatherFrequencyMax>3600</WeatherFrequencyMax>
+	<WeatherFrequencyMin>300</WeatherFrequencyMin>
+	<WeatherFrequencyMax>1200</WeatherFrequencyMax>
 	<WeatherGenerators>
 		<WeatherGenerator>
 			<Voxel>MarsSoil</Voxel>
