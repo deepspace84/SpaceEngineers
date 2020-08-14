@@ -9,9 +9,9 @@
         <DisplayName>Super Heavy Storm</DisplayName>
         <Public>true</Public>
         <FogColor>
-          <X>0.7725</X>
-          <Y>0.4775</Y>
-          <Z>0.26</Z>
+          <X>0.5725</X>
+          <Y>0.2775</Y>
+          <Z>0.06</Z>
         </FogColor>
         <FogDensity>0.08</FogDensity>
         <FogMultiplier>1</FogMultiplier>
@@ -19,16 +19,16 @@
         <FogAtmoMultiplier>1</FogAtmoMultiplier>
         <AmbientSound>WM_Sandstorm</AmbientSound>
         <AmbientVolume>0.35</AmbientVolume>
-        <EffectName>WM_MarsStormHeavy</EffectName>
+        <EffectName>SuperHeavyStorm</EffectName>
         <ParticleRadius>120</ParticleRadius>
         <ParticleCount>50</ParticleCount>
         <ParticleScale>1.3</ParticleScale>
         <LightningIntervalMin>1</LightningIntervalMin>
         <LightningIntervalMax>2</LightningIntervalMax>
-        <LightningCharacterHitIntervalMin>200</LightningCharacterHitIntervalMin>
-        <LightningCharacterHitIntervalMax>500</LightningCharacterHitIntervalMax>
+        <LightningCharacterHitIntervalMin>400</LightningCharacterHitIntervalMin>
+        <LightningCharacterHitIntervalMax>800</LightningCharacterHitIntervalMax>
         <LightningGridHitIntervalMin>100</LightningGridHitIntervalMin>
-        <LightningGridHitIntervalMax>400</LightningGridHitIntervalMax>
+        <LightningGridHitIntervalMax>300</LightningGridHitIntervalMax>
         <LightningRodSafetyRadius>20</LightningRodSafetyRadius>
         <Lightning>
           <MaxLife>7</MaxLife>
