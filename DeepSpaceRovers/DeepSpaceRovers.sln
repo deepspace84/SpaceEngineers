@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepSpaceRovers", "DeepSpaceRovers.csproj", "{0DB748B8-3F92-465B-BA01-072E219205AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DB748B8-3F92-465B-BA01-072E219205AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB748B8-3F92-465B-BA01-072E219205AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB748B8-3F92-465B-BA01-072E219205AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB748B8-3F92-465B-BA01-072E219205AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {077BFFAB-E114-42DA-823C-2D1AA4EDB6D5}
+	EndGlobalSection
+EndGlobal
