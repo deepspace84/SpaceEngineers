@@ -18,7 +18,7 @@ using VRage.Collections;
 using System.Linq;
 using Sandbox.Game.Entities.Cube;
 using Sandbox.ModAPI.Weapons;
-
+using SpaceEngineers.Game.ModAPI;
 
 namespace DSC
 {
@@ -136,8 +136,8 @@ namespace DSC
                     FactionBlocks = new Dictionary<long, List<string>>(),
                     PlayersToPCU = new Dictionary<long, List<long>>(),
                     PlayerDamage = new Dictionary<long, ulong>(),
-                    FactionDamage = new Dictionary<long, ulong>(),
-                    
+                    FactionDamage = new Dictionary<long, ulong>()
+
                 };
             }
 
@@ -147,6 +147,7 @@ namespace DSC
 
             // Add Faction state changed event
             MyAPIGateway.Session.Factions.FactionStateChanged += FactionStateChaned;
+            MyAPIGateway.Session.Factions.FactionCreated += FactionCreated;
 
             // Add gridhandlers to all existing grids
             AddGridHandlers();
@@ -458,6 +459,11 @@ namespace DSC
                     // Calculate PCU TODO
 
                 }
+                else
+                {
+                    // Player wants to join a no player faction => Kick him TODO
+                    MyVisualScriptLogicProvider.SetPlayersFaction(playerId);
+                }
             }
 
 
@@ -478,20 +484,36 @@ namespace DSC
 
             if(change == MyFactionStateChange.RemoveFaction)
             {
-                // Add Faction PlayerFactions
+                // Remove Faction PlayerFactions
                 Storage.PlayerFactions.Remove(fromFactionId);
 
-                // Prepare defaults
+                // Remove defaults
                 Storage.FactionBlocks.Remove(fromFactionId);
                 Storage.FactionPlayers.Remove(fromFactionId);
                 Storage.FactionTechs.Remove(fromFactionId);
+                Storage.FactionDamage.Remove(fromFactionId);
             }
 
+
+            if (change == MyFactionStateChange.DeclareWar)
+            {
+                // Check if change is between neutral npc
+                if(DeepSpaceCombat.Instance.NPCFactionID == toFactionId)
+                {
+                    // Reset peace
+                    MyAPIGateway.Session.Factions.SendPeaceRequest(fromFactionId, toFactionId);
+                    MyAPIGateway.Session.Factions.AcceptPeace(fromFactionId, toFactionId);
+
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState restored");
+                }
+
+            }
 
             DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState=> change:" + change.ToString() + " | fromFaction:" + fromFactionId.ToString() + " | toFaction:" + toFactionId.ToString() + " | player:" + playerId.ToString() + " | sender:" + senderId.ToString());
             //MyAPIGateway.Session.Factions.;
 
-            //MyFactionStateChange
+
+           //MyFactionStateChange
             /*
         RemoveFaction = 0,
         SendPeaceRequest = 1,
@@ -512,6 +534,13 @@ namespace DSC
         */
         }
 
+        private void FactionCreated(long factionID)
+        {
+            // Directly set npc faction states
+            MyAPIGateway.Session.Factions.SendPeaceRequest(factionID, DeepSpaceCombat.Instance.NPCFactionID);
+            MyAPIGateway.Session.Factions.AcceptPeace(factionID, DeepSpaceCombat.Instance.NPCFactionID);
+            MyAPIGateway.Session.Factions.DeclareWar(DeepSpaceCombat.Instance.EnemyFactionID, factionID);
+        }
 
         #endregion
 
@@ -1189,6 +1218,9 @@ namespace DSC
             List<IMyIdentity> identityList = new List<IMyIdentity>();
             MyAPIGateway.Players.GetAllIdentites(identityList);
             return identityList.FirstOrDefault(x => x.IdentityId == playerId);
+
+
+            
         }
         #endregion
 

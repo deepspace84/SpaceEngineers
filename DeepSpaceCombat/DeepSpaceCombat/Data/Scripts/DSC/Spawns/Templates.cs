@@ -1,73 +1,88 @@
-﻿using System;
+﻿using Sandbox.Game.GUI;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using VRageMath;
+using VRageRender.Messages;
 
 namespace DSC
 {
     public class DSC_SpawnTemplates
     {
-        
+
         public DSC_SpawnTemplates() { }
 
-        public Dictionary<string, DSC_SpawnTemplate> Spawns { get; } = new Dictionary<string, DSC_SpawnTemplate>();
+        public Dictionary<string, DSC_RespawnTemplate> Respawns { get; } = new Dictionary<string, DSC_RespawnTemplate>();
+        public Dictionary<string, DSC_EventTemplate> EventSpawns { get; } = new Dictionary<string, DSC_EventTemplate>();
 
-
-        public Dictionary<string, Dictionary<int, DSC_SpawnRoute>> Routes { get; } = new Dictionary<string, Dictionary<int, DSC_SpawnRoute>>()
-        {
-            {"Testroute", new Dictionary<int, DSC_SpawnRoute>()
-            {
-                {0, new DSC_SpawnRoute("Start", false, new Vector3D(36127.86 , -1629.97 , 49527.7), 100, false, 0)},
-                {1, new DSC_SpawnRoute("End", false, new Vector3D(34967.03 , -1452.38 , 50364.61), 100, false, 0)}
-                
-            }}
-
-        };
 
         public void Load()
         {
-            Spawns.Add("TestSpawn", new DSC_SpawnTemplate("Testspawn", true, Routes["Testroute"]));
+            Respawns.Add("TestSpawn", new DSC_RespawnTemplate("Testspawn", new Vector3D(), new Vector3D(), "RespwanPanel_01"));
         }
     }
 
 
-    public class DSC_SpawnTemplate
+    public struct DSC_RespawnTemplate
     {
         public readonly string Name;
-        public readonly bool Friendly;
-        
-        public readonly Dictionary<int, DSC_SpawnRoute> Routes;
+        public readonly Vector3D DropPosition;
+        public readonly Vector3D DropDirection;
+        public readonly string ButtonBlockName;
 
-        public DSC_SpawnTemplate() { }
-
-        public DSC_SpawnTemplate(string name, bool friendly, Dictionary<int, DSC_SpawnRoute> routes)
+        public DSC_RespawnTemplate(string name, Vector3D dropPosition, Vector3D dropDirection, string buttonBlockName)
         {
             Name = name;
-            Friendly = friendly;
-            Routes = routes;
+            DropPosition = dropPosition;
+            DropDirection = dropDirection;
+            ButtonBlockName = buttonBlockName;
         }
     }
 
-
-    public class DSC_SpawnRoute
+    public struct DSC_PrefabTemplate
     {
         public readonly string Name;
-        public readonly bool CollisionAvoid;
-        public readonly Vector3D Target;
-        public readonly int Speed;
-        public readonly bool Dock;
-        public readonly int Wait;
-        
-        public DSC_SpawnRoute() { }
+        public readonly int Stage;
+        public readonly string Cargo;
 
-        public DSC_SpawnRoute(string name, bool collisionAvoid, Vector3D target, int speed, bool dock, int wait)
+        public DSC_PrefabTemplate(string name, int stage, string cargo)
         {
             Name = name;
-            CollisionAvoid = collisionAvoid;
-            Target = target;
-            Speed = speed;
-            Dock = dock;
-            Wait = wait;
+            Stage = stage;
+            Cargo = cargo;
         }
     }
+
+    public struct DSC_EventTemplate
+    {
+        public readonly string Name;
+        public readonly int Stage;
+        public readonly Dictionary<string, int> CargoItems; // Item name - Amount
+        public readonly int PreTime; // Time in seconds
+        public readonly string PreText;
+        public readonly bool ShowGps; // Show gps to players?
+        public readonly int MinPlayers;
+        public readonly int MinPlayersPerFaction;
+        public readonly int MinOnlineTime;
+        public readonly bool IsStatic;
+        public readonly bool IsSpace;
+
+
+
+        public DSC_EventTemplate(string name, int stage, Dictionary<string,int> cargoItems, int preTime, string preText, bool showGps, int minPlayers, int minPlayersPerFaction, int minOnlineTime, bool isStatic, bool isSpace)
+        {
+            Name = name;
+            Stage = stage;
+            CargoItems = cargoItems;
+            PreTime = preTime;
+            PreText = preText;
+            ShowGps = showGps;
+            MinPlayers = minPlayers;
+            MinPlayersPerFaction = minPlayersPerFaction;
+            MinOnlineTime = minOnlineTime;
+            IsStatic = isStatic;
+            IsSpace = isSpace;
+        }
+    }
+
 }

@@ -6,6 +6,7 @@ using Sandbox.Game.World;
 using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using VRage.Game.ModAPI;
@@ -53,7 +54,7 @@ namespace DSC
                 // Create default values
                 Storage = new DSC_Storage_SpawnManager
                 {
-                    SpawnedData = new Dictionary<long, DSC_SpawnShip>(),
+                    SpawnedData = new Dictionary<ulong, DSC_SpawnShip>(),
                     SpawnId = 0
                 };
             }
@@ -84,8 +85,6 @@ namespace DSC
         }
         #endregion
 
-        
-
         // Checks the current state of all spawns
         public void Check()
         {
@@ -113,7 +112,7 @@ namespace DSC
             // Check SpanCache and timer over 2 seconds => spawn failed
             if(null != SpawnCache && 2 < (DateTime.UtcNow - SpawnCacheTimer).TotalSeconds)
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Check: SpawnCache over 2 seconds. Failed template=>" + SpawnCache.SpawnTemplateName);
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Check: SpawnCache over 2 seconds. Failed preFab=>" + SpawnCache.PrefabName);
 
                 // Free spawncache
                 SpawnCache = null;
@@ -125,38 +124,24 @@ namespace DSC
 
 
         }
-
-        public void WriteStorage()
+        public ulong Spawn(DSC_SpawnShip spawnShip)
         {
-            foreach(DSC_SpawnShip ship in Storage.SpawnedData.Values)
+            // Check if player exists
+            if (null != spawnShip)
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("ID=>"+ship.Id.ToString());
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnTemplateName=>" + ship.SpawnTemplateName);
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("ActiveRoute=>" + ship.ActiveRoute.ToString());
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridEntityId=>" + ship.GridEntityId.ToString());
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("---------------------------------------------------");
-            }
-        }
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Spawn added");
 
-
-        public int Spawn(string templateName, string prefabName)
-        {
-            // Check template
-            if (DeepSpaceCombat.Instance.SpawnTemplates.Spawns.ContainsKey(templateName))
-            {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::SpawnTemplate: Template found templateName=>" + templateName);
-
-                // Create new SpawnShip
-                DSC_SpawnShip spawnObject = new DSC_SpawnShip(Storage.SpawnId++, templateName, prefabName);
+                // Set new spawnShipId
+                spawnShip.Id = Storage.SpawnId++;
 
                 // Spawn
-                SpawnQueue.Add(spawnObject);
-                return spawnObject.Id;
+                SpawnQueue.Add(spawnShip);
+                return spawnShip.Id;
             }
             else
             {
-                // Template not found
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::SpawnTemplate: Unkown templateName=>" + templateName);
+                // Spawnship not defined
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Spawn undefined spawnship");
                 return 0;
             }
         }
@@ -165,49 +150,38 @@ namespace DSC
         private void CreateSpawn(DSC_SpawnShip spawnShip)
         {
 
-            // Get Template
-            DSC_SpawnTemplate template = DeepSpaceCombat.Instance.SpawnTemplates.Spawns[spawnShip.SpawnTemplateName];
-
-            // Check template
-            if (!template.Routes.ContainsKey(0))
+            // Check for gravity
+            if (spawnShip.InGravity)
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: No Route entry for start [0]");
-                return;
-            }
 
-            // Check player
-            long spawnPlayerId = DeepSpaceCombat.Instance.EnemyPlayerID;
-            if (template.Friendly)
-                spawnPlayerId = DeepSpaceCombat.Instance.NPCPlayerID;
+                // Get nearest planet
+                MyPlanet planet = MyGamePruningStructure.GetClosestPlanet(spawnShip.StartPosition);
 
+                if (null == planet)
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: No nearby planet found -> TODO");
+                }
+                else
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: Nearby planet found -> SpawnPrefabInGravity");
 
-            // Get nearest planet
-            MyPlanet planet = MyGamePruningStructure.GetClosestPlanet(template.Routes[0].Target);
+                    // Get center vector of nearest planet and calculate up vector
+                    Vector3D up = Vector3D.Normalize(planet.PositionComp.WorldVolume.Center - spawnShip.StartPosition);
 
-            if (null == planet)
-            {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: No nearby planet found -> TODO");
+                    // Calculate direction vector if not set
+                    if (spawnShip.StartDirection == Vector3D.Zero)
+                    {
+                        spawnShip.StartDirection = spawnShip.StartPosition.Cross(planet.PositionComp.WorldVolume.Center);
+                    }
 
-                // Space spawn
-                //DSC_SpawnShip spawnObject = new DSC_SpawnShip(Storage.SpawnId++, template.Name);
-
-                // Add Spawned Ship to cache
-                //SpawnCache.Add("DSC_SpawnManager_" + spawnObject.Id.ToString(), spawnObject);
-
-                //MyVisualScriptLogicProvider.SpawnPrefab(prefabName, template.Routes[0].Target, dir, Vector3D.Up, spawnPlayerId, null, "DSC_SpawnManager_" + spawnObject.Id.ToString());
+                    // Spawn Ship
+                    MyVisualScriptLogicProvider.SpawnPrefabInGravity(spawnShip.PrefabName, spawnShip.StartPosition, spawnShip.StartDirection, spawnShip.PlayerId);
+                }
             }
             else
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: Nearby planet found -> SpawnPrefabInGravity");
+                // TODO
 
-                // Get center vector of nearest planet and calculate up vector
-                Vector3D up = Vector3D.Normalize(planet.PositionComp.WorldVolume.Center - template.Routes[0].Target);
-
-                // Calculate direction vector crossing up vector
-                Vector3D dir = template.Routes[0].Target.Cross(planet.PositionComp.WorldVolume.Center);
-
-                // Spawn Ship
-                MyVisualScriptLogicProvider.SpawnPrefabInGravity(spawnShip.PrefabName, template.Routes[0].Target, dir, spawnPlayerId);
             }
         }
 
@@ -253,27 +227,34 @@ namespace DSC
     public class DSC_SpawnShip
     {
         [ProtoMember(1)]
-        public readonly int Id;
+        public ulong Id;
         [ProtoMember(2)]
-        public readonly string SpawnTemplateName;
+        public string PrefabName;
         [ProtoMember(3)]
-        public readonly string PrefabName;
+        public long PlayerId;
         [ProtoMember(4)]
-        public bool init { get; } = false;
+        public Vector3D StartPosition;
         [ProtoMember(5)]
-        public long GridEntityId;
+        public Vector3D StartDirection;
         [ProtoMember(6)]
-        public int ActiveRoute;
+        public bool InGravity;
         [ProtoMember(7)]
-        public readonly DateTime CreationTime;
+        public bool init { get; } = false;
+        [ProtoMember(8)]
+        public long GridEntityId;
+        [ProtoMember(9)]
+        public DateTime CreationTime;
 
         public DSC_SpawnShip(){}
 
-        public DSC_SpawnShip(int id, string spawnTemplateName, string prefabName) {
-            Id = id;
-            SpawnTemplateName = spawnTemplateName;
+        public DSC_SpawnShip(long playerId, string prefabName, Vector3D startPosition, Vector3D startDirection = new Vector3D(), bool inGravity=false)
+        {
             CreationTime = DateTime.UtcNow;
+            PlayerId = playerId;
             PrefabName = prefabName;
+            StartPosition = startPosition;
+            StartDirection = startDirection;
+            InGravity = inGravity;
         }
     }
 }

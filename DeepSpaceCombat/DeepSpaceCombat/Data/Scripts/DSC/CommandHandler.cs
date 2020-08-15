@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VRage.Game.ModAPI;
+using VRageMath;
 
 namespace DSC
 {
@@ -19,7 +20,9 @@ namespace DSC
             AddFaction = 2,
             FreeBuild = 3,
             Dev = 4,
-            MyDamage = 5
+            MyDamage = 5,
+            DelDamage=6
+
         };
 
         public CommandHandler() { }
@@ -60,6 +63,27 @@ namespace DSC
 
                         if (lcommand[1].Equals("spawn"))
                         {
+
+                            try
+                            {
+
+                                Vector3D startPosition = new Vector3D(float.Parse(lcommand[3]), float.Parse(lcommand[4]), float.Parse(lcommand[5]));
+                                Vector3D startDirection = new Vector3D();
+                                if (lcommand.Count > 6)
+                                {
+                                    startDirection = new Vector3D(float.Parse(lcommand[6]), float.Parse(lcommand[7]), float.Parse(lcommand[8]));
+                                }
+                                
+                                DeepSpaceCombat.Instance.SpawnManager.Spawn(new DSC_SpawnShip(MyVisualScriptLogicProvider.GetLocalPlayerId(), lcommand[2], startPosition, startDirection, true));
+
+                            }
+                            catch (Exception e)
+                            {
+                                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "SpawnManagerCommand failed");
+                            }
+
+
+
                             DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Testspawn called");
                             //DeepSpaceCombat.Instance.SpawnManager.Spawn("TestSpawn", "DSC_TestVehicle");
                         }
@@ -100,6 +124,16 @@ namespace DSC
                         if (DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage.ContainsKey(playerId))
                         {
                             MyVisualScriptLogicProvider.SendChatMessage("Your total damage is "+ DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId].ToString("#,##0"), "[Server]", playerId);
+                        }
+
+                        break;
+                    case ECommand.DelDamage:
+
+                        // Check if player exists
+                        if (DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage.ContainsKey(playerId))
+                        {
+                            DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId] = 0;
+                            MyVisualScriptLogicProvider.SendChatMessage("Your total damage is " + DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId].ToString("#,##0"), "[Server]", playerId);
                         }
 
                         break;

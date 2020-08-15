@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VRageMath;
 
 namespace DSC
 {
@@ -39,13 +40,30 @@ namespace DSC
         public static string EnemyFaction = "GOG"; // Guardians of the Galaxy
         public static string EnemyFactionNPC = "Groot";
 
+
         // Damage 
-        public static int DamageAllyMultiplier = 10;
+        public static int DamageAllyMultiplier = 1;
 
         // Research Blocks
         public static Dictionary<string, List<int>> ResearchBlocks = new Dictionary<string, List<int>>() // Blockname, techArea
         {
-            {"DSC_MainBase_Res_0", new List<int>(){0,1}},
+            {"DSC_Research_1_0", new List<int>(){0,1}},
+            {"DSC_Research_1_1", new List<int>(){0,1}},
+            {"DSC_Research_1_2", new List<int>(){0,1}},
+            {"DSC_Research_1_3", new List<int>(){0,1}},
+            {"DSC_Research_1_4", new List<int>(){0,1}},
+
+            {"DSC_Research_2_0", new List<int>(){0,1,2}},
+            {"DSC_Research_2_1", new List<int>(){0,1,2}},
+            {"DSC_Research_2_2", new List<int>(){0,1,2}},
+            {"DSC_Research_2_3", new List<int>(){0,1,2}},
+            {"DSC_Research_2_4", new List<int>(){0,1,2}},
+
+            {"DSC_Research_3_0", new List<int>(){0,1,2,3}},
+            {"DSC_Research_3_1", new List<int>(){0,1,2,3}},
+            {"DSC_Research_3_2", new List<int>(){0,1,2,3}},
+            {"DSC_Research_3_3", new List<int>(){0,1,2,3}},
+            {"DSC_Research_3_4", new List<int>(){0,1,2,3}},
         };
 
         // Research steps for 5 Factions

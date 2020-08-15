@@ -44,15 +44,20 @@ namespace DSC
 
         public bool isDebug = true;
 
+        public DSC_Storage_Core CoreStorage;
+
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
         public CommandHandler CMDHandler = new CommandHandler();
         public DSC_Reference DSCReference = new DSC_Reference();
         public DSC_Factions Factions = new DSC_Factions();
         public DSC_Definitions Definitions = new DSC_Definitions();
         public DSC_TechTree Techtree = new DSC_TechTree();
+        public DSC_SpawnManager SpawnManager = new DSC_SpawnManager();
 
         public long NPCPlayerID;
+        public long NPCFactionID;
         public long EnemyPlayerID;
+        public long EnemyFactionID;
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
@@ -171,6 +176,7 @@ namespace DSC
             if (TickCounter % 60 == 0)
             {
                 Factions.DamageController();
+                SpawnManager.Check();
             }
         }
 
@@ -188,6 +194,12 @@ namespace DSC
 
                 // Save reference data to savegame
                 DSCReference.Save();
+
+                // Save core storage
+                SaveCoreStorage();
+
+                // Save spawnmanager
+                SpawnManager.Save();
             }
 
         }
@@ -218,6 +230,9 @@ namespace DSC
             // Unregister Server
             if (_isServerRegistered)
             {
+                // Spawn Manager
+                SpawnManager.Unload();
+
                 // Factions
                 Factions.Unload();
                 Factions = null;
@@ -281,6 +296,9 @@ namespace DSC
 
             ServerLogger.Flush();
 
+            // Load core storage
+            LoadCoreStorage();
+
             // Check for default faction / npc data
             CheckDefaultFactionNPC();
 
@@ -292,6 +310,9 @@ namespace DSC
 
             // Load faction data
             Factions.Load();
+
+            // Load SpawnManager
+            SpawnManager.Load();
 
         }
         #endregion
@@ -317,6 +338,45 @@ namespace DSC
 
         #region core functions
 
+        private void LoadCoreStorage()
+        {
+            // Check if file exists
+            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Core", typeof(DSC_Storage_Core)))
+            {
+                try
+                {
+                    var reader = MyAPIGateway.Utilities.ReadBinaryFileInWorldStorage("DSC_Storage_Core", typeof(DSC_Storage_Core));
+                    CoreStorage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Core>(reader.ReadBytes((int)reader.BaseStream.Length));
+                    reader.Dispose();
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DSC_Storage_Core found and loaded");
+                }
+                catch (Exception e)
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Storage_Core loading failed");
+                }
+            }
+            else
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No DSC_Storage_Core found, create default");
+                // Create default values
+                CoreStorage = new DSC_Storage_Core
+                {
+                    Respawns = new Dictionary<long, DateTime>(),
+                };
+            }
+        }
+
+        private void SaveCoreStorage()
+        {
+            // Save Storage
+            byte[] serialized = MyAPIGateway.Utilities.SerializeToBinary<DSC_Storage_Core>(CoreStorage);
+            System.IO.BinaryWriter writer = MyAPIGateway.Utilities.WriteBinaryFileInWorldStorage("DSC_Storage_Core", typeof(DSC_Storage_Core));
+            writer.Write(serialized);
+            writer.Flush();
+            writer.Dispose();
+        }
+
+
         private void CheckDefaultFactionNPC()
         {
             // Check if faction exists NPC
@@ -332,6 +392,7 @@ namespace DSC
                     if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.MainFactionNPC)
                     {
                         NPCPlayerID = playerId;
+                        NPCFactionID = factionObj.FactionId;
                         check = true;
                         if(isDebug) ServerLogger.WriteInfo("NPC Player found");
                     }
@@ -348,6 +409,7 @@ namespace DSC
                         {
                             if (isDebug) ServerLogger.WriteInfo("NPC Player was not found, so added");
                             NPCPlayerID = playerId;
+                            NPCFactionID = factionObj.FactionId;
                         }
                     }
                 }
@@ -356,7 +418,6 @@ namespace DSC
             {
                 ServerLogger.WriteError("NO NPC FACTION FOUND!! CRITICAL!!!");
             }
-
 
 
             // Check if faction exists ENEMY
@@ -372,6 +433,7 @@ namespace DSC
                     if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.EnemyFactionNPC)
                     {
                         EnemyPlayerID = playerId;
+                        EnemyFactionID = factionObj.FactionId;
                         check = true;
                         if (isDebug) ServerLogger.WriteInfo("Enemy Player found");
                     }
@@ -388,6 +450,7 @@ namespace DSC
                         {
                             if (isDebug) ServerLogger.WriteInfo("Enemy Player was not found, so added");
                             EnemyPlayerID = playerId;
+                            EnemyFactionID = factionObj.FactionId;
                         }
                     }
                 }

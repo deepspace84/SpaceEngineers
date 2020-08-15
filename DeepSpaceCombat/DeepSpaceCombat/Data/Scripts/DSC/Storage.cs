@@ -42,12 +42,57 @@ namespace DSC
                 FactionTechs = FactionTechs,
                 FactionBlocks = FactionBlocks,
                 PlayerDamage = PlayerDamage,
-                FactionDamage = FactionDamage
+                FactionDamage = FactionDamage,
+            };
+        }
+
+    }
+
+    [ProtoContract]
+    [Serializable]
+    public class DSC_Storage_Core
+    {
+
+        [ProtoMember(1)]
+        public Dictionary<long, DateTime> Respawns = new Dictionary<long, DateTime>(); // playerId - lastSpawn
+
+
+        internal DSC_Storage_Core Clone()
+        {
+            return new DSC_Storage_Core
+            {
+                Respawns = Respawns,
+
+            };
+        }
+
+    }
+
+    [ProtoContract]
+    [Serializable]
+    public class DSC_Storage_SpawnManager
+    {
+
+        [ProtoMember(1)]
+        public Dictionary<ulong, DSC_SpawnShip> SpawnedData = new Dictionary<ulong, DSC_SpawnShip>(); // spawnId - SpawnShip
+        [ProtoMember(2)]
+        public ulong SpawnId; // SpawnID counter
+
+        internal DSC_Storage_SpawnManager Clone()
+        {
+            return new DSC_Storage_SpawnManager
+            {
+                SpawnedData = SpawnedData,
+                SpawnId = SpawnId
+
             };
         }
 
     }
     
+
+
+
     [ProtoContract]
     [Serializable]
     public class DSC_Storage_Reference
