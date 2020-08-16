@@ -36,7 +36,7 @@ namespace DSC
 
         private readonly ConcurrentCachingList<DamageEvent> _preDamageEvents = new ConcurrentCachingList<DamageEvent>();
 
-        public bool freeBuild = false;
+        public bool freeBuild = true;
 
 
         // Damage strut
@@ -287,6 +287,13 @@ namespace DSC
 
                 if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
                 {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("AddGridEvent:: Block builder not in a faction =>" + block.BuiltBy.ToString());
+                    if (block.BuiltBy == 0)
+                    {
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("AddGridEvent:: Block built by none");
+                        return;
+                    }
+
                     block.CubeGrid.RemoveBlock(block);
                     return;
                 }
@@ -327,6 +334,12 @@ namespace DSC
             // Check if player is in a player faction, if not dont allow building at all
             if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
             {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block builder not in a faction =>"+block.BuiltBy.ToString());
+                if (block.BuiltBy == 0)
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block built by none");
+                    return;
+                }
                 // Remove block
                 block.CubeGrid.RemoveBlock(block);
 

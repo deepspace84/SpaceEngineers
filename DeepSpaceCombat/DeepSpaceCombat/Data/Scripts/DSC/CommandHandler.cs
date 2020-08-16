@@ -74,7 +74,7 @@ namespace DSC
                                     startDirection = new Vector3D(float.Parse(lcommand[6]), float.Parse(lcommand[7]), float.Parse(lcommand[8]));
                                 }
                                 
-                                DeepSpaceCombat.Instance.SpawnManager.Spawn(new DSC_SpawnShip(MyVisualScriptLogicProvider.GetLocalPlayerId(), lcommand[2], startPosition, startDirection, true));
+                                DeepSpaceCombat.Instance.SpawnManager.Spawn(new DSC_SpawnShip(playerId, lcommand[2], startPosition, startDirection, true));
 
                             }
                             catch (Exception e)

@@ -149,40 +149,56 @@ namespace DSC
 
         private void CreateSpawn(DSC_SpawnShip spawnShip)
         {
-
-            // Check for gravity
-            if (spawnShip.InGravity)
+            try
             {
-
-                // Get nearest planet
-                MyPlanet planet = MyGamePruningStructure.GetClosestPlanet(spawnShip.StartPosition);
-
-                if (null == planet)
+                // Check for gravity
+                if (spawnShip.InGravity)
                 {
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: No nearby planet found -> TODO");
+
+                    // Get nearest planet
+                    MyPlanet planet = MyGamePruningStructure.GetClosestPlanet(spawnShip.StartPosition);
+
+                    if (null == planet)
+                    {
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: No nearby planet found -> TODO");
+                    }
+                    else
+                    {
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: Nearby planet found -> SpawnPrefabInGravity");
+
+
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: For Player ->"+spawnShip.PlayerId+" - "+MyVisualScriptLogicProvider.GetPlayersName(spawnShip.PlayerId));
+
+                        // Get center vector of nearest planet and calculate up vector
+                        Vector3D up = Vector3D.Normalize(planet.PositionComp.WorldVolume.Center - spawnShip.StartPosition);
+
+                        // Calculate direction vector if not set
+                        if (spawnShip.StartDirection == Vector3D.Zero)
+                        {
+                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: Calculate direction by planet");
+                            spawnShip.StartDirection = spawnShip.StartPosition.Cross(planet.PositionComp.WorldVolume.Center);
+                        }
+                        else
+                        {
+                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: Calculate direction target");
+                            spawnShip.StartDirection = Vector3D.Normalize(spawnShip.StartDirection - spawnShip.StartPosition);
+                        }
+
+                        // Spawn Ship
+                        MyVisualScriptLogicProvider.SpawnPrefabInGravity(spawnShip.PrefabName, spawnShip.StartPosition, spawnShip.StartDirection, spawnShip.PlayerId);
+                    }
                 }
                 else
                 {
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::CreateSpawn: Nearby planet found -> SpawnPrefabInGravity");
+                    // TODO
 
-                    // Get center vector of nearest planet and calculate up vector
-                    Vector3D up = Vector3D.Normalize(planet.PositionComp.WorldVolume.Center - spawnShip.StartPosition);
-
-                    // Calculate direction vector if not set
-                    if (spawnShip.StartDirection == Vector3D.Zero)
-                    {
-                        spawnShip.StartDirection = spawnShip.StartPosition.Cross(planet.PositionComp.WorldVolume.Center);
-                    }
-
-                    // Spawn Ship
-                    MyVisualScriptLogicProvider.SpawnPrefabInGravity(spawnShip.PrefabName, spawnShip.StartPosition, spawnShip.StartDirection, spawnShip.PlayerId);
                 }
             }
-            else
+            catch (Exception e)
             {
-                // TODO
-
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "SpawnManagerCommand failed");
             }
+            
         }
 
 
@@ -205,6 +221,8 @@ namespace DSC
                 if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnManager::PrefabDetailed_Event: Unknown grid spawned=>" + prefabName);
                 return;
             }
+
+            MyVisualScriptLogicProvider.ChangeOwner(MyVisualScriptLogicProvider.GetEntityName(entityId), DeepSpaceCombat.Instance.NPCPlayerID);
 
             // Set the entity id
             SpawnCache.GridEntityId = entityId;

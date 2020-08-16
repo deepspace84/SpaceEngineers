@@ -145,6 +145,11 @@ namespace DSC
                         // Add block to reference
                         Storage.Blocks.Add(blockName, blocks[0]);
                     }
+                    else
+                    {
+                        // Set block reference again if changed
+                        Storage.Blocks[blockName]= blocks[0];
+                    }
                     result = blocks[0];
                 }
             }

@@ -53,6 +53,7 @@ namespace DSC
         public DSC_Definitions Definitions = new DSC_Definitions();
         public DSC_TechTree Techtree = new DSC_TechTree();
         public DSC_SpawnManager SpawnManager = new DSC_SpawnManager();
+        public DSC_RespawnManager RespawnManager = new DSC_RespawnManager();
 
         public long NPCPlayerID;
         public long NPCFactionID;
@@ -77,8 +78,6 @@ namespace DSC
 
             // Set TickCounter always to zero at startup
             TickCounter = 0;
-
-            MyVisualScriptLogicProvider.SendChatMessage("Deep Space Combat initialized", "[Server]");
 
             // TODO Do we need this? used in ship speed, keep it? :P
             if (MyAPIGateway.Utilities == null) { MyAPIGateway.Utilities = MyAPIUtilities.Static; }
@@ -230,6 +229,9 @@ namespace DSC
             // Unregister Server
             if (_isServerRegistered)
             {
+                // Respawn Manager
+                RespawnManager.Unload();
+
                 // Spawn Manager
                 SpawnManager.Unload();
 
@@ -313,6 +315,9 @@ namespace DSC
 
             // Load SpawnManager
             SpawnManager.Load();
+
+            // Load RespawnManager
+            RespawnManager.Load();
 
         }
         #endregion
