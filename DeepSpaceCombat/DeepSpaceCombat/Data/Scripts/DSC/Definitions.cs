@@ -15,7 +15,96 @@ namespace DSC
         public DSC_Definitions() { }
 
         public Dictionary<string, MyDefinitionId> Compontents { get; } = new Dictionary<string, MyDefinitionId>() {
-            {"ResearchPoint", MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")}
+            { "Construction",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Construction")},
+            { "MetalGrid",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "MetalGrid")},
+            { "InteriorPlate",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "InteriorPlate")},
+            { "SteelPlate",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "SteelPlate")},
+            { "Girder",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Girder")},
+            { "SmallTube",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "SmallTube")},
+            { "LargeTube",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LargeTube")},
+            { "Motor",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Motor")},
+            { "Display",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Display")},
+            { "BulletproofGlass",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "BulletproofGlass")},
+            { "Superconductor",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Superconductor")},
+            { "Computer",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Computer")},
+            { "Reactor",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Reactor")},
+            { "Thrust",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Thrust")},
+            { "GravityGenerator",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "GravityGenerator")},
+            { "Medical",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Medical")},
+            { "RadioCommunication",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "RadioCommunication")},
+            { "Detector",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Detector")},
+            { "Explosives",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Explosives")},
+            { "SolarCell",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "SolarCell")},
+            { "PowerCell",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "PowerCell")},
+            { "Canvas",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Canvas")},
+            { "ZoneChip",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ZoneChip")},
+            { "ResearchPoint",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")},
+            { "LicenceT1",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT1")},
+            { "LicenceT2",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT2")},
+            { "LicenceT3",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT3")},
+            { "LicenceT4",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT4")},
+        };
+
+        public Dictionary<string, MyDefinitionId> StoreItems { get; } = new Dictionary<string, MyDefinitionId>() {
+
+            // Default Components
+            { "Construction",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Construction")},
+            { "MetalGrid",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "MetalGrid")},
+            { "InteriorPlate",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "InteriorPlate")},
+            { "SteelPlate",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "SteelPlate")},
+            { "Girder",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Girder")},
+            { "SmallTube",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "SmallTube")},
+            { "LargeTube",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LargeTube")},
+            { "Motor",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Motor")},
+            { "Display",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Display")},
+            { "BulletproofGlass",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "BulletproofGlass")},
+            { "Superconductor",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Superconductor")},
+            { "Computer",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Computer")},
+            { "Reactor",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Reactor")},
+            { "Thrust",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Thrust")},
+            { "GravityGenerator",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "GravityGenerator")},
+            { "Medical",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Medical")},
+            { "RadioCommunication",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "RadioCommunication")},
+            { "Detector",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Detector")},
+            { "Explosives",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Explosives")},
+            { "SolarCell",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "SolarCell")},
+            { "PowerCell",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "PowerCell")},
+            { "Canvas",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Canvas")},
+            { "ZoneChip",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ZoneChip")},
+            { "ResearchPoint",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")},
+            { "LicenceT1",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT1")},
+            { "LicenceT2",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT2")},
+            { "LicenceT3",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT3")},
+            { "LicenceT4",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT4")},
+
+            // Ores
+            { "Ore/Stone",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Stone")},
+            { "Ore/Iron",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Iron")},
+            { "Ore/Nickel",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Nickel")},
+            { "Ore/Cobalt",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Cobalt")},
+            { "Ore/Magnesium",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Magnesium")},
+            { "Ore/Silicon",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Silicon")},
+            { "Ore/Silver",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Silver")},
+            { "Ore/Gold",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Gold")},
+            { "Ore/Platinum",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Platinum")},
+            { "Ore/Uranium",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Uranium")},
+            { "Ore/Scrap",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Scrap")},
+            { "Ore/Ice",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Ice")},
+
+            // Ingots
+            { "Ingot/Stone",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Stone")},
+            { "Ingot/Iron",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Iron")},
+            { "Ingot/Nickel",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Nickel")},
+            { "Ingot/Cobalt",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Cobalt")},
+            { "Ingot/Magnesium",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Magnesium")},
+            { "Ingot/Silicon",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Silicon")},
+            { "Ingot/Silver",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Silver")},
+            { "Ingot/Gold",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Gold")},
+            { "Ingot/Platinum",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Platinum")},
+            { "Ingot/Uranium",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Uranium")},
+            { "Ingot/Scrap",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Scrap")},
+
+
         };
 
         public Dictionary<string, DSC_BlockDef> Blocks { get; } = new Dictionary<string, DSC_BlockDef>() {

@@ -48,49 +48,24 @@ namespace DSC
         public static Dictionary<string, List<int>> ResearchBlocks = new Dictionary<string, List<int>>() // Blockname, techArea
         {
             {"DSC_Research_1_0", new List<int>(){0,1}},
-            {"DSC_Research_1_1", new List<int>(){0,1}},
-            {"DSC_Research_1_2", new List<int>(){0,1}},
-            {"DSC_Research_1_3", new List<int>(){0,1}},
-            {"DSC_Research_1_4", new List<int>(){0,1}},
-
-            {"DSC_Research_2_0", new List<int>(){0,1,2}},
-            {"DSC_Research_2_1", new List<int>(){0,1,2}},
-            {"DSC_Research_2_2", new List<int>(){0,1,2}},
-            {"DSC_Research_2_3", new List<int>(){0,1,2}},
-            {"DSC_Research_2_4", new List<int>(){0,1,2}},
-
-            {"DSC_Research_3_0", new List<int>(){0,1,2,3}},
-            {"DSC_Research_3_1", new List<int>(){0,1,2,3}},
-            {"DSC_Research_3_2", new List<int>(){0,1,2,3}},
-            {"DSC_Research_3_3", new List<int>(){0,1,2,3}},
-            {"DSC_Research_3_4", new List<int>(){0,1,2,3}},
         };
 
         // Respawns
         public static string respawn_pb_trigger = "respawnClicked"; // Trigger string in customname => DSC_Respawn_Hangar_Left;respawnClicked
         public static Dictionary<string, DSC_RespawnLocation> Respawns = new Dictionary<string, DSC_RespawnLocation>() // PrefabName, DSC_RespawnLocation
         {
+            
             // Hangar Left
-            {"DSC_Respawn_Hangar_Left", new DSC_RespawnLocation("DSC_Respawn_Hangar_Left", new Vector3D(-14125.26, -5619.04, -58662.52), new Vector3D(-14091.02, -5590.72, -58677.20),
+            {"DSC_Respawn_Hangar_Right", new DSC_RespawnLocation("DSC_Respawn_Hangar_Right", new Vector3D(120973.31, 132846.72, 371873.93), new Vector3D(120969.52, 132805.13, 371874.40),
                 new Dictionary<int, string>(){
                     {0, "SR-Combat" },
                     {1, "SR-Industrial"},
                     {2, "SR-Medical"}
                 })
             },
-
-            /*
-            // Hangar Left
-            {"DSC_Respawn_Hangar_Left", new DSC_RespawnLocation("DSC_Respawn_Hangar_Left", new Vector3D(120973.31, 132846.72, 371873.93), new Vector3D(120969.52, 132805.13, 371874.40),
-                new Dictionary<int, string>(){
-                    {0, "SR-Combat" },
-                    {1, "SR-Industrial"},
-                    {2, "SR-Medical"}
-                })
-            },
-            */
+            
             // Hanger Right
-            {"DSC_Respawn_Hangar_Right", new DSC_RespawnLocation("DSC_Respawn_Hangar_Right", new Vector3D(120948.91, 132849.26, 371877.74), new Vector3D(120944.97, 132811.58, 371880.23),
+            {"DSC_Respawn_Hangar_Left", new DSC_RespawnLocation("DSC_Respawn_Hangar_Left", new Vector3D(120948.91, 132849.26, 371877.74), new Vector3D(120944.97, 132811.58, 371880.23),
                 new Dictionary<int, string>(){
                     {0, "SR-Combat" },
                     {1, "SR-Industrial"},

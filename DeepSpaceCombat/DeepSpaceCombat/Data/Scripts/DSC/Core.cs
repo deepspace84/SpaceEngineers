@@ -54,6 +54,7 @@ namespace DSC
         public DSC_TechTree Techtree = new DSC_TechTree();
         public DSC_SpawnManager SpawnManager = new DSC_SpawnManager();
         public DSC_RespawnManager RespawnManager = new DSC_RespawnManager();
+        public DSC_TradeManager TradeManager = new DSC_TradeManager();
 
         public long NPCPlayerID;
         public long NPCFactionID;
@@ -172,11 +173,23 @@ namespace DSC
         public override void UpdateAfterSimulation()
         {
             TickCounter += 1;
+
+            // Server late start
+            // We had problems that we can't delete areas and so on
+            if (TickCounter == 100 && IsServerRegistered)
+            {
+                InitServerLate();
+            }
+
             if (TickCounter % 60 == 0)
             {
-                Factions.DamageController();
-                SpawnManager.Check();
+                if (IsServerRegistered)
+                {
+                    Factions.DamageController();
+                    SpawnManager.Check();
+                }
             }
+            
         }
 
         /*
@@ -199,6 +212,12 @@ namespace DSC
 
                 // Save spawnmanager
                 SpawnManager.Save();
+
+                // Save TradeManager
+                TradeManager.Save();
+
+                // Techtree
+                Techtree.Save();
             }
 
         }
@@ -229,6 +248,9 @@ namespace DSC
             // Unregister Server
             if (_isServerRegistered)
             {
+                // TradeManager
+                TradeManager.Unload();
+
                 // Respawn Manager
                 RespawnManager.Unload();
 
@@ -310,6 +332,10 @@ namespace DSC
             // Load tech tree
             Techtree.Load();
 
+        }
+
+        private void InitServerLate()
+        {
             // Load faction data
             Factions.Load();
 
@@ -319,7 +345,10 @@ namespace DSC
             // Load RespawnManager
             RespawnManager.Load();
 
+            // Load TradeManager
+            TradeManager.Load();
         }
+
         #endregion
 
 

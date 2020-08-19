@@ -89,7 +89,7 @@ namespace DSC
             public readonly long TargetId;
             public readonly long AttackerId;
             public readonly float Amount;
-  
+
             public DamageEventCache(long targetId, long attackerId, float amount)
             {
                 TargetId = targetId;
@@ -99,7 +99,7 @@ namespace DSC
         }
 
 
-        public DSC_Factions(){}
+        public DSC_Factions() { }
 
         #region load/unload/save functions for the core.cs
         /*
@@ -136,7 +136,7 @@ namespace DSC
                     FactionBlocks = new Dictionary<long, List<string>>(),
                     PlayersToPCU = new Dictionary<long, List<long>>(),
                     PlayerDamage = new Dictionary<long, ulong>(),
-                    FactionDamage = new Dictionary<long, ulong>()
+                    FactionDamage = new Dictionary<long, ulong>(),
 
                 };
             }
@@ -153,7 +153,7 @@ namespace DSC
             AddGridHandlers();
 
             // Calculate FactionNextTech
-            foreach(long factionId in Storage.PlayerFactions.Keys)
+            foreach (long factionId in Storage.PlayerFactions.Keys)
             {
                 RecalulateNextTech(factionId);
             }
@@ -177,7 +177,7 @@ namespace DSC
          * Save all data to savegame 
          */
         public void Save()
-         {
+        {
             // Save Storage
             byte[] serialized = MyAPIGateway.Utilities.SerializeToBinary<DSC_Storage_Factions>(Storage);
             System.IO.BinaryWriter writer = MyAPIGateway.Utilities.WriteBinaryFileInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
@@ -189,8 +189,8 @@ namespace DSC
         /*
          * Unregister handlers 
          */
-         public void Unload()
-         {
+        public void Unload()
+        {
             // Remove Area handlers
             MyVisualScriptLogicProvider.AreaTrigger_Entered -= Event_Area_Entered;
             MyVisualScriptLogicProvider.AreaTrigger_Left -= Event_Area_Left;
@@ -216,7 +216,7 @@ namespace DSC
             // Clear damage caching
             _preDamageEvents?.ClearList();
         }
-         #endregion
+        #endregion
 
 
         #region Progression functions & events
@@ -281,7 +281,7 @@ namespace DSC
             if (grid?.Physics == null) return;
 
             // Check if its the first block
-            if(grid.BlocksCount == 1)
+            if (grid.BlocksCount == 1)
             {
                 IMySlimBlock block = grid.CubeBlocks.FirstElement();
 
@@ -300,7 +300,7 @@ namespace DSC
 
                 if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
                 {
-                    MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500 ,MyFontEnum.Red, block.BuiltBy);
+                    MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500, MyFontEnum.Red, block.BuiltBy);
 
                     // Remove block
                     block.CubeGrid.RemoveBlock(block);
@@ -317,7 +317,7 @@ namespace DSC
         {
             var grid = ent as MyCubeGrid;
             if (grid?.Physics == null) return;
-            
+
             grid.OnBlockAdded -= GridBlockAddedEvent;
         }
 
@@ -328,13 +328,13 @@ namespace DSC
             // Check if block is in definitions
             if (!DeepSpaceCombat.Instance.Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
             {
-                MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>"+ block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
+                MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>" + block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
             }
 
             // Check if player is in a player faction, if not dont allow building at all
             if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block builder not in a faction =>"+block.BuiltBy.ToString());
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block builder not in a faction =>" + block.BuiltBy.ToString());
                 if (block.BuiltBy == 0)
                 {
                     DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block built by none");
@@ -344,7 +344,7 @@ namespace DSC
                 block.CubeGrid.RemoveBlock(block);
 
                 // Add item back to player
-                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent , 1);
+                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
 
                 return;
             }
@@ -352,7 +352,7 @@ namespace DSC
             // Check if block building is allowed
             if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
             {
-                MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500 ,MyFontEnum.Red, block.BuiltBy);
+                MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500, MyFontEnum.Red, block.BuiltBy);
 
                 // Add item back to player
                 MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
@@ -378,7 +378,7 @@ namespace DSC
                     return false;
 
                 // Debug
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction Tag not null =>"+factionTag.ToString());
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction Tag not null =>" + factionTag.ToString());
 
                 // Check if faction exists
                 if (MyAPIGateway.Session.Factions.FactionTagExists(factionTag))
@@ -407,7 +407,7 @@ namespace DSC
                         else
                         {
                             // Debug
-                            if(DeepSpaceCombat.Instance.isDebug)DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction Added");
+                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction Added");
 
                             // Add Faction PlayerFactions
                             Storage.PlayerFactions.Add(factionObj.FactionId, factionTag);
@@ -450,7 +450,7 @@ namespace DSC
             {
                 DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Add faction failed");
             }
-            
+
 
             return false;
         }
@@ -460,7 +460,7 @@ namespace DSC
         {
 
             // Player entered Faction
-            if(change == MyFactionStateChange.FactionMemberAcceptJoin)
+            if (change == MyFactionStateChange.FactionMemberAcceptJoin)
             {
                 // Check if faction exists in storage
                 if (Storage.PlayerFactions.ContainsKey(toFactionId))
@@ -495,7 +495,7 @@ namespace DSC
                 }
             }
 
-            if(change == MyFactionStateChange.RemoveFaction)
+            if (change == MyFactionStateChange.RemoveFaction)
             {
                 // Remove Faction PlayerFactions
                 Storage.PlayerFactions.Remove(fromFactionId);
@@ -511,7 +511,7 @@ namespace DSC
             if (change == MyFactionStateChange.DeclareWar)
             {
                 // Check if change is between neutral npc
-                if(DeepSpaceCombat.Instance.NPCFactionID == toFactionId)
+                if (DeepSpaceCombat.Instance.NPCFactionID == toFactionId)
                 {
                     // Reset peace
                     MyAPIGateway.Session.Factions.SendPeaceRequest(fromFactionId, toFactionId);
@@ -526,7 +526,7 @@ namespace DSC
             //MyAPIGateway.Session.Factions.;
 
 
-           //MyFactionStateChange
+            //MyFactionStateChange
             /*
         RemoveFaction = 0,
         SendPeaceRequest = 1,
@@ -614,7 +614,7 @@ namespace DSC
             }
 
             // Add now all available
-            foreach(string levelName in DeepSpaceCombat.Instance.Techtree.TechLevels.Keys)
+            foreach (string levelName in DeepSpaceCombat.Instance.Techtree.TechLevels.Keys)
             {
                 DSC_TechLevel levelObj = DeepSpaceCombat.Instance.Techtree.TechLevels[levelName];
 
@@ -631,7 +631,7 @@ namespace DSC
                     FactionNextTech[factionId].Add(levelName);
                 }
             }
-         }
+        }
 
         private void LoadResearchStations()
         {
@@ -640,7 +640,7 @@ namespace DSC
             {
                 // Add block to the global storage
                 long blockId = DeepSpaceCombat.Instance.DSCReference.AddBlockWithName(blockName);
-                if ( blockId > 0)
+                if (blockId > 0)
                 {
                     // Get Block Position
                     IMyEntity blockEntity;
@@ -660,6 +660,9 @@ namespace DSC
                         // Get Position
                         Vector3D pos = blockEntity.GetPosition();
 
+                        // Because we cant remove triggers at unload any longer, we have to be sure that no old is active, so delete it
+                        MyVisualScriptLogicProvider.RemoveTrigger(blockName);
+
                         // Create area
                         MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(pos, 5, blockName);
 
@@ -667,42 +670,35 @@ namespace DSC
                         ResearchStationsPlayers.Add(blockName, new List<long>());
                         ResearchStationsContracts.Add(blockName, new Dictionary<long, DSC_ResearchContract>());
 
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::LoadResearchStations: Successfully added Researchblock=>" + blockName );
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::LoadResearchStations: Successfully added Researchblock=>" + blockName);
                     }
                     else
                     {
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::LoadResearchStations: Could not find entity with id=>"+ blockId.ToString());
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::LoadResearchStations: Could not find entity with id=>" + blockId.ToString());
                     }
                 }
                 else
                 {
                     // Block could not be added
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::LoadResearchStations: Could not add/find block in Reference. Blockname=>" + blockName+" | Error=>"+blockId.ToString());
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::LoadResearchStations: Could not add/find block in Reference. Blockname=>" + blockName + " | Error=>" + blockId.ToString());
                 }
             }
         }
 
-        private void UnloadReserchStations()
-        {
-            // Loop through reference and remove all areas 
-            foreach(string areaName in ResearchStationsPlayers.Keys)
-            {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::LoadResearchStations: Remove Researchblock=>" + areaName);
-                MyVisualScriptLogicProvider.RemoveTrigger(areaName);
-            }
-            ResearchStationsPlayers = null; 
-        }
-
         private void Event_Area_Entered(string name, long playerId)
         {
+            
+
             // Check if player is in an active faction
             if (!Storage.PlayersToFaction.ContainsKey(playerId)) return;
 
             // Check if this area is for research
             if (ResearchStationsPlayers.ContainsKey(name))
             {
+                DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_Area_Entered called");
+
                 // Check if someone is in the area
-                if(ResearchStationsPlayers[name].Count > 0)
+                if (ResearchStationsPlayers[name].Count > 0)
                 {
                     // Check if all from the same faction
                     bool factionCheck = true;
@@ -734,17 +730,19 @@ namespace DSC
                     ResearchStationsPlayers[name].Add(playerId);
                 }
             }
-         }
+        }
 
         private void Event_Area_Left(string name, long playerId)
         {
-
+            
             // Check if player is in an active faction
             if (!Storage.PlayersToFaction.ContainsKey(playerId)) return;
 
             // Check if this area is for research
             if (ResearchStationsPlayers.ContainsKey(name))
             {
+                DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_Area_Left called");
+
                 // Remove player and check new conditions
                 ResearchStationsPlayers[name].Remove(playerId);
 
@@ -790,7 +788,7 @@ namespace DSC
 
         private void Event_CustomActivateContract(long contractId, long playerId)
         {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract: Contract=>" + contractId.ToString() +" | playe=>"+ playerId.ToString());
+            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract: Contract=>" + contractId.ToString() + " | playe=>" + playerId.ToString());
 
             // Get the contract object from our reference
             foreach (string areaName in ResearchStationsContracts.Keys)
@@ -800,7 +798,7 @@ namespace DSC
                     DSC_ResearchContract contract = ResearchStationsContracts[areaName][contractId];
 
                     // Check user inventory
-                    if(MyVisualScriptLogicProvider.GetPlayersInventoryItemAmount(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"]) >= contract.ResearchPoints)
+                    if (MyVisualScriptLogicProvider.GetPlayersInventoryItemAmount(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"]) >= contract.ResearchPoints)
                     {
                         // Remove Research points
                         MyVisualScriptLogicProvider.RemoveFromPlayersInventory(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"], contract.ResearchPoints);
@@ -857,8 +855,8 @@ namespace DSC
                 int collateral = 0;
                 int duration = 0;
                 int researchPoints = CalculateResearchpoints(techLevel);
-                string contract_name = "Research Techlevel: "+techLevel;
-                string contract_description = "You can research this Techlevel for "+researchPoints.ToString()+" ResearchPoints. Accept this contract while you have the needed amount of ResearchPoints in your inventory.";
+                string contract_name = "Research Techlevel: " + techLevel;
+                string contract_description = "You can research this Techlevel for " + researchPoints.ToString() + " ResearchPoints. Accept this contract while you have the needed amount of ResearchPoints in your inventory.";
                 MyContractCustom contract = new Sandbox.ModAPI.Contracts.MyContractCustom(def_id, contractBlock, reward, collateral, duration, contract_name, contract_description, 0, 0, null);
                 // Add conctract
                 result = MyAPIGateway.ContractSystem.AddContract(contract);
@@ -870,7 +868,7 @@ namespace DSC
 
         private void RemoveContracts(string areaName)
         {
-            foreach(long contractId in ResearchStationsContracts[areaName].Keys)
+            foreach (long contractId in ResearchStationsContracts[areaName].Keys)
             {
                 // Remove contract
                 MyAPIGateway.ContractSystem.RemoveContract(contractId);
@@ -886,7 +884,7 @@ namespace DSC
             int factionCount = 0;
 
             // Check for others
-            foreach(long factionId in Storage.FactionTechs.Keys)
+            foreach (long factionId in Storage.FactionTechs.Keys)
             {
                 if (Storage.FactionTechs[factionId].Contains(techLevel))
                 {
@@ -895,7 +893,7 @@ namespace DSC
             }
 
             // Calculate points on the ResearchSteps config values
-            finalPoints = (int) Math.Floor(finalPoints * DSC_Config.ResearchSteps[factionCount]);
+            finalPoints = (int)Math.Floor(finalPoints * DSC_Config.ResearchSteps[factionCount]);
 
             return finalPoints;
         }
@@ -935,7 +933,7 @@ namespace DSC
 
             try
             {
-                
+
                 if (damageInfo.AttackerId == 0)
                 {
                     // If the attacker is unkown its not a player so we don't track it
@@ -956,13 +954,13 @@ namespace DSC
 
         private void FindTheAsshole(long damagedEntity, long damagedBlock, IMyEntity attacker, MyDamageInformation damageInfo)
         {
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole called damagedEntity->"+damagedEntity.ToString()+"  -  damagedBlock->"+damagedBlock.ToString()+"  -  attacker->"+attacker.EntityId.ToString());
+            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole called damagedEntity->" + damagedEntity.ToString() + "  -  damagedBlock->" + damagedBlock.ToString() + "  -  attacker->" + attacker.EntityId.ToString());
 
             IMyWarhead warhead = MyAPIGateway.Entities.GetEntityById(damagedBlock) as IMyWarhead;
             if (warhead != null)
             {
                 // Check for same id
-                if(damagedEntity == attacker.EntityId)
+                if (damagedEntity == attacker.EntityId)
                 {
                     // Explosion grid warhead
                     // Only add it one time. Reason is that if you have 2 warheads together on one grid, the second warhead will create a warhead damage event too
@@ -983,7 +981,7 @@ namespace DSC
                         IMyIdentity myIdentity = GetIdentityById(myCubeGrid.BigOwners.FirstOrDefault());
                         if (myIdentity != null)
                         {
-                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole => Warhead added to cache, owner is=>"+MyVisualScriptLogicProvider.GetPlayersName(myIdentity.IdentityId));
+                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole => Warhead added to cache, owner is=>" + MyVisualScriptLogicProvider.GetPlayersName(myIdentity.IdentityId));
                             WarheadCache.Add(attacker.EntityId, myIdentity.IdentityId);
                             return;
                         }
@@ -1036,7 +1034,7 @@ namespace DSC
                 return;
             }
 
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole Asshole not identified =>  It was a: "+ attacker.GetType().ToString());
+            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole Asshole not identified =>  It was a: " + attacker.GetType().ToString());
         }
 
 
@@ -1072,7 +1070,7 @@ namespace DSC
                     AddToDamageQueue(damagedEntity, damagedBlock, myIdentity.IdentityId, damageInfo);
                     return;
                 }
- 
+
                 DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => Could not find Identity =>" + myCubeGrid.BigOwners.FirstOrDefault().ToString());
             }
             catch (Exception e)
@@ -1101,7 +1099,7 @@ namespace DSC
                 if (Storage.PlayersToFaction.ContainsKey(block.OwnerId))
                 {
                     // Check if its the same faction as the attacker
-                    if(Storage.PlayersToFaction.ContainsKey(block.OwnerId) == Storage.PlayersToFaction.ContainsKey(playerId))
+                    if (Storage.PlayersToFaction.ContainsKey(block.OwnerId) == Storage.PlayersToFaction.ContainsKey(playerId))
                     {
                         DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => Self damage, stop now");
                         return;
@@ -1118,7 +1116,7 @@ namespace DSC
                 // Add Damage to cache
                 DamageCache[playerId].Add(new DamageEventCache(block.OwnerId, playerId, damageInfo.Amount));
 
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => target block entity found->"+ block.OwnerId.ToString() + " - "+MyVisualScriptLogicProvider.GetPlayersName(block.OwnerId));
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => target block entity found->" + block.OwnerId.ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(block.OwnerId));
                 DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => attacker entity found->" + playerId.ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(playerId));
                 return;
 
@@ -1161,8 +1159,7 @@ namespace DSC
                     return;
                 }
 
-
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => blockId->"+blockId+" Entity not found in the block and grid");
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => blockId->" + blockId + " Entity not found in the block and grid");
             }
         }
 
@@ -1178,12 +1175,13 @@ namespace DSC
             DamagePreCache.Clear();
 
             // Check damages
-            foreach (KeyValuePair<long, List<DamageEventCache>> kvp in DamageCheck){
+            foreach (KeyValuePair<long, List<DamageEventCache>> kvp in DamageCheck)
+            {
 
                 ulong playerTotal = 0;
 
                 // Loop through damage events
-                foreach(DamageEventCache dmgEvent in kvp.Value)
+                foreach (DamageEventCache dmgEvent in kvp.Value)
                 {
                     // Check if damage is done to any faction member
                     int storageDamge = (int)dmgEvent.Amount;
@@ -1210,7 +1208,7 @@ namespace DSC
                 // Check for preDamage
                 if (PreCheck.ContainsKey(kvp.Key))
                 {
-                    MyVisualScriptLogicProvider.ShowNotification(playerTotal.ToString()+" - "+PreCheck[kvp.Key], 1000, "Red", kvp.Key);
+                    MyVisualScriptLogicProvider.ShowNotification(playerTotal.ToString() + " - " + PreCheck[kvp.Key], 1000, "Red", kvp.Key);
 
                     // Add to new precheck
                     DamagePreCache.Add(kvp.Key, playerTotal + PreCheck[kvp.Key]);
@@ -1233,7 +1231,7 @@ namespace DSC
             return identityList.FirstOrDefault(x => x.IdentityId == playerId);
 
 
-            
+
         }
         #endregion
 
@@ -1259,4 +1257,3 @@ namespace DSC
         }
     }
 }
- 

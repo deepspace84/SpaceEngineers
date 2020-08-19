@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 using System.Threading;
+using VRage.Game.Entity;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
@@ -222,7 +223,8 @@ namespace DSC
                 return;
             }
 
-            MyVisualScriptLogicProvider.ChangeOwner(MyVisualScriptLogicProvider.GetEntityName(entityId), DeepSpaceCombat.Instance.NPCPlayerID);
+            // Set ownership to target player
+            MyVisualScriptLogicProvider.ChangeOwner(MyVisualScriptLogicProvider.GetEntityName(entityId), SpawnCache.PlayerId);
 
             // Set the entity id
             SpawnCache.GridEntityId = entityId;

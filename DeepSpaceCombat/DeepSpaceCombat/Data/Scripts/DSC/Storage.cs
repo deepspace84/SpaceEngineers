@@ -5,6 +5,12 @@ using ProtoBuf;
 
 namespace DSC
 {
+
+    /*
+     * MAIN Faction Storage
+     * 
+     */
+
     [ProtoContract]
     [Serializable]
     public class DSC_Storage_Factions
@@ -13,9 +19,9 @@ namespace DSC
          * Faction data 
          */
         [ProtoMember(1)]
-        public Dictionary<long, string> PlayerFactions = new Dictionary<long, string>(); // factionTag - factionID
+        public Dictionary<long, string> PlayerFactions = new Dictionary<long, string>(); // factionId - factionTag
         [ProtoMember(2)]
-        public Dictionary<long, string> NPCFactions = new Dictionary<long, string>(); // factionTag - factionID
+        public Dictionary<long, string> NPCFactions = new Dictionary<long, string>(); // factionId - factionTag
         [ProtoMember(3)]
         public Dictionary<long, List<long>> FactionPlayers = new Dictionary<long, List<long>>(); // factionID - LIST->playerID
         [ProtoMember(4)]
@@ -45,9 +51,44 @@ namespace DSC
                 FactionDamage = FactionDamage,
             };
         }
+    }
+
+
+
+
+    /*
+     * Trade Storage
+     * 
+     */
+
+
+    [ProtoContract]
+    [Serializable]
+    public class DSC_Storage_Trade
+    {
+
+        [ProtoMember(1)]
+        public Dictionary<long, List<string>> Trades = new Dictionary<long, List<string>>(); // factionId - "dateTimeString_amount"
+        [ProtoMember(2)]
+        public Dictionary<long, float> TradeMalus = new Dictionary<long, float>(); // factionID - TradeMalus
+
+        internal DSC_Storage_Trade Clone()
+        {
+            return new DSC_Storage_Trade
+            {
+                Trades = Trades,
+                TradeMalus = TradeMalus
+            };
+        }
 
     }
 
+
+
+    /*
+     * Core Storage
+     * 
+     */
     [ProtoContract]
     [Serializable]
     public class DSC_Storage_Core
@@ -67,6 +108,10 @@ namespace DSC
         }
 
     }
+
+    /*
+     * SpawnMager Store
+     */
 
     [ProtoContract]
     [Serializable]
@@ -89,9 +134,12 @@ namespace DSC
         }
 
     }
-    
 
 
+
+    /*
+     * Reference Store
+     */
 
     [ProtoContract]
     [Serializable]
@@ -116,4 +164,18 @@ namespace DSC
 
     }
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

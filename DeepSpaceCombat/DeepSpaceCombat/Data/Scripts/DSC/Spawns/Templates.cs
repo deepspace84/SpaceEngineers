@@ -52,7 +52,7 @@ namespace DSC
             Cargo = cargo;
         }
     }
-
+    /*
     public struct DSC_EventTemplate
     {
         public readonly string Name;
@@ -84,5 +84,5 @@ namespace DSC
             IsSpace = isSpace;
         }
     }
-
+    */
 }

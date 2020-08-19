@@ -5,6 +5,7 @@ using Sandbox.ModAPI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VRage.Game;
 using VRage.Game.ModAPI;
 using VRageMath;
 
@@ -21,7 +22,8 @@ namespace DSC
             FreeBuild = 3,
             Dev = 4,
             MyDamage = 5,
-            DelDamage=6
+            DelDamage=6,
+            ResetSpawn=7
 
         };
 
@@ -47,7 +49,21 @@ namespace DSC
                 switch(cmd)
                 {
                     case ECommand.Test:
-                        MyVisualScriptLogicProvider.SendChatMessage("Test command called.", "[Server]", playerId);
+                        if(lcommand.Count == 1)
+                        {
+                            foreach (DSC_Config_Trade.Station station in DeepSpaceCombat.Instance.TradeManager.Config.Stations)
+                            {
+                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Station =>" + station.Name + " - " + station.Type);
+                            }
+                        }
+                        else
+                        {
+                            DeepSpaceCombat.Instance.TradeManager.Config.Stations.Add(new DSC_Config_Trade.Station("Teststation", "Type1"));
+                            List<DSC_Config_Trade.TradeType.TradeItem> test2 = new List<DSC_Config_Trade.TradeType.TradeItem>() { new DSC_Config_Trade.TradeType.TradeItem("test", 10, 250)};
+                            DeepSpaceCombat.Instance.TradeManager.Config.Types.Add(new DSC_Config_Trade.TradeType("Type1", test2));
+                        }
+                        
+                        
                         break;
                     case ECommand.Help:
                         PrintHelp(playerId);
@@ -88,9 +104,20 @@ namespace DSC
                             //DeepSpaceCombat.Instance.SpawnManager.Spawn("TestSpawn", "DSC_TestVehicle");
                         }
 
-                        if (lcommand[1].Equals("check"))
+                        if (lcommand[1].Equals("blockdefs"))
                         {
-                            //DeepSpaceCombat.Instance.SpawnManager.WriteStorage();
+                            foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
+                            {
+                                var cubeDef = def as MyCubeBlockDefinition;
+                                if (cubeDef != null)
+                                {
+                                    if (cubeDef.Public)
+                                    {
+                                        // Print new definition to server log
+                                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo(cubeDef.Id.ToString());
+                                    }
+                                }
+                            }
                         }
 
                         if (lcommand[1].Equals("blockdef"))
@@ -116,6 +143,49 @@ namespace DSC
                             }
                         }
 
+                        if (lcommand[1].Equals("compdef"))
+                        {
+                            foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
+                            {
+                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("All def =>" + def.Id.ToString());
+                                var compDef = def as MyComponentDefinition;
+                                if (compDef != null)
+                                {
+                                    if (compDef.Public)
+                                    {
+                                        string compname = compDef.Id.ToString().Replace("MyObjectBuilder_Component/", "");
+
+                                        // Print new definition to server log
+                                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("{ \"" + compname + "\",  MyVisualScriptLogicProvider.GetDefinitionId(\"Component\", \""+ compname + "\")},");
+                                        //{ "ResearchPoint", MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")}
+                                    }
+                                }
+                            }
+                        }
+
+                        if (lcommand[1].Equals("oidef"))
+                        {
+                            foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
+                            {
+                                //DeepSpaceCombat.Instance.ServerLogger.WriteInfo("All def =>" + def.Id.ToString());
+                                if((def.Id.ToString().Contains("Ore") || def.Id.ToString().Contains("Ingot")) && ! def.Id.ToString().Contains("LCD"))
+                                {
+                                    string compname = def.Id.ToString().Replace("MyObjectBuilder_", "");
+
+                                    // Print new definition to server log
+                                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("{ \"" + compname + "\",  MyVisualScriptLogicProvider.GetDefinitionId(\"" + compname.Split('/')[0] + "\", \"" + compname.Split('/')[1] + "\")},");
+
+                                }
+                            }
+                        }
+
+                        if (lcommand[1].Equals("rtrigger"))
+                        {
+                            MyVisualScriptLogicProvider.RemoveTrigger(lcommand[2]);
+                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Remove trigger=>" + lcommand[2]);
+                        }
+                            
+
                         break;
 
                     case ECommand.MyDamage:
@@ -134,6 +204,15 @@ namespace DSC
                         {
                             DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId] = 0;
                             MyVisualScriptLogicProvider.SendChatMessage("Your total damage is " + DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId].ToString("#,##0"), "[Server]", playerId);
+                        }
+
+                        break;
+                    case ECommand.ResetSpawn:
+
+                        // Check if player exists
+                        if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(playerId))
+                        {
+                            DeepSpaceCombat.Instance.CoreStorage.Respawns.Remove(playerId);
                         }
 
                         break;

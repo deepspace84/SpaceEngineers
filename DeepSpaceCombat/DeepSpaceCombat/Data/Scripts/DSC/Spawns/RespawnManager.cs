@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VRage.Game;
+using VRage.Game.Entity;
 using VRage.ModAPI;
 using VRageMath;
 
@@ -19,14 +20,12 @@ namespace DSC
         public DSC_RespawnManager() { }
 
 
-        private Dictionary<string, List<long>> RespawnStations = new Dictionary<string, List<long>>();
+        private Dictionary<long, string> RespawnStations = new Dictionary<long, string>(); // blockId - respawnName
 
         public void Load()
         {
-            // Register Area handlers
-            MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Entered;
-            MyVisualScriptLogicProvider.AreaTrigger_Left += Event_Area_Left;
 
+            MyVisualScriptLogicProvider.ButtonPressedEntityName += ButtonPressedFull;
 
             // Load all stations from config
             foreach (string respawnName in DSC_Config.Respawns.Keys)
@@ -37,27 +36,8 @@ namespace DSC
                 long blockId = DeepSpaceCombat.Instance.DSCReference.AddBlockWithName(respawnLocation.BlockName);
                 if (blockId > 0)
                 {
-                    IMyButtonPanel buttonPanel = MyAPIGateway.Entities.GetEntityById(blockId) as IMyButtonPanel;
-                    if(buttonPanel != null)
-                    {
-                        buttonPanel.ButtonPressed += ButtonPressed;
-
-                        // Get Position
-                        Vector3D pos = buttonPanel.GetPosition();
-
-                        // Create area
-                        MyVisualScriptLogicProvider.CreateAreaTriggerOnPosition(pos, 2, respawnLocation.BlockName);
-
-                        // Add Button to reference
-                        RespawnStations.Add(respawnLocation.BlockName, new List<long>());
-
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Load: Add RespawnStation=>" + respawnLocation.BlockName);
-                    }
-                    else
-                    {
-
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::load: Could not cast as buttonPanel");
-                    }
+                    RespawnStations.Add(blockId, respawnName);
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Load: Add RespawnStation=>" + respawnLocation.BlockName);
                 }
                 else
                 {
@@ -69,160 +49,40 @@ namespace DSC
         }
 
 
+        private void ButtonPressedFull(string name, int button, long playerId, long blockId)
+        {
+            // Check if button is in reference
+            if (!RespawnStations.ContainsKey(blockId)) return;
+            string spawnName = RespawnStations[blockId];
+
+            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull block in reference");
+
+            // Check if button id exists
+            if (!DSC_Config.Respawns[spawnName].Prefabs.ContainsKey(button)) return;
+
+            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull Button Id exists");
+
+            // Check if player allready spawned a ship
+            if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(playerId))
+            {
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressed: Player allready got one " + MyVisualScriptLogicProvider.GetPlayersName(playerId));
+                MyVisualScriptLogicProvider.SendChatMessage("Only one start ship allowed", "Server", playerId);
+                return;
+            }
+
+            // Add player to storage
+            DeepSpaceCombat.Instance.CoreStorage.Respawns.Add(playerId, DateTime.Now);
+
+            // Spawn ship
+            DeepSpaceCombat.Instance.SpawnManager.Spawn(new DSC_SpawnShip(playerId, DSC_Config.Respawns[spawnName].Prefabs[button], DSC_Config.Respawns[spawnName].StartPosition, DSC_Config.Respawns[spawnName].StartDirection, true));
+            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull ship spawned");
+        }
+
 
         public void Unload()
         {
-            // Loop through reference and remove all areas 
-            foreach (string areaName in RespawnStations.Keys)
-            {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Unload: Remove RespawnStation=>" + areaName);
-                MyVisualScriptLogicProvider.RemoveTrigger(areaName);
-            }
-            RespawnStations = null;
-
-            // Remove Area handlers
-            MyVisualScriptLogicProvider.AreaTrigger_Entered -= Event_Area_Entered;
-            MyVisualScriptLogicProvider.AreaTrigger_Left -= Event_Area_Left;
-
-            // Unload all stations from config
-            foreach (string respawnName in DSC_Config.Respawns.Keys)
-            {
-                DSC_RespawnLocation respawnLocation = DSC_Config.Respawns[respawnName];
-
-                // Check if block exists
-                long blockId = DeepSpaceCombat.Instance.DSCReference.AddBlockWithName(respawnLocation.BlockName);
-                if (blockId > 0)
-                {
-                    IMyButtonPanel buttonPanel = MyAPIGateway.Entities.GetEntityById(blockId) as IMyButtonPanel;
-
-                    if (buttonPanel != null)
-                    {
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Unload: Removed Button handler");
-                        buttonPanel.ButtonPressed -= ButtonPressed;
-                    }
-                    else
-                    {
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Unload: Could not cast as buttonPanel");
-                    }
-                }
-                else
-                {
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Unload: Could not add/find block in Reference. Blockname=>" + respawnLocation.BlockName + " | Error=>" + blockId.ToString());
-                }
-
-            }
+            MyVisualScriptLogicProvider.ButtonPressedEntityName -= ButtonPressedFull;
         }
-
-        
-        public void ButtonPressed(int buttonId)
-        {
-            // Loop through reference and check customName
-            foreach (string areaName in RespawnStations.Keys)
-            {
-                long blockId = DeepSpaceCombat.Instance.DSCReference.GetBlockWithName(areaName);
-                if(blockId > 0)
-                {
-                    IMyButtonPanel buttonPanel = MyAPIGateway.Entities.GetEntityById(blockId) as IMyButtonPanel;
-
-                    if (buttonPanel != null)
-                    {
-                        // Check customData
-                        if(buttonPanel.CustomData == DSC_Config.respawn_pb_trigger)
-                        {
-                            // Reset CustomData
-                            buttonPanel.CustomData = "";
-
-                            // We found the trigger block, Check player count
-                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::ButtonPressed: Area count=>"+ RespawnStations[areaName].Count.ToString());
-                            if (RespawnStations[areaName].Count == 1)
-                            {
-                                // Check if player allready spawned a ship
-                                if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(RespawnStations[areaName].FirstOrDefault()))
-                                {
-                                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressed: Player allready got one "+ MyVisualScriptLogicProvider.GetPlayersName(RespawnStations[areaName].FirstOrDefault()));
-                                    MyVisualScriptLogicProvider.SendChatMessage("Only one start ship allowed", "Server", RespawnStations[areaName].FirstOrDefault());
-                                    return;
-                                }
-
-                                // Check if button id exists
-                                if (!DSC_Config.Respawns[areaName].Prefabs.ContainsKey(buttonId)) return;
-
-                                
-
-                                // Spawn ship
-                                DeepSpaceCombat.Instance.SpawnManager.Spawn(new DSC_SpawnShip(RespawnStations[areaName].FirstOrDefault(), DSC_Config.Respawns[areaName].Prefabs[buttonId], DSC_Config.Respawns[areaName].StartPosition, DSC_Config.Respawns[areaName].StartDirection, true));
-
-                                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressed: Spawn Ship for "+RespawnStations[areaName].FirstOrDefault()+ " - "+MyVisualScriptLogicProvider.GetPlayersName(RespawnStations[areaName].FirstOrDefault()));
-
-                            }
-                            else
-                            {
-                                foreach(long playerId in RespawnStations[areaName])
-                                {
-                                    MyVisualScriptLogicProvider.SendChatMessage("You have to be alone at the panel to spawn your ship", "Server", playerId);
-                                }
-
-                                // Only allow clicking if its one player
-                                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::ButtonPressed: More than one player");
-                                return;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::ButtonPressed: Could not cast as buttonPanel");
-                    }
-                }
-                else
-                {
-
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::ButtonPressed block not found");
-                }
-            }
-        }
-
-        private void Event_Area_Entered(string name, long playerId)
-        {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Event_Area_Entered entered");
-            // Check if player is in an active faction
-            if (!DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.ContainsKey(playerId)) return;
-
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Event_Area_Entered is in faction");
-
-            // Check if this area is for research
-            if (RespawnStations.ContainsKey(name))
-            {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Event_Area_Entered player added");
-                RespawnStations[name].Add(playerId);
-            }
-        }
-
-        private void Event_Area_Left(string name, long playerId)
-        {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Event_Area_Left leaved");
-            // Check if player is in an active faction
-            if (!DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.ContainsKey(playerId)) return;
-
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Event_Area_Left is in faction");
-
-            // Check if this area is for research
-            if (RespawnStations.ContainsKey(name))
-            {
-                // Remove player
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Event_Area_Left player removed");
-                RespawnStations[name].Remove(playerId);
-            }
-        }
-
-
-
-
-
-
-
-
-
-
     }
 
     public struct DSC_RespawnLocation{
