@@ -84,6 +84,10 @@ namespace DSC
             // Load all stations
             LoadTradeStations();
 
+            // Give NPC's enough money
+            MyAPIGateway.Players.RequestChangeBalance(DeepSpaceCombat.Instance.NPCPlayerID, 999999999);
+            MyAPIGateway.Players.RequestChangeBalance(DeepSpaceCombat.Instance.EnemyPlayerID, 999999999);
+
             // Register Area handlers
             MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Trade_Entered;
             MyVisualScriptLogicProvider.AreaTrigger_Left += Event_Area_Trade_Left;
@@ -175,7 +179,7 @@ namespace DSC
             // Check if player is in an active faction
             if (!DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.ContainsKey(playerId)) return;
 
-            // Check if this area is for research
+            // Check if this area is for trade
             if (TradeStationsPlayers.ContainsKey(name))
             {
                 DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::Event_Area_Trade_Entered name =>" + name + " | player=>" + playerId);
@@ -349,21 +353,6 @@ namespace DSC
             };
         }
 
-        public void Check()
-        {
-
-            //MyAPIGateway.Players.Count
-            List<long> playerList = MyVisualScriptLogicProvider.GetPlayers();
-            IMyStoreBlock test;
-            //test.InsertOrder
-            SerializableDefinitionId itemId = MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint");
-            int amount = 5;
-            int pricePerUnit = 100;
-
-            MyStoreItemData test2 = new MyStoreItemData(itemId, amount, pricePerUnit, BuyCallback, null);
-
-        }
-
         public float GetMalus(long factionId)
         {
             float malus = 1;
@@ -402,35 +391,42 @@ namespace DSC
 
         private void CalcMalus(long factionId)
         {
-            // Delete all trades older than one day
-            int now = (int)DateTime.Now.ToUnixTimestamp();
-            now = now - (60 * 60 * 24); // Minus 24h
+            try { 
 
-            int totalSum = 0;
+                // Delete all trades older than one day
+                int now = (int)DateTime.Now.ToUnixTimestamp();
+                now = now - (60 * 60 * 24); // Minus 24h
 
-            foreach (string trade in Storage.Trades[factionId])
-            {
-                string[] data = trade.Split('_');
+                int totalSum = 0;
 
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Data =>" + data[0] + "-" + data[1]);
-
-
-                int dTime = Int32.Parse(data[0]);
-
-                if (now < dTime)
+                foreach (string trade in Storage.Trades[factionId])
                 {
-                    Storage.Trades[factionId].Remove(trade);
-                }
-                else
-                {
-                    totalSum += Int32.Parse(data[1]);
+                    string[] data = trade.Split('_');
+
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Data =>" + data[0] + "-" + data[1]);
+
+
+                    int dTime = Int32.Parse(data[0]);
+
+                    if (now < dTime)
+                    {
+                        Storage.Trades[factionId].Remove(trade);
+                    }
+                    else
+                    {
+                        totalSum += Int32.Parse(data[1]);
+                    }
+
                 }
 
+                // Now calculate TODO
+
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Total Sum=>" + totalSum.ToString());
             }
-
-            // Now calculate TODO
-
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Total Sum=>" + totalSum.ToString());
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Storage_Trade loading failed");
+            }
         }
 
     }

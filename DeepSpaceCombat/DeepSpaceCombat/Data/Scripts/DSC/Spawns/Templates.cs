@@ -13,8 +13,6 @@ namespace DSC
         public DSC_SpawnTemplates() { }
 
         public Dictionary<string, DSC_RespawnTemplate> Respawns { get; } = new Dictionary<string, DSC_RespawnTemplate>();
-        public Dictionary<string, DSC_EventTemplate> EventSpawns { get; } = new Dictionary<string, DSC_EventTemplate>();
-
 
         public void Load()
         {

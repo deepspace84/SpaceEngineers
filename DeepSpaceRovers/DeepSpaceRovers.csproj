@@ -34,11 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\Prefabs\SR-Combat.sbc" />
-    <None Include="Data\Prefabs\SR-Industrial.sbc" />
-    <None Include="Data\Prefabs\SR-Medical.sbc" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Encounter.sbc" />
     <Content Include="metadata.mod" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

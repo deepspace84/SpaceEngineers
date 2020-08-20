@@ -1,0 +1,38 @@
+﻿<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<SpawnGroups>
+	<!--Do Not Edit Above Here-->
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>DZ_Flying_Turtle</SubtypeId>
+      </Id>
+      <Description>
+
+        [Modular Encounters SpawnGroup]
+        [SpaceRandomEncounter:true]
+        [FactionOwner:SPRT]
+
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>2.0</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="DZ_Flying_Turtle">
+          <Position>
+            <X>0.0</X>
+            <Y>0.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Sky Factory</BeaconText>
+          <Speed>20.0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    
+
+    <!--Do Not Edit Below Here-->
+	</SpawnGroups>
+</Definitions>

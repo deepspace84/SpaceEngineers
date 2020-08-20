@@ -74,6 +74,21 @@ namespace DSC
 
         #endregion
 
+        #region player
+        public IMyPlayer FindPlayerById(long id)
+        {
+            List<IMyPlayer> list = new List<IMyPlayer>();
+
+            MyAPIGateway.Players.GetPlayers(list, p => p.IdentityId == id);
+
+            if (list.Count > 0)
+                return list[0];
+
+            return null;
+        }
+
+        #endregion
+
 
         #region block functions
 

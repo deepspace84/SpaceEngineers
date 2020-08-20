@@ -25,10 +25,10 @@ namespace DSCPlugin
         public static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private DSC_Storage_Factions Storage;
+        private DSC_Config_TechTree Techtree;
 
         private static readonly HttpClient RemoteClient = new HttpClient();
         private int tickTimer = 0;
-
 
         BinaryReader ReadStorage(string file, Type callingType)
         {
@@ -36,10 +36,24 @@ namespace DSCPlugin
             {
                 throw new FileNotFoundException();
             }
-            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_server_e8_alpha\\Instance\\Saves\\Epsilon 8 Alpha\\Storage\\2033950117.sbm_DSC", file));
+            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_server_e8_alpha\\Instance\\Saves\\Epsilon 8\\Storage\\2033950117.sbm_DSC", file));
             if (stream != null)
             {
                 return new BinaryReader(stream);
+            }
+            throw new FileNotFoundException();
+        }
+
+        TextReader TextReader(string file, Type callingType)
+        {
+            if (file.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
+            {
+                throw new FileNotFoundException();
+            }
+            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_server_e8_alpha\\Instance\\Saves\\Epsilon 8\\Storage\\2033950117.sbm_DSC", file));
+            if (stream != null)
+            {
+                return new StreamReader(stream);
             }
             throw new FileNotFoundException();
         }
@@ -60,9 +74,10 @@ namespace DSCPlugin
             if (tickTimer % 1200 == 0)
             {
 
-                // Check if file exists
-                //if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions)))
-                //{
+                
+                Log.Info("Current directory=>" + Directory.GetCurrentDirectory());
+
+                // Faction Data
                 try
                 {
                     var reader = ReadStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
@@ -72,18 +87,34 @@ namespace DSCPlugin
                     // Send data to website
 
                     string output = JsonConvert.SerializeObject(Storage);
-                    SendDataAsync(output);
+                    SendDataAsync("faction",output);
 
                 }
                 catch (Exception e)
                 {
                     Log.Info("Update failed with exception=>" + e.ToString());
                 }
-                /*}
-                else
+
+
+                // Techtree
+                try
                 {
-                    SendDataAsync("failed");
-                }*/
+                    System.IO.TextReader reader = TextReader("DSC_Config_TechTree", typeof(DSC_Config_TechTree)); 
+                    var xmlData = reader.ReadToEnd();
+                    Techtree = MyAPIGateway.Utilities.SerializeFromXML<DSC_Config_TechTree>(xmlData);
+                    reader.Dispose();
+
+                    // Send data to website
+
+                    string output = JsonConvert.SerializeObject(Techtree);
+                    SendDataAsync("techtree", output);
+
+                }
+                catch (Exception e)
+                {
+                    Log.Info("Update failed with exception=>" + e.ToString());
+                }
+
 
 
                 Log.Info("Update");
@@ -98,7 +129,7 @@ namespace DSCPlugin
         #region debug data
 
 
-        public async System.Threading.Tasks.Task SendDataAsync(string Information)
+        public async System.Threading.Tasks.Task SendDataAsync(string tag, string Information)
         {
 
 
@@ -108,8 +139,7 @@ namespace DSCPlugin
 
             var values = new Dictionary<string, string>
                 {
-                { "login", "1" },
-                { "thing2", "world" },
+                { "tag", tag },
                 { "data",  Information}
                 };
 
@@ -170,4 +200,54 @@ namespace DSCPlugin
             };
         }
     }
+
+
+    [ProtoContract]
+    [Serializable]
+    public class DSC_Config_TechTree
+    {
+
+        [ProtoMember(1)]
+        public List<TechLevel> Levels = new List<TechLevel>();
+
+        internal DSC_Config_TechTree Clone()
+        {
+            return new DSC_Config_TechTree
+            {
+                Levels = Levels,
+            };
+        }
+
+        [ProtoContract]
+        [Serializable]
+        public class TechLevel
+        {
+            [ProtoMember(1)]
+            public string TechLevelName;
+            [ProtoMember(2)]
+            public string DependsOn;
+            [ProtoMember(3)]
+            public int ResearchPoints;
+            [ProtoMember(4)]
+            public List<string> Blocks = new List<string>();
+            [ProtoMember(5)]
+            public int TechArea;
+
+            public TechLevel() { }
+
+            public TechLevel(string techLevelName, string dependsOn, int researchPoints, int techArea, List<string> blocks)
+            {
+                TechLevelName = techLevelName;
+                DependsOn = dependsOn;
+                ResearchPoints = researchPoints;
+                Blocks = blocks;
+                TechArea = techArea;
+            }
+        }
+
+    }
+
+
+
+
 }
