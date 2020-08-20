@@ -4,34 +4,35 @@
 	<!--Do Not Edit Above Here-->
 
     <SpawnGroup>
+      <!-- Lady Bug 3 -->
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>DZ_Flying_Turtle</SubtypeId>
+        <SubtypeId>SR-Medical</SubtypeId>
       </Id>
       <Description>
-
         [Modular Encounters SpawnGroup]
-        [SpaceRandomEncounter:true]
-        [FactionOwner:SPRT]
-
+        [FactionOwner:ESCO]
+        [AtmosphericCargoShip:true]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:8000]
+        [ThreatScoreMinimum:0]
+        [ThreatScoreMaximum:300]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>2.0</Frequency>
+      <Frequency>7</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
-        <Prefab SubtypeId="DZ_Flying_Turtle">
+        <Prefab SubtypeId="SR-Medical">
           <Position>
             <X>0.0</X>
-            <Y>0.0</Y>
+            <Y>100.0</Y>
             <Z>0.0</Z>
           </Position>
-          <BeaconText>Sky Factory</BeaconText>
-          <Speed>20.0</Speed>
+          <BeaconText>SR-Medical</BeaconText>
+          <Speed>0</Speed>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
-
-    
 
     <!--Do Not Edit Below Here-->
 	</SpawnGroups>
