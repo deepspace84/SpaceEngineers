@@ -333,6 +333,8 @@ namespace DSC
                                 // Prepare store item
                                 MyStoreItemData storeItem = new MyStoreItemData(DeepSpaceCombat.Instance.Definitions.StoreItems[item.ItemName], item.Price, item.MaxAmount, BuyCallback, null);
 
+                                MyStoreItemData storeItem = new MyStoreItemData(DeepSpaceCombat.Instance.Definitions.StoreItems[item.ItemName], item.Price, item.MaxAmount, (amount, left, totalPrice, sellerPlayerId, playerId) => BuyCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName), null);
+
                                 long storeItemId;
                                 storeBlock.InsertOrder(storeItem, out storeItemId);
                                 DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddOrders storeItem=>" + storeItemId.ToString());
@@ -363,7 +365,7 @@ namespace DSC
             return malus;
         }
 
-        private void BuyCallback(int amount, int left, long totalPrice, long sellerPlayerId, long playerId)
+        private void BuyCallback(int amount, int left, long totalPrice, long sellerPlayerId, long playerId, string itemName)
         {
             if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::BuyCallback called unknown=>" + sellerPlayerId.ToString());
 
@@ -382,6 +384,8 @@ namespace DSC
             // Add trade
             Storage.Trades[factionId].Add(DateTime.Now.ToUnixTimestamp().ToString() + "_" + totalPrice.ToString());
             DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Added tarde=>" + DateTime.Now.ToUnixTimestamp().ToString() + "_" + totalPrice.ToString());
+
+
 
             // Recalculate factionMalus
             CalcMalus(factionId);
