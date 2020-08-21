@@ -61,6 +61,7 @@
         [PCUCheckRadius:15000]
         [PCUMinimum:500]
         [PCUMaximum:20000]
+        [AssignContainerTypesToAllCargo:SmallCrate]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>5</Frequency>
@@ -94,6 +95,7 @@
         [UsePCUCheck:true]
         [PCUCheckRadius:15000]
         [PCUMinimum:2500]
+        [AssignContainerTypesToAllCargo:SmallCrate,SmallCrate2]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>10</Frequency>
@@ -126,7 +128,8 @@
         [ReplenishSystems:true]
         [UsePCUCheck:true]
         [PCUCheckRadius:15000]
-        [PCUMinimum:5000] 
+        [PCUMinimum:5000]
+        [AssignContainerTypesToAllCargo:SmallCrate,Laboratory]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>3</Frequency>

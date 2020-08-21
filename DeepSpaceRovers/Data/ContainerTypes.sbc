@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ContainerTypes>
+
+	<!--LargeGrid/SmallContainers-->
+	<ContainerType CountMin="0" CountMax="4">
+	
+		<Id>
+		<TypeId>ContainerTypeDefinition</TypeId>
+		<SubtypeId>SmallCrate</SubtypeId>
+		</Id>
+		<Items>
+
+			<Item AmountMin="1" AmountMax="1000">
+			<Frequency>1.0</Frequency>
+			<Id>
+			<TypeId>Component</TypeId>
+			<SubtypeId>SteelPlate</SubtypeId>
+			</Id>
+			</Item>   
+			
+
+		</Items>
+	</ContainerType>
+
+  <ContainerType CountMin="0" CountMax="5">
+    <Id>
+      <TypeId>ContainerTypeDefinition</TypeId>
+      <SubtypeId>SmallCrate2</SubtypeId>
+    </Id>
+    <Items>
+
+      <Item AmountMin="1" AmountMax="100">
+        <Frequency>1.0</Frequency>
+        <Id>
+          <TypeId>Component</TypeId>
+          <SubtypeId>LargeTube</SubtypeId>
+        </Id>
+      </Item>
+
+    </Items>
+  </ContainerType>
+
+  <ContainerType CountMin="0" CountMax="5">
+    <Id>
+      <TypeId>ContainerTypeDefinition</TypeId>
+      <SubtypeId>Laboratory</SubtypeId>
+    </Id>
+    <Items>
+
+      <Item AmountMin="1" AmountMax="100">
+        <Frequency>1.0</Frequency>
+        <Id>
+          <TypeId>Component</TypeId>
+          <SubtypeId>SmallTube</SubtypeId>
+        </Id>
+      </Item>
+
+    </Items>
+  </ContainerType>
+	
+	
+</ContainerTypes>
+</Definitions>
