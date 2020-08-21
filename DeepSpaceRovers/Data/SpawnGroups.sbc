@@ -2,24 +2,25 @@
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<SpawnGroups>
 	<!--Do Not Edit Above Here-->
-
+    
+    <!-- ZONEN-->
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>TestEvilTerritory</SubtypeId>
+        <SubtypeId>StartingStation</SubtypeId>
       </Id>
       <Description>
 
         [Modular Encounters Territory]
-        [Name:Evol Space Corps Ice Lake]
+        [Name:StartingStation]
         [Type:Static]
         [CoordsX:-14412]
         [CoordsY:25754]
         [CoordsZ:53491]
-        [Radius:1000]
+        [Radius:2000]
         [AnnounceArriveDepart:true]
-        [CustomArriveMessage:Achtung, verbotenes Gebiet betreten!]
-        [CustomDepartMessage:Du bist in Sicherheit!]
+        [CustomArriveMessage:ACHTUNG! NO PVP Zone der Haupt-Handelsstation betreten.]
+        [CustomDepartMessage:ACHTUNG! NO PVP Zone der Haupt-Handelsstation verlassen.]
 
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
@@ -37,39 +38,113 @@
         </Prefab>
       </Prefabs>
     </SpawnGroup>
-    
-    
+    <!-- ZONEN ENDE-->
+
+    <!-- ZONE ENCOUNTERS -->
+    <!-- ZONE ENCOUNTERS ENDE-->
+
+    <!-- RANDOM ENCOUNTER STATIONS -->
     <SpawnGroup>
-      <!-- Lady Bug 3 -->
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>SR-Medical</SubtypeId>
+        <SubtypeId>Small Crate</SubtypeId>
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseThreatLevelCheck:true]
-        [ThreatLevelCheckRange:8000]
-        [ThreatScoreMinimum:0]
-        [ThreatScoreMaximum:300]
-        [Territory:Evol Space Corps Ice Lake]
+        [PlanetRequiresAtmo:true]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:false]
+        [UsePCUCheck:true]
+        [PCUCheckRadius:15000]
+        [PCUMinimum:500]
+        [PCUMaximum:20000]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>7</Frequency>
+      <Frequency>5</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
-        <Prefab SubtypeId="SR-Medical">
+        <Prefab SubtypeId="Small Crate">
           <Position>
             <X>0.0</X>
-            <Y>100.0</Y>
+            <Y>5.0</Y>
             <Z>0.0</Z>
           </Position>
-          <BeaconText>SR-Medical</BeaconText>
+          <BeaconText>Small Crate</BeaconText>
           <Speed>0</Speed>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Small Defendet Crate</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:true]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:true]
+        [UsePCUCheck:true]
+        [PCUCheckRadius:15000]
+        [PCUMinimum:2500]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>10</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Small Defendet Crate">
+          <Position>
+            <X>0.0</X>
+            <Y>5.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Small Crate</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Secret Laboratory Outpost</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:true]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:true]
+        [UsePCUCheck:true]
+        [PCUCheckRadius:15000]
+        [PCUMinimum:5000] 
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>3</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Secret Laboratory Outpost">
+          <Position>
+            <X>0.0</X>
+            <Y>-2.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Secret Laboratory Outpost</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <!-- RANDOM ENCOUNTER STATIONS ENDE-->
+    
 
     <!--Do Not Edit Below Here-->
 	</SpawnGroups>

@@ -35,6 +35,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Data\Factions.sbc" />
+    <None Include="Data\Prefabs\Secret Laboratory Outpost.sbc" />
+    <None Include="Data\Prefabs\Small Crate.sbc" />
+    <None Include="Data\Prefabs\Small Defendet Crate.sbc" />
     <None Include="Data\Prefabs\SR-Combat.sbc" />
     <None Include="Data\Prefabs\SR-Industrial.sbc" />
     <None Include="Data\Prefabs\SR-Medical.sbc" />
