@@ -35,7 +35,18 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Data\ContainerTypes.sbc" />
+    <None Include="Data\DroneAI.sbc" />
     <None Include="Data\Factions.sbc" />
+    <None Include="Data\Prefabs\Civic Hauler.sbc" />
+    <None Include="Data\Prefabs\DZ_Basic_Drone_Mk0.sbc" />
+    <None Include="Data\Prefabs\DZ_Basic_Drone_Mk1.sbc" />
+    <None Include="Data\Prefabs\DZ_Basic_Drone_Mk4.sbc" />
+    <None Include="Data\Prefabs\DZ_Basic_Drone_MkX.sbc" />
+    <None Include="Data\Prefabs\Epsilon 8 Bunker.sbc" />
+    <None Include="Data\Prefabs\Hunter Drone.sbc" />
+    <None Include="Data\Prefabs\Large Outpost.sbc" />
+    <None Include="Data\Prefabs\Military Outpost.sbc" />
+    <None Include="Data\Prefabs\Patrol_Drone_MK1.sbc" />
     <None Include="Data\Prefabs\Secret Laboratory Outpost.sbc" />
     <None Include="Data\Prefabs\Small Crate.sbc" />
     <None Include="Data\Prefabs\Small Defendet Crate.sbc" />
