@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\ContainerTypes.sbc" />
     <None Include="Data\Factions.sbc" />
     <None Include="Data\Prefabs\Secret Laboratory Outpost.sbc" />
     <None Include="Data\Prefabs\Small Crate.sbc" />

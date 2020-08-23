@@ -7,7 +7,7 @@
 	
 		<Id>
 		<TypeId>ContainerTypeDefinition</TypeId>
-		<SubtypeId>SmallCrate</SubtypeId>
+		<SubtypeId>LargeCrate</SubtypeId>
 		</Id>
 		<Items>
 
@@ -26,7 +26,7 @@
   <ContainerType CountMin="0" CountMax="5">
     <Id>
       <TypeId>ContainerTypeDefinition</TypeId>
-      <SubtypeId>SmallCrate2</SubtypeId>
+      <SubtypeId>LargeCrate2</SubtypeId>
     </Id>
     <Items>
 
@@ -41,23 +41,6 @@
     </Items>
   </ContainerType>
 
-  <ContainerType CountMin="0" CountMax="5">
-    <Id>
-      <TypeId>ContainerTypeDefinition</TypeId>
-      <SubtypeId>Laboratory</SubtypeId>
-    </Id>
-    <Items>
-
-      <Item AmountMin="1" AmountMax="100">
-        <Frequency>1.0</Frequency>
-        <Id>
-          <TypeId>Component</TypeId>
-          <SubtypeId>SmallTube</SubtypeId>
-        </Id>
-      </Item>
-
-    </Items>
-  </ContainerType>
 	
 	
 </ContainerTypes>
