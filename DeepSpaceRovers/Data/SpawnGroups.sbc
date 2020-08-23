@@ -95,10 +95,10 @@
         [UsePCUCheck:true]
         [PCUCheckRadius:15000]
         [PCUMinimum:2500]
-        [AssignContainerTypesToAllCargo:LargeCrate,LargeCrate2]
+        [AssignContainerTypesToAllCargo:LargeCrate2]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>10</Frequency>
+      <Frequency>8</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
         <Prefab SubtypeId="Small Defendet Crate">
@@ -112,7 +112,7 @@
         </Prefab>
       </Prefabs>
     </SpawnGroup>
-    
+
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
@@ -129,10 +129,10 @@
         [UsePCUCheck:true]
         [PCUCheckRadius:15000]
         [PCUMinimum:5000]
-        [AssignContainerTypesToAllCargo:LargeCrate,LargeCrate2]
+        [AssignContainerTypesToAllCargo:LargeCrate2,Tech]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>3</Frequency>
+      <Frequency>1</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
         <Prefab SubtypeId="Secret Laboratory Outpost">
@@ -141,7 +141,75 @@
             <Y>-2.0</Y>
             <Z>0.0</Z>
           </Position>
-          <BeaconText>Secret Laboratory Outpost</BeaconText>
+          <BeaconText>Secret Laboratory</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Military Outpost</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:true]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:true]
+        [UsePCUCheck:true]
+        [PCUCheckRadius:15000]
+        [PCUMinimum:20000]
+        [AssignContainerTypesToAllCargo:LargeCrate2]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>1</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Military Outpost">
+          <Position>
+            <X>0.0</X>
+            <Y>-2.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Military Outpost</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Epsilon 8 Bunker</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:true]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:true]
+        [UsePCUCheck:true]
+        [PCUCheckRadius:15000]
+        [PCUMinimum:8000]
+        [AssignContainerTypesToAllCargo:LargeCrate2]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>1</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Epsilon 8 Bunker">
+          <Position>
+            <X>0.0</X>
+            <Y>-2.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Forgotten Bunker</BeaconText>
           <Speed>0</Speed>
         </Prefab>
       </Prefabs>
