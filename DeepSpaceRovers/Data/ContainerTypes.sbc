@@ -200,7 +200,7 @@
     </ContainerType>
 
     <!-- Große Mengen normaler Komponenten, etwas Tech und Munition -->
-    <ContainerType CountMin="2" CountMax="5">
+    <ContainerType CountMin="1" CountMax="4">
       <Id>
         <TypeId>ContainerTypeDefinition</TypeId>
         <SubtypeId>LargeCrate2</SubtypeId>
@@ -477,7 +477,7 @@
       </Items>
     </ContainerType>
 
-
+    <!-- Loot für kleine Dronen/Basen-->
     <ContainerType CountMin="1" CountMax="3">
       <Id>
         <TypeId>ContainerTypeDefinition</TypeId>
@@ -617,6 +617,35 @@
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech8x</SubtypeId>
+          </Id>
+        </Item>
+
+        <Item AmountMin="1" AmountMax="5">
+          <Frequency>0.1</Frequency>
+          <Id>
+            <TypeId>Component</TypeId>
+            <SubtypeId>Explosives</SubtypeId>
+          </Id>
+        </Item>
+        <Item AmountMin="2" AmountMax="8">
+          <Frequency>0.1</Frequency>
+          <Id>
+            <TypeId>AmmoMagazine</TypeId>
+            <SubtypeId>Missile200mm</SubtypeId>
+          </Id>
+        </Item>
+        <Item AmountMin="3" AmountMax="20">
+          <Frequency>0.5</Frequency>
+          <Id>
+            <TypeId>AmmoMagazine</TypeId>
+            <SubtypeId>NATO_25x184mm</SubtypeId>
+          </Id>
+        </Item>
+        <Item AmountMin="5" AmountMax="30">
+          <Frequency>1</Frequency>
+          <Id>
+            <TypeId>AmmoMagazine</TypeId>
+            <SubtypeId>NATO_5p56x45mm</SubtypeId>
           </Id>
         </Item>
       </Items>
