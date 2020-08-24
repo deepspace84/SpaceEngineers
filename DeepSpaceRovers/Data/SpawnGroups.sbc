@@ -42,38 +42,105 @@
 
     <!-- ZONE ENCOUNTERS -->
     <!-- ZONE ENCOUNTERS ENDE-->
-
-    <!-- RANDOM ENCOUNTER STATIONS -->
+    
+    <!--CRATES -->
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>Small Crate</SubtypeId>
+        <SubtypeId>Crate_1</SubtypeId>
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [PlanetRequiresAtmo:true]
+        [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
         [PlanetaryInstallationType:Small]
         [CutVoxelsAtAirtightCells:false]
-        [ReplenishSystems:false]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:500]
-        [PCUMaximum:20000]
-        [AssignContainerTypesToAllCargo:LargeCrate]
+        [ReplenishSystems:true]
+        [AssignContainerTypesToAllCargo:Tier1]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:1]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>4</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Crate_1">
+          <Position>
+            <X>0.0</X>
+            <Y>-0.5</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Crate</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Crate_2</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:true]
+        [AssignContainerTypesToAllCargo:Tier2]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:10]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>4.5</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Crate_2">
+          <Position>
+            <X>0.0</X>
+            <Y>-0.5</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Crate</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Crate_3</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:true]
+        [AssignContainerTypesToAllCargo:Tier3]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:100]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>5</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
-        <Prefab SubtypeId="Small Crate">
+        <Prefab SubtypeId="Crate_3">
           <Position>
             <X>0.0</X>
-            <Y>5.0</Y>
+            <Y>-0.5</Y>
             <Z>0.0</Z>
           </Position>
-          <BeaconText>Small Crate</BeaconText>
+          <BeaconText>Crate</BeaconText>
           <Speed>0</Speed>
         </Prefab>
       </Prefabs>
@@ -82,32 +149,32 @@
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>Small Defendet Crate</SubtypeId>
+        <SubtypeId>Crate_4</SubtypeId>
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [PlanetRequiresAtmo:true]
+        [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
         [PlanetaryInstallationType:Small]
         [CutVoxelsAtAirtightCells:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:2500]
-        [AssignContainerTypesToAllCargo:LargeCrate2]
+        [AssignContainerTypesToAllCargo:Tier4]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:250]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>8</Frequency>
+      <Frequency>5.5</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
-        <Prefab SubtypeId="Small Defendet Crate">
+        <Prefab SubtypeId="Crate_4">
           <Position>
             <X>0.0</X>
-            <Y>5.0</Y>
+            <Y>-0.5</Y>
             <Z>0.0</Z>
           </Position>
-          <BeaconText>Small Crate</BeaconText>
+          <BeaconText>Crate</BeaconText>
           <Speed>0</Speed>
         </Prefab>
       </Prefabs>
@@ -116,23 +183,60 @@
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>Secret Laboratory Outpost</SubtypeId>
+        <SubtypeId>Crate_5</SubtypeId>
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [PlanetRequiresAtmo:true]
+        [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
         [PlanetaryInstallationType:Small]
         [CutVoxelsAtAirtightCells:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:5000]
-        [AssignContainerTypesToAllCargo:LargeCrate2,Tech]
+        [AssignContainerTypesToAllCargo:Tier5]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:500]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>2</Frequency>
+      <Frequency>6</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Crate_5">
+          <Position>
+            <X>0.0</X>
+            <Y>-0.5</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Crate</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <!--CRATED ENDE-->
+
+    <!-- RANDOM ENCOUNTER STATIONS -->
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>SecretLaboratoryOutpost</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:false]
+        [ReplenishSystems:true]
+        [AssignContainerTypesToAllCargo:Tier2]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:30]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>1</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
         <Prefab SubtypeId="Secret Laboratory Outpost">
@@ -146,40 +250,6 @@
         </Prefab>
       </Prefabs>
     </SpawnGroup>
-    
-    <SpawnGroup>
-      <Id>
-        <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>Military Outpost</SubtypeId>
-      </Id>
-      <Description>
-        [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
-        [PlanetRequiresAtmo:true]
-        [PlanetaryInstallation:true]
-        [PlanetaryInstallationType:Small]
-        [CutVoxelsAtAirtightCells:false]
-        [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:20000]
-        [AssignContainerTypesToAllCargo:LargeCrate2]
-      </Description>
-      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>3</Frequency>
-      <IsPirate>true</IsPirate>
-      <Prefabs>
-        <Prefab SubtypeId="Military Outpost">
-          <Position>
-            <X>0.0</X>
-            <Y>-2.0</Y>
-            <Z>0.0</Z>
-          </Position>
-          <BeaconText>Military Outpost</BeaconText>
-          <Speed>0</Speed>
-        </Prefab>
-      </Prefabs>
-    </SpawnGroup>
 
     <SpawnGroup>
       <Id>
@@ -189,18 +259,18 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [PlanetRequiresAtmo:true]
+        [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
         [PlanetaryInstallationType:Small]
         [CutVoxelsAtAirtightCells:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:8000]
-        [AssignContainerTypesToAllCargo:LargeCrate2]
+        [AssignContainerTypesToAllCargo:Tier2]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:15]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>2</Frequency>
+      <Frequency>1</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
         <Prefab SubtypeId="Epsilon 8 Bunker">
@@ -218,42 +288,74 @@
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>Large Outpost</SubtypeId>
+        <SubtypeId>MilitaryOutpost</SubtypeId>
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [PlanetRequiresAtmo:true]
+        [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
-        [PlanetaryInstallationType:Large]
+        [PlanetaryInstallationType:Small]
         [CutVoxelsAtAirtightCells:true]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:25000]
-        [PlayerCreditsCheckRadius:15000]
-        [UsePlayerCountCheck:true]
-        [MinimumPlayers:2]
-        [AssignContainerTypesToAllCargo:LargeCrate2]
+        [AssignContainerTypesToAllCargo:Tier3,Tier4]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:400]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>2</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Military Outpost">
+          <Position>
+            <X>0.0</X>
+            <Y>2.5</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Military Outpost</BeaconText>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Forward_Outpost</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+        [AssignContainerTypesToAllCargo:Tier5,Special1]
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:750]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>1</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
-        <Prefab SubtypeId="Large Outpost">
+        <Prefab SubtypeId="Forward_Outpost">
           <Position>
             <X>0.0</X>
-            <Y>-2.0</Y>
+            <Y>-8.5</Y>
             <Z>0.0</Z>
           </Position>
-          <BeaconText>Large Outpost</BeaconText>
+          <BeaconText>Forward Outpost</BeaconText>
           <Speed>0</Speed>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
+    
     <!-- RANDOM ENCOUNTER STATIONS ENDE-->
     
-    <!--RANDOM AGGRO ENCOUNTER -->
+    <!-- ANTENNA DRONES -->
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
@@ -262,15 +364,8 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
-        [UseThreatLevelCheck:true]
+        [AtmosphericCargoShip:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:4000]
-        [DisableSensorBlocks:true]
-        [DisableTimerBlocks:true]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -297,15 +392,8 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
-        [UseThreatLevelCheck:true]
+        [AtmosphericCargoShip:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:4000]
-        [DisableSensorBlocks:true]
-        [DisableTimerBlocks:true]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -319,7 +407,7 @@
           </Position>
           <BeaconText>Scout Drone MK2</BeaconText>
           <Speed>0</Speed>
-          <Behaviour>DeepSpaceAI</Behaviour>
+          <Behaviour>DeepSpaceAIRam</Behaviour>
           <BehaviourActivationDistance>15000</BehaviourActivationDistance>
         </Prefab>
       </Prefabs>
@@ -332,15 +420,8 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
-        [UseThreatLevelCheck:true]
+        [AtmosphericCargoShip:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:4000]
-        [DisableSensorBlocks:true]
-        [DisableTimerBlocks:true]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -367,15 +448,8 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
-        [UseThreatLevelCheck:true]
+        [AtmosphericCargoShip:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:4000]
-        [DisableSensorBlocks:true]
-        [DisableTimerBlocks:true]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -389,8 +463,8 @@
           </Position>
           <BeaconText>Patrol Drone MK1</BeaconText>
           <Speed>0</Speed>
-          <Behaviour>DeepSpaceAI</Behaviour>
-          <BehaviourActivationDistance>15000</BehaviourActivationDistance>
+          <Behaviour>DeepSpaceAISlow</Behaviour>
+          <BehaviourActivationDistance>10000</BehaviourActivationDistance>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
@@ -402,15 +476,8 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
-        [UseThreatLevelCheck:true]
+        [AtmosphericCargoShip:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:4000]
-        [DisableSensorBlocks:true]
-        [DisableTimerBlocks:true]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -424,47 +491,11 @@
           </Position>
           <BeaconText>Patrol Drone MK2</BeaconText>
           <Speed>0</Speed>
-          <Behaviour>DeepSpaceAI</Behaviour>
-          <BehaviourActivationDistance>15000</BehaviourActivationDistance>
+          <Behaviour>DeepSpaceAISlow</Behaviour>
+          <BehaviourActivationDistance>10000</BehaviourActivationDistance>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
-    <SpawnGroup>
-      <Id>
-        <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>DZ_Basic_Drone_Mk4</SubtypeId>
-      </Id>
-      <Description>
-        [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
-        [UseThreatLevelCheck:true]
-        [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:4000]
-        [DisableSensorBlocks:true]
-        [DisableTimerBlocks:true]
-      </Description>
-      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>7</Frequency>
-      <IsPirate>true</IsPirate>
-      <Prefabs>
-        <Prefab SubtypeId="DZ_Basic_Drone_Mk4">
-          <Position>
-            <X>0.0</X>
-            <Y>0.0</Y>
-            <Z>0.0</Z>
-          </Position>
-          <BeaconText>Scout Drone MK4</BeaconText>
-          <Speed>0</Speed>
-          <Behaviour>DeepSpaceAI</Behaviour>
-          <BehaviourActivationDistance>15000</BehaviourActivationDistance>
-        </Prefab>
-      </Prefabs>
-    </SpawnGroup>
-
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
@@ -473,15 +504,8 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
-        [UseThreatLevelCheck:true]
+        [AtmosphericCargoShip:false]
         [ReplenishSystems:true]
-        [UsePCUCheck:true]
-        [PCUCheckRadius:15000]
-        [PCUMinimum:4000]
-        [DisableSensorBlocks:true]
-        [DisableTimerBlocks:true]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -496,11 +520,10 @@
           <BeaconText>Hunter Drone</BeaconText>
           <Speed>0</Speed>
           <Behaviour>DeepSpaceAISlow</Behaviour>
-          <BehaviourActivationDistance>15000</BehaviourActivationDistance>
+          <BehaviourActivationDistance>5000</BehaviourActivationDistance>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
-
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
@@ -509,8 +532,7 @@
       <Description>
         [Modular Encounters SpawnGroup]
         [FactionOwner:ESCO]
-        [AtmosphericCargoShip:true]
-        [UseBlockNameReplacer:true]
+        [AtmosphericCargoShip:false]
         [UseThreatLevelCheck:true]
         [ReplenishSystems:true]
         [UsePCUCheck:true]
@@ -532,7 +554,7 @@
           <BeaconText>Hunter Drone</BeaconText>
           <Speed>0</Speed>
           <Behaviour>DeepSpaceAISlow</Behaviour>
-          <BehaviourActivationDistance>15000</BehaviourActivationDistance>
+          <BehaviourActivationDistance>5000</BehaviourActivationDistance>
         </Prefab>
         <Prefab SubtypeId="Hunter Drone">
           <Position>
@@ -543,7 +565,7 @@
           <BeaconText>Hunter Drone</BeaconText>
           <Speed>0</Speed>
           <Behaviour>DeepSpaceAISlow</Behaviour>
-          <BehaviourActivationDistance>15000</BehaviourActivationDistance>
+          <BehaviourActivationDistance>5000</BehaviourActivationDistance>
         </Prefab>
         <Prefab SubtypeId="Hunter Drone">
           <Position>
@@ -554,12 +576,12 @@
           <BeaconText>Hunter Drone</BeaconText>
           <Speed>0</Speed>
           <Behaviour>DeepSpaceAISlow</Behaviour>
-          <BehaviourActivationDistance>15000</BehaviourActivationDistance>
+          <BehaviourActivationDistance>5000</BehaviourActivationDistance>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
     
-    <!--RANDOM AGGRO ENCOUNTER END-->
+    <!-- ANTENNA DRONES -->
     
 
     <!--Do Not Edit Below Here-->

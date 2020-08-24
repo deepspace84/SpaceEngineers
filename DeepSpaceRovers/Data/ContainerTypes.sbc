@@ -3,7 +3,7 @@
   <ContainerTypes>
 
     <!-- TIER 5 -->
-    <ContainerType CountMin="2" CountMax="5">
+    <ContainerType CountMin="6" CountMax="8">
       <Id>
         <TypeId>ContainerTypeDefinition</TypeId>
         <SubtypeId>Tier5</SubtypeId>
@@ -281,7 +281,7 @@
     </ContainerType>
 
     <!-- TIER 4 -->
-    <ContainerType CountMin="2" CountMax="4">
+    <ContainerType CountMin="5" CountMax="7">
       <Id>
         <TypeId>ContainerTypeDefinition</TypeId>
         <SubtypeId>Tier4</SubtypeId>
@@ -559,7 +559,7 @@
     </ContainerType>
 
     <!-- TIER 3 -->
-    <ContainerType CountMin="2" CountMax="3">
+    <ContainerType CountMin="4" CountMax="6">
       <Id>
         <TypeId>ContainerTypeDefinition</TypeId>
         <SubtypeId>Tier3</SubtypeId>
@@ -824,7 +824,7 @@
     </ContainerType>
 
     <!-- TIER 2 -->
-    <ContainerType CountMin="1" CountMax="3">
+    <ContainerType CountMin="3" CountMax="5">
       <Id>
         <TypeId>ContainerTypeDefinition</TypeId>
         <SubtypeId>Tier2</SubtypeId>
@@ -1055,7 +1055,7 @@
     </ContainerType>
 
     <!-- TIER 1 -->
-    <ContainerType CountMin="1" CountMax="2">
+    <ContainerType CountMin="2" CountMax="4">
       <Id>
         <TypeId>ContainerTypeDefinition</TypeId>
         <SubtypeId>Tier1</SubtypeId>
