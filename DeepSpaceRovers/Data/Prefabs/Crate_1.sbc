@@ -105,7 +105,7 @@
                   </ComponentData>
                 </Components>
               </ComponentContainer>
-              <CustomName>Small Cargo Container</CustomName>
+              <CustomName>LOOT</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>

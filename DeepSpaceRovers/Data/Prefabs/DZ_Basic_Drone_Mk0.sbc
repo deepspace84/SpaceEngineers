@@ -1060,7 +1060,7 @@
               <SkinSubtypeId>Clean_Armor</SkinSubtypeId>
               <ShareMode>Faction</ShareMode>
               <CustomName>DZBD_Sensor</CustomName>
-              <ShowOnHUD>true</ShowOnHUD>
+              <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
