@@ -45,9 +45,9 @@ namespace DSC
         public static int DamageAllyMultiplier = 1;
 
         // Research Blocks
-        public static Dictionary<string, List<int>> ResearchBlocks = new Dictionary<string, List<int>>() // Blockname, techArea
+        public static Dictionary<string, List<string>> ResearchBlocks = new Dictionary<string, List<string>>() // Blockname, techArea
         {
-            {"DSC_Research_1_0", new List<int>(){0,1}},
+            {"DSC_Research_1_0", new List<string>(){"Standard"}},
         };
 
         // Respawns

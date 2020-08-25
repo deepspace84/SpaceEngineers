@@ -38,7 +38,6 @@ namespace DSC
 
         public bool freeBuild = true;
 
-
         // Damage strut
         private struct DamageEvent
         {
@@ -324,7 +323,6 @@ namespace DSC
         // Event - New block added to grid | Progression check
         private void GridBlockAddedEvent(IMySlimBlock block)
         {
-
             // Check if block is in definitions
             if (!DeepSpaceCombat.Instance.Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
             {
@@ -616,7 +614,7 @@ namespace DSC
             // Add now all available
             foreach (string levelName in DeepSpaceCombat.Instance.Techtree.TechLevels.Keys)
             {
-                DSC_TechLevel levelObj = DeepSpaceCombat.Instance.Techtree.TechLevels[levelName];
+                DSC_Config_TechTree.TechLevel levelObj = DeepSpaceCombat.Instance.Techtree.TechLevels[levelName];
 
                 // Check if allready researched
                 if (Storage.FactionTechs[factionId].Contains(levelName))

@@ -96,12 +96,17 @@ namespace DSC
 
         [ProtoMember(1)]
         public List<TechLevel> Levels = new List<TechLevel>();
+        [ProtoMember(2)]
+        public List<TechStation> Stations = new List<TechStation>();
+        [ProtoMember(3)]
+        public List<string> TechAreas = new List<string>();
 
         internal DSC_Config_TechTree Clone()
         {
             return new DSC_Config_TechTree
             {
                 Levels = Levels,
+                Stations = Stations,
             };
         }
 
@@ -118,11 +123,11 @@ namespace DSC
             [ProtoMember(4)]
             public List<string> Blocks = new List<string>();
             [ProtoMember(5)]
-            public int TechArea;
+            public string TechArea;
 
             public TechLevel() { }
 
-            public TechLevel(string techLevelName, string dependsOn, int researchPoints, int techArea, List<string> blocks)
+            public TechLevel(string techLevelName, string dependsOn, int researchPoints, string techArea, List<string> blocks)
             {
                 TechLevelName = techLevelName;
                 DependsOn = dependsOn;
@@ -132,13 +137,24 @@ namespace DSC
             }
         }
 
+
+        [ProtoContract]
+        [Serializable]
+        public class TechStation
+        {
+            [ProtoMember(1)]
+            public string Name;
+            [ProtoMember(5)]
+            public List<string> TechAreas;
+
+            public TechStation() { }
+
+            public TechStation(string name, List<string> techAreas)
+            {
+                Name = name;
+                TechAreas = techAreas;
+            }
+        }
+
     }
-
-
-
-
-
-
-
-
-    }
+}
