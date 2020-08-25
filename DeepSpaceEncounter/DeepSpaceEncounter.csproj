@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0DB748B8-3F92-465B-BA01-072E219205AA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DeepSpaceEncounters</RootNamespace>
-    <AssemblyName>DeepSpaceEncounters</AssemblyName>
+    <RootNamespace>DeepSpaceEncounter</RootNamespace>
+    <AssemblyName>DeepSpaceEncounter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -56,6 +56,7 @@
     <None Include="Data\Prefabs\SR-Combat.sbc" />
     <None Include="Data\Prefabs\SR-Industrial.sbc" />
     <None Include="Data\Prefabs\SR-Medical.sbc" />
+    <None Include="modinfo.sbmi" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\SpawnGroups.sbc" />
