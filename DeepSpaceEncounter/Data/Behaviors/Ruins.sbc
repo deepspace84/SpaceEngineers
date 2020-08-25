@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<EntityComponents>
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>Ruins-Behaviour</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Behavior]
+        [BehaviorName:Passive]
+
+        [Triggers:Ruins-Trigger]
+
+      </Description>      
+		</EntityComponent>
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>Ruins-Trigger</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:true]
+        [Type:Timer]
+
+        [MinCooldownMs:5000]
+        [MaxCooldownMs:30000]
+        [StartsReady:false]
+
+        [MaxActions:-1]
+        [Actions:Ruins-Action]
+
+      </Description>      
+		</EntityComponent>
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>Ruins-Action</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Action]
+
+        [UseChatBroadcast:true]
+        [ChatData:Ruins-Chat]
+
+      </Description>      
+		</EntityComponent>
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>Ruins-Chat</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Chat]
+
+        [UseChat:true]
+        [StartsReady:true]
+        [Chance:100]
+        [MaxChats:1]
+        [SendToAllOnlinePlayers:true]
+        [BroadcastRandomly:true]
+
+        [Author:ESCO]
+        [Color:Red]
+        [GPSLabel:Ruins]
+
+
+        [ChatMessages:Bei {GPS} wurden die Überreste von {GridName} geortet.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:{GridName} bei {GPS} ist ja immer noch da. Will da nicht mal wer aufräumen?]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Die Überreste von {GridName} vermodern so langsam bei {GPS}.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Ruinen von {GridName} bei {GPS} gefunden. Vielleicht gibts da noch was zu holen?]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Bei {GPS} vorsichtig fahren. Dort liegen noch Reste von {GridName} herum.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+      </Description>      
+		</EntityComponent>
+
+    
+	</EntityComponents>
+
+</Definitions>

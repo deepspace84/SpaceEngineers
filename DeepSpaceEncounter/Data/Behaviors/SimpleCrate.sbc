@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<EntityComponents>
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>Crate-Behaviour</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Behavior]
+        [BehaviorName:Passive]
+
+        [Triggers:AnnounceCrate-Trigger]
+
+      </Description>      
+		</EntityComponent>
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>AnnounceCrate-Trigger</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:true]
+        [Type:Timer]
+
+        [MinCooldownMs:5000]
+        [MaxCooldownMs:30000]
+        [StartsReady:false]
+
+        [MaxActions:-1]
+        [Actions:AnounceCrate-Action]
+
+      </Description>      
+		</EntityComponent>
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>AnounceCrate-Action</SubtypeId>
+			</Id>
+			<Description>
+
+			[RivalAI Action]
+
+			[UseChatBroadcast:true]
+			[ChatData:AnnounceCrate-Chat]
+
+			</Description>      
+		</EntityComponent>
+
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>AnnounceCrate-Chat</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Chat]
+
+        [UseChat:true]
+        [StartsReady:true]
+        [Chance:100]
+        [MaxChats:1]
+        [SendToAllOnlinePlayers:true]
+        [BroadcastRandomly:true]
+
+        [Author:ESCO]
+        [Color:Red]
+        [GPSLabel:Crate]
+
+
+        [ChatMessages:Verflucht! Wer hat {GridName} bei {GPS} stehen lassen?]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Könnte bitte jemand {GridName} bei {GPS} abholen, bevor es jemand merkt...]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Mist! Bei {GPS} steht noch {GridName} rum. Wer hat das vergessen?]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Ups! Da hat jemand {GridName} bei {GPS} stehen gelassen.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Unbeaufsichtigte {GridName} bei {GPS} geortet.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Achtung! Neue {GridName} bei {GPS} geortet.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Achtung! Bei {GPS} bitte langsam fahren. {GridName} wurde noch nicht abgeholt.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:{GridName} erfolgreich bei {GPS} abgesetzt. Warten auf weitertransport.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:{GridName} ausgeliefert. Abholung bei {GPS} eingeleitet.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+      </Description>      
+		</EntityComponent>
+
+	</EntityComponents>
+
+</Definitions>
