@@ -323,7 +323,6 @@
         </Prefab>
       </Prefabs>
     </SpawnGroup>
-
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
@@ -339,11 +338,11 @@
         [CutVoxelsAtAirtightCells:true]
         [ReplenishSystems:true]
 
-        [AssignContainerTypesToAllCargo:Tier2]
+        [AssignContainerTypesToAllCargo:Tier2,Tier3]
 
         [UseThreatLevelCheck:true]
         [ThreatLevelCheckRange:15000]
-        [ThreatScoreMinimum:15]
+        [ThreatScoreMinimum:35]
 
         [UseRandomNameGenerator:true]
         [RandomGridNamePrefix:ESCO | ]
@@ -458,8 +457,97 @@
           <Behaviour>LargeOutpost-Behaviour</Behaviour>
         </Prefab>
       </Prefabs>
-    </SpawnGroup>    
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Epsilon8Bunker2</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
 
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+
+        [AssignContainerTypesToAllCargo:Tier3]
+
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:65]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePattern:Stand NatoLetter RandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>2</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Epsilon 8 Bunker MK2">
+          <Position>
+            <X>0.0</X>
+            <Y>-4</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Bunker</BeaconText>
+          <Speed>0</Speed>
+          <Behaviour>TinyOutpost-Behaviour</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Epsilon8Stand</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+
+        [AssignContainerTypesToAllCargo:Tier3]
+
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:5]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePattern:Stand NatoLetter RandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>2</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Epsilon 8 Fire Position">
+          <Position>
+            <X>0.0</X>
+            <Y>-4.5</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Bunker</BeaconText>
+          <Speed>0</Speed>
+          <Behaviour>TinyOutpost-Behaviour</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
     
     <!-- RANDOM ENCOUNTER STATIONS ENDE-->
     

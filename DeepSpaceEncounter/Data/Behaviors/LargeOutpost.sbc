@@ -74,7 +74,7 @@
 
         [Author:ESCO]
         [Color:Red]
-        [GPSLabel:Base]
+        [GPSLabel:ESCO-Base]
 
         [ChatMessages:Neue {GridName} bei {GPS} errichtet!]
         [ChatAudio:ArcHudGPSNotification1]
@@ -118,7 +118,7 @@
 
         [RivalAI Action]
 
-        [Chance:50]
+        [Chance:100]
 
         [SpawnEncounter:true]
         [Spawner:SpawnSmallDroneLarge-Spawner]
@@ -137,8 +137,8 @@
         [UseSpawn:true]
 
         [StartsReady:true]
-        [SpawnMinCooldown:120]
-        [SpawnMaxCooldown:600]
+        [SpawnMinCooldown:60]
+        [SpawnMaxCooldown:300]
         [MaxSpawns:-1]
 
         [SpawnGroups:DZ_Basic_Drone_Mk0]
@@ -205,8 +205,8 @@
         [UseSpawn:true]
 
         [StartsReady:true]
-        [SpawnMinCooldown:120]
-        [SpawnMaxCooldown:600]
+        [SpawnMinCooldown:60]
+        [SpawnMaxCooldown:300]
         [MaxSpawns:-1]
 
         [SpawnGroups:Patrol_Drone_MK1]
@@ -275,8 +275,8 @@
         [UseSpawn:true]
 
         [StartsReady:true]
-        [SpawnMinCooldown:60]
-        [SpawnMaxCooldown:180]
+        [SpawnMinCooldown:20]
+        [SpawnMaxCooldown:120]
         [MaxSpawns:-1]
 
         [SpawnGroups:HunterDrone]

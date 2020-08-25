@@ -71,7 +71,7 @@
 
         [Author:ESCO]
         [Color:Red]
-        [GPSLabel:Ruins]
+        [GPSLabel:ESCO-Ruins]
 
 
         [ChatMessages:Bei {GPS} wurden die Überreste von {GridName} geortet.]

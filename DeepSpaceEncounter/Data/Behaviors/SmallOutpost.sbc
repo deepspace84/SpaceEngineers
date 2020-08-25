@@ -73,7 +73,7 @@
 
         [Author:ESCO]
         [Color:Red]
-        [GPSLabel:Outpost]
+        [GPSLabel:ESCO-Outpost]
 
 
         [ChatMessages:{GridName} bei {GPS} einsatzbereit. Erwarte Anweisungen.]
@@ -130,8 +130,8 @@
         [Type:PlayerNear]
         [TargetDistance:15000]
 
-        [MinCooldownMs:60000]
-        [MaxCooldownMs:300000]
+        [MinCooldownMs:30000]
+        [MaxCooldownMs:60000]
         [StartsReady:true]
 
         [MaxActions:-1]
@@ -148,7 +148,7 @@
 
         [RivalAI Action]
 
-        [Chance:50]
+        [Chance:100]
         
         [SpawnEncounter:true]
         [Spawner:SpawnSmallDrone-Spawner]
@@ -168,7 +168,7 @@
 
         [StartsReady:true]
         [SpawnMinCooldown:120]
-        [SpawnMaxCooldown:300]
+        [SpawnMaxCooldown:600]
         [MaxSpawns:-1]
 
         [SpawnGroups:DZ_Basic_Drone_Mk0]
