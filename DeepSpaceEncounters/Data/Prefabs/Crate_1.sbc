@@ -2,15 +2,15 @@
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Prefabs>
     <Prefab xsi:type="MyObjectBuilder_PrefabDefinition">
-      <Id Type="MyObjectBuilder_PrefabDefinition" Subtype="Crate_2" />
+      <Id Type="MyObjectBuilder_PrefabDefinition" Subtype="Crate_1" />
       <CubeGrids>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>92352942492741541</EntityId>
+          <EntityId>107286611642207034</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
             <Position x="0" y="0" z="0" />
-            <Forward x="0.898502469" y="0.435848266" z="-0.0522456" />
+            <Forward x="0.898502469" y="0.4358483" z="-0.0522456132" />
             <Up x="-0.138339862" y="0.394102335" z="0.9085953" />
             <Orientation>
               <X>0.4925068</X>
@@ -24,7 +24,7 @@
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_RemoteControl">
               <SubtypeName>LargeBlockRemoteControl</SubtypeName>
-              <EntityId>141708397916474844</EntityId>
+              <EntityId>90529633445820245</EntityId>
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
               <SkinSubtypeId>Clean_Armor</SkinSubtypeId>
               <CustomName>Remote Control</CustomName>
@@ -63,7 +63,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_BatteryBlock">
               <SubtypeName>LargeBlockBatteryBlock</SubtypeName>
-              <EntityId>115868068604861773</EntityId>
+              <EntityId>131808444680022508</EntityId>
               <Min x="0" y="1" z="0" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
               <SkinSubtypeId>Clean_Armor</SkinSubtypeId>
@@ -74,7 +74,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <CurrentStoredPower>0.888626754</CurrentStoredPower>
+              <CurrentStoredPower>0.88942486</CurrentStoredPower>
               <ProducerEnabled>true</ProducerEnabled>
               <MaxStoredPower>0</MaxStoredPower>
               <SemiautoEnabled>false</SemiautoEnabled>
@@ -83,7 +83,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CargoContainer">
               <SubtypeName>LargeBlockSmallContainer</SubtypeName>
-              <EntityId>126921569521724886</EntityId>
+              <EntityId>98111867233992579</EntityId>
               <Min x="0" y="2" z="0" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
               <SkinSubtypeId>Clean_Armor</SkinSubtypeId>
@@ -113,7 +113,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Beacon">
               <SubtypeName>LargeBlockBeacon</SubtypeName>
-              <EntityId>89743463232913919</EntityId>
+              <EntityId>80800745897490524</EntityId>
               <Min x="0" y="3" z="0" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
               <SkinSubtypeId>Clean_Armor</SkinSubtypeId>
@@ -321,7 +321,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>87036174704646079</EntityId>
+              <EntityId>102404658493784853</EntityId>
               <Min x="1" y="2" z="0" />
               <BlockOrientation Forward="Left" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -340,7 +340,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>126729685695189741</EntityId>
+              <EntityId>108907008894372430</EntityId>
               <Min x="-1" y="2" z="0" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -359,7 +359,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>130198034120468308</EntityId>
+              <EntityId>96910323953762294</EntityId>
               <Min x="0" y="2" z="-1" />
               <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -378,7 +378,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>138389527570989706</EntityId>
+              <EntityId>118947168264801755</EntityId>
               <Min x="0" y="2" z="1" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
               <SkinSubtypeId>Neon_Colorable_Lights</SkinSubtypeId>
@@ -422,77 +422,11 @@
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorTurret">
-              <SubtypeName>LargeInteriorTurret</SubtypeName>
-              <EntityId>136242424123946911</EntityId>
-              <Min x="0" y="5" z="0" />
-              <BlockOrientation Forward="Left" Up="Up" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
-              <ShareMode>Faction</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyInventoryBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_Inventory">
-                      <Items />
-                      <nextItemId>0</nextItemId>
-                      <Volume>0.384</Volume>
-                      <Mass>9223372036854.775807</Mass>
-                      <MaxItemCount>2147483647</MaxItemCount>
-                      <Size xsi:nil="true" />
-                      <InventoryFlags>CanReceive</InventoryFlags>
-                      <RemoveEntityOnEmpty>false</RemoveEntityOnEmpty>
-                    </Component>
-                  </ComponentData>
-                  <ComponentData>
-                    <TypeId>MyTimerComponent</TypeId>
-                    <Component xsi:type="MyObjectBuilder_TimerComponent">
-                      <Repeat>true</Repeat>
-                      <TimeToEvent>0</TimeToEvent>
-                      <SetTimeMinutes>0</SetTimeMinutes>
-                      <TimerEnabled>true</TimerEnabled>
-                      <RemoveEntityOnTimer>false</RemoveEntityOnTimer>
-                      <TimerType>Frame10</TimerType>
-                      <FramesFromLastTrigger>0</FramesFromLastTrigger>
-                      <TimerTickInFrames>10</TimerTickInFrames>
-                      <IsSessionUpdateEnabled>false</IsSessionUpdateEnabled>
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
-              <CustomName>Interior Turret</CustomName>
-              <ShowOnHUD>false</ShowOnHUD>
-              <ShowInTerminal>true</ShowInTerminal>
-              <ShowInToolbarConfig>true</ShowInToolbarConfig>
-              <ShowInInventory>true</ShowInInventory>
-              <Enabled>true</Enabled>
-              <IsShooting>false</IsShooting>
-              <IsShootingFromTerminal>false</IsShootingFromTerminal>
-              <IsLargeTurret>true</IsLargeTurret>
-              <MinFov>0.1</MinFov>
-              <MaxFov>1.04719758</MaxFov>
-              <Range>800</Range>
-              <RemainingAmmo>0</RemainingAmmo>
-              <Target>0</Target>
-              <IsPotentialTarget>true</IsPotentialTarget>
-              <PreviousControlledEntityId xsi:nil="true" />
-              <Rotation>0</Rotation>
-              <Elevation>0</Elevation>
-              <GunBase>
-                <CurrentAmmoMagazineName>NATO_5p56x45mm</CurrentAmmoMagazineName>
-                <RemainingAmmosList />
-                <LastShootTime>0</LastShootTime>
-              </GunBase>
-              <EnableIdleRotation>true</EnableIdleRotation>
-              <PreviousIdleRotationState>true</PreviousIdleRotationState>
-              <TargetCharacters>true</TargetCharacters>
-            </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
           <IsStatic>true</IsStatic>
           <XMirroxPlane x="0" y="1" z="0" />
           <ZMirroxPlane x="0" y="1" z="0" />
-          <DisplayName>Crate_2</DisplayName>
+          <DisplayName>NPC_Crate_1</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

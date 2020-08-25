@@ -1398,7 +1398,7 @@
               <ConveyorLineType>SMALL_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>Patrol_Drone_MK1</DisplayName>
+          <DisplayName>NPC_Patrol_Drone_MK1</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

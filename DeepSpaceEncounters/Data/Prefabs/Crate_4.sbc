@@ -2,21 +2,21 @@
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Prefabs>
     <Prefab xsi:type="MyObjectBuilder_PrefabDefinition">
-      <Id Type="MyObjectBuilder_PrefabDefinition" Subtype="Crate_5" />
+      <Id Type="MyObjectBuilder_PrefabDefinition" Subtype="Crate_4" />
       <CubeGrids>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>136210475796639675</EntityId>
+          <EntityId>79589366279672718</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
             <Position x="0" y="0" z="0" />
-            <Forward x="-0.3979429" y="-0.8620254" z="0.3139329" />
-            <Up x="-0.13710621" y="0.394233376" z="0.9087255" />
+            <Forward x="0.898502469" y="0.435848266" z="-0.0522455573" />
+            <Up x="-0.138339937" y="0.3941024" z="0.9085953" />
             <Orientation>
-              <X>0.0561076775</X>
-              <Y>0.808590353</Y>
-              <Z>0.5474808</Z>
-              <W>0.208082572</W>
+              <X>0.4925068</X>
+              <Y>-0.4809514</Y>
+              <Z>-0.245735317</Z>
+              <W>0.6824492</W>
             </Orientation>
           </PositionAndOrientation>
           <LocalPositionAndOrientation xsi:nil="true" />
@@ -30,7 +30,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_RemoteControl">
               <SubtypeName>LargeBlockRemoteControl</SubtypeName>
-              <EntityId>121613824829984076</EntityId>
+              <EntityId>132215352193648272</EntityId>
               <Min x="0" y="2" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -71,7 +71,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_BatteryBlock">
               <SubtypeName>LargeBlockBatteryBlock</SubtypeName>
-              <EntityId>75546472947973156</EntityId>
+              <EntityId>133473077659843206</EntityId>
               <Min x="0" y="3" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -83,7 +83,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <CurrentStoredPower>0.8878577</CurrentStoredPower>
+              <CurrentStoredPower>0.8875212</CurrentStoredPower>
               <ProducerEnabled>true</ProducerEnabled>
               <MaxStoredPower>0</MaxStoredPower>
               <SemiautoEnabled>false</SemiautoEnabled>
@@ -92,7 +92,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CargoContainer">
               <SubtypeName>LargeBlockSmallContainer</SubtypeName>
-              <EntityId>107334855387776212</EntityId>
+              <EntityId>132865099556720322</EntityId>
               <Min x="0" y="4" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -132,7 +132,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorAdvancedStator">
               <SubtypeName>LargeAdvancedStator</SubtypeName>
-              <EntityId>107757659876595046</EntityId>
+              <EntityId>90355409666482942</EntityId>
               <Min x="0" y="5" z="-1" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
@@ -143,7 +143,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <TopBlockId>97916653620773377</TopBlockId>
+              <TopBlockId>138685380372046418</TopBlockId>
               <ShareInertiaTensor>false</ShareInertiaTensor>
               <SafetyDetach>5</SafetyDetach>
               <RotorEntityId xsi:nil="true" />
@@ -151,7 +151,7 @@
               <TargetVelocity>0</TargetVelocity>
               <MinAngle xsi:nil="true" />
               <MaxAngle xsi:nil="true" />
-              <CurrentAngle>-9.2776856E-05</CurrentAngle>
+              <CurrentAngle>5.923682E-05</CurrentAngle>
               <LimitsActive>false</LimitsActive>
               <DummyDisplacement>-0.11</DummyDisplacement>
               <RotorLock>true</RotorLock>
@@ -162,8 +162,8 @@
               <SubtypeName>LargeHeavyBlockArmorCorner2Tip</SubtypeName>
               <Min x="1" y="5" z="0" />
               <BlockOrientation Forward="Down" Up="Backward" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <ColorMaskHSV x="0" y="0.15" z="0.25" />
+              <SkinSubtypeId>Neon_Colorable_Lights</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>LargeBlockArmorBlock</SubtypeName>
@@ -305,22 +305,22 @@
               <SubtypeName>LargeHeavyBlockArmorCorner2Tip</SubtypeName>
               <Min x="1" y="5" z="-2" />
               <BlockOrientation Forward="Down" Up="Right" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <ColorMaskHSV x="0" y="0.15" z="0.25" />
+              <SkinSubtypeId>Neon_Colorable_Lights</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>LargeHeavyBlockArmorCorner2Tip</SubtypeName>
               <Min x="-1" y="5" z="0" />
               <BlockOrientation Forward="Down" Up="Left" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <ColorMaskHSV x="0" y="0.15" z="0.25" />
+              <SkinSubtypeId>Neon_Colorable_Lights</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>LargeHeavyBlockArmorCorner2Tip</SubtypeName>
               <Min x="-1" y="5" z="-2" />
               <BlockOrientation Forward="Down" Up="Forward" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <ColorMaskHSV x="0" y="0.15" z="0.25" />
+              <SkinSubtypeId>Neon_Colorable_Lights</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>LargeBlockArmorSlope2Tip</SubtypeName>
@@ -352,7 +352,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>100189948954105128</EntityId>
+              <EntityId>140571353317234287</EntityId>
               <Min x="0" y="4" z="0" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
               <SkinSubtypeId>Neon_Colorable_Lights</SkinSubtypeId>
@@ -370,7 +370,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>83717376636070818</EntityId>
+              <EntityId>141990523817596088</EntityId>
               <Min x="0" y="4" z="-2" />
               <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -389,7 +389,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>120296787871656207</EntityId>
+              <EntityId>82933982514086702</EntityId>
               <Min x="1" y="4" z="-1" />
               <BlockOrientation Forward="Left" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -408,7 +408,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>86290479396347774</EntityId>
+              <EntityId>129612167648520696</EntityId>
               <Min x="-1" y="4" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -662,124 +662,74 @@
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <Min x="3" y="2" z="2" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
-            </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <Min x="-3" y="2" z="2" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
-            </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <Min x="3" y="2" z="-4" />
-              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
-              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
-            </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>139941404409797410</EntityId>
               <Min x="-3" y="2" z="-4" />
+              <BlockOrientation Forward="Left" Up="Down" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <Min x="3" y="3" z="2" />
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>86470414174803887</EntityId>
+              <Min x="3" y="2" z="-4" />
+              <BlockOrientation Forward="Left" Up="Down" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <Min x="-3" y="3" z="2" />
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>72449179547473322</EntityId>
+              <Min x="-3" y="2" z="2" />
+              <BlockOrientation Forward="Left" Up="Down" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <Min x="3" y="3" z="-4" />
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>128501185546259376</EntityId>
+              <Min x="3" y="2" z="2" />
+              <BlockOrientation Forward="Left" Up="Down" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>112789262250447304</EntityId>
               <Min x="-3" y="3" z="-4" />
+              <BlockOrientation Forward="Forward" Up="Down" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_LargeGatlingTurret">
-              <SubtypeName />
-              <EntityId>117147308093488297</EntityId>
-              <Min x="2" y="4" z="-5" />
-              <BlockOrientation Forward="Right" Up="Up" />
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>81897311178389906</EntityId>
+              <Min x="3" y="3" z="-4" />
+              <BlockOrientation Forward="Forward" Up="Down" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
-              <ShareMode>Faction</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyInventoryBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_Inventory">
-                      <Items />
-                      <nextItemId>1</nextItemId>
-                      <Volume>0.384</Volume>
-                      <Mass>9223372036854.775807</Mass>
-                      <MaxItemCount>2147483647</MaxItemCount>
-                      <Size xsi:nil="true" />
-                      <InventoryFlags>CanReceive</InventoryFlags>
-                      <RemoveEntityOnEmpty>false</RemoveEntityOnEmpty>
-                    </Component>
-                  </ComponentData>
-                  <ComponentData>
-                    <TypeId>MyTimerComponent</TypeId>
-                    <Component xsi:type="MyObjectBuilder_TimerComponent">
-                      <Repeat>true</Repeat>
-                      <TimeToEvent>0</TimeToEvent>
-                      <SetTimeMinutes>0</SetTimeMinutes>
-                      <TimerEnabled>true</TimerEnabled>
-                      <RemoveEntityOnTimer>false</RemoveEntityOnTimer>
-                      <TimerType>Frame10</TimerType>
-                      <FramesFromLastTrigger>0</FramesFromLastTrigger>
-                      <TimerTickInFrames>10</TimerTickInFrames>
-                      <IsSessionUpdateEnabled>false</IsSessionUpdateEnabled>
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
-              <CustomName>Gatling Turret</CustomName>
-              <ShowOnHUD>false</ShowOnHUD>
-              <ShowInTerminal>true</ShowInTerminal>
-              <ShowInToolbarConfig>true</ShowInToolbarConfig>
-              <ShowInInventory>true</ShowInInventory>
-              <Enabled>true</Enabled>
-              <IsShooting>false</IsShooting>
-              <IsShootingFromTerminal>false</IsShootingFromTerminal>
-              <IsLargeTurret>true</IsLargeTurret>
-              <MinFov>0.1</MinFov>
-              <MaxFov>1.04719758</MaxFov>
-              <Range>800</Range>
-              <RemainingAmmo>0</RemainingAmmo>
-              <Target>0</Target>
-              <IsPotentialTarget>true</IsPotentialTarget>
-              <PreviousControlledEntityId xsi:nil="true" />
-              <Rotation>0</Rotation>
-              <Elevation>0</Elevation>
-              <GunBase>
-                <CurrentAmmoMagazineName>NATO_25x184mm</CurrentAmmoMagazineName>
-                <RemainingAmmosList />
-                <LastShootTime>0</LastShootTime>
-              </GunBase>
-              <EnableIdleRotation>true</EnableIdleRotation>
-              <PreviousIdleRotationState>true</PreviousIdleRotationState>
-              <TargetCharacters>true</TargetCharacters>
             </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_LargeGatlingTurret">
-              <SubtypeName />
-              <EntityId>123513541426376242</EntityId>
-              <Min x="-4" y="4" z="-5" />
-              <BlockOrientation Forward="Left" Up="Up" />
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>137272134773859317</EntityId>
+              <Min x="-3" y="3" z="2" />
+              <BlockOrientation Forward="Forward" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
+              <SubtypeName>LargeInteriorPillar</SubtypeName>
+              <EntityId>103640483235064857</EntityId>
+              <Min x="3" y="3" z="2" />
+              <BlockOrientation Forward="Forward" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorTurret">
+              <SubtypeName>LargeInteriorTurret</SubtypeName>
+              <EntityId>117845973310912910</EntityId>
+              <Min x="-3" y="4" z="2" />
+              <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
               <ShareMode>Faction</ShareMode>
@@ -814,7 +764,7 @@
                   </ComponentData>
                 </Components>
               </ComponentContainer>
-              <CustomName>Gatling Turret 2</CustomName>
+              <CustomName>Interior Turret 23</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
@@ -833,7 +783,7 @@
               <Rotation>0</Rotation>
               <Elevation>0</Elevation>
               <GunBase>
-                <CurrentAmmoMagazineName>NATO_25x184mm</CurrentAmmoMagazineName>
+                <CurrentAmmoMagazineName>NATO_5p56x45mm</CurrentAmmoMagazineName>
                 <RemainingAmmosList />
                 <LastShootTime>0</LastShootTime>
               </GunBase>
@@ -841,11 +791,11 @@
               <PreviousIdleRotationState>true</PreviousIdleRotationState>
               <TargetCharacters>true</TargetCharacters>
             </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_LargeGatlingTurret">
-              <SubtypeName />
-              <EntityId>135334667605553432</EntityId>
-              <Min x="2" y="4" z="1" />
-              <BlockOrientation Forward="Right" Up="Up" />
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorTurret">
+              <SubtypeName>LargeInteriorTurret</SubtypeName>
+              <EntityId>116905076354199429</EntityId>
+              <Min x="3" y="4" z="2" />
+              <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
               <ShareMode>Faction</ShareMode>
@@ -880,7 +830,7 @@
                   </ComponentData>
                 </Components>
               </ComponentContainer>
-              <CustomName>Gatling Turret 3</CustomName>
+              <CustomName>Interior Turret 24</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
@@ -899,7 +849,7 @@
               <Rotation>0</Rotation>
               <Elevation>0</Elevation>
               <GunBase>
-                <CurrentAmmoMagazineName>NATO_25x184mm</CurrentAmmoMagazineName>
+                <CurrentAmmoMagazineName>NATO_5p56x45mm</CurrentAmmoMagazineName>
                 <RemainingAmmosList />
                 <LastShootTime>0</LastShootTime>
               </GunBase>
@@ -907,11 +857,10 @@
               <PreviousIdleRotationState>true</PreviousIdleRotationState>
               <TargetCharacters>true</TargetCharacters>
             </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_LargeGatlingTurret">
-              <SubtypeName />
-              <EntityId>115834681086126505</EntityId>
-              <Min x="-4" y="4" z="1" />
-              <BlockOrientation Forward="Left" Up="Up" />
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorTurret">
+              <SubtypeName>LargeInteriorTurret</SubtypeName>
+              <EntityId>141664126505578345</EntityId>
+              <Min x="-3" y="4" z="-4" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
               <ShareMode>Faction</ShareMode>
@@ -946,7 +895,7 @@
                   </ComponentData>
                 </Components>
               </ComponentContainer>
-              <CustomName>Gatling Turret 4</CustomName>
+              <CustomName>Interior Turret 21</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
@@ -965,7 +914,72 @@
               <Rotation>0</Rotation>
               <Elevation>0</Elevation>
               <GunBase>
-                <CurrentAmmoMagazineName>NATO_25x184mm</CurrentAmmoMagazineName>
+                <CurrentAmmoMagazineName>NATO_5p56x45mm</CurrentAmmoMagazineName>
+                <RemainingAmmosList />
+                <LastShootTime>0</LastShootTime>
+              </GunBase>
+              <EnableIdleRotation>true</EnableIdleRotation>
+              <PreviousIdleRotationState>true</PreviousIdleRotationState>
+              <TargetCharacters>true</TargetCharacters>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorTurret">
+              <SubtypeName>LargeInteriorTurret</SubtypeName>
+              <EntityId>110659397774749097</EntityId>
+              <Min x="3" y="4" z="-4" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <ShareMode>Faction</ShareMode>
+              <ComponentContainer>
+                <Components>
+                  <ComponentData>
+                    <TypeId>MyInventoryBase</TypeId>
+                    <Component xsi:type="MyObjectBuilder_Inventory">
+                      <Items />
+                      <nextItemId>0</nextItemId>
+                      <Volume>0.384</Volume>
+                      <Mass>9223372036854.775807</Mass>
+                      <MaxItemCount>2147483647</MaxItemCount>
+                      <Size xsi:nil="true" />
+                      <InventoryFlags>CanReceive</InventoryFlags>
+                      <RemoveEntityOnEmpty>false</RemoveEntityOnEmpty>
+                    </Component>
+                  </ComponentData>
+                  <ComponentData>
+                    <TypeId>MyTimerComponent</TypeId>
+                    <Component xsi:type="MyObjectBuilder_TimerComponent">
+                      <Repeat>true</Repeat>
+                      <TimeToEvent>0</TimeToEvent>
+                      <SetTimeMinutes>0</SetTimeMinutes>
+                      <TimerEnabled>true</TimerEnabled>
+                      <RemoveEntityOnTimer>false</RemoveEntityOnTimer>
+                      <TimerType>Frame10</TimerType>
+                      <FramesFromLastTrigger>0</FramesFromLastTrigger>
+                      <TimerTickInFrames>10</TimerTickInFrames>
+                      <IsSessionUpdateEnabled>false</IsSessionUpdateEnabled>
+                    </Component>
+                  </ComponentData>
+                </Components>
+              </ComponentContainer>
+              <CustomName>Interior Turret 22</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <IsShooting>false</IsShooting>
+              <IsShootingFromTerminal>false</IsShootingFromTerminal>
+              <IsLargeTurret>true</IsLargeTurret>
+              <MinFov>0.1</MinFov>
+              <MaxFov>1.04719758</MaxFov>
+              <Range>800</Range>
+              <RemainingAmmo>0</RemainingAmmo>
+              <Target>0</Target>
+              <IsPotentialTarget>true</IsPotentialTarget>
+              <PreviousControlledEntityId xsi:nil="true" />
+              <Rotation>0</Rotation>
+              <Elevation>0</Elevation>
+              <GunBase>
+                <CurrentAmmoMagazineName>NATO_5p56x45mm</CurrentAmmoMagazineName>
                 <RemainingAmmosList />
                 <LastShootTime>0</LastShootTime>
               </GunBase>
@@ -1015,7 +1029,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>Crate_5</DisplayName>
+          <DisplayName>Crate_4</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
@@ -1025,17 +1039,17 @@
         </CubeGrid>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>79942321927746936</EntityId>
+          <EntityId>106487211290898568</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
-            <Position x="-2.466552734375" y="2.21875" z="12.5194091796875" />
-            <Forward x="-0.39790684" y="-0.8620702" z="0.3138556" />
-            <Up x="-0.137095451" y="0.3941365" z="0.908769131" />
+            <Position x="0.74578857421875" y="6.67431640625" z="11.0748291015625" />
+            <Forward x="0.8985201" y="0.435819864" z="-0.052179575" />
+            <Up x="-0.138327956" y="0.393978119" z="0.908651" />
             <Orientation>
-              <X>0.0561122447</X>
-              <Y>0.808566153</Y>
-              <Z>0.5475245</Z>
-              <W>0.208060354</W>
+              <X>0.492546439</X>
+              <Y>-0.480945081</Y>
+              <Z>-0.245782271</Z>
+              <W>0.682408154</W>
             </Orientation>
           </PositionAndOrientation>
           <LocalPositionAndOrientation xsi:nil="true" />
@@ -1043,15 +1057,15 @@
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorAdvancedRotor">
               <SubtypeName>SmallAdvancedRotor</SubtypeName>
-              <EntityId>97916653620773377</EntityId>
+              <EntityId>138685380372046418</EntityId>
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
-              <ParentEntityId>141717783891559350</ParentEntityId>
+              <ParentEntityId>133093580730193640</ParentEntityId>
               <YieldLastComponent>false</YieldLastComponent>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Conveyor">
               <SubtypeName>SmallShipConveyorHub</SubtypeName>
-              <EntityId>100576408213471560</EntityId>
+              <EntityId>85773074283744449</EntityId>
               <Min x="0" y="2" z="0" />
               <BlockOrientation Forward="Down" Up="Forward" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -1059,7 +1073,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_LargeMissileTurret">
               <SubtypeName>SmallMissileTurret</SubtypeName>
-              <EntityId>129599590348510505</EntityId>
+              <EntityId>99833922933938125</EntityId>
               <Min x="-1" y="5" z="-1" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
@@ -1132,7 +1146,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Beacon">
               <SubtypeName>SmallBlockBeacon</SubtypeName>
-              <EntityId>102533177414551132</EntityId>
+              <EntityId>131398507627499586</EntityId>
               <Min x="1" y="3" z="3" />
               <BlockOrientation Forward="Down" Up="Backward" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -1149,7 +1163,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Beacon">
               <SubtypeName>SmallBlockBeacon</SubtypeName>
-              <EntityId>105396749205608915</EntityId>
+              <EntityId>84913319619799717</EntityId>
               <Min x="1" y="3" z="-1" />
               <BlockOrientation Forward="Down" Up="Forward" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -1457,7 +1471,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>Small Grid 6551</DisplayName>
+          <DisplayName>NPC_Crate_4</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

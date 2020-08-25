@@ -4737,7 +4737,7 @@
               <HudText>Military Storage</HudText>
             </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
-          <DisplayName>Large Grid 9380</DisplayName>
+          <DisplayName>NPC_Military_Outpost</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

@@ -761,7 +761,7 @@
               <SkinSubtypeId>Clean_Armor</SkinSubtypeId>
             </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
-          <DisplayName>Hunter Drone</DisplayName>
+          <DisplayName>NPC_Hunter Drone</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

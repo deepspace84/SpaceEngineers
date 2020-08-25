@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepSpaceRovers", "DeepSpaceRovers.csproj", "{0DB748B8-3F92-465B-BA01-072E219205AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepSpaceEncounters", "DeepSpaceEncounters.csproj", "{0DB748B8-3F92-465B-BA01-072E219205AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
