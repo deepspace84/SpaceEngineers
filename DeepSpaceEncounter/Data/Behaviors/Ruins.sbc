@@ -15,6 +15,9 @@
 
         [Triggers:Ruins-Trigger]
 
+        [Triggers:Looted-Trigger]
+        [Triggers:Despawn-Trigger]
+        [Triggers:PlayerNear-Trigger]
       </Description>      
 		</EntityComponent>
 
@@ -97,7 +100,114 @@
       </Description>      
 		</EntityComponent>
 
-    
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Looted-Trigger</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:true]
+        [Type:Damage]
+        [DamageTypes:Any]
+
+        [StartsReady:true]
+
+        [MaxActions:1]
+        [Actions:Looted-Action]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>PlayerNear-Trigger</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:true]
+        [Type:PlayerNear]
+        [TargetDistance:1500]
+
+        [MinCooldownMs:2000]
+        [MaxCooldownMs:2000]
+        [StartsReady:true]
+
+        [MaxActions:-1]
+        [Actions:ResetDespawn-Action]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Looted-Action</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Action]
+
+        [EnableTriggers:true]
+        [EnableTriggerNames:Despawn-Trigger]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>ResetDespawn-Action</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Action]
+
+        [ResetCooldownTimeOfTriggers:true]
+        [ResetTriggerCooldownNames:Despawn-Trigger]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Despawn-Trigger</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:false]
+        [Type:Timer]
+
+        [MinCooldownMs:300000]
+        [MaxCooldownMs:300000]
+        [StartsReady:false]
+
+        [MaxActions:-1]
+        [Actions:Despawn-Action]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Despawn-Action</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Action]
+
+        [GenerateExplosion:true]
+        [ExplosionRange:30]
+        [ExplosionDamage:500]
+        [ExplosionIgnoresVoxels:true]
+        [ForceDespawn:true]
+
+      </Description>
+    </EntityComponent>    
 	</EntityComponents>
 
 </Definitions>

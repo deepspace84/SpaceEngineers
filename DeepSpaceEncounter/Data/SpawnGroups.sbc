@@ -518,7 +518,7 @@
         [CutVoxelsAtAirtightCells:true]
         [ReplenishSystems:true]
 
-        [AssignContainerTypesToAllCargo:Tier3]
+        [AssignContainerTypesToAllCargo:Tier1]
 
         [UseThreatLevelCheck:true]
         [ThreatLevelCheckRange:15000]
@@ -544,7 +544,7 @@
           </Position>
           <BeaconText>Bunker</BeaconText>
           <Speed>0</Speed>
-          <Behaviour>TinyOutpost-Behaviour</Behaviour>
+          <Behaviour>Ruin-Behaviour</Behaviour>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
