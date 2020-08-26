@@ -124,16 +124,16 @@ namespace DSC
                         {
                             foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
                             {
+                                
                                 var cubeDef = def as MyCubeBlockDefinition;
                                 if (cubeDef != null)
                                 {
-
                                     // Get component definition
                                     MyCubeBlockDefinition.Component[] compDef = cubeDef.Components;
-
+                                    
                                     // Only save component subtype
                                     string compname = compDef[0].Definition.ToString().Replace("MyObjectBuilder_Component/", "");
-
+                                    
                                     if (cubeDef.Public)
                                     {
                                         // Print new definition to server log
@@ -163,18 +163,26 @@ namespace DSC
                             }
                         }
 
-                        if (lcommand[1].Equals("oidef"))
+                        if (lcommand[1].Equals("icondev"))
                         {
                             foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
                             {
-                                //DeepSpaceCombat.Instance.ServerLogger.WriteInfo("All def =>" + def.Id.ToString());
-                                if((def.Id.ToString().Contains("Ore") || def.Id.ToString().Contains("Ingot")) && ! def.Id.ToString().Contains("LCD"))
+
+                                var cubeDef = def as MyCubeBlockDefinition;
+                                if (cubeDef != null)
                                 {
-                                    string compname = def.Id.ToString().Replace("MyObjectBuilder_", "");
+                                    if (cubeDef.Public)
+                                    {
+                                        string Icon ="";
+                                        foreach (string el in cubeDef.Icons)
+                                        {
+                                            Icon = el;
+                                            break;
+                                        }
 
-                                    // Print new definition to server log
-                                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("{ \"" + compname + "\",  MyVisualScriptLogicProvider.GetDefinitionId(\"" + compname.Split('/')[0] + "\", \"" + compname.Split('/')[1] + "\")},");
-
+                                        // Print new definition to server log
+                                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("{ \"" + cubeDef.Id.ToString() + "\", "+ Icon +"},");
+                                    }
                                 }
                             }
                         }

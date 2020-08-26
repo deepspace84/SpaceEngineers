@@ -68,7 +68,7 @@ namespace DSC
     {
 
         [ProtoMember(1)]
-        public Dictionary<long, List<string>> Trades = new Dictionary<long, List<string>>(); // factionId - "dateTimeString_amount"
+        public Dictionary<long, List<Trade>> Trades = new Dictionary<long, List<Trade>>(); // factionId - "dateTimeString_amount"
         [ProtoMember(2)]
         public Dictionary<long, float> TradeMalus = new Dictionary<long, float>(); // factionID - TradeMalus
 
@@ -81,8 +81,33 @@ namespace DSC
             };
         }
 
+
+        [ProtoContract]
+        [Serializable]
+        public class Trade
+        {
+
+            [ProtoMember(1)]
+            public string ItemName;
+            [ProtoMember(2)]
+            public long Amount;
+            [ProtoMember(3)]
+            public long TotalPrice;
+            [ProtoMember(4)]
+            public int Utime;
+
+            internal Trade(string itemName, int amount, long totalPrice, int utime)
+            {
+                ItemName = itemName;
+                Amount = amount;
+                TotalPrice = totalPrice;
+                Utime = utime;
+            }
+        }
+
     }
 
+    
 
 
     /*

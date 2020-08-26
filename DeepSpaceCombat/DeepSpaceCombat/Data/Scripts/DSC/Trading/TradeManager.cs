@@ -49,7 +49,7 @@ namespace DSC
                 // Create default values
                 Storage = new DSC_Storage_Trade
                 {
-                    Trades = new Dictionary<long, List<string>>(),
+                    Trades = new Dictionary<long, List<DSC_Storage_Trade.Trade>>(),
                     TradeMalus = new Dictionary<long, float>()
                 };
             }
@@ -330,8 +330,6 @@ namespace DSC
                             // Check if items exists
                             if (DeepSpaceCombat.Instance.Definitions.StoreItems.ContainsKey(item.ItemName))
                             {
-                                // Prepare store item
-                                MyStoreItemData storeItem = new MyStoreItemData(DeepSpaceCombat.Instance.Definitions.StoreItems[item.ItemName], item.Price, item.MaxAmount, BuyCallback, null);
 
                                 MyStoreItemData storeItem = new MyStoreItemData(DeepSpaceCombat.Instance.Definitions.StoreItems[item.ItemName], item.Price, item.MaxAmount, (amount, left, totalPrice, sellerPlayerId, playerId) => BuyCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName), null);
 
@@ -367,7 +365,7 @@ namespace DSC
 
         private void BuyCallback(int amount, int left, long totalPrice, long sellerPlayerId, long playerId, string itemName)
         {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::BuyCallback called unknown=>" + sellerPlayerId.ToString());
+            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::BuyCallback called unknown=>" + sellerPlayerId.ToString()+" - "+ itemName);
 
             // Check if player is in an active faction
             if (!DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.ContainsKey(playerId)) return;
@@ -378,14 +376,11 @@ namespace DSC
             // Check if trade entry exists in storage
             if (!Storage.Trades.ContainsKey(factionId))
             {
-                Storage.Trades.Add(factionId, new List<string>());
+                Storage.Trades.Add(factionId, new List<DSC_Storage_Trade.Trade>());
             }
 
             // Add trade
-            Storage.Trades[factionId].Add(DateTime.Now.ToUnixTimestamp().ToString() + "_" + totalPrice.ToString());
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Added tarde=>" + DateTime.Now.ToUnixTimestamp().ToString() + "_" + totalPrice.ToString());
-
-
+            Storage.Trades[factionId].Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
 
             // Recalculate factionMalus
             CalcMalus(factionId);
@@ -397,35 +392,15 @@ namespace DSC
         {
             try { 
 
-                // Delete all trades older than one day
-                int now = (int)DateTime.Now.ToUnixTimestamp();
-                now = now - (60 * 60 * 24); // Minus 24h
 
-                int totalSum = 0;
-
-                foreach (string trade in Storage.Trades[factionId])
+                foreach (DSC_Storage_Trade.Trade trade in Storage.Trades[factionId])
                 {
-                    string[] data = trade.Split('_');
-
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Data =>" + data[0] + "-" + data[1]);
-
-
-                    int dTime = Int32.Parse(data[0]);
-
-                    if (now < dTime)
-                    {
-                        Storage.Trades[factionId].Remove(trade);
-                    }
-                    else
-                    {
-                        totalSum += Int32.Parse(data[1]);
-                    }
-
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Trade Calc " + trade.ItemName+" - "+trade.Amount.ToString()+" - "+trade.TotalPrice.ToString()+" - "+trade.Utime.ToString());
                 }
 
                 // Now calculate TODO
 
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Total Sum=>" + totalSum.ToString());
+                
             }
             catch (Exception e)
             {
