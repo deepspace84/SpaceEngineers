@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\Behaviors\Civilian.sbc" />
     <None Include="Data\Prefabs\Bases\Epsilon 8 Bunker MK2.sbc" />
     <None Include="Data\Behaviors\Secret.sbc" />
     <None Include="Data\Behaviors\SimpleDrone.sbc" />
@@ -45,11 +46,17 @@
     <None Include="Data\ContainerTypes.sbc" />
     <None Include="Data\Factions.sbc" />
     <None Include="Data\Prefabs\Bases\Epsilon 8 Fire Position.sbc" />
+    <None Include="Data\Prefabs\Bases\Hydrogen Refinery.sbc" />
+    <None Include="Data\Prefabs\Bases\MilitaerAusenposten.sbc" />
+    <None Include="Data\Prefabs\Bases\Rusty Landing Pad.sbc" />
+    <None Include="Data\Prefabs\Bases\small WatchTower.sbc" />
+    <None Include="Data\Prefabs\Bases\Wohncontainer.sbc" />
     <None Include="Data\Prefabs\Crates\Crate_1.sbc" />
     <None Include="Data\Prefabs\Crates\Crate_2.sbc" />
     <None Include="Data\Prefabs\Crates\Crate_3.sbc" />
     <None Include="Data\Prefabs\Crates\Crate_4.sbc" />
     <None Include="Data\Prefabs\Crates\Crate_5.sbc" />
+    <None Include="Data\Prefabs\Drones\Combat Drone.sbc" />
     <None Include="Data\Prefabs\Drones\DZ_Basic_Drone_Mk0.sbc" />
     <None Include="Data\Prefabs\Drones\DZ_Basic_Drone_Mk1.sbc" />
     <None Include="Data\Prefabs\Drones\DZ_Basic_Drone_MkX.sbc" />

@@ -214,8 +214,8 @@
 
         [SpawnGroups:Patrol_Drone_MK1]
         [SpawnGroups:Patrol_Drone_MK1]
-        [SpawnGroups:Patrol_Drone_MK1]
-        [SpawnGroups:Patrol_Drone_MK1]
+        [SpawnGroups:Combat Drone]
+        [SpawnGroups:Combat Drone]
         [SpawnGroups:Patrol_Drone_MK2]
 
         [UseRelativeSpawnPosition:false]

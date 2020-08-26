@@ -9,11 +9,14 @@
       </Id>
       <Description>
 
-      [RivalAI Behavior]
-      [BehaviorName:Fighter]
-	    [IdealPlanetAltitude:120]
-	    [MinimumPlanetAltitude:40]
-	    [StrafeSpeedCutOff:50]
+        [RivalAI Behavior]
+        [BehaviorName:Fighter]
+        [IdealPlanetAltitude:120]
+        [MinimumPlanetAltitude:40]
+        [StrafeSpeedCutOff:50]
+        [UseAmmoReplenish:true]
+        [AmmoReplenishClipAmount:8]
+        [MaxAmmoReplenishments:1]
 
       </Description>
       
