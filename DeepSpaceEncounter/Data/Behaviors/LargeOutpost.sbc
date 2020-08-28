@@ -14,7 +14,6 @@
         [BehaviorName:Passive]
 
         [Triggers:AnnounceLargeOutpost-Trigger]
-        [Triggers:SpawnSmallDroneLarge-Trigger]
         [Triggers:SpawnPatrolDroneLarge-Trigger]
         [Triggers:SpawnHunterDroneLarge-Trigger]
 
@@ -94,74 +93,6 @@
     <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
       <Id>
         <TypeId>Inventory</TypeId>
-        <SubtypeId>SpawnSmallDroneLarge-Trigger</SubtypeId>
-      </Id>
-      <Description>
-        [RivalAI Trigger]
-
-        [UseTrigger:true]
-        [Type:PlayerNear]
-        [TargetDistance:15000]
-
-        [MinCooldownMs:30000]
-        [MaxCooldownMs:60000]
-        [StartsReady:true]
-
-        [MaxActions:-1]
-        [Actions:SpawnSmallDroneLarge-Action]
-
-      </Description>
-    </EntityComponent>
-    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
-      <Id>
-        <TypeId>Inventory</TypeId>
-        <SubtypeId>SpawnSmallDroneLarge-Action</SubtypeId>
-      </Id>
-      <Description>
-
-        [RivalAI Action]
-
-        [Chance:100]
-
-        [SpawnEncounter:true]
-        [Spawner:SpawnSmallDroneLarge-Spawner]
-
-      </Description>
-    </EntityComponent>
-    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
-      <Id>
-        <TypeId>Inventory</TypeId>
-        <SubtypeId>SpawnSmallDroneLarge-Spawner</SubtypeId>
-      </Id>
-      <Description>
-
-        [RivalAI Spawn]
-
-        [UseSpawn:true]
-
-        [StartsReady:true]
-        [SpawnMinCooldown:60]
-        [SpawnMaxCooldown:300]
-        [MaxSpawns:-1]
-
-        [SpawnGroups:DZ_Basic_Drone_Mk0]
-        [SpawnGroups:DZ_Basic_Drone_MkX]
-        [SpawnGroups:DZ_Basic_Drone_Mk1]
-
-        [UseRelativeSpawnPosition:false]
-        [MinDistance:200]
-        [MaxDistance:500]
-        [MinAltitude:100]
-        [MaxAltitude:200]
-        [IgnoreSafetyChecks:false]
-
-      </Description>
-
-    </EntityComponent>
-
-    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
-      <Id>
-        <TypeId>Inventory</TypeId>
         <SubtypeId>SpawnPatrolDroneLarge-Trigger</SubtypeId>
       </Id>
       <Description>
@@ -169,7 +100,7 @@
 
         [UseTrigger:true]
         [Type:PlayerNear]
-        [TargetDistance:10000]
+        [TargetDistance:12000]
 
         [MinCooldownMs:30000]
         [MaxCooldownMs:60000]
@@ -183,7 +114,7 @@
     <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
       <Id>
         <TypeId>Inventory</TypeId>
-        <SubtypeId>SpawnSmallDroneLarge-Action</SubtypeId>
+        <SubtypeId>SpawnPatrolDroneLarge-Action</SubtypeId>
       </Id>
       <Description>
 
@@ -212,9 +143,10 @@
         [SpawnMaxCooldown:300]
         [MaxSpawns:-1]
 
+        [SpawnGroups:DZ_Basic_Drone_Mk0]
+        [SpawnGroups:DZ_Basic_Drone_MkX]
+        [SpawnGroups:DZ_Basic_Drone_Mk1]
         [SpawnGroups:Patrol_Drone_MK1]
-        [SpawnGroups:Patrol_Drone_MK1]
-        [SpawnGroups:Combat Drone]
         [SpawnGroups:Combat Drone]
         [SpawnGroups:Patrol_Drone_MK2]
 

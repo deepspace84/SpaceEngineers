@@ -1057,6 +1057,39 @@
         </Prefab>
       </Prefabs>
     </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Warhead</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:ESCO]
+        [SpaceCargoShip:false]
+        [LunarCargoShip:false]
+        [SpaceRandomEncounter:false]
+        [AtmosphericCargoShip:false]
+        [PlanetaryInstallation:false]
+        [RivalAiSpawn:true]
+        [ReplenishSystems:true]
+
+
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>7</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Warhead">
+          <Position>
+            <X>0.0</X>
+            <Y>0.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <Speed>0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
     
     <!-- ANTENNA DRONES -->
     

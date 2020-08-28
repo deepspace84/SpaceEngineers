@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Prefabs>
+    <Prefab xsi:type="MyObjectBuilder_PrefabDefinition">
+      <Id Type="MyObjectBuilder_PrefabDefinition" Subtype="Warhead" />
+      <CubeGrids>
+        <CubeGrid>
+          <SubtypeName />
+          <EntityId>142781906885287601</EntityId>
+          <PersistentFlags>CastShadows InScene</PersistentFlags>
+          <PositionAndOrientation>
+            <Position x="-12601.707603869503" y="-9488.1344816798846" z="57866.166583999642" />
+            <Forward x="0.7287793" y="-0.6820844" z="0.060346365" />
+            <Up x="-0.261939049" y="-0.196271241" z="0.9449157" />
+            <Orientation>
+              <X>-0.3949524</X>
+              <Y>0.6117072</Y>
+              <Z>0.664942265</Z>
+              <W>-0.166368946</W>
+            </Orientation>
+          </PositionAndOrientation>
+          <LocalPositionAndOrientation xsi:nil="true" />
+          <GridSizeEnum>Small</GridSizeEnum>
+          <CubeBlocks>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Warhead">
+              <SubtypeName>SmallWarhead</SubtypeName>
+              <EntityId>142781906885287602</EntityId>
+              <ColorMaskHSV x="0" y="-0.8" z="0.4" />
+              <SkinSubtypeId>Battered_Armor</SkinSubtypeId>
+              <CustomName>Warhead</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <CountdownMs>10000</CountdownMs>
+              <IsArmed>true</IsArmed>
+              <IsCountingDown>false</IsCountingDown>
+            </MyObjectBuilder_CubeBlock>
+          </CubeBlocks>
+          <DisplayName>ESCO | Warhead</DisplayName>
+          <DestructibleBlocks>true</DestructibleBlocks>
+          <IsRespawnGrid>false</IsRespawnGrid>
+          <LocalCoordSys>0</LocalCoordSys>
+          <TargetingTargets />
+        </CubeGrid>
+      </CubeGrids>
+      <EnvironmentType>None</EnvironmentType>
+    </Prefab>
+  </Prefabs>
+</Definitions>

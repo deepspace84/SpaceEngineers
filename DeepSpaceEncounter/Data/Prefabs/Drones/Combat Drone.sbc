@@ -355,7 +355,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>false</Enabled>
-              <BroadcastRadius>20000</BroadcastRadius>
+              <BroadcastRadius>5000</BroadcastRadius>
               <HudText />
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Gyro">
