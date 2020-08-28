@@ -74,9 +74,9 @@
         [SendToAllOnlinePlayers:true]
         [BroadcastRandomly:true]
 
-        [Author:ESCO]
+        [Author:DeSC]
         [Color:Red]
-        [GPSLabel:ESCO-Base]
+        [GPSLabel:DeSC-Base]
 
         [ChatMessages:Neue {GridName} bei {GPS} errichtet!]
         [ChatAudio:ArcHudGPSNotification1]

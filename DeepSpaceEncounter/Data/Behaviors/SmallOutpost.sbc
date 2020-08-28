@@ -73,9 +73,9 @@
         [SendToAllOnlinePlayers:true]
         [BroadcastRandomly:true]
 
-        [Author:ESCO]
+        [Author:DeSC]
         [Color:Red]
-        [GPSLabel:ESCO-Outpost]
+        [GPSLabel:DeSC-Outpost]
 
 
         [ChatMessages:{GridName} bei {GPS} einsatzbereit. Erwarte Anweisungen.]

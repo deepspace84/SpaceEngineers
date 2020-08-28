@@ -72,9 +72,9 @@
         [SendToAllOnlinePlayers:true]
         [BroadcastRandomly:true]
 
-        [Author:ESCO]
+        [Author:DeSC]
         [Color:Red]
-        [GPSLabel:ESCO-Zivil]
+        [GPSLabel:DeSC-Zivil]
 
 
         [ChatMessages:Zivile Einrichtung {GridName} bei {GPS} ist einsatzbereit.]

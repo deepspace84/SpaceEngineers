@@ -72,9 +72,9 @@
         [SendToAllOnlinePlayers:true]
         [BroadcastRandomly:true]
 
-        [Author:ESCO]
+        [Author:DeSC]
         [Color:Red]
-        [GPSLabel:ESCO-Ruins]
+        [GPSLabel:DeSC-Ruins]
 
 
         [ChatMessages:Bei {GPS} wurden die Überreste von {GridName} geortet.]

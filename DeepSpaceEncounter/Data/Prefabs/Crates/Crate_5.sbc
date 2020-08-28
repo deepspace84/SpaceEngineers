@@ -1229,7 +1229,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>ESCO | Crate 5</DisplayName>
+          <DisplayName>DeSC | Crate 5</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
@@ -1873,7 +1873,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>ESCO | Crate 5</DisplayName>
+          <DisplayName>DeSC | Crate 5</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

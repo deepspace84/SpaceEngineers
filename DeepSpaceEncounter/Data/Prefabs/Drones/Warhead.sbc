@@ -37,7 +37,7 @@
               <IsCountingDown>false</IsCountingDown>
             </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
-          <DisplayName>ESCO | Warhead</DisplayName>
+          <DisplayName>DeSC | Warhead</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <IsRespawnGrid>false</IsRespawnGrid>
           <LocalCoordSys>0</LocalCoordSys>

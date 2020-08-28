@@ -1673,7 +1673,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>ESCO | Crate_3</DisplayName>
+          <DisplayName>DeSC | Crate_3</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

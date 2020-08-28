@@ -72,9 +72,9 @@
         [SendToAllOnlinePlayers:true]
         [BroadcastRandomly:true]
 
-        [Author:ESCO]
+        [Author:DeSC]
         [Color:Red]
-        [GPSLabel:ESCO-Stellung]
+        [GPSLabel:DeSC-Stellung]
 
 
         [ChatMessages:Unsere kleine Stellung {GridName} bei {GPS} ist einsatzbereit.]

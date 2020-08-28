@@ -1469,7 +1469,7 @@
           </CubeBlocks>
           <XMirroxPlane x="1" y="2" z="1" />
           <ZMirroxPlane x="1" y="2" z="1" />
-          <DisplayName>ESCO | Crate_1</DisplayName>
+          <DisplayName>DeSC | Crate_1</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
