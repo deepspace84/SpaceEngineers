@@ -67,6 +67,7 @@
     <None Include="Data\Prefabs\Drones\Patrol_Drone_MK1.sbc" />
     <None Include="Data\Prefabs\Drones\Patrol_Drone_MK2.sbc" />
     <None Include="Data\Prefabs\Bases\Secret Laboratory Outpost.sbc" />
+    <None Include="Data\Prefabs\Drones\Warhead.sbc" />
     <None Include="Data\Prefabs\StartRover\SR-Combat.sbc" />
     <None Include="Data\Prefabs\StartRover\SR-Industrial.sbc" />
     <None Include="Data\Prefabs\StartRover\SR-Medical.sbc" />

@@ -175,21 +175,21 @@
         </Item>
 
         <!-- TECH -->
-        <Item AmountMin="18" AmountMax="39">
+        <Item AmountMin="27" AmountMax="80">
           <Frequency>5</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech2x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="12" AmountMax="26">
+        <Item AmountMin="18" AmountMax="53">
           <Frequency>4</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech4x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="8" AmountMax="17">
+        <Item AmountMin="12" AmountMax="35">
           <Frequency>3</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -453,21 +453,21 @@
         </Item>
 
         <!-- TECH -->
-        <Item AmountMin="12" AmountMax="26">
+        <Item AmountMin="18" AmountMax="53">
           <Frequency>4</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech2x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="8" AmountMax="17">
+        <Item AmountMin="12" AmountMax="35">
           <Frequency>3</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech4x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="5" AmountMax="11">
+        <Item AmountMin="8" AmountMax="23">
           <Frequency>2</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -731,21 +731,21 @@
         </Item>
 
         <!-- TECH -->
-        <Item AmountMin="8" AmountMax="17">
+        <Item AmountMin="12" AmountMax="35">
           <Frequency>3</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech2x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="5" AmountMax="11">
+        <Item AmountMin="8" AmountMax="23">
           <Frequency>2</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech4x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="3" AmountMax="7">
+        <Item AmountMin="5" AmountMax="15">
           <Frequency>1</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -982,14 +982,14 @@
         </Item>
 
         <!-- TECH -->
-        <Item AmountMin="5" AmountMax="11">
+        <Item AmountMin="8" AmountMax="23">
           <Frequency>2</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech2x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="3" AmountMax="7">
+        <Item AmountMin="5" AmountMax="15">
           <Frequency>1</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -1171,7 +1171,7 @@
         </Item>
 
         <!-- TECH -->
-        <Item AmountMin="3" AmountMax="7">
+        <Item AmountMin="5" AmountMax="15">
           <Frequency>1</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -1231,52 +1231,22 @@
       </Id>
       <Items>
 
-        <!-- Waffen -->
-        <Item AmountMin="10" AmountMax="35">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>Component</TypeId>
-            <SubtypeId>Explosives</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="40" AmountMax="80">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>AmmoMagazine</TypeId>
-            <SubtypeId>Missile200mm</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="30" AmountMax="60">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>AmmoMagazine</TypeId>
-            <SubtypeId>NATO_25x184mm</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="40" AmountMax="250">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>AmmoMagazine</TypeId>
-            <SubtypeId>NATO_5p56x45mm</SubtypeId>
-          </Id>
-        </Item>
-
         <!-- TECH -->
-        <Item AmountMin="20" AmountMax="45">
+        <Item AmountMin="60" AmountMax="100">
           <Frequency>3</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech2x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="15" AmountMax="30">
+        <Item AmountMin="40" AmountMax="80">
           <Frequency>2</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech4x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="10" AmountMax="20">
+        <Item AmountMin="20" AmountMax="60">
           <Frequency>1</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -1336,28 +1306,7 @@
         </Item>
 
         <!-- EQUIPMENT -->
-        <Item AmountMin="18000" AmountMax="35000">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>PhysicalObject</TypeId>
-            <SubtypeId>SpaceCredit</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="20" AmountMax="50">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>ConsumableItem</TypeId>
-            <SubtypeId>Powerkit</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="20" AmountMax="50">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>ConsumableItem</TypeId>
-            <SubtypeId>Medkit</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="15" AmountMax="25">
+        <Item AmountMin="20" AmountMax="30">
           <Frequency>1</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -1375,52 +1324,22 @@
       </Id>
       <Items>
 
-        <!-- Waffen -->
-        <Item AmountMin="15" AmountMax="53">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>Component</TypeId>
-            <SubtypeId>Explosives</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="60" AmountMax="120">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>AmmoMagazine</TypeId>
-            <SubtypeId>Missile200mm</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="45" AmountMax="90">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>AmmoMagazine</TypeId>
-            <SubtypeId>NATO_25x184mm</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="60" AmountMax="375">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>AmmoMagazine</TypeId>
-            <SubtypeId>NATO_5p56x45mm</SubtypeId>
-          </Id>
-        </Item>
-
         <!-- TECH -->
-        <Item AmountMin="30" AmountMax="68">
+        <Item AmountMin="90" AmountMax="150">
           <Frequency>4</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech2x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="23" AmountMax="45">
+        <Item AmountMin="60" AmountMax="120">
           <Frequency>3</Frequency>
           <Id>
             <TypeId>Component</TypeId>
             <SubtypeId>Tech4x</SubtypeId>
           </Id>
         </Item>
-        <Item AmountMin="15" AmountMax="30">
+        <Item AmountMin="30" AmountMax="90">
           <Frequency>2</Frequency>
           <Id>
             <TypeId>Component</TypeId>
@@ -1480,28 +1399,7 @@
         </Item>
 
         <!-- EQUIPMENT -->
-        <Item AmountMin="25000" AmountMax="45000">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>PhysicalObject</TypeId>
-            <SubtypeId>SpaceCredit</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="30" AmountMax="75">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>ConsumableItem</TypeId>
-            <SubtypeId>Powerkit</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="30" AmountMax="75">
-          <Frequency>1</Frequency>
-          <Id>
-            <TypeId>ConsumableItem</TypeId>
-            <SubtypeId>Medkit</SubtypeId>
-          </Id>
-        </Item>
-        <Item AmountMin="23" AmountMax="38">
+        <Item AmountMin="30" AmountMax="45">
           <Frequency>1</Frequency>
           <Id>
             <TypeId>Component</TypeId>
