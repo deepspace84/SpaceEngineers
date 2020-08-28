@@ -15,7 +15,6 @@
 
         [Triggers:AnnounceSmallOutpost-Trigger]
         [Triggers:SpawnSmallDrone-Trigger]
-        [Triggers:SpawnSmallDrone2-Trigger]
 
         [Triggers:Looted-Trigger]
         [Triggers:Despawn-Trigger]
@@ -102,28 +101,6 @@
     <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
       <Id>
         <TypeId>Inventory</TypeId>
-        <SubtypeId>SpawnSmallDrone2-Trigger</SubtypeId>
-      </Id>
-      <Description>
-        [RivalAI Trigger]
-
-        [UseTrigger:true]
-        [Type:Damage]
-        [DamageTypes:Any]
-
-        [MinCooldownMs:60000]
-        [MaxCooldownMs:120000]
-        [StartsReady:true]
-
-        [MaxActions:-1]
-        [Actions:SpawnSmallDrone-Action]
-
-      </Description>
-    </EntityComponent>
-
-    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
-      <Id>
-        <TypeId>Inventory</TypeId>
         <SubtypeId>SpawnSmallDrone-Trigger</SubtypeId>
       </Id>
       <Description>
@@ -131,7 +108,7 @@
 
         [UseTrigger:true]
         [Type:PlayerNear]
-        [TargetDistance:15000]
+        [TargetDistance:12000]
 
         [MinCooldownMs:30000]
         [MaxCooldownMs:60000]
@@ -174,9 +151,8 @@
         [SpawnMaxCooldown:600]
         [MaxSpawns:-1]
 
-        [SpawnGroups:DZ_Basic_Drone_Mk0]
-        [SpawnGroups:DZ_Basic_Drone_MkX]
-        [SpawnGroups:DZ_Basic_Drone_Mk1]
+        [SpawnGroups:Patrol_Drone_MK1]
+        [SpawnGroups:Combat Drone]
 
         [UseRelativeSpawnPosition:false]
         [MinDistance:200]

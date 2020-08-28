@@ -15,8 +15,8 @@
         [MinimumPlanetAltitude:40]
         [StrafeSpeedCutOff:50]
         [UseAmmoReplenish:true]
-        [AmmoReplenishClipAmount:8]
-        [MaxAmmoReplenishments:1]
+        [AmmoReplenishClipAmount:4]
+        [MaxAmmoReplenishments:3]
 
       </Description>
       
