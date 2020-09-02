@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition xsi:type="MyObjectBuilder_GravityGeneratorDefinition">
+      <Id>
+        <TypeId>GravityGenerator</TypeId>
+        <SubtypeId>Research</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Gravity Generator</DisplayName>
+      <Icon>Textures\gravity_generatorResearch.dds</Icon>
+      <Description>Description_GravityGenerator</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Sound>BlockGravityGen</Sound>
+      <Model>Models\Cubes\Large\GravityGenerator.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="40" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="25" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="5" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.75" EndY="0.75" Side="Bottom" StartX="0.25" StartY="0.25"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GravityGeneratorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GravityGeneratorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GravityGeneratorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>GravityGeneratorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>250.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <MinFieldSize x="1" y="1" z="1"/>
+      <MaxFieldSize x="150" y="150" z="150"/>
+      <MinGravityAcceleration>-9.81</MinGravityAcceleration>
+      <MaxGravityAcceleration>9.81</MaxGravityAcceleration>
+      <RequiredPowerInput>0.56713</RequiredPowerInput>
+      <DamageEffectName>Damage_GravGen_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>185</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_VirtualMassDefinition">
+      <Id>
+        <TypeId>VirtualMass</TypeId>
+        <SubtypeId>VirtualMassLargeResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Massblocks</DisplayName>
+      <Public>true</Public>
+      <Icon>Textures\ArtificialMassResearch.dds</Icon>
+      <Description>Description_VirtualMass</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\VirtualMassBlock.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="5" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="2" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.9" EndY="0.9" Side="Left" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="0.9" Side="Right" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="0.9" Side="Top" StartX="0.1" StartY="0.1"/>
+        <MountPoint Default="true" EndX="0.9" EndY="0.9" Side="Bottom" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="0.9" Side="Back" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="0.9" Side="Front" StartX="0.1" StartY="0.1"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\VirtualMassBlockConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\VirtualMassBlockConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\VirtualMassBlockConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>VirtualMassResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>120.0</BuildTimeSeconds>
+      <VirtualMass>50000</VirtualMass>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.6</RequiredPowerInput>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <EmissiveColorPreset>GravityBlock</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+  </CubeBlocks>
+</Definitions>

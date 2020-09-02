@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition xsi:type="MyObjectBuilder_RadioAntennaDefinition">
+      <Id>
+        <TypeId>RadioAntenna</TypeId>
+        <SubtypeId>LargeBlockRadioAntennaResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Antenna</DisplayName>
+      <Icon>Textures\antennaResearch.dds</Icon>
+      <Description>Description_RadioAntenna</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="6" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\antenna.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="30" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="5" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="2" ExclusionMask="1" PropertiesMask="2" Side="Bottom" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\AntennaConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\AntennaConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\AntennaConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>AntennaResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <BuildTimeSeconds>200.0</BuildTimeSeconds>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <DamageEffectName>Damage_Electrical_Damaged_Antenna</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>100</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_BeaconDefinition">
+      <Id>
+        <TypeId>Beacon</TypeId>
+        <SubtypeId>LargeBlockBeaconResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Beacon</DisplayName>
+      <Icon>Textures\beaconResearch.dds</Icon>
+      <Description>Description_Beacon</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="2" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\beacon.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="6" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.9" EndY="0.9" Side="Bottom" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="0.9" Side="Top" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.825" EndY="0.9" Side="Left" StartX="0.175" StartY="0.1"/>
+        <MountPoint EndX="0.825" EndY="0.9" Side="Right" StartX="0.175" StartY="0.1"/>
+        <MountPoint EndX="0.825" EndY="0.9" Side="Front" StartX="0.175" StartY="0.1"/>
+        <MountPoint EndX="0.825" EndY="0.9" Side="Back" StartX="0.175" StartY="0.1"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\BeaconConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\BeaconConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\BeaconConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>BeaconResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <MirroringY>Z</MirroringY>
+      <BuildTimeSeconds>200.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+
+      <!-- Beacon properties -->
+      <!-- Antenna info-->
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <MaxBroadcastRadius>50000</MaxBroadcastRadius>
+      <Flare>BeaconLarge</Flare>
+      <MaxBroadcastPowerDrainkW>20</MaxBroadcastPowerDrainkW>
+
+      <EmissiveColorPreset>Beacon</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>50</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+    <Definition xsi:type="MyObjectBuilder_RemoteControlDefinition">
+      <Id>
+        <TypeId>RemoteControl</TypeId>
+        <SubtypeId>LargeBlockRemoteControlResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Remote Control</DisplayName>
+      <Icon>Textures\RemoteControlResearch.dds</Icon>
+      <Description>Description_RemoteControl</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\RemoteControl.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="10" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="10" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.7" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.3" EndY="0.7" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Left" StartX="0.3" StartY="0"/>
+        <MountPoint EndX="0.7" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.7" Side="Right" StartX="0.7" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.7" Side="Top" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Large\RemoteControlConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\RemoteControlConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>RemoteControlResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>150.0</BuildTimeSeconds>
+      <MirroringY>Z</MirroringY>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.01</RequiredPowerInput>
+      <EnableFirstPerson>false</EnableFirstPerson>
+      <EnableShipControl>true</EnableShipControl>
+      <EnableBuilderCockpit>false</EnableBuilderCockpit>
+      <Public>true</Public>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_LaserAntennaDefinition">
+      <Id>
+        <TypeId>LaserAntenna</TypeId>
+        <SubtypeId>LargeBlockLaserAntennaResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Laser Antenna</DisplayName>
+      <Icon>Textures\LaserAntennaResearch.dds</Icon>
+      <Description>Description_LaserAntenna</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="2" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\LaserComBase.mwm</Model>
+      <PlaceDecals>false</PlaceDecals>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="40" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="10" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="2" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Front" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\LaserCom_Construction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\LaserCom_Construction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\LaserCom_Construction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>LaserAntennaResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>200.0</BuildTimeSeconds>
+      <MirroringY>Z</MirroringY>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <PowerInputIdle>0.0001</PowerInputIdle>
+      <PowerInputTurning>0.001</PowerInputTurning>
+      <PowerInputLasing>10</PowerInputLasing>
+      <MinElevationDegrees>-180</MinElevationDegrees>
+      <MaxElevationDegrees>180</MaxElevationDegrees>
+      <MinAzimuthDegrees>-180</MinAzimuthDegrees>
+      <MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+      <RotationRate>0.01</RotationRate>
+      <MaxRange>-1</MaxRange>
+      <RequireLineOfSight>true</RequireLineOfSight>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>100</PCU>
+    </Definition>
+
+  </CubeBlocks>
+</Definitions>

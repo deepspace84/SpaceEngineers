@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition xsi:type="MyObjectBuilder_DoorDefinition">
+      <Id>
+        <TypeId>Door</TypeId>
+        <SubtypeId>Research</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Doors</DisplayName>
+      <Icon>Textures\doorResearch.dds</Icon>
+      <Description>Description_Door</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\door.mwm</Model>
+      <PlaceDecals>false</PlaceDecals>
+      <OpenSound>BlockDoorSmallOpen</OpenSound>
+      <CloseSound>BlockDoorSmallClose</CloseSound>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.6" EndY="1" PropertiesMask="1" Side="Left" StartX="0.4" StartY="0"/>
+        <MountPoint EndX="0.6" EndY="1" PropertiesMask="1" Side="Right" StartX="0.4" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.6" ExclusionMask="1" PropertiesMask="2" Side="Top" StartX="0" StartY="0.4"/>
+        <MountPoint Default="true" EndX="0.25" EndY="0.675" Side="Bottom" StartX="0" StartY="0.325"/>
+        <MountPoint EndX="1" EndY="0.675" Side="Bottom" StartX="0.75" StartY="0.325"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\DoorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\DoorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\DoorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>DoorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <DisassembleRatio>1.5</DisassembleRatio>
+      <ResourceSinkGroup>Doors</ResourceSinkGroup>
+      <MaxOpen>1.2</MaxOpen>
+      <OpeningSpeed>3</OpeningSpeed>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyed_Large</DestroyEffect>
+      <DestroySound>PoofExplosionCat3</DestroySound>
+      <PCU>115</PCU>
+    </Definition>
+
+
+
+    <Definition xsi:type="MyObjectBuilder_AirtightHangarDoorDefinition">
+      <Id>
+        <TypeId>AirtightHangarDoor</TypeId>
+        <SubtypeId>Research</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Hangar Doors</DisplayName>
+      <Icon>Textures\HangarDoorResearch.dds</Icon>
+      <Description>Description_HangarDoor</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="3" z="1"/>
+      <ModelOffset x="0" y="2.5" z="0"/>
+      <Center x="0" y="2" z="0"/>
+      <Model>Models\Cubes\Large\HangarDoor_base.mwm</Model>
+      <Sound>BlockDoorHangar</Sound>
+      <PlaceDecals>false</PlaceDecals>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="6" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <Component Count="2" Subtype="PrototypeSpace">
+        <DeconstructId>
+          <TypeId>Ore</TypeId>
+          <SubtypeId>Scrap</SubtypeId>
+        </DeconstructId>
+      </Component>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.3" EndY="3" Side="Left" StartX="0.15" StartY="2"/>
+        <MountPoint EndX="0.3" EndY="3" Side="Right" StartX="0.15" StartY="2"/>
+        <MountPoint EndX="0.85" EndY="3" Side="Left" StartX="0.7" StartY="2"/>
+        <MountPoint EndX="0.85" EndY="3" Side="Right" StartX="0.7" StartY="2"/>
+        <MountPoint Default="true" EndX="1" EndY="0.96" Side="Top" StartX="0" StartY="0.04"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HangarDoorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\large\HangarDoorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HangarDoorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>AirtightHangarDoorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <ResourceSinkGroup>Doors</ResourceSinkGroup>
+      <PowerConsumptionIdle>0.00001</PowerConsumptionIdle>
+      <PowerConsumptionMoving>0.001</PowerConsumptionMoving>
+      <OpeningSpeed>0.1</OpeningSpeed>
+      <SubpartMovementDistance>2.5</SubpartMovementDistance>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <UseNeighbourOxygenRooms>true</UseNeighbourOxygenRooms>
+      <PhysicalMaterial>Metal</PhysicalMaterial>
+      <DestroyEffect>BlockDestroyed_Large</DestroyEffect>
+      <DestroySound>PoofExplosionCat3</DestroySound>
+      <PCU>115</PCU>
+    </Definition>
+
+
+    <!-- Region Blast Doors -->
+
+
+
+
+
+
+
+
+    <!-- Region Blast Doors End -->
+  </CubeBlocks>
+</Definitions>

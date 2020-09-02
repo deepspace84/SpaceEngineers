@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <!-- Decorative Blocks -->
+
+    <Definition xsi:type="MyObjectBuilder_CockpitDefinition">
+      <Id>
+        <TypeId>Cockpit</TypeId>
+        <SubtypeId>LargeBlockDeskResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Workplace</DisplayName>
+      <Icon>Textures\DeskResearch.dds</Icon>
+      <Description>Description_Desk</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <Model>Models\Cubes\Large\Desk.mwm</Model>
+      <CharacterAnimation>Table_Sitting_Pose</CharacterAnimation>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="0.1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.1" EndY="0.32" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.3" EndY="0.37" Side="Left" StartX="0" StartY="0.32"/>
+        <MountPoint EndX="1" EndY="0.32" Side="Right" StartX="0.9" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.37" Side="Right" StartX="0.7" StartY="0.32"/>
+        <MountPoint EndX="1" EndY="0.37" Side="Front" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\DeskConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\DeskConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\DeskConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <VoxelPlacement>
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <BlockPairName>DeskResearch</BlockPairName>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <EdgeType>Light</EdgeType>
+      <EnableFirstPerson>true</EnableFirstPerson>
+      <EnableShipControl>false</EnableShipControl>
+      <EnableBuilderCockpit>false</EnableBuilderCockpit>
+      <IsPressurized>false</IsPressurized>
+      <HasInventory>false</HasInventory>
+      <BuildTimeSeconds>70.0</BuildTimeSeconds>
+      <PCU>15</PCU>
+      <DLC>DecorativeBlocks</DLC>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+
+
+
+
+    <Definition xsi:type="MyObjectBuilder_KitchenDefinition">
+      <Id>
+        <TypeId>Kitchen</TypeId>
+        <SubtypeId>LargeBlockKitchenResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Livingquarters</DisplayName>
+      <Icon>Textures\KitchenResearch.dds</Icon>
+      <Description>Description_Kitchen</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <Model>Models\Cubes\Large\Kitchen.mwm</Model>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="0.25" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.25" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0.75" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.35" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Front" StartX="0" StartY="0.72"/>
+        <MountPoint EndX="0.1" EndY="0.72" Side="Front" StartX="0" StartY="0.35"/>
+        <MountPoint EndX="1" EndY="0.72" Side="Front" StartX="0.9" StartY="0.35"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0.75"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\KitchenConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\KitchenConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\KitchenConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>KitchenResearch</BlockPairName>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <EdgeType>Light</EdgeType>
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+      <BuildTimeSeconds>70.0</BuildTimeSeconds>
+      <PCU>1</PCU>
+      <DLC>DecorativeBlocks</DLC>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
+      <Id>
+        <TypeId>CargoContainer</TypeId>
+        <SubtypeId>LargeBlockLockerRoomResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Personal Storage</DisplayName>
+      <Icon>Textures\LockerRoomResearch.dds</Icon>
+      <Description>Description_LockerRoomCorner</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <Model>Models\Cubes\Large\LockerRoom.mwm</Model>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Back" StartX="0" StartY="0.9"/>
+        <MountPoint EndX="0.1" EndY="0.9" Side="Back" StartX="0" StartY="0.1"/>
+        <MountPoint EndX="1" EndY="0.9" Side="Back" StartX="0.8" StartY="0.1"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\LockerRoomConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\LockerRoomConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\LockerRoomConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>LockerRoomResearch</BlockPairName>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <EdgeType>Light</EdgeType>
+      <EmissiveColorPreset>Basic</EmissiveColorPreset>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <BuildTimeSeconds>70.0</BuildTimeSeconds>
+      <PCU>10</PCU>
+      <DLC>DecorativeBlocks</DLC>
+    </Definition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- End of Decorative Blocks -->
+  </CubeBlocks>
+</Definitions>

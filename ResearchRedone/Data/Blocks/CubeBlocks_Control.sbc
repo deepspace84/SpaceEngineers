@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition>
+      <Id>
+        <TypeId>TerminalBlock</TypeId>
+        <SubtypeId>ControlPanelResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Control Panel</DisplayName>
+      <Icon>Textures\Control PanelResearch.dds</Icon>
+      <Description>Description_ControlPanel</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\ControlPanel.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.55" EndY="0.6" ExclusionMask="3" PropertiesMask="3" Side="Back" StartX="0.44" StartY="0.4"/>
+      </MountPoints>
+      <IsStandAlone>false</IsStandAlone>
+      <HasPhysics>false</HasPhysics>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ControlPanelConstruction_1.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ControlPanelResearch</BlockPairName>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>30.0</BuildTimeSeconds>
+      <DestroyEffectOffset>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>1.1</Z>
+      </DestroyEffectOffset>
+      <PCU>5</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+    <!-- Region Cockpits -->
+    <Definition xsi:type="MyObjectBuilder_CockpitDefinition">
+      <Id>
+        <TypeId>Cockpit</TypeId>
+        <SubtypeId>LargeBlockCockpitResearch</SubtypeId>
+        <!-- Station control seat -->
+      </Id>
+      <DisplayName>Prototype: Cockpits</DisplayName>
+      <Icon>Textures\CockpitResearch.dds</Icon>
+      <Description>Description_ControlStation</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CockpitLarge.mwm</Model>
+      <CharacterAnimation>cockpit23</CharacterAnimation>
+      <UsesDeformation>false</UsesDeformation>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="6" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.7" EndY="0.85" Side="Bottom" StartX="0.3" StartY="0.25"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CockpitLargeConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CockpitLargeConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CockpitLargeConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <ScreenAreas>
+        <ScreenArea DisplayName="DisplayName_Screen_Large" Name="CockpitScreen_01" ScreenHeight="3" ScreenWidth="5" TextureResolution="512"/>
+      </ScreenAreas>
+      <BlockPairName>CockpitLargeResearch</BlockPairName>
+      <VoxelPlacement>
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>150.0</BuildTimeSeconds>
+      <EnableFirstPerson>true</EnableFirstPerson>
+      <EnableShipControl>true</EnableShipControl>
+      <EnableBuilderCockpit>false</EnableBuilderCockpit>
+      <IsPressurized>false</IsPressurized>
+      <DeformationRatio>0.2</DeformationRatio>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <PrimarySound>BlockCockpitLrg</PrimarySound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <RaycastOffset>
+        <X>0.016</X>
+        <Y>0.4983</Y>
+        <Z>0.15</Z>
+      </RaycastOffset>
+      <PCU>50</PCU>
+      <IsAirTight>false</IsAirTight>
+      <IsDefault3rdView>true</IsDefault3rdView>
+    </Definition>
+
+
+    <Definition xsi:type="MyObjectBuilder_CockpitDefinition">
+      <Id>
+        <TypeId>Cockpit</TypeId>
+        <SubtypeId>DBSmallBlockFighterCockpitResearch</SubtypeId>
+        <!-- Fighter cockpit -->
+      </Id>
+      <DisplayName>Prototype: Fighter Cockpit</DisplayName>
+      <Icon>Textures\FighterCockpitResearch.dds</Icon>
+      <Description>Description_FighterCockpit</Description>
+      <CubeSize>Small</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="4" z="6"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\small\CockpitFighter.mwm</Model>
+      <PrimarySound>BlockCockpitSm</PrimarySound>
+      <InteriorModel>Models\Cubes\small\CockpitFighterInterior.mwm</InteriorModel>
+      <CharacterAnimation>FighterCockpitPosture</CharacterAnimation>
+      <UsesDeformation>false</UsesDeformation>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="3" EndY="6" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="3.5" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="2.5" EndY="4" Side="Back" StartX="0.5" StartY="3.5"/>
+        <MountPoint EndX="3" EndY="1.5" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="2.5" EndY="2" Side="Front" StartX="0.5" StartY="1.5"/>
+        <MountPoint EndX="6" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="5" EndY="2" Side="Left" StartX="4" StartY="1"/>
+        <MountPoint EndX="6" EndY="3" Side="Left" StartX="5" StartY="1"/>
+        <MountPoint EndX="6" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="3" Side="Right" StartX="0" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Right" StartX="1" StartY="1"/>
+      </MountPoints>
+      <ScreenAreas>
+        <ScreenArea DisplayName="DisplayName_Screen_TopCenter" Name="CockpitScreen_01" ScreenHeight="3" ScreenWidth="5" Script="TSS_ArtificialHorizon" TextureResolution="256"/>
+        <ScreenArea DisplayName="DisplayName_Screen_TopLeft" Name="CockpitScreen_02" ScreenHeight="2" ScreenWidth="3" Script="TSS_ClockAnalog" TextureResolution="128"/>
+        <ScreenArea DisplayName="DisplayName_Screen_TopRight" Name="CockpitScreen_03" ScreenHeight="2" ScreenWidth="3" Script="TSS_Gravity" TextureResolution="128"/>
+        <ScreenArea DisplayName="DisplayName_Screen_Keyboard" Name="CockpitScreen_04" ScreenHeight="3" ScreenWidth="7" Script="TSS_EnergyHydrogen" TextureResolution="128"/>
+        <ScreenArea DisplayName="DisplayName_Screen_BottomCenter" Name="CockpitScreen_05" ScreenHeight="5" ScreenWidth="4" TextureResolution="256"/>
+        <ScreenArea DisplayName="DisplayName_Screen_Numpad" Name="CockpitScreen_06" ScreenHeight="5" ScreenWidth="4" TextureResolution="128"/>
+      </ScreenAreas>
+      <VoxelPlacement>
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\small\CockpitFighterConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\small\CockpitFighterConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.0" File="Models\Cubes\small\CockpitFighterConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>DBLargeBlockFighterCockpitResearch</BlockPairName>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <BuildTimeSeconds>170.0</BuildTimeSeconds>
+      <EdgeType>Light</EdgeType>
+      <EnableFirstPerson>true</EnableFirstPerson>
+      <EnableShipControl>true</EnableShipControl>
+      <EnableBuilderCockpit>true</EnableBuilderCockpit>
+      <DeformationRatio>0.2</DeformationRatio>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <OxygenCapacity>60</OxygenCapacity>
+      <PrimarySound>BlockCockpitSm</PrimarySound>
+      <IsPressurized>true</IsPressurized>
+      <GetInSound>ShipSmCockpitIn</GetInSound>
+      <GetOutSound>ShipSmCockpitOut</GetOutSound>
+      <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <RaycastOffset>
+        <X>0.005</X>
+        <Y>0.435</Y>
+        <Z>0.15</Z>
+      </RaycastOffset>
+      <PCU>150</PCU>
+    </Definition>
+
+    <!-- End region Cockpits -->
+
+    <Definition xsi:type="MyObjectBuilder_GyroDefinition">
+      <Id>
+        <TypeId>Gyro</TypeId>
+        <SubtypeId>LargeBlockGyroResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Gyroscope</DisplayName>
+      <Icon>Textures\gyroResearch.dds</Icon>
+      <Description>Description_Gyroscope</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\gyroscope.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GyroscopeConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GyroscopeConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GyroscopeConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>GyroscopeResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>200.0</BuildTimeSeconds>
+      <PrimarySound>BlockGyroscope</PrimarySound>
+
+      <ResourceSinkGroup>Gyro</ResourceSinkGroup>
+      <ForceMagnitude>3.36E+07</ForceMagnitude>
+      <RequiredPowerInput>0.01</RequiredPowerInput>
+
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>50</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+
+
+
+  </CubeBlocks>
+</Definitions>

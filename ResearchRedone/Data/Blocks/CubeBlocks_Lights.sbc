@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition xsi:type="MyObjectBuilder_ReflectorBlockDefinition">
+      <Id>
+        <TypeId>ReflectorLight</TypeId>
+        <SubtypeId>LargeBlockFrontLightResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Spotlight</DisplayName>
+      <Icon>Textures\lightResearch.dds</Icon>
+      <Description>Description_ReflectorLight</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\light.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="1" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.8" EndY="0.8" Side="Back" StartX="0.2" StartY="0.2"/>
+        <MountPoint EndX="0.9" EndY="0.62" Side="Left" StartX="0.5" StartY="0.38"/>
+        <MountPoint EndX="0.5" EndY="0.62" Side="Right" StartX="0.1" StartY="0.38"/>
+        <MountPoint EndX="0.62" EndY="0.9" Side="Bottom" StartX="0.38" StartY="0.5"/>
+        <MountPoint EndX="0.62" EndY="0.5" Side="Top" StartX="0.38" StartY="0.1"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\LightConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\LightConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\LightConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ReflectorLightResearch</BlockPairName>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <LightRadius Default="5" Max="10" Min="2"/>
+      <LightReflectorRadius Default="120" Max="160" Min="10"/>
+      <LightFalloff Default="1.5" Max="3" Min="1"/>
+      <LightIntensity Default="1" Max="5" Min="0.5"/>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.001</RequiredPowerInput>
+      <Flare>SpotlightLarge</Flare>
+      <ReflectorThickness>11</ReflectorThickness>
+      <ReflectorTexture>Textures\Lights\reflector_large.dds</ReflectorTexture>
+      <ReflectorConeDegrees>52</ReflectorConeDegrees>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <DestroyEffect>BlockDestroyed_Large</DestroyEffect>
+      <DestroySound>PoofExplosionCat3</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_LightingBlockDefinition">
+      <Id>
+        <TypeId>InteriorLight</TypeId>
+        <SubtypeId>SmallLightResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Light</DisplayName>
+      <Icon>Textures\interior_lightResearch.dds</Icon>
+      <Description>Description_InteriorLight</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\InteriorLight.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="1" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.6" EndY="0.55" ExclusionMask="3" PropertiesMask="3" Side="Back" StartX="0.4" StartY="0.44"/>
+      </MountPoints>
+      <IsStandAlone>false</IsStandAlone>
+      <HasPhysics>false</HasPhysics>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\InteriorLightConstruction_1.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>InteriorLightResearch</BlockPairName>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>15.0</BuildTimeSeconds>
+      <LightRadius Default="3.6" Max="20" Min="1"/>
+      <LightFalloff Default="1.3" Max="3" Min="0"/>
+      <LightIntensity Default="5" Max="10" Min="0.5"/>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.00006</RequiredPowerInput>
+      <Flare>InteriorLight</Flare>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <DestroyEffect>BlockDestroyed_Small</DestroyEffect>
+      <DestroyEffectOffset>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>1.1</Z>
+      </DestroyEffectOffset>
+      <DestroySound>PoofExplosionCat1</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+
+
+  </CubeBlocks>
+</Definitions>

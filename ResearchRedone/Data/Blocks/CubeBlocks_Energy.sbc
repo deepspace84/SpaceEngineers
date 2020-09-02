@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <!-- Region BatteryBlock-->
+    <Definition xsi:type="MyObjectBuilder_BatteryBlockDefinition">
+      <Id>
+        <TypeId>BatteryBlock</TypeId>
+        <SubtypeId>LargeBlockBatteryBlockResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Battery</DisplayName>
+      <Icon>Textures\BatteryResearch.dds</Icon>
+      <Description>Description_Battery</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\BatteryLarge.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\BatteryLargeConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\BatteryLargeConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\BatteryLargeConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>BatteryBlockResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>200.0</BuildTimeSeconds>
+
+      <ResourceSourceGroup>Battery</ResourceSourceGroup>
+      <MaxPowerOutput>12</MaxPowerOutput>
+
+      <ResourceSinkGroup>BatteryBlock</ResourceSinkGroup>
+      <RequiredPowerInput>12</RequiredPowerInput>
+      <AdaptibleInput>true</AdaptibleInput>
+      <MaxStoredPower>3</MaxStoredPower>
+      <InitialStoredPowerRatio>0.3</InitialStoredPowerRatio>
+
+      <InventorySize>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>1</Z>
+      </InventorySize>
+      <Public>true</Public>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>15</PCU>
+      <IsAirTight>true</IsAirTight>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+    </Definition>
+
+
+    <!-- End Region BatteryBlock-->
+
+    <!-- Region -->
+
+
+    <Definition xsi:type="MyObjectBuilder_ReactorDefinition">
+      <Id>
+        <TypeId>Reactor</TypeId>
+        <SubtypeId>LargeBlockSmallGeneratorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Small Reactor</DisplayName>
+      <Icon>Textures\nuclear_reactorResearch.dds</Icon>
+      <Description>Description_Reactor</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\GeneratorSmall.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="50" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="30" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="10" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Top" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Back" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.7" EndY="0.7" Side="Right" StartX="0.3" StartY="0.3"/>
+        <MountPoint EndX="0.7" EndY="0.7" Side="Left" StartX="0.3" StartY="0.3"/>
+        <MountPoint Default="true" EndX="0.7" EndY="0.7" Side="Bottom" StartX="0.3" StartY="0.3"/>
+        <MountPoint EndX="0.7" EndY="0.7" Side="Front" StartX="0.3" StartY="0.3"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GeneratorSmallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GeneratorSmallConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GeneratorSmallConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>SmallReactorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>200.0</BuildTimeSeconds>
+
+      <ResourceSourceGroup>Reactors</ResourceSourceGroup>
+      <MaxPowerOutput>15</MaxPowerOutput>
+
+      <InventorySize>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>1</Z>
+      </InventorySize>
+
+      <!-- 
+                Values are volume fill ratio, means how much fuel reactor pulls from conveyor system to the inventory.
+                If volume fill ratio is bellow minimum, reactor starts pulling fuel up to maximum value.
+                Warning: Changing these values will affect performance.
+            -->
+      <InventoryFillFactorMin>0.0005</InventoryFillFactorMin>
+      <InventoryFillFactorMax>0.001</InventoryFillFactorMax>
+
+      <!-- 
+                This is how much of fuel is pulled from conveyor system in one tick.
+                It's in minutes, means that it will pull X minutes of fuel in one tick.
+                Warning: Changing this value will affect performance.
+            -->
+      <FuelPullAmountFromConveyorInMinutes>10.0</FuelPullAmountFromConveyorInMinutes>
+
+      <FuelInfos>
+        <FuelInfo>
+          <Id>
+            <TypeId>Ingot</TypeId>
+            <SubtypeId>UraniumResearch</SubtypeId>
+          </Id>
+        </FuelInfo>
+      </FuelInfos>
+
+      <PrimarySound>ShipLrgNuclearSm</PrimarySound>
+      <DamageEffectName>Damage_Reactor_Damaged</DamageEffectName>
+      <DamagedSound>ParticleReactor</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+      <TieredUpdateTimes>
+        <unsignedInt>900</unsignedInt>
+        <unsignedInt>1800</unsignedInt>
+        <unsignedInt>3600</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_ReactorDefinition">
+      <Id>
+        <TypeId>Reactor</TypeId>
+        <SubtypeId>LargeBlockLargeGeneratorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Large Reactor</DisplayName>
+      <Icon>Textures\nuclear_reactor_largeResearch.dds</Icon>
+      <Description>Description_Reactor</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="3" z="3"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\GeneratorLarge.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="100" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="50" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="25" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="2" EndY="2" Side="Right" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Left" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Top" StartX="1" StartY="1"/>
+        <MountPoint Default="true" EndX="2" EndY="2" Side="Bottom" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Front" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Back" StartX="1" StartY="1"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.16" File="Models\Cubes\Large\GeneratorLargeConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GeneratorLargeConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Large\GeneratorLargeConstruction_3.mwm"/>
+        <Model BuildPercentUpperBound="0.83" File="Models\Cubes\Large\GeneratorLargeConstruction_4.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GeneratorLargeConstruction_5.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>LargeReactorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>500.0</BuildTimeSeconds>
+      <ResourceSourceGroup>Reactors</ResourceSourceGroup>
+      <MaxPowerOutput>300</MaxPowerOutput>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
+
+      <!-- 
+                Values are volume fill ratio, means how much fuel reactor pulls from conveyor system to the inventory.
+                If volume fill ratio is bellow minimum, reactor starts pulling fuel up to maximum value.
+                Warning: Changing these values will affect performance.
+            -->
+      <InventoryFillFactorMin>0.001</InventoryFillFactorMin>
+      <InventoryFillFactorMax>0.002</InventoryFillFactorMax>
+
+      <!-- 
+                This is how much of fuel is pulled from conveyor system in one tick.
+                It's in minutes, means that it will pull X minutes of fuel in one tick.
+                Warning: Changing this value will affect performance.
+            -->
+      <FuelPullAmountFromConveyorInMinutes>10.0</FuelPullAmountFromConveyorInMinutes>
+
+      <FuelInfos>
+        <FuelInfo>
+          <Id>
+            <TypeId>Ingot</TypeId>
+            <SubtypeId>UraniumResearch</SubtypeId>
+          </Id>
+        </FuelInfo>
+      </FuelInfos>
+      <PrimarySound>ShipLrgNuclearLrg</PrimarySound>
+      <DamageEffectName>Damage_Reactor_Damaged</DamageEffectName>
+      <DamagedSound>ParticleReactor</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>Explosion_Warhead_30</DestroyEffect>
+      <DestroySound>WepLrgWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+      <TieredUpdateTimes>
+        <unsignedInt>900</unsignedInt>
+        <unsignedInt>1800</unsignedInt>
+        <unsignedInt>3600</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_HydrogenEngineDefinition">
+      <Id>
+        <TypeId>HydrogenEngine</TypeId>
+        <SubtypeId>LargeHydrogenEngineResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Hydrogen Engine</DisplayName>
+      <Description>Description_PowerGenerator</Description>
+      <Icon>Textures\HydrogenEngineLargeResearch.dds</Icon>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\HydrogenEngine.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="15" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="5" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.85" EndY="1.85" Side="Bottom" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Front" StartX="0.15" StartY="0.15"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\HydrogenEngine_Construction1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\HydrogenEngine_Construction2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\HydrogenEngine_Construction3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>HydrogenEngineResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>300.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Generators</ResourceSinkGroup>
+      <ResourceSourceGroup>Reactors</ResourceSourceGroup>
+      <MaxPowerOutput>5</MaxPowerOutput>
+      <FuelCapacity>500000</FuelCapacity>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <IsAirTight>false</IsAirTight>
+      <InventorySize>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>1</Z>
+      </InventorySize>
+      <FuelInfos>
+        <FuelInfo>
+          <Id>
+            <TypeId>GasProperties</TypeId>
+            <SubtypeId>HydrogenResearch</SubtypeId>
+          </Id>
+        </FuelInfo>
+      </FuelInfos>
+      <FuelProductionToCapacityMultiplier>0.005</FuelProductionToCapacityMultiplier>
+      <PrimarySound>ArcBlockHydrogenEngine</PrimarySound>
+
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+      <DestroyEffect>Explosion_Warhead_02</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+
+      <AnimationSpeed>5</AnimationSpeed>
+      <PistonAnimationMin>-0.15</PistonAnimationMin>
+      <PistonAnimationMax>0.01</PistonAnimationMax>
+      <PistonAnimationOffsets>
+        <float>0.5</float>
+        <float>0.0</float>
+        <float>0.0</float>
+        <float>0.0</float>
+        <float>0.5</float>
+        <float>0.0</float>
+        <float>0.5</float>
+        <float>0.5</float>
+        <float>0.0</float>
+        <float>0.5</float>
+      </PistonAnimationOffsets>
+      <AnimationSpinUpSpeed>5</AnimationSpinUpSpeed>
+      <AnimationSpinDownSpeed>5</AnimationSpinDownSpeed>
+      <PCU>25</PCU>
+    </Definition>
+
+    <!-- End Region Reactor-->
+
+
+
+
+  </CubeBlocks>
+</Definitions>

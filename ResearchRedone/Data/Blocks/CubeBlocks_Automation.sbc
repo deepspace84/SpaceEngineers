@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+
+    <Definition xsi:type="MyObjectBuilder_ProjectorDefinition">
+      <Id>
+        <TypeId>MyObjectBuilder_Projector</TypeId>
+        <SubtypeId>LargeProjectorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Projector</DisplayName>
+      <Icon>Textures\ProjectorResearch.dds</Icon>
+      <Description>Description_Projector</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Projector.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="30" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="5" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.66" EndY="0.66" Side="Bottom" StartX="0.33" StartY="0.33"/>
+        <MountPoint EndX="0.66" EndY="0.66" Side="Back" StartX="0.33" StartY="0.33"/>
+        <MountPoint EndX="0.66" EndY="0.66" Side="Front" StartX="0.33" StartY="0.33"/>
+        <MountPoint EndX="0.66" EndY="0.66" Side="Left" StartX="0.33" StartY="0.33"/>
+        <MountPoint EndX="0.66" EndY="0.66" Side="Right" StartX="0.33" StartY="0.33"/>
+        <MountPoint EndX="0.66" EndY="0.66" Side="Top" StartX="0.33" StartY="0.33"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ProjectorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ProjectorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ProjectorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ProjectorResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.0002</RequiredPowerInput>
+      <Public>true</Public>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <PrimarySound>BlockProjectorOn</PrimarySound>
+      <IdleSound>BlockProjectorOff</IdleSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>50</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+    <Definition xsi:type="MyObjectBuilder_SensorBlockDefinition">
+      <Id>
+        <TypeId>SensorBlock</TypeId>
+        <SubtypeId>LargeBlockSensorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Sensor</DisplayName>
+      <Icon>Textures\SensorResearch.dds</Icon>
+      <Description>Description_Sensor</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Sensor.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.6" EndY="0.6" Side="Back" StartX="0.4" StartY="0.4"/>
+      </MountPoints>
+      <IsStandAlone>false</IsStandAlone>
+      <HasPhysics>false</HasPhysics>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\large\SensorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\SensorConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <VoxelPlacement>
+        <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.4</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.4</MaxAllowed>
+          <MinAllowed>0.01</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <BlockPairName>SensorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <BuildTimeSeconds>30.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <MaxRange>50</MaxRange>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <ActionSound>BlockSensor</ActionSound>
+      <DestroyEffect>BlockDestroyed_Small</DestroyEffect>
+      <DestroyEffectOffset>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>1.1</Z>
+      </DestroyEffectOffset>
+      <DestroySound>PoofExplosionCat1</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_SoundBlockDefinition">
+      <Id>
+        <TypeId>SoundBlock</TypeId>
+        <SubtypeId>LargeBlockSoundBlockResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Sound Block</DisplayName>
+      <Icon>Textures\SoundBlockResearch.dds</Icon>
+      <Description>Description_Sound</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\SoundBlock.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="1" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.6" EndY="0.6" Side="Back" StartX="0.4" StartY="0.4"/>
+      </MountPoints>
+      <IsStandAlone>false</IsStandAlone>
+      <HasPhysics>false</HasPhysics>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Large\SoundBlockConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\SoundBlockConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <VoxelPlacement>
+        <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.4</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.4</MaxAllowed>
+          <MinAllowed>0.01</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <BlockPairName>SoundBlockResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>30.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <DestroyEffect>BlockDestroyed_Small</DestroyEffect>
+      <DestroyEffectOffset>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>1.1</Z>
+      </DestroyEffectOffset>
+      <DestroySound>PoofExplosionCat1</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+    <!--Region Buttons-->
+    <Definition xsi:type="MyObjectBuilder_ButtonPanelDefinition">
+      <Id>
+        <TypeId>ButtonPanel</TypeId>
+        <SubtypeId>ButtonPanelLargeResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Buttons</DisplayName>
+      <Icon>Textures\ButtonPanelResearch.dds</Icon>
+      <Description>Description_ButtonPanel</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\ButtonPanel.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="0.4" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="1" EndY="0.1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.1" EndY="0.4" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.4" Side="Right" StartX="0.9" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ButtonPanelConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ButtonPanelConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ButtonPanelConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ButtonPanelResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <BuildTimeSeconds>50.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <ButtonCount>4</ButtonCount>
+      <ButtonSymbols>
+        <string>Textures\GUI\Icons\buttons\OneButton.dds</string>
+        <string>Textures\GUI\Icons\buttons\TwoButton.dds</string>
+        <string>Textures\GUI\Icons\buttons\ThreeButton.dds</string>
+        <string>Textures\GUI\Icons\buttons\FourButton.dds</string>
+      </ButtonSymbols>
+      <UnassignedButtonColor>
+        <X>0.34</X>
+        <Y>0.34</Y>
+        <Z>0.34</Z>
+        <W>0</W>
+      </UnassignedButtonColor>
+      <ButtonColors>
+        <Vector4>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>0.3</Z>
+          <W>1</W>
+        </Vector4>
+        <Vector4>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>0.3</Z>
+          <W>1</W>
+        </Vector4>
+        <Vector4>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>0.3</Z>
+          <W>1</W>
+        </Vector4>
+        <Vector4>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>0.3</Z>
+          <W>1</W>
+        </Vector4>
+      </ButtonColors>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>5</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+    <!--End Region Buttons-->
+    <Definition xsi:type="MyObjectBuilder_TimerBlockDefinition">
+      <Id>
+        <TypeId>TimerBlock</TypeId>
+        <SubtypeId>TimerBlockLargeResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Timer</DisplayName>
+      <Icon>Textures\TimerBlockResearch.dds</Icon>
+      <Description>Description_Timer</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\TimerBlock.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="5" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\TimerBlockConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\TimerBlockConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\TimerBlockConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>TimerBlockResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <BuildTimeSeconds>50.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <PrimarySound>BlockTimer</PrimarySound>
+      <TimerSoundStart>BlockTimerSignalA</TimerSoundStart>
+      <TimerSoundMid>BlockTimerSignalB</TimerSoundMid>
+      <TimerSoundEnd>BlockTimerSignalC</TimerSoundEnd>
+      <EmissiveColorPreset>Timer</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_ProgrammableBlockDefinition">
+      <Id>
+        <TypeId>MyProgrammableBlock</TypeId>
+        <SubtypeId>LargeProgrammableBlockResearch</SubtypeId>
+      </Id>
+      <Public>true</Public>
+      <DisplayName>Prototype: Programmable Block</DisplayName>
+      <Icon>Textures\ProgrammingBlockResearch.dds</Icon>
+      <Description>Description_ProgrammableBlock</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\ProgrammingBlock.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="20" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="3" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ProgrammingBlockConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ProgrammingBlockConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ProgrammingBlockConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <ScreenAreas>
+        <ScreenArea DisplayName="DisplayName_Screen_Large" Name="CockpitScreen_02" ScreenHeight="10" ScreenWidth="16" TextureResolution="512"/>
+        <ScreenArea DisplayName="DisplayName_Screen_Keyboard" Name="CockpitScreen_01" ScreenHeight="2" ScreenWidth="5" TextureResolution="256"/>
+      </ScreenAreas>
+      <BlockPairName>ProgrammableBlockResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <MountPoints>
+        <MountPoint EndX="1.0" EndY="1.0" Side="Bottom" StartX="0.0" StartY="0"/>
+      </MountPoints>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>100</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+  </CubeBlocks>
+</Definitions>
