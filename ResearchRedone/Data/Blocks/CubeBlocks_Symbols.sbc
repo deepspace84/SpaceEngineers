@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <!-- Block Letters-->
+
+    <Definition>
+      <Id>
+        <TypeId>CubeBlock</TypeId>
+        <SubtypeId>LargeSymbolAResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Lettering</DisplayName>
+      <Icon>Textures\Symbol_AResearch.dds</Icon>
+      <Description>Description_Letters</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Symbol_A.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="1" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="0.8" EndY="0.7" ExclusionMask="3" PropertiesMask="3" Side="Bottom" StartX="0.2" StartY="0.3"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Symbol_AConstruction_1.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>SymbolAResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>20.0</BuildTimeSeconds>
+      <PCU>1</PCU>
+    </Definition>
+  </CubeBlocks>
+</Definitions>

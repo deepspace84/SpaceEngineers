@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+
+    <Definition xsi:type="MyObjectBuilder_ShipDrillDefinition">
+      <Id>
+        <TypeId>Drill</TypeId>
+        <SubtypeId>LargeBlockDrillResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Ship Drill</DisplayName>
+      <Icon>Textures\drillResearch.dds</Icon>
+      <Description>Description_Drill</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="3"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\drill.mwm</Model>
+      <PlaceDecals>false</PlaceDecals>
+      <UseModelIntersection>true</UseModelIntersection>
+      <UsesDeformation>false</UsesDeformation>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="3" Side="Bottom" StartX="0" StartY="2"/>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="1" Side="Left" StartX="2" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\DrillConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\DrillConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\DrillConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <VoxelPlacement>
+        <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0.01</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <BlockPairName>DrillResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>150.0</BuildTimeSeconds>
+      <Center x="0" y="0" z="2"/>
+
+      <ResourceSinkGroup>Defense</ResourceSinkGroup>
+      <SensorRadius>1.9</SensorRadius>
+      <SensorOffset>2.8</SensorOffset>
+      <CutOutRadius>1.9</CutOutRadius>
+      <CutOutOffset>2.8</CutOutOffset>
+      <ParticleOffset>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>-3.6</Z>
+      </ParticleOffset>
+
+      <DeformationRatio>0.2</DeformationRatio>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <PrimarySound>ToolShipDrillIdle</PrimarySound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>190</PCU>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_ShipGrinderDefinition">
+      <Id>
+        <TypeId>ShipGrinder</TypeId>
+        <SubtypeId>LargeShipGrinderResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Ship Grinder</DisplayName>
+      <Icon>Textures\GrinderResearch.dds</Icon>
+      <Description>Description_ShipGrinder</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Center x="0" y="0" z="1"/>
+      <Model>Models\Cubes\Large\Grinder.mwm</Model>
+      <UseModelIntersection>true</UseModelIntersection>
+      <UsesDeformation>false</UsesDeformation>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GrinderConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GrinderConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GrinderConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <VoxelPlacement>
+        <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0.01</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <MountPoints>
+        <MountPoint EndX="1.92" EndY="0.80" Side="Left" StartX="1.18" StartY="0.20"/>
+        <MountPoint EndX="0.82" EndY="0.80" Side="Right" StartX="0.08" StartY="0.20"/>
+        <MountPoint EndX="0.70" EndY="0.70" Side="Top" StartX="0.30" StartY="0.30"/>
+        <MountPoint EndX="0.70" EndY="1.70" Side="Bottom" StartX="0.30" StartY="1.30"/>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BlockPairName>ShipGrinderResearch</BlockPairName>
+      <MirroringZ>X</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <Public>true</Public>
+      <BuildTimeSeconds>120.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <Flare/>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <SensorRadius>1.4</SensorRadius>
+      <PCU>100</PCU>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_ShipWelderDefinition">
+      <Id>
+        <TypeId>ShipWelder</TypeId>
+        <SubtypeId>LargeShipWelderResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Ship Welder</DisplayName>
+      <Icon>Textures\WelderResearch.dds</Icon>
+      <Description>Description_ShipWelder</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Center x="0" y="0" z="1"/>
+      <Model>Models\Cubes\Large\Welder.mwm</Model>
+      <UseModelIntersection>true</UseModelIntersection>
+      <UsesDeformation>false</UsesDeformation>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\WelderConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\WelderConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\WelderConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <VoxelPlacement>
+        <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+        <StaticMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>OutsideVoxel</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0.01</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <MountPoints>
+        <MountPoint EndX="1.92" EndY="0.80" Side="Left" StartX="1.18" StartY="0.20"/>
+        <MountPoint EndX="0.82" EndY="0.80" Side="Right" StartX="0.08" StartY="0.20"/>
+        <MountPoint EndX="0.70" EndY="0.70" Side="Top" StartX="0.30" StartY="0.30"/>
+        <MountPoint EndX="0.70" EndY="1.70" Side="Bottom" StartX="0.30" StartY="1.30"/>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BlockPairName>ShipWelderResearch</BlockPairName>
+      <MirroringZ>X</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <Public>true</Public>
+      <BuildTimeSeconds>120.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <Flare>ShipWelderLarge</Flare>
+      <EmissiveColorPreset>Welder</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <SensorRadius>2.26</SensorRadius>
+      <PCU>150</PCU>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_OreDetectorDefinition">
+      <Id>
+        <TypeId>OreDetector</TypeId>
+        <SubtypeId>LargeOreDetectorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Ore Detector</DisplayName>
+      <Icon>Textures\detectorResearch.dds</Icon>
+      <Description>Description_OreDetector</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\OreDetector.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="2" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <Center x="0" y="0" z="1"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="2" EndY="1" Side="Left" StartX="1" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="2" Side="Bottom" StartX="0" StartY="1"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\OreDetectorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\OreDetectorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\OreDetectorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>OreDetectorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>150.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <MaximumRange>150</MaximumRange>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>40</PCU>
+    </Definition>
+
+  </CubeBlocks>
+</Definitions>

@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+
+    <Definition xsi:type="MyObjectBuilder_GasTankDefinition">
+      <Id>
+        <TypeId>OxygenTank</TypeId>
+        <SubtypeId>Research</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Small Oxygen Tank</DisplayName>
+      <Icon>Textures\OxygenTankResearch.dds</Icon>
+      <Description>Description_OxygenTank</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="2" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\OxygenStorage.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="6" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="0.9" EndY="0.9" Side="Top" StartX="0.1" StartY="0.1"/>
+        <MountPoint Default="true" EndX="0.9" EndY="0.9" Side="Bottom" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="0.3" Side="Front" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="1.1" Side="Front" StartX="0.1" StartY="0.9"/>
+        <MountPoint EndX="0.9" EndY="1.9" Side="Front" StartX="0.1" StartY="1.7"/>
+        <MountPoint EndX="0.9" EndY="0.3" Side="Back" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="1.1" Side="Back" StartX="0.1" StartY="0.9"/>
+        <MountPoint EndX="0.9" EndY="1.9" Side="Back" StartX="0.1" StartY="1.7"/>
+        <MountPoint EndX="0.9" EndY="0.3" Side="Left" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="1.1" Side="Left" StartX="0.1" StartY="0.9"/>
+        <MountPoint EndX="0.9" EndY="1.9" Side="Left" StartX="0.1" StartY="1.7"/>
+        <MountPoint EndX="0.9" EndY="0.3" Side="Right" StartX="0.1" StartY="0.1"/>
+        <MountPoint EndX="0.9" EndY="1.1" Side="Right" StartX="0.1" StartY="0.9"/>
+        <MountPoint EndX="0.9" EndY="1.9" Side="Right" StartX="0.1" StartY="1.7"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\OxygenStorageConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\OxygenStorageConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\OxygenStorageConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>OxygenTankResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <ResourceSourceGroup>Reactors</ResourceSourceGroup>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <OperationalPowerConsumption>0.001</OperationalPowerConsumption>
+      <StandbyPowerConsumption>0.000001</StandbyPowerConsumption>
+      <Capacity>100000</Capacity>
+      <InventoryMaxVolume>4</InventoryMaxVolume>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
+      <StoredGasId>
+        <TypeId>GasProperties</TypeId>
+        <SubtypeId>OxygenResearch</SubtypeId>
+      </StoredGasId>
+      <BlueprintClasses>
+        <Class>OxygenBottles</Class>
+      </BlueprintClasses>
+      <BuildTimeSeconds>160.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+      <DestroyEffect>Explosion_Missile</DestroyEffect>
+      <DestroySound>WepSmallMissileExpl</DestroySound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+      <TieredUpdateTimes>
+        <unsignedInt>100</unsignedInt>
+        <unsignedInt>300</unsignedInt>
+        <unsignedInt>600</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_GasTankDefinition">
+      <Id>
+        <TypeId>OxygenTank</TypeId>
+        <SubtypeId>LargeHydrogenTankResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Large Hydrogen Tank</DisplayName>
+      <Icon>Textures\HydrogenTankResearch.dds</Icon>
+      <Description>Description_HydrogenTank</Description>
+      <Public>true</Public>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="3" z="3"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\HydrogenTank.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="20" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="5" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="3" EndY="2" Side="Top" StartX="0" StartY="1"/>
+        <MountPoint EndX="2" EndY="1" Side="Top" StartX="1" StartY="0"/>
+        <MountPoint EndX="2" EndY="3" Side="Top" StartX="1" StartY="2"/>
+        <MountPoint Default="true" EndX="3" EndY="2" Side="Bottom" StartX="0" StartY="1"/>
+        <MountPoint EndX="2" EndY="1" Side="Bottom" StartX="1" StartY="0"/>
+        <MountPoint EndX="2" EndY="3" Side="Bottom" StartX="1" StartY="2"/>
+        <MountPoint EndX="2" EndY="3" Side="Left" StartX="1" StartY="0"/>
+        <MountPoint EndX="2" EndY="3" Side="Right" StartX="1" StartY="0"/>
+        <MountPoint EndX="2" EndY="3" Side="Front" StartX="1" StartY="0"/>
+        <MountPoint EndX="2" EndY="3" Side="Back" StartX="1" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\HydrogenTank_Construction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\HydrogenTank_Construction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\HydrogenTank_Construction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>HydrogenTankResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <ResourceSourceGroup>Reactors</ResourceSourceGroup>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <OperationalPowerConsumption>0.001</OperationalPowerConsumption>
+      <StandbyPowerConsumption>0.000001</StandbyPowerConsumption>
+      <Capacity>5000000</Capacity>
+      <InventoryMaxVolume>0.75</InventoryMaxVolume>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
+      <StoredGasId>
+        <TypeId>GasProperties</TypeId>
+        <SubtypeId>HydrogenResearch</SubtypeId>
+      </StoredGasId>
+      <BlueprintClasses>
+        <Class>HydrogenBottles</Class>
+      </BlueprintClasses>
+      <BuildTimeSeconds>250.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>Explosion_Warhead_30</DestroyEffect>
+      <DestroySound>WepLrgWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+      <TieredUpdateTimes>
+        <unsignedInt>100</unsignedInt>
+        <unsignedInt>300</unsignedInt>
+        <unsignedInt>600</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_GasTankDefinition">
+      <Id>
+        <TypeId>OxygenTank</TypeId>
+        <SubtypeId>LargeHydrogenTankSmallResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Small Hydrogen Tank</DisplayName>
+      <Icon>Textures\largeHydrogenTankSmallResearch.dds</Icon>
+      <Description>Description_HydrogenTank</Description>
+      <Public>true</Public>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="2" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\HydrogenTankSmall.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="8" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="2" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="2" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="2" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="2" Side="Back" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.5" File="Models\Cubes\Large\HydrogenTankSmallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\HydrogenTankSmallConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>HydrogenTankSmallResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <ResourceSourceGroup>Reactors</ResourceSourceGroup>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <OperationalPowerConsumption>0.001</OperationalPowerConsumption>
+      <StandbyPowerConsumption>0.000001</StandbyPowerConsumption>
+      <Capacity>350000 </Capacity>
+      <InventoryMaxVolume>0.75</InventoryMaxVolume>
+      <InventorySize>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </InventorySize>
+      <StoredGasId>
+        <TypeId>GasProperties</TypeId>
+        <SubtypeId>HydrogenResearch</SubtypeId>
+      </StoredGasId>
+      <BlueprintClasses>
+        <Class>HydrogenBottles</Class>
+      </BlueprintClasses>
+      <BuildTimeSeconds>160.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>Explosion_Missile</DestroyEffect>
+      <DestroySound>WepSmallMissileExpl</DestroySound>
+      <PCU>25</PCU>
+      <TieredUpdateTimes>
+        <unsignedInt>100</unsignedInt>
+        <unsignedInt>300</unsignedInt>
+        <unsignedInt>600</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+
+
+    <Definition xsi:type="MyObjectBuilder_AirVentDefinition">
+      <Id>
+        <TypeId>AirVent</TypeId>
+        <SubtypeId>Research</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Airvent</DisplayName>
+      <Icon>Textures\AirVentResearch.dds</Icon>
+      <Description>Description_AirVent</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\OxygenPressurizer.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0.5"/>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Left" StartX="0.5" StartY="0"/>
+        <MountPoint EndX="0.5" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.5" Side="Top" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\OxygenPressurizerConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\OxygenPressurizerConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\OxygenPressurizerConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>AirVentResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+
+      <ResourceSourceGroup>Battery</ResourceSourceGroup>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <OperationalPowerConsumption>0.1</OperationalPowerConsumption>
+      <StandbyPowerConsumption>0.001</StandbyPowerConsumption>
+      <VentilationCapacityPerSecond>300</VentilationCapacityPerSecond>
+
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+      <PressurizeSound>BlockAirVentExhale</PressurizeSound>
+      <DepressurizeSound>BlockAirVentDepressurize</DepressurizeSound>
+      <IdleSound>BlockAirVentIdle</IdleSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
+    </Definition>
+
+    <!-- Region Cargo Container-->
+
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
+      <Id>
+        <TypeId>CargoContainer</TypeId>
+        <SubtypeId>SmallBlockMediumContainerResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Medium Cargo Container</DisplayName>
+      <Icon>Textures\container_mediumResearch.dds</Icon>
+      <Description>Description_MediumCargoContainer</Description>
+      <CubeSize>Small</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="3" z="3"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Small\CargoContainerMedium.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="1" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="3" EndY="3" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="3" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="3" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="3" EndY="3" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="3" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="3" Side="Back" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\CargoContainerMediumConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\CargoContainerMediumConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>MediumCargoContainerResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>70.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
+      <Id>
+        <TypeId>CargoContainer</TypeId>
+        <SubtypeId>LargeBlockSmallContainerResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Small Container</DisplayName>
+      <Icon>Textures\containerResearch.dds</Icon>
+      <Description>Description_SmallCargoContainer</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CargoContainerSmall.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CargoContainerSmallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CargoContainerSmallConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CargoContainerSmallConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>SmallCargoContainerResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>75.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_CargoContainerDefinition">
+      <Id>
+        <TypeId>CargoContainer</TypeId>
+        <SubtypeId>LargeBlockLargeContainerResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Large Container</DisplayName>
+      <Icon>Textures\container_largeResearch.dds</Icon>
+      <Description>Description_LargeCargoContainer</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="3" z="3"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CargoContainerLarge.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="4" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="2" EndY="2" Side="Right" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Left" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Top" StartX="1" StartY="1"/>
+        <MountPoint Default="true" EndX="2" EndY="2" Side="Bottom" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Front" StartX="1" StartY="1"/>
+        <MountPoint EndX="2" EndY="2" Side="Back" StartX="1" StartY="1"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CargoContainerLargeConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CargoContainerLargeConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CargoContainerLargeConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>LargeCargoContainerResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>225.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>10</PCU>
+    </Definition>
+    <!-- End Region Cargo Container-->
+
+    <!-- Region Conveyor system -->
+    <Definition>
+      <Id>
+        <TypeId>Conveyor</TypeId>
+        <SubtypeId>SmallBlockConveyorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Small Conveyor System</DisplayName>
+      <Icon>Textures\ConveyorSmallResearch.dds</Icon>
+      <Description>Description_ConveyorTube</Description>
+      <CubeSize>Small</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Small\conveyor.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <Mountpoints>
+        <MountPoint EndX="1.0" EndY="1.0" Side="Front" StartX="0.0" StartY="0.0"/>
+        <MountPoint EndX="1.0" EndY="1.0" Side="Top" StartX="1.0" StartY="0.0"/>
+        <MountPoint EndX="1.0" EndY="1.0" Side="Back" StartX="1.0" StartY="0.0"/>
+        <MountPoint EndX="1.0" EndY="1.0" Side="Bottom" StartX="1.0" StartY="0.0"/>
+        <MountPoint EndX="1.0" EndY="1.0" Side="Right" StartX="0.0" StartY="0.0"/>
+        <MountPoint EndX="1.0" EndY="1.0" Side="Left" StartX="0.0" StartY="0.0"/>
+      </Mountpoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\ConveyorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\ConveyorConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ConveyorSmallResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>40.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyed_Small</DestroyEffect>
+      <DestroySound>PoofExplosionCat1</DestroySound>
+      <PCU>10</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+    <Definition>
+      <Id>
+        <TypeId>Conveyor</TypeId>
+        <SubtypeId>LargeBlockConveyorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Large Conveyor System</DisplayName>
+      <Icon>Textures\conveyorResearch.dds</Icon>
+      <Description>Description_ConveyorTube</Description>
+      <GuiVisible>false</GuiVisible>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\conveyor.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ConveyorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ConveyorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ConveyorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ConveyorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyed_Large</DestroyEffect>
+      <DestroySound>PoofExplosionCat3</DestroySound>
+      <PCU>10</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+
+
+    <Definition xsi:type="MyObjectBuilder_ShipConnectorDefinition">
+      <Id>
+        <TypeId>ShipConnector</TypeId>
+        <SubtypeId>ConnectorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Intership Conveyor System</DisplayName>
+      <Icon>Textures\ConnectorResearch.dds</Icon>
+      <Description>Description_Connector</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Connector.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="1" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ConnectorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ConnectorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ConnectorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ConnectorResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>150.0</BuildTimeSeconds>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.85" EndY="0.9" Side="Back" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.73" EndY="0.9" Side="Top" StartX="0.27" StartY="0.65"/>
+        <MountPoint EndX="0.73" EndY="0.09" Side="Top" StartX="0.27" StartY="0.0"/>
+        <MountPoint EndX="0.73" EndY="0.35" Side="Bottom" StartX="0.27" StartY="0.1"/>
+        <MountPoint EndX="0.73" EndY="1.0" Side="Bottom" StartX="0.27" StartY="0.91"/>
+      </MountPoints>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <ActionSound>BlockEject</ActionSound>
+      <EmissiveColorPreset>ConnectBlock</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>125</PCU>
+      <IsAirTight>false</IsAirTight>
+      <AutoUnlockTime_Min>0</AutoUnlockTime_Min>
+      <AutoUnlockTime_Max>3600</AutoUnlockTime_Max>
+      <TieredUpdateTimes>
+        <unsignedInt>80</unsignedInt>
+        <unsignedInt>160</unsignedInt>
+        <unsignedInt>320</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+
+
+
+
+
+
+
+
+
+    <Definition>
+      <Id>
+        <TypeId>Conveyor</TypeId>
+        <SubtypeId>SmallShipConveyorHubResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Conveyor Hub</DisplayName>
+      <Icon>Textures\ConveyorResearch.dds</Icon>
+      <Description>Description_ConveyorTube</Description>
+      <CubeSize>Small</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="3" z="3"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <!--<Center x="1" y="1" z="1" />-->
+      <Model>Models\Cubes\Small\ConveyorHub.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.5" File="Models\Cubes\Small\ConveyorHubConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.0" File="Models\Cubes\Small\ConveyorHubConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <MountPoints>
+        <MountPoint EndX="2.75" EndY="2.75" Side="Top" StartX="0.25" StartY="0.25"/>
+        <MountPoint EndX="2.75" EndY="2.75" Side="Bottom" StartX="0.25" StartY="0.25"/>
+        <MountPoint EndX="0.35" EndY="2.75" Side="Right" StartX="0.25" StartY="0.25"/>
+        <MountPoint EndX="2.75" EndY="2.75" Side="Right" StartX="2.65" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="0.35" Side="Right" StartX="0.35" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="2.75" Side="Right" StartX="0.35" StartY="2.65"/>
+        <MountPoint EndX="0.35" EndY="2.75" Side="Left" StartX="0.25" StartY="0.25"/>
+        <MountPoint EndX="2.75" EndY="2.75" Side="Left" StartX="2.65" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="0.35" Side="Left" StartX="0.35" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="2.75" Side="Left" StartX="0.35" StartY="2.65"/>
+        <MountPoint EndX="0.35" EndY="2.75" Side="Back" StartX="0.25" StartY="0.25"/>
+        <MountPoint EndX="2.75" EndY="2.75" Side="Back" StartX="2.65" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="0.35" Side="Back" StartX="0.35" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="2.75" Side="Back" StartX="0.35" StartY="2.65"/>
+        <MountPoint EndX="0.35" EndY="2.75" Side="Front" StartX="0.25" StartY="0.25"/>
+        <MountPoint EndX="2.75" EndY="2.75" Side="Front" StartX="2.65" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="0.35" Side="Front" StartX="0.35" StartY="0.25"/>
+        <MountPoint EndX="2.65" EndY="2.75" Side="Front" StartX="0.35" StartY="2.65"/>
+      </MountPoints>
+      <BlockPairName>ConveyorResearch</BlockPairName>
+      <MirroringZ>X</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>70.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <DestroyEffect>BlockDestroyed_Small</DestroyEffect>
+      <DestroySound>PoofExplosionCat1</DestroySound>
+      <PCU>25</PCU>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+      <Id>
+        <TypeId>ConveyorSorter</TypeId>
+        <SubtypeId>LargeBlockConveyorSorterResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Conveyor Sorter</DisplayName>
+      <Icon>Textures\ConveyorSorterLargeResearch.dds</Icon>
+      <Description>Description_ConveyorSorter</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\ConveyorSorter.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="5" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ConveyorSorterConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ConveyorSorterConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ConveyorSorterConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ConveyorSorterResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <ResourceSinkGroup>Conveyors</ResourceSinkGroup>
+      <PowerInput>0.00025</PowerInput>
+      <InventorySize>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>1</Z>
+      </InventorySize>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+
+
+    <!-- End Region Conveyor system -->
+  </CubeBlocks>
+</Definitions>

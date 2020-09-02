@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition xsi:type="MyObjectBuilder_RefineryDefinition">
+      <Id>
+        <TypeId>Refinery</TypeId>
+        <SubtypeId>LargeRefineryResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Large Refinery</DisplayName>
+      <Icon>Textures\refineryResearch.dds</Icon>
+      <Description>Description_Refinery</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="2" y="4" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Refinery.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="5" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <Center x="1" y="0" z="1"/>
+      <MountPoints>
+        <MountPoint EndX="2" EndY="4" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="2" EndY="2" Side="Bottom" StartX="0" StartY="1"/>
+        <MountPoint EndX="2" EndY="1" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint EndX="2" EndY="4" Side="Left" StartX="1" StartY="0"/>
+        <MountPoint EndX="1" EndY="4" Side="Right" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.16" File="Models\Cubes\Large\RefineryConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\RefineryConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Large\RefineryConstruction_3.mwm"/>
+        <Model BuildPercentUpperBound="0.83" File="Models\Cubes\Large\RefineryConstruction_4.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\RefineryConstruction_5.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>RefineryResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>450.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <InventoryMaxVolume>7.5</InventoryMaxVolume>
+      <InventorySize>
+        <X>2.5</X>
+        <Y>2.5</Y>
+        <Z>2.5</Z>
+      </InventorySize>
+
+      <InventoryFillFactorMin>0.3</InventoryFillFactorMin>
+      <InventoryFillFactorMax>0.6</InventoryFillFactorMax>
+
+      <StandbyPowerConsumption>0.001</StandbyPowerConsumption>
+      <OperationalPowerConsumption>0.56</OperationalPowerConsumption>
+      <BlueprintClasses>
+        <Class>Ingots</Class>
+      </BlueprintClasses>
+      <RefineSpeed>1.3</RefineSpeed>
+      <MaterialEfficiency>1.0</MaterialEfficiency>
+      <OreAmountPerPullRequest>2000</OreAmountPerPullRequest>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <Center x="1" y="0" z="0"/>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <PrimarySound>BlockRafinery</PrimarySound>
+      <ActionSound>BlockRafineryProcess</ActionSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>90</PCU>
+      <TieredUpdateTimes>
+        <unsignedInt>60</unsignedInt>
+        <unsignedInt>120</unsignedInt>
+        <unsignedInt>240</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+
+
+
+
+
+
+    <Definition xsi:type="MyObjectBuilder_AssemblerDefinition">
+      <Id>
+        <TypeId>Assembler</TypeId>
+        <SubtypeId>LargeAssemblerResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Large Assembler</DisplayName>
+      <Icon>Textures\assemblerResearch.dds</Icon>
+      <Description>Description_Assembler</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Assembler.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="5" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="1" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="1" EndY="2" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="2" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint EndX="2" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="2" EndY="1" Side="Right" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.16" File="Models\Cubes\Large\AssemblerConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\AssemblerConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Large\AssemblerConstruction_3.mwm"/>
+        <Model BuildPercentUpperBound="0.83" File="Models\Cubes\Large\AssemblerConstruction_4.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\AssemblerConstruction_5.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>AssemblerResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>400.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <InventoryMaxVolume>4</InventoryMaxVolume>
+      <InventorySize>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>1</Z>
+      </InventorySize>
+      <StandbyPowerConsumption>0.001</StandbyPowerConsumption>
+      <OperationalPowerConsumption>0.56</OperationalPowerConsumption>
+      <BlueprintClasses>
+        <Class>LargeBlocks</Class>
+        <Class>SmallBlocks</Class>
+        <Class>Components</Class>
+        <Class>EliteTools</Class>
+        <Class>BuildPlanner</Class>
+      </BlueprintClasses>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <PrimarySound>BlockAssembler</PrimarySound>
+      <ActionSound>BlockAssemblerProcess</ActionSound>
+      <DestroyEffect>Explosion_Missile</DestroyEffect>
+      <DestroySound>WepSmallMissileExpl</DestroySound>
+      <PCU>40</PCU>
+      <IsAirTight>true</IsAirTight>
+      <TieredUpdateTimes>
+        <unsignedInt>60</unsignedInt>
+        <unsignedInt>120</unsignedInt>
+        <unsignedInt>240</unsignedInt>
+      </TieredUpdateTimes>
+    </Definition>
+
+
+
+    <Definition xsi:type="MyObjectBuilder_OxygenFarmDefinition">
+      <Id>
+        <TypeId>OxygenFarm</TypeId>
+        <SubtypeId>LargeBlockOxygenFarmResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Oxygen Farm</DisplayName>
+      <Icon>Textures\SolarHydroponicsResearch.dds</Icon>
+      <Description>Description_OxygenFarm</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="1" z="1"/>
+      <Center x="0" y="0" z="0"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\SolarHydroponics.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.8" EndY="0.8" Side="Right" StartX="0.2" StartY="0.2"/>
+        <MountPoint EndX="3" EndY="0.75" Side="Bottom" StartX="0" StartY="0.25"/>
+        <MountPoint EndX="3" EndY="0.75" Side="Top" StartX="0" StartY="0.25"/>
+        <MountPoint EndX="1" EndY="0.625" Side="Back" StartX="0" StartY="0.375"/>
+        <MountPoint EndX="3" EndY="0.625" Side="Front" StartX="2" StartY="0.375"/>
+      </MountPoints>
+      <MirroringX>Y</MirroringX>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\SolarHydroponicsConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\SolarHydroponicsConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\SolarHydroponicsConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>OxygenFarmResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>150.0</BuildTimeSeconds>
+      <PanelOrientation>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>-1</Z>
+      </PanelOrientation>
+      <TwoSidedPanel>true</TwoSidedPanel>
+      <PanelOffset>0</PanelOffset>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <ResourceSourceGroup>SolarPanels</ResourceSourceGroup>
+      <ProducedGas>
+        <Id>
+          <TypeId>GasProperties</TypeId>
+          <SubtypeId>OxygenResearch</SubtypeId>
+        </Id>
+        <MaxOutputPerSecond>0.03</MaxOutputPerSecond>
+      </ProducedGas>
+      <OperationalPowerConsumption>0.02</OperationalPowerConsumption>
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>25</PCU>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_UpgradeModuleDefinition">
+      <Id>
+        <TypeId>UpgradeModule</TypeId>
+        <SubtypeId>LargeProductivityModuleResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Productivity Module</DisplayName>
+      <Icon>Textures\UpgradeProductivityResearch.dds</Icon>
+      <Description>Description_ProductivityModule</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\UpgradeProductivity.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="10" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="2" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1.85" EndY="0.85" Side="Right" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="1.85" EndY="0.85" Side="Left" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="1.85" Side="Top" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="1.85" Side="Bottom" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Front" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Back" StartX="0.15" StartY="0.15"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\UpgradeProductivityConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\UpgradeProductivityConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\UpgradeProductivityConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>ProductivityModuleResearch</BlockPairName>
+      <MirroringX>Z</MirroringX>
+      <MirroringZ>X</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <Upgrades>
+        <MyUpgradeModuleInfo>
+          <UpgradeType>Productivity</UpgradeType>
+          <Modifier>0.5</Modifier>
+          <ModifierType>Additive</ModifierType>
+        </MyUpgradeModuleInfo>
+      </Upgrades>
+      <PrimarySound>BlockModuleProductivity</PrimarySound>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>1</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_UpgradeModuleDefinition">
+      <Id>
+        <TypeId>UpgradeModule</TypeId>
+        <SubtypeId>LargeEffectivenessModuleResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Effectiveness Module</DisplayName>
+      <Icon>Textures\UpgradeEffectivenessResearch.dds</Icon>
+      <Description>Description_EffectivenessModule</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\UpgradeEffectiveness.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="10" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="2" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1.85" EndY="0.85" Side="Right" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="1.85" EndY="0.85" Side="Left" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="1.85" Side="Top" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="1.85" Side="Bottom" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Front" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Back" StartX="0.15" StartY="0.15"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\UpgradeEffectivenessConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\UpgradeEffectivenessConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\UpgradeEffectivenessConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>EffectivenessModuleResearch</BlockPairName>
+      <MirroringX>Z</MirroringX>
+      <MirroringZ>X</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <Upgrades>
+        <MyUpgradeModuleInfo>
+          <UpgradeType>Effectiveness</UpgradeType>
+          <Modifier>1.0905077</Modifier>
+          <ModifierType>Multiplicative</ModifierType>
+        </MyUpgradeModuleInfo>
+      </Upgrades>
+      <PrimarySound>BlockModuleEffectiveness</PrimarySound>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>1</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+    <Definition xsi:type="MyObjectBuilder_UpgradeModuleDefinition">
+      <Id>
+        <TypeId>UpgradeModule</TypeId>
+        <SubtypeId>LargeEnergyModuleResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Energy Module</DisplayName>
+      <Icon>Textures\UpgradeEnergyResearch.dds</Icon>
+      <Description>Description_PowerEfficiencyModule</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\UpgradeEnergy.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="10" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1.85" EndY="0.85" Side="Right" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="1.85" EndY="0.85" Side="Left" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="1.85" Side="Top" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="1.85" Side="Bottom" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Front" StartX="0.15" StartY="0.15"/>
+        <MountPoint EndX="0.85" EndY="0.85" Side="Back" StartX="0.15" StartY="0.15"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\UpgradeEnergyConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\UpgradeEnergyConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\UpgradeEnergyConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>EnergyModuleResearch</BlockPairName>
+      <MirroringX>Z</MirroringX>
+      <MirroringZ>X</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <Upgrades>
+        <MyUpgradeModuleInfo>
+          <UpgradeType>PowerEfficiency</UpgradeType>
+          <Modifier>1.2228445</Modifier>
+          <ModifierType>Multiplicative</ModifierType>
+        </MyUpgradeModuleInfo>
+      </Upgrades>
+      <PrimarySound>BlockModuleEfficiency</PrimarySound>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>1</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+  </CubeBlocks>
+</Definitions>

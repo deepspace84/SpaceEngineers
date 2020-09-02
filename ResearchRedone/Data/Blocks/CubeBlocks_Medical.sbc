@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition xsi:type="MyObjectBuilder_MedicalRoomDefinition">
+      <Id>
+        <TypeId>MedicalRoom</TypeId>
+        <SubtypeId>LargeMedicalRoomResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Medical Room</DisplayName>
+      <Icon>Textures\medical_roomResearch.dds</Icon>
+      <Description>Description_MedicalRoom</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="2" y="1" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\MedicalRoom.mwm</Model>
+      <IdleSound>BlockMedical</IdleSound>
+      <ProgressSound>BlockMedicalProgress</ProgressSound>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="10" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <Center x="0" y="0" z="1"/>
+      <MountPoints>
+        <MountPoint EndX="0.8" EndY="0.8" Side="Top" StartX="0.2" StartY="0.1"/>
+        <MountPoint Default="true" EndX="0.8" EndY="2" Side="Bottom" StartX="0.2" StartY="1.2"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MedicalRoomConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MedicalRoomConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MedicalRoomConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <ScreenAreas>
+        <ScreenArea DisplayName="Top panel" Name="CockpitScreen_01"/>
+        <ScreenArea DisplayName="Bottom panel" Name="CockpitScreen_02"/>
+      </ScreenAreas>
+      <VoxelPlacement>
+        <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+        <StaticMode>
+          <PlacementMode>Volumetric</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>Volumetric</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0.01</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <BlockPairName>MedicalRoomResearch</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>250.0</BuildTimeSeconds>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>30</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_CryoChamberDefinition">
+      <Id>
+        <TypeId>CryoChamber</TypeId>
+        <SubtypeId>LargeBlockCryoChamberResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Cryochamber</DisplayName>
+      <Icon>Textures\CryoPodResearch.dds</Icon>
+      <Description>Description_CryoChamber</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CryoPod.mwm</Model>
+      <InteriorModel>Models\Cubes\Large\CryoPodInterior.mwm</InteriorModel>
+      <CharacterAnimation>Idle</CharacterAnimation>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="5" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="2" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.8" EndY="0.7" Side="Bottom" StartX="0.2" StartY="0.1"/>
+        <MountPoint EndX="0.8" EndY="0.9" Side="Top" StartX="0.2" StartY="0.3"/>
+        <MountPoint EndX="0.8" EndY="0.7" Side="Back" StartX="0.2" StartY="0.2"/>
+        <MountPoint EndX="0.95" EndY="0.95" Side="Back" StartX="0.05" StartY="0.7"/>
+        <MountPoint EndX="0.8" EndY="0.8" Side="Left" StartX="0.4" StartY="0.4"/>
+        <MountPoint EndX="0.6" EndY="0.8" Side="Right" StartX="0.2" StartY="0.4"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\CryoPodConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\CryoPodConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CryoPodConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <VoxelPlacement>
+        <StaticMode>
+          <PlacementMode>Volumetric</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </StaticMode>
+        <DynamicMode>
+          <PlacementMode>Volumetric</PlacementMode>
+          <MaxAllowed>0.2</MaxAllowed>
+          <MinAllowed>0</MinAllowed>
+        </DynamicMode>
+      </VoxelPlacement>
+      <BlockPairName>CryoChamberResearch</BlockPairName>
+      <OverlayTexture>Textures\GUI\Screens\cryopod_interior.dds</OverlayTexture>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <BuildTimeSeconds>75.0</BuildTimeSeconds>
+      <EnableFirstPerson>true</EnableFirstPerson>
+      <IsPressurized>true</IsPressurized>
+      <OxygenCapacity>1</OxygenCapacity>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <IdlePowerConsumption>0.00003</IdlePowerConsumption>
+      <OutsideSound>BlockCryoOut</OutsideSound>
+      <InsideSound>BlockCryoIn</InsideSound>
+      <EnclosedCockpit>true</EnclosedCockpit>
+      <EdgeType>Light</EdgeType>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>15</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+  </CubeBlocks>
+</Definitions>
