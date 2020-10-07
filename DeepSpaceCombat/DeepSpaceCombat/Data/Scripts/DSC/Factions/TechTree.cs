@@ -12,7 +12,7 @@ namespace DSC
         public DSC_TechTree() { }
 
         public Dictionary<string, DSC_Config_TechTree.TechLevel> TechLevels { get; } = new Dictionary<string, DSC_Config_TechTree.TechLevel>();
-        public Dictionary<string, DSC_Config_TechTree.TechStation> TechStation { get; } = new Dictionary<string, DSC_Config_TechTree.TechStation>();
+        public Dictionary<string, DSC_Config_TechTree.TechStation> TechStations { get; } = new Dictionary<string, DSC_Config_TechTree.TechStation>();
         public List<string> TechAreas { get; } = new List<string>();
 
         public DSC_Config_TechTree Config;
@@ -53,7 +53,7 @@ namespace DSC
             }
             foreach (DSC_Config_TechTree.TechStation station in Config.Stations)
             {
-                TechStation.Add(station.Name, station);
+                TechStations.Add(station.Name, station);
             }
             TechAreas.AddList(Config.TechAreas);
         }

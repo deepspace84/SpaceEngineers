@@ -7,7 +7,8 @@ using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
 using VRage.Game.ModAPI;
-
+using VRage.Game.ModAPI.Ingame;
+using VRage.Scripting;
 
 namespace DSC
 {
@@ -58,8 +59,6 @@ namespace DSC
 
         public long NPCPlayerID;
         public long NPCFactionID;
-        public long EnemyPlayerID;
-        public long EnemyFactionID;
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
@@ -185,7 +184,6 @@ namespace DSC
             {
                 if (IsServerRegistered)
                 {
-                    Factions.DamageController();
                     SpawnManager.Check();
                 }
             }
@@ -210,16 +208,12 @@ namespace DSC
                 // Save core storage
                 SaveCoreStorage();
 
-                // Save spawnmanager
-                SpawnManager.Save();
-
                 // Save TradeManager
                 TradeManager.Save();
 
                 // Techtree
                 Techtree.Save();
             }
-
         }
 
         /*
@@ -253,9 +247,6 @@ namespace DSC
 
                 // Respawn Manager
                 RespawnManager.Unload();
-
-                // Spawn Manager
-                SpawnManager.Unload();
 
                 // Factions
                 Factions.Unload();
@@ -339,9 +330,6 @@ namespace DSC
             // Load faction data
             Factions.Load();
 
-            // Load SpawnManager
-            SpawnManager.Load();
-
             // Load RespawnManager
             RespawnManager.Load();
 
@@ -414,84 +402,43 @@ namespace DSC
         private void CheckDefaultFactionNPC()
         {
             // Check if faction exists NPC
-            if (MyAPIGateway.Session.Factions.FactionTagExists(DSC_Config.MainFaction))
-            {
-                // Get faction
-                IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(DSC_Config.MainFaction);
+            if (!MyAPIGateway.Session.Factions.FactionTagExists(DSC_Config.MainFactionTag)) {
 
-                // Check for npc player
-                bool check = false;
+                // Create faction
+                MyAPIGateway.Session.Factions.CreateNPCFaction(DSC_Config.MainFactionTag, DSC_Config.MainFactionName, "", "");
+            }
+                
+            
+            // Get faction
+            IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(DSC_Config.MainFactionTag);
+
+            // Check for npc player
+            bool check = false;
+            foreach (long playerId in factionObj.Members.Keys)
+            {
+                if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.MainFactionNPC)
+                {
+                    NPCPlayerID = playerId;
+                    NPCFactionID = factionObj.FactionId;
+                    check = true;
+                    if(isDebug) ServerLogger.WriteInfo("NPC Player found");
+                }
+            }
+
+            // Player not found
+            if (!check)
+            {
+                MyAPIGateway.Session.Factions.AddNewNPCToFaction(factionObj.FactionId, DSC_Config.MainFactionNPC);
+
                 foreach (long playerId in factionObj.Members.Keys)
                 {
                     if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.MainFactionNPC)
                     {
+                        if (isDebug) ServerLogger.WriteInfo("NPC Player was not found, so added");
                         NPCPlayerID = playerId;
                         NPCFactionID = factionObj.FactionId;
-                        check = true;
-                        if(isDebug) ServerLogger.WriteInfo("NPC Player found");
                     }
                 }
-
-                // Player not found
-                if (!check)
-                {
-                    MyAPIGateway.Session.Factions.AddNewNPCToFaction(factionObj.FactionId, DSC_Config.MainFactionNPC);
-
-                    foreach (long playerId in factionObj.Members.Keys)
-                    {
-                        if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.MainFactionNPC)
-                        {
-                            if (isDebug) ServerLogger.WriteInfo("NPC Player was not found, so added");
-                            NPCPlayerID = playerId;
-                            NPCFactionID = factionObj.FactionId;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                ServerLogger.WriteError("NO NPC FACTION FOUND!! CRITICAL!!!");
-            }
-
-
-            // Check if faction exists ENEMY
-            if (MyAPIGateway.Session.Factions.FactionTagExists(DSC_Config.EnemyFaction))
-            {
-                // Get faction
-                IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(DSC_Config.EnemyFaction);
-
-                // Check for npc player
-                bool check = false;
-                foreach (long playerId in factionObj.Members.Keys)
-                {
-                    if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.EnemyFactionNPC)
-                    {
-                        EnemyPlayerID = playerId;
-                        EnemyFactionID = factionObj.FactionId;
-                        check = true;
-                        if (isDebug) ServerLogger.WriteInfo("Enemy Player found");
-                    }
-                }
-
-                // Player not found
-                if (!check)
-                {
-                    MyAPIGateway.Session.Factions.AddNewNPCToFaction(factionObj.FactionId, DSC_Config.EnemyFactionNPC);
-
-                    foreach (long playerId in factionObj.Members.Keys)
-                    {
-                        if (MyVisualScriptLogicProvider.GetPlayersName(playerId) == DSC_Config.EnemyFactionNPC)
-                        {
-                            if (isDebug) ServerLogger.WriteInfo("Enemy Player was not found, so added");
-                            EnemyPlayerID = playerId;
-                            EnemyFactionID = factionObj.FactionId;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                ServerLogger.WriteError("NO Enemy FACTION FOUND!! CRITICAL!!!");
             }
         }
 

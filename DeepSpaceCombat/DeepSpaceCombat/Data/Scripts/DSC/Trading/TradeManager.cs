@@ -86,7 +86,6 @@ namespace DSC
 
             // Give NPC's enough money
             MyAPIGateway.Players.RequestChangeBalance(DeepSpaceCombat.Instance.NPCPlayerID, 999999999);
-            MyAPIGateway.Players.RequestChangeBalance(DeepSpaceCombat.Instance.EnemyPlayerID, 999999999);
 
             // Register Area handlers
             MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Trade_Entered;
@@ -382,8 +381,8 @@ namespace DSC
             // Add trade
             Storage.Trades[factionId].Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
 
-            // Recalculate factionMalus
-            CalcMalus(factionId);
+            // Recalculate factionMalus TODO
+            //CalcMalus(factionId);
 
             // Rebuild trade prices
         }

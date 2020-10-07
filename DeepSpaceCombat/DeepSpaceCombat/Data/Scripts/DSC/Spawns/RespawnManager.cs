@@ -24,7 +24,6 @@ namespace DSC
 
         public void Load()
         {
-
             MyVisualScriptLogicProvider.ButtonPressedEntityName += ButtonPressedFull;
 
             // Load all stations from config

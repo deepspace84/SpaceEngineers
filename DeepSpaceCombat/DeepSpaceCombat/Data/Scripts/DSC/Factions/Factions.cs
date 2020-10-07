@@ -30,73 +30,8 @@ namespace DSC
         private Dictionary<string, List<long>> ResearchStationsPlayers = new Dictionary<string, List<long>>();
         private Dictionary<string, Dictionary<long, DSC_ResearchContract>> ResearchStationsContracts = new Dictionary<string, Dictionary<long, DSC_ResearchContract>>();
 
-        private Dictionary<long, long> WarheadCache = new Dictionary<long, long>(); // EntityId - AttackerId
-        private Dictionary<long, List<DamageEventCache>> DamageCache = new Dictionary<long, List<DamageEventCache>>(); // playerId, DamageEvents
-        private Dictionary<long, ulong> DamagePreCache = new Dictionary<long, ulong>(); // playerId, damage
-
-        private readonly ConcurrentCachingList<DamageEvent> _preDamageEvents = new ConcurrentCachingList<DamageEvent>();
-
         public bool freeBuild = true;
-
-        // Damage strut
-        private struct DamageEvent
-        {
-            public readonly long ShipId;
-            public readonly long BlockId;
-            public readonly long PlayerId;
-            public readonly long Tick;
-
-            public DamageEvent(long shipId, long blockId, long playerId, long tick)
-            {
-                ShipId = shipId;
-                BlockId = blockId;
-                PlayerId = playerId;
-                Tick = tick;
-            }
-
-            private bool Equals(DamageEvent other)
-            {
-                return ShipId == other.ShipId && BlockId == other.BlockId && PlayerId == other.PlayerId && Tick + 2 >= other.Tick;
-            }
-
-            public override bool Equals(object obj)
-            {
-                if (ReferenceEquals(null, obj)) return false;
-                return obj is DamageEvent && Equals((DamageEvent)obj);
-            }
-
-            public override int GetHashCode()
-            {
-                unchecked
-                {
-                    int hashCode = ShipId.GetHashCode();
-                    hashCode = (hashCode * 397) ^ BlockId.GetHashCode();
-                    hashCode = (hashCode * 397) ^ PlayerId.GetHashCode();
-                    hashCode = (hashCode * 397) ^ Tick.GetHashCode();
-                    return hashCode;
-                }
-            }
-
-            public override string ToString()
-            {
-                return $"{ShipId} | {BlockId} | {PlayerId} | {Tick}";
-            }
-        }
-
-        private struct DamageEventCache
-        {
-            public readonly long TargetId;
-            public readonly long AttackerId;
-            public readonly float Amount;
-
-            public DamageEventCache(long targetId, long attackerId, float amount)
-            {
-                TargetId = targetId;
-                AttackerId = attackerId;
-                Amount = amount;
-            }
-        }
-
+        public bool freeFaction = false;
 
         public DSC_Factions() { }
 
@@ -145,7 +80,6 @@ namespace DSC
             MyAPIGateway.Entities.OnEntityRemove += RemoveGridEvent;
 
             // Add Faction state changed event
-            MyAPIGateway.Session.Factions.FactionStateChanged += FactionStateChaned;
             MyAPIGateway.Session.Factions.FactionCreated += FactionCreated;
 
             // Add gridhandlers to all existing grids
@@ -166,10 +100,6 @@ namespace DSC
 
             // Register Contract handlers
             MyAPIGateway.ContractSystem.CustomActivateContract += Event_CustomActivateContract;
-
-            // Register Damage handlers
-            MyAPIGateway.Session.DamageSystem.RegisterBeforeDamageHandler(1, BeforeDamageHandler);
-
         }
 
         /*
@@ -323,40 +253,47 @@ namespace DSC
         // Event - New block added to grid | Progression check
         private void GridBlockAddedEvent(IMySlimBlock block)
         {
-            // Check if block is in definitions
-            if (!DeepSpaceCombat.Instance.Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
-            {
-                MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>" + block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
-            }
+            try { 
 
-            // Check if player is in a player faction, if not dont allow building at all
-            if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
-            {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block builder not in a faction =>" + block.BuiltBy.ToString());
-                if (block.BuiltBy == 0)
+                // Check if block is in definitions
+                if (!DeepSpaceCombat.Instance.Definitions.Blocks.ContainsKey(block.BlockDefinition.ToString()))
                 {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block built by none");
+                    MyVisualScriptLogicProvider.SendChatMessage("This block is not added to the blockreference at all. Please contact an administrator. Block=>" + block.BlockDefinition.ToString(), "[Server]", block.BuiltBy);
+                }
+
+                // Check if player is in a player faction, if not dont allow building at all
+                if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block builder not in a faction =>" + block.BuiltBy.ToString());
+                    if (block.BuiltBy == 0)
+                    {
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block built by none");
+                        return;
+                    }
+                    // Remove block
+                    block.CubeGrid.RemoveBlock(block);
+
+                    // Add item back to player
+                    MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
+
                     return;
                 }
-                // Remove block
-                block.CubeGrid.RemoveBlock(block);
 
-                // Add item back to player
-                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
+                // Check if block building is allowed
+                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+                {
+                    MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500, MyFontEnum.Red, block.BuiltBy);
 
-                return;
+                    // Add item back to player
+                    MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
+
+                    // Remove block
+                    block.CubeGrid.RemoveBlock(block);
+                }
             }
-
-            // Check if block building is allowed
-            if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+            catch (Exception e)
             {
-                MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500, MyFontEnum.Red, block.BuiltBy);
-
-                // Add item back to player
-                MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
-
-                // Remove block
-                block.CubeGrid.RemoveBlock(block);
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "GridBlockAddedEvent:: Crash.....");
             }
         }
 
@@ -453,105 +390,12 @@ namespace DSC
             return false;
         }
 
-        // Event for faction changes
-        private void FactionStateChaned(MyFactionStateChange change, long fromFactionId, long toFactionId, long playerId, long senderId)
-        {
-
-            // Player entered Faction
-            if (change == MyFactionStateChange.FactionMemberAcceptJoin)
-            {
-                // Check if faction exists in storage
-                if (Storage.PlayerFactions.ContainsKey(toFactionId))
-                {
-                    // Add player to reference
-                    Storage.FactionPlayers[toFactionId].Add(playerId);
-                    Storage.PlayersToFaction.Add(playerId, toFactionId);
-
-                    // Calculate PCU TODO
-
-                }
-                else
-                {
-                    // Player wants to join a no player faction => Kick him TODO
-                    MyVisualScriptLogicProvider.SetPlayersFaction(playerId);
-                }
-            }
-
-
-            // Player left Faction
-            if (change == MyFactionStateChange.FactionMemberLeave)
-            {
-                // Check if faction exists in storage
-                if (Storage.PlayerFactions.ContainsKey(toFactionId))
-                {
-                    // Remove Player from references
-                    Storage.FactionPlayers[toFactionId].Remove(playerId);
-                    Storage.PlayersToFaction.Remove(playerId);
-
-                    // Remove PCU TODO
-
-                }
-            }
-
-            if (change == MyFactionStateChange.RemoveFaction)
-            {
-                // Remove Faction PlayerFactions
-                Storage.PlayerFactions.Remove(fromFactionId);
-
-                // Remove defaults
-                Storage.FactionBlocks.Remove(fromFactionId);
-                Storage.FactionPlayers.Remove(fromFactionId);
-                Storage.FactionTechs.Remove(fromFactionId);
-                Storage.FactionDamage.Remove(fromFactionId);
-            }
-
-
-            if (change == MyFactionStateChange.DeclareWar)
-            {
-                // Check if change is between neutral npc
-                if (DeepSpaceCombat.Instance.NPCFactionID == toFactionId)
-                {
-                    // Reset peace
-                    MyAPIGateway.Session.Factions.SendPeaceRequest(fromFactionId, toFactionId);
-                    MyAPIGateway.Session.Factions.AcceptPeace(fromFactionId, toFactionId);
-
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState restored");
-                }
-
-            }
-
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState=> change:" + change.ToString() + " | fromFaction:" + fromFactionId.ToString() + " | toFaction:" + toFactionId.ToString() + " | player:" + playerId.ToString() + " | sender:" + senderId.ToString());
-            //MyAPIGateway.Session.Factions.;
-
-
-            //MyFactionStateChange
-            /*
-        RemoveFaction = 0,
-        SendPeaceRequest = 1,
-        CancelPeaceRequest = 2,
-        AcceptPeace = 3,
-        DeclareWar = 4,
-        SendFriendRequest = 5,
-        CancelFriendRequest = 6,
-        AcceptFriendRequest = 7,
-        FactionMemberSendJoin = 8,
-        FactionMemberCancelJoin = 9,
-        FactionMemberAcceptJoin = 10,
-        FactionMemberKick = 11,
-        FactionMemberPromote = 12,
-        FactionMemberDemote = 13,
-        FactionMemberLeave = 14,
-        FactionMemberNotPossibleJoin = 15
-        */
-        }
-
-        private void FactionCreated(long factionID)
+         private void FactionCreated(long factionID)
         {
             // Directly set npc faction states
             MyAPIGateway.Session.Factions.SendPeaceRequest(factionID, DeepSpaceCombat.Instance.NPCFactionID);
             MyAPIGateway.Session.Factions.AcceptPeace(factionID, DeepSpaceCombat.Instance.NPCFactionID);
-            MyAPIGateway.Session.Factions.DeclareWar(DeepSpaceCombat.Instance.EnemyFactionID, factionID);
-        }
+         }
 
         #endregion
 
@@ -634,7 +478,8 @@ namespace DSC
         private void LoadResearchStations()
         {
             // Loop through all needed blocks
-            foreach (string blockName in DSC_Config.ResearchBlocks.Keys)
+            
+            foreach (string blockName in DeepSpaceCombat.Instance.Techtree.TechStations.Keys)
             {
                 // Add block to the global storage
                 long blockId = DeepSpaceCombat.Instance.DSCReference.AddBlockWithName(blockName);
@@ -842,8 +687,11 @@ namespace DSC
             // Loop through available techs
             foreach (string techLevel in FactionNextTech[factionId])
             {
-                // Check if this tech is available for this block
-                if (!DSC_Config.ResearchBlocks[areaName].Contains(DeepSpaceCombat.Instance.Techtree.TechLevels[techLevel].TechArea))
+                // Check if station exists
+                if (!DeepSpaceCombat.Instance.Techtree.TechStations.ContainsKey(areaName)) continue;
+
+                // Check if this tech is available for this station
+                if (!DeepSpaceCombat.Instance.Techtree.TechStations[areaName].TechAreas.Contains(DeepSpaceCombat.Instance.Techtree.TechLevels[techLevel].TechArea))
                 {
                     continue;
                 }
@@ -897,343 +745,6 @@ namespace DSC
         }
 
         #endregion
-
-        #region Damage controller
-
-        // Damage handler
-        private void BeforeDamageHandler(object target, ref MyDamageInformation info)
-        {
-            if (info.IsDeformation) return;
-            IMySlimBlock block = target as IMySlimBlock;
-            if (block == null) return;
-            long blockId = 0;
-            IMyCubeBlock fatBlock = block.FatBlock;
-            if (fatBlock != null) blockId = fatBlock.EntityId;
-
-            ProcessPreDamageReporting(new DamageEvent(block.CubeGrid.EntityId, blockId, info.AttackerId, (int)DeepSpaceCombat.Instance.TickCounter), info);
-        }
-
-        // Check for duplicate events
-        private void ProcessPreDamageReporting(DamageEvent damage, MyDamageInformation info)
-        {
-            if (_preDamageEvents.Contains(damage)) return;
-            _preDamageEvents.Add(damage);
-            _preDamageEvents.ApplyAdditions();
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::ProcessPreDamageReporting success");
-            IdentifyDamageDealer(damage.ShipId, damage.BlockId, info);
-        }
-
-        private void IdentifyDamageDealer(long damagedEntity, long damagedBlock, MyDamageInformation damageInfo)
-        {
-            // Deformation damage must be allowed here since it handles grid collision damage
-            // One idea may be scan loaded mods and grab their damage types for their ammo as well?  We'll see... 
-            // Missiles from vanilla launchers track their damage id back to the player, so if unowned or npc owned, they will have no owner - need to entity track missiles, woo! (on entity add)
-
-            try
-            {
-
-                if (damageInfo.AttackerId == 0)
-                {
-                    // If the attacker is unkown its not a player so we don't track it
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyDamageDealer no attacker identified");
-                    return;
-                }
-
-                IMyEntity attackingEntity;
-                if (!MyAPIGateway.Entities.TryGetEntityById(damageInfo.AttackerId, out attackingEntity)) return;
-                FindTheAsshole(damagedEntity, damagedBlock, attackingEntity, damageInfo);
-            }
-            catch (Exception e)
-            {
-                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DamageController::IdentifyDamageDealer");
-            }
-        }
-
-
-        private void FindTheAsshole(long damagedEntity, long damagedBlock, IMyEntity attacker, MyDamageInformation damageInfo)
-        {
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole called damagedEntity->" + damagedEntity.ToString() + "  -  damagedBlock->" + damagedBlock.ToString() + "  -  attacker->" + attacker.EntityId.ToString());
-
-            IMyWarhead warhead = MyAPIGateway.Entities.GetEntityById(damagedBlock) as IMyWarhead;
-            if (warhead != null)
-            {
-                // Check for same id
-                if (damagedEntity == attacker.EntityId)
-                {
-                    // Explosion grid warhead
-                    // Only add it one time. Reason is that if you have 2 warheads together on one grid, the second warhead will create a warhead damage event too
-                    if (!WarheadCache.ContainsKey(attacker.EntityId))
-                    {
-
-                        IMyCubeGrid myCubeGrid = attacker?.GetTopMostParent() as IMyCubeGrid;
-                        if (myCubeGrid == null) return;
-
-
-
-                        if (myCubeGrid.BigOwners.Count == 0)
-                        {   // This should only trigger when a player is being a cheeky fucker
-                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole => No warhead owners found");
-                            return;
-                        }
-
-                        IMyIdentity myIdentity = GetIdentityById(myCubeGrid.BigOwners.FirstOrDefault());
-                        if (myIdentity != null)
-                        {
-                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole => Warhead added to cache, owner is=>" + MyVisualScriptLogicProvider.GetPlayersName(myIdentity.IdentityId));
-                            WarheadCache.Add(attacker.EntityId, myIdentity.IdentityId);
-                            return;
-                        }
-                    }
-                }
-
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::BeforeDamageHandler => Warhead2 detected =>Entity:" + damagedBlock.ToString());
-            }
-
-
-            if (attacker.GetType() == typeof(MyCubeGrid))
-            {
-
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole MyCubeGrid");
-                IdentifyOffendingIdentityFromEntity(damagedEntity, damagedBlock, attacker, damageInfo);
-                return;
-            }
-
-            if (attacker is IMyLargeTurretBase)
-            {
-                IdentifyOffendingIdentityFromEntity(damagedEntity, damagedBlock, attacker, damageInfo);
-                return;
-            }
-
-            IMyCharacter myCharacter = attacker as IMyCharacter;
-            if (myCharacter != null)
-            {
-                AddToDamageQueue(damagedEntity, damagedBlock, myCharacter.EntityId, damageInfo);
-                return;
-            }
-
-            IMyAutomaticRifleGun myAutomaticRifle = attacker as IMyAutomaticRifleGun;
-            if (myAutomaticRifle != null)
-            {
-                AddToDamageQueue(damagedEntity, damagedBlock, myAutomaticRifle.OwnerIdentityId, damageInfo);
-                return;
-            }
-
-            IMyAngleGrinder myAngleGrinder = attacker as IMyAngleGrinder;
-            if (myAngleGrinder != null)
-            {
-                AddToDamageQueue(damagedEntity, damagedBlock, myAngleGrinder.OwnerIdentityId, damageInfo);
-                return;
-            }
-
-            IMyHandDrill myHandDrill = attacker as IMyHandDrill;
-            if (myHandDrill != null)
-            {
-                AddToDamageQueue(damagedEntity, damagedBlock, myHandDrill.OwnerIdentityId, damageInfo);
-                return;
-            }
-
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::FindTheAsshole Asshole not identified =>  It was a: " + attacker.GetType().ToString());
-        }
-
-
-
-        private void IdentifyOffendingIdentityFromEntity(long damagedEntity, long damagedBlock, IMyEntity offendingEntity, MyDamageInformation damageInfo)
-        {
-            try
-            {
-                IMyCubeGrid myCubeGrid = offendingEntity?.GetTopMostParent() as IMyCubeGrid;
-                if (myCubeGrid == null) return;
-
-
-
-                if (myCubeGrid.BigOwners.Count == 0)
-                {
-                    // Check warhead cache
-                    if (WarheadCache.ContainsKey(offendingEntity.EntityId))
-                    {
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => Warhead cache Data found");
-                        AddToDamageQueue(damagedEntity, damagedBlock, WarheadCache[offendingEntity.EntityId], damageInfo);
-                        return;
-                    }
-
-                    // This should only trigger when a player is being a cheeky fucker
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => No owners found");
-                    return;
-                }
-
-                IMyIdentity myIdentity = GetIdentityById(myCubeGrid.BigOwners.FirstOrDefault());
-                if (myIdentity != null)
-                {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => Owner found");
-                    AddToDamageQueue(damagedEntity, damagedBlock, myIdentity.IdentityId, damageInfo);
-                    return;
-                }
-
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::IdentifyOffendingIdentityFromEntity => Could not find Identity =>" + myCubeGrid.BigOwners.FirstOrDefault().ToString());
-            }
-            catch (Exception e)
-            {
-                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DamageController::IdentifyOffendingIdentityFromEntity");
-            }
-        }
-
-
-        private void AddToDamageQueue(long shipId, long blockId, long playerId, MyDamageInformation damageInfo)
-        {
-            // Check if player is in a registered faction
-            if (!Storage.PlayersToFaction.ContainsKey(playerId))
-            {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => Attacker is in no player faction =>" + playerId.ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(playerId));
-                return;
-            }
-
-            MyCubeBlock block = MyAPIGateway.Entities.GetEntityById(blockId) as MyCubeBlock;
-            if (null != block)
-            {
-                // Stop here if the block owner is empty
-                if (block.OwnerId == 0) return;
-
-                // Check if target is in a faction
-                if (Storage.PlayersToFaction.ContainsKey(block.OwnerId))
-                {
-                    // Check if its the same faction as the attacker
-                    if (Storage.PlayersToFaction.ContainsKey(block.OwnerId) == Storage.PlayersToFaction.ContainsKey(playerId))
-                    {
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => Self damage, stop now");
-                        return;
-                    }
-
-                }
-
-                // Check if player is in DamageCache
-                if (!DamageCache.ContainsKey(playerId))
-                {
-                    DamageCache.Add(playerId, new List<DamageEventCache>());
-                }
-
-                // Add Damage to cache
-                DamageCache[playerId].Add(new DamageEventCache(block.OwnerId, playerId, damageInfo.Amount));
-
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => target block entity found->" + block.OwnerId.ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(block.OwnerId));
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => attacker entity found->" + playerId.ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(playerId));
-                return;
-
-            }
-            else
-            {
-                // Its not a fatBlock, so check grid
-                MyCubeGrid grid = MyAPIGateway.Entities.GetEntityById(shipId) as MyCubeGrid;
-                if (null != grid)
-                {
-                    if (grid.BigOwners.Count == 0)
-                    {   // This should only trigger when a player is being a cheeky fucker
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => No attacker grid owner found");
-                        return;
-                    }
-
-                    // Check if target is in a faction
-                    if (Storage.PlayersToFaction.ContainsKey(grid.BigOwners.FirstOrDefault()))
-                    {
-                        // Check if its the same faction as the attacker
-                        if (Storage.PlayersToFaction.ContainsKey(grid.BigOwners.FirstOrDefault()) == Storage.PlayersToFaction.ContainsKey(playerId))
-                        {
-                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => Self damage, stop now");
-                            return;
-                        }
-
-                    }
-
-                    // Check if player is in DamageCache
-                    if (!DamageCache.ContainsKey(playerId))
-                    {
-                        DamageCache.Add(playerId, new List<DamageEventCache>());
-                    }
-
-                    // Add Damage to cache
-                    DamageCache[playerId].Add(new DamageEventCache(grid.BigOwners.FirstOrDefault(), playerId, damageInfo.Amount));
-
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => Grid entity found" + grid.BigOwners.FirstOrDefault().ToString() + " - " + MyVisualScriptLogicProvider.GetPlayersName(grid.BigOwners.FirstOrDefault()));
-
-                    return;
-                }
-
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DamageController::AddToDamageQueue => blockId->" + blockId + " Entity not found in the block and grid");
-            }
-        }
-
-
-        public void DamageController()
-        {
-
-            // Copy & Clear Cache
-            Dictionary<long, List<DamageEventCache>> DamageCheck = new Dictionary<long, List<DamageEventCache>>(DamageCache);
-            DamageCache.Clear();
-
-            Dictionary<long, ulong> PreCheck = new Dictionary<long, ulong>(DamagePreCache);
-            DamagePreCache.Clear();
-
-            // Check damages
-            foreach (KeyValuePair<long, List<DamageEventCache>> kvp in DamageCheck)
-            {
-
-                ulong playerTotal = 0;
-
-                // Loop through damage events
-                foreach (DamageEventCache dmgEvent in kvp.Value)
-                {
-                    // Check if damage is done to any faction member
-                    int storageDamge = (int)dmgEvent.Amount;
-
-                    if (Storage.PlayersToFaction.ContainsKey(dmgEvent.TargetId))
-                    {
-                        // Add faction multiplier
-                        storageDamge = storageDamge * DSC_Config.DamageAllyMultiplier;
-                    }
-
-                    // Check if player is in storage
-                    if (!Storage.PlayerDamage.ContainsKey(dmgEvent.AttackerId))
-                    {
-                        Storage.PlayerDamage.Add(dmgEvent.AttackerId, 0);
-                    }
-
-                    // Store damage to storage
-                    Storage.PlayerDamage[dmgEvent.AttackerId] += (ulong)storageDamge;
-
-                    // Add to total
-                    playerTotal += (ulong)dmgEvent.Amount;
-                }
-
-                // Check for preDamage
-                if (PreCheck.ContainsKey(kvp.Key))
-                {
-                    MyVisualScriptLogicProvider.ShowNotification(playerTotal.ToString() + " - " + PreCheck[kvp.Key], 1000, "Red", kvp.Key);
-
-                    // Add to new precheck
-                    DamagePreCache.Add(kvp.Key, playerTotal + PreCheck[kvp.Key]);
-                }
-                else
-                {
-                    MyVisualScriptLogicProvider.ShowNotification(playerTotal.ToString(), 1000, "Red", kvp.Key);
-
-                    // Add to new precheck
-                    DamagePreCache.Add(kvp.Key, playerTotal);
-                }
-            }
-
-        }
-
-        private IMyIdentity GetIdentityById(long playerId)
-        {
-            List<IMyIdentity> identityList = new List<IMyIdentity>();
-            MyAPIGateway.Players.GetAllIdentites(identityList);
-            return identityList.FirstOrDefault(x => x.IdentityId == playerId);
-
-
-
-        }
-        #endregion
-
-
     }
 
 

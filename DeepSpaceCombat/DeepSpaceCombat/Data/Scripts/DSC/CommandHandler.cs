@@ -23,7 +23,8 @@ namespace DSC
             Dev = 4,
             MyDamage = 5,
             DelDamage=6,
-            ResetSpawn=7
+            ResetSpawn=7,
+            freeFaction=8
 
         };
 
@@ -49,21 +50,18 @@ namespace DSC
                 switch(cmd)
                 {
                     case ECommand.Test:
-                        if(lcommand.Count == 1)
-                        {
-                            foreach (DSC_Config_Trade.Station station in DeepSpaceCombat.Instance.TradeManager.Config.Stations)
+                        try { 
+                            IMyFaction factionObj =  MyAPIGateway.Session.Factions.TryGetFactionByTag(lcommand[1]);
+                            if(factionObj != null)
                             {
-                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Station =>" + station.Name + " - " + station.Type);
+                                MyAPIGateway.Session.Factions.RemoveFaction(factionObj.FactionId);
                             }
                         }
-                        else
+                        catch (Exception e)
                         {
-                            DeepSpaceCombat.Instance.TradeManager.Config.Stations.Add(new DSC_Config_Trade.Station("Teststation", "Type1"));
-                            List<DSC_Config_Trade.TradeType.TradeItem> test2 = new List<DSC_Config_Trade.TradeType.TradeItem>() { new DSC_Config_Trade.TradeType.TradeItem("test", 10, 250)};
-                            DeepSpaceCombat.Instance.TradeManager.Config.Types.Add(new DSC_Config_Trade.TradeType("Type1", test2));
+                            DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "FactionDel failed");
                         }
-                        
-                        
+
                         break;
                     case ECommand.Help:
                         PrintHelp(playerId);
@@ -74,6 +72,10 @@ namespace DSC
                     case ECommand.FreeBuild:
                         DeepSpaceCombat.Instance.Factions.freeBuild = !DeepSpaceCombat.Instance.Factions.freeBuild;
                         DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild=>"+ DeepSpaceCombat.Instance.Factions.freeBuild.ToString());
+                        break;
+                    case ECommand.freeFaction:
+                        DeepSpaceCombat.Instance.Factions.freeFaction = !DeepSpaceCombat.Instance.Factions.freeFaction;
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("freeFaction=>" + DeepSpaceCombat.Instance.Factions.freeFaction.ToString());
                         break;
                     case ECommand.Dev:
 

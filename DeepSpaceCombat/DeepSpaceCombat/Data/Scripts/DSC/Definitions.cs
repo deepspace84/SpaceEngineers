@@ -39,10 +39,6 @@ namespace DSC
             { "Canvas",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Canvas")},
             { "ZoneChip",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ZoneChip")},
             { "ResearchPoint",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")},
-            { "LicenceT1",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT1")},
-            { "LicenceT2",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT2")},
-            { "LicenceT3",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT3")},
-            { "LicenceT4",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT4")},
         };
 
         public Dictionary<string, MyDefinitionId> StoreItems { get; } = new Dictionary<string, MyDefinitionId>() {
@@ -72,10 +68,6 @@ namespace DSC
             { "Canvas",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "Canvas")},
             { "ZoneChip",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ZoneChip")},
             { "ResearchPoint",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")},
-            { "LicenceT1",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT1")},
-            { "LicenceT2",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT2")},
-            { "LicenceT3",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT3")},
-            { "LicenceT4",  MyVisualScriptLogicProvider.GetDefinitionId("Component", "LicenceT4")},
 
             // Ores
             { "Ore/Stone",  MyVisualScriptLogicProvider.GetDefinitionId("Ore", "Stone")},
@@ -104,9 +96,16 @@ namespace DSC
             { "Ingot/Uranium",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Uranium")},
             { "Ingot/Scrap",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "Scrap")},
 
-
+            // Trade Items
+            { "Ingot/TradeGoodPackaging",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "TradeGoodPackaging")},
+            { "Component/PackagedCobald",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "PackagedCobald")},
+            { "Component/PackagedGold",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "PackagedGold")},
+            { "Component/PackagedMagnesium",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "PackagedMagnesium")},
+            { "Component/PackagedPlatinum",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "PackagedPlatinum")},
+            { "Component/PackagedSilver",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "PackagedSilver")},
+            { "Component/PackagedUran",  MyVisualScriptLogicProvider.GetDefinitionId("Ingot", "PackagedUran")}
         };
-
+        
         public Dictionary<string, DSC_BlockDef> Blocks { get; } = new Dictionary<string, DSC_BlockDef>() {
 
             { "MyObjectBuilder_CubeBlock/LargeBlockArmorBlock", new DSC_BlockDef("MyObjectBuilder_CubeBlock/LargeBlockArmorBlock","Light Armor Block","SteelPlate", "", 0)},
@@ -864,10 +863,6 @@ namespace DSC
             { "MyObjectBuilder_AirtightHangarDoor/UOH_Hangar_x3", new DSC_BlockDef("MyObjectBuilder_AirtightHangarDoor/UOH_Hangar_x3","Hangar Door h4","SteelPlate", "", 0)},
             { "MyObjectBuilder_AirtightHangarDoor/UOH_Hangar_x4", new DSC_BlockDef("MyObjectBuilder_AirtightHangarDoor/UOH_Hangar_x4","Hangar Door h6","SteelPlate", "", 0)},
             { "MyObjectBuilder_AirtightHangarDoor/UOH_Hangar_x5", new DSC_BlockDef("MyObjectBuilder_AirtightHangarDoor/UOH_Hangar_x5","Hangar Door h8","SteelPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/DSC_PCU_0", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_0","DSC_PCU_0","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/DSC_PCU_1", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_1","DSC_PCU_1","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/DSC_PCU_2", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_2","DSC_PCU_2","InteriorPlate", "", 0)},
-            { "MyObjectBuilder_CargoContainer/DSC_PCU_3", new DSC_BlockDef("MyObjectBuilder_CargoContainer/DSC_PCU_3","DSC_PCU_3","InteriorPlate", "", 0)},
             { "MyObjectBuilder_CargoContainer/AdminCloneBlock", new DSC_BlockDef("MyObjectBuilder_CargoContainer/AdminCloneBlock","Admin Clone Block","StabilizedCore", "", 0)},
         };
 

@@ -80,15 +80,18 @@ namespace DSCPlugin
                 // Faction Data
                 try
                 {
-                    var reader = ReadStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
-                    Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
-                    reader.Dispose();
+                    string curFile = @"C:\Servers\se_server_e8_alpha\Instance\Saves\Epsilon 8\Storage\2033950117.sbm_DSC\DSC_Storage_Factions";
+                    if (File.Exists(curFile))
+                    {
+                        var reader = ReadStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
+                        Storage = MyAPIGateway.Utilities.SerializeFromBinary<DSC_Storage_Factions>(reader.ReadBytes((int)reader.BaseStream.Length));
+                        reader.Dispose();
 
-                    // Send data to website
+                        // Send data to website
 
-                    string output = JsonConvert.SerializeObject(Storage);
-                    SendDataAsync("faction",output);
-
+                        string output = JsonConvert.SerializeObject(Storage);
+                        SendDataAsync("faction", output);
+                    }
                 }
                 catch (Exception e)
                 {
@@ -99,16 +102,19 @@ namespace DSCPlugin
                 // Techtree
                 try
                 {
-                    System.IO.TextReader reader = TextReader("DSC_Config_TechTree", typeof(DSC_Config_TechTree)); 
-                    var xmlData = reader.ReadToEnd();
-                    Techtree = MyAPIGateway.Utilities.SerializeFromXML<DSC_Config_TechTree>(xmlData);
-                    reader.Dispose();
+                    string curFile = @"C:\Servers\se_server_e8_alpha\Instance\Saves\\Epsilon 8\Storage\2033950117.sbm_DSC\DSC_Config_TechTree";
+                    if (File.Exists(curFile))
+                    {
+                        System.IO.TextReader reader = TextReader("DSC_Config_TechTree", typeof(DSC_Config_TechTree));
+                        var xmlData = reader.ReadToEnd();
+                        Techtree = MyAPIGateway.Utilities.SerializeFromXML<DSC_Config_TechTree>(xmlData);
+                        reader.Dispose();
 
-                    // Send data to website
+                        // Send data to website
 
-                    string output = JsonConvert.SerializeObject(Techtree);
-                    SendDataAsync("techtree", output);
-
+                        string output = JsonConvert.SerializeObject(Techtree);
+                        SendDataAsync("techtree", output);
+                    }
                 }
                 catch (Exception e)
                 {
@@ -131,8 +137,6 @@ namespace DSCPlugin
 
         public async System.Threading.Tasks.Task SendDataAsync(string tag, string Information)
         {
-
-
             // Read in data from savegame
 
 

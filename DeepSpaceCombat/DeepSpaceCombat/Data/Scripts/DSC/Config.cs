@@ -34,21 +34,9 @@ namespace DSC
 
 
         // Main neutral faction
-        public static string MainFaction = "SRI";
+        public static string MainFactionTag = "TESA";
+        public static string MainFactionName = "Top Epsilon Space Agency";
         public static string MainFactionNPC = "Marvin";
-
-        public static string EnemyFaction = "GOG"; // Guardians of the Galaxy
-        public static string EnemyFactionNPC = "Groot";
-
-
-        // Damage 
-        public static int DamageAllyMultiplier = 1;
-
-        // Research Blocks
-        public static Dictionary<string, List<string>> ResearchBlocks = new Dictionary<string, List<string>>() // Blockname, techArea
-        {
-            {"DSC_Research_1_0", new List<string>(){"Standard"}},
-        };
 
         // Respawns
         public static string respawn_pb_trigger = "respawnClicked"; // Trigger string in customname => DSC_Respawn_Hangar_Left;respawnClicked
