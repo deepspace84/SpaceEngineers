@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+
+
+
+
+
+
+
+
+
+
+
+
+    <Definition xsi:type="MyObjectBuilder_TextPanelDefinition">
+      <Id>
+        <TypeId>TextPanel</TypeId>
+        <SubtypeId>LargeTextPanelResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Text Panels</DisplayName>
+      <Icon>Textures\TextPanelResearch.dds</Icon>
+      <Description>Description_TextPanel</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\TextPanel.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.1" EndY="0.8" Side="Left" StartX="0" StartY="0.2"/>
+        <MountPoint EndX="1" EndY="0.8" Side="Right" StartX="0.9" StartY="0.2"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Large\TextPanel_Construction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\TextPanel_Construction_2.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>TextPanelResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>25.0</BuildTimeSeconds>
+      <MaxScreenRenderDistance>120</MaxScreenRenderDistance>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <GuiVisible>false</GuiVisible>
+      <ScreenWidth>5</ScreenWidth>
+      <ScreenHeight>3</ScreenHeight>
+      <ScreenAreas>
+        <ScreenArea DisplayName="ScreenArea" Name="ScreenArea" ScreenHeight="3" ScreenWidth="5" TextureResolution="512"/>
+        <ScreenArea DisplayName="ScreenArea90" Name="ScreenArea90" ScreenHeight="5" ScreenWidth="3" TextureResolution="512"/>
+        <ScreenArea DisplayName="ScreenArea180" Name="ScreenArea180" ScreenHeight="3" ScreenWidth="5" TextureResolution="512"/>
+        <ScreenArea DisplayName="ScreenArea270" Name="ScreenArea270" ScreenHeight="5" ScreenWidth="3" TextureResolution="512"/>
+      </ScreenAreas>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.00006</RequiredPowerInput>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroyEffectOffset>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>-1.1</Z>
+      </DestroyEffectOffset>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>50</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+  </CubeBlocks>
+</Definitions>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+
+
+
+    <Definition xsi:type="MyObjectBuilder_JumpDriveDefinition">
+      <Id>
+        <TypeId>JumpDrive</TypeId>
+        <SubtypeId>LargeJumpDriveResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Jump Drive</DisplayName>
+      <Icon>Textures\JumpDriveResearch.dds</Icon>
+      <Description>Description_JumpDrive</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="3" y="3" z="2"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\JumpDrive.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="50" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="30" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="15" Subtype="PrototypeAlien">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="3" EndY="2" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="3" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="2" EndY="3" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="3" EndY="3" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="2" EndY="3" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="3" EndY="2" Side="Bottom" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\JumpDriveConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\JumpDriveConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\JumpDriveConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>JumpDriveResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>600.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+      <DamagedSound>ParticleWeapExpl</DamagedSound>
+
+      <ResourceSinkGroup>Charging</ResourceSinkGroup>
+      <RequiredPowerInput>32</RequiredPowerInput>
+      <PowerNeededForJump>3</PowerNeededForJump>
+
+      <MaxJumpDistance>2000000</MaxJumpDistance>
+      <MaxJumpMass>1250000</MaxJumpMass>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>Explosion_Warhead_30</DestroyEffect>
+      <DestroySound>WepLrgWarheadExpl</DestroySound>
+      <PCU>100</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+
+
+    <Definition xsi:type="MyObjectBuilder_CameraBlockDefinition">
+      <Id>
+        <TypeId>CameraBlock</TypeId>
+        <SubtypeId>LargeCameraBlockResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Camera</DisplayName>
+      <Icon>Textures\GUI\Icons\Camera.dds</Icon>
+      <Description>Description_Camera</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Camera.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="6" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="0.6" EndY="0.55" ExclusionMask="3" PropertiesMask="3" Side="Back" StartX="0.4" StartY="0.44"/>
+      </MountPoints>
+      <IsStandAlone>false</IsStandAlone>
+      <HasPhysics>false</HasPhysics>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Large\CameraConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CameraConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <BlockPairName>CameraResearch</BlockPairName>
+      <BuildTimeSeconds>30.0</BuildTimeSeconds>
+      <EdgeType>Light</EdgeType>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.00003</RequiredPowerInput>
+      <RequiredChargingInput>0.001</RequiredChargingInput>
+      <OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+      <MinFov>0.1</MinFov>
+      <MaxFov>1.04719755</MaxFov>
+      <RaycastConeLimit>45</RaycastConeLimit>
+      <RaycastDistanceLimit>-1</RaycastDistanceLimit>
+      <RaycastTimeMultiplier>2.0</RaycastTimeMultiplier>
+      <Public>true</Public>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Default</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyed_Small</DestroyEffect>
+      <DestroyEffectOffset>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>1.1</Z>
+      </DestroyEffectOffset>
+      <DestroySound>PoofExplosionCat1</DestroySound>
+      <PCU>25</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+    <Definition xsi:type="MyObjectBuilder_MergeBlockDefinition">
+      <Id>
+        <TypeId>MergeBlock</TypeId>
+        <SubtypeId>LargeShipMergeBlockResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Merge Block</DisplayName>
+      <Icon>Textures\MergeBlockResearch.dds</Icon>
+      <Description>Description_MergeBlock</Description>
+      <CubeSize>Large</CubeSize>
+      <Strength>0.1</Strength>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\MergeBlock.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="7" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="3" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MergeBlockConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MergeBlockConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.0" File="Models\Cubes\Large\MergeBlockConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>MergeBlockResearch</BlockPairName>
+      <MirroringX>Y</MirroringX>
+      <EdgeType>Light</EdgeType>
+      <Public>true</Public>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <EmissiveColorPreset>ConnectBlock</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <DeformationRatio>0.5</DeformationRatio>
+      <PCU>125</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+
+
+    <Definition xsi:type="MyObjectBuilder_ParachuteDefinition">
+      <Id>
+        <TypeId>Parachute</TypeId>
+        <SubtypeId>LgParachuteResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Parachute</DisplayName>
+      <Icon>Textures\ParachuteHatchResearch.dds</Icon>
+      <Description>Description_ParachuteHatch</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\ParachuteHatch_Large.mwm</Model>
+      <PlaceDecals>false</PlaceDecals>
+      <UseModelIntersection>true</UseModelIntersection>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <BlockPairName>Parachute HatchResearch</BlockPairName>
+      <MirroringX>None</MirroringX>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>110.0</BuildTimeSeconds>
+      <DisassembleRatio>1.5</DisassembleRatio>
+      <Public>true</Public>
+      <ResourceSinkGroup>Doors</ResourceSinkGroup>
+      <PowerConsumptionIdle>0.00001</PowerConsumptionIdle>
+      <PowerConsumptionMoving>0.001</PowerConsumptionMoving>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <ParachuteSubpartName>Parachute</ParachuteSubpartName>
+      <DragCoefficient>1.0</DragCoefficient>
+      <MaterialDeployCost>5</MaterialDeployCost>
+      <MaterialSubtype>Canvas</MaterialSubtype>
+      <ReefAtmosphereLevel>0.6</ReefAtmosphereLevel>
+      <MinimumAtmosphereLevel>0.2</MinimumAtmosphereLevel>
+      <RadiusMultiplier>8.0</RadiusMultiplier>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ConveyorConstruction_1.mwm"/>
+      </BuildProgressModels>
+      <Subparts>
+        <SubpartDefinition>
+          <Name>ParachuteHatch_Large_Door1</Name>
+        </SubpartDefinition>
+        <SubpartDefinition>
+          <Name>ParachuteHatch_Large_Door2</Name>
+        </SubpartDefinition>
+        <SubpartDefinition>
+          <Name>ParachuteHatch_Large_Door3</Name>
+        </SubpartDefinition>
+        <SubpartDefinition>
+          <Name>ParachuteHatch_Large_Door4</Name>
+        </SubpartDefinition>
+      </Subparts>
+      <OpeningSequence>
+        <Opening>
+          <IDs>0</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Z</RotationAxis>
+          <MaxOpen>-90</MaxOpen>
+          <Speed>140</Speed>
+          <PivotPosition x="0.58714" y="1.19644" z="0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>0</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>X</RotationAxis>
+          <MaxOpen>45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="0.58714" y="1.19644" z="0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>0</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Y</RotationAxis>
+          <MaxOpen>-45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="0.58714" y="1.19644" z="0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>1</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Z</RotationAxis>
+          <MaxOpen>90</MaxOpen>
+          <Speed>140</Speed>
+          <PivotPosition x="-0.58714" y="1.19644" z="0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>1</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>X</RotationAxis>
+          <MaxOpen>45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="-0.58714" y="1.19644" z="0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>1</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Y</RotationAxis>
+          <MaxOpen>45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="-0.58714" y="1.19644" z="0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>2</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Z</RotationAxis>
+          <MaxOpen>90</MaxOpen>
+          <Speed>140</Speed>
+          <PivotPosition x="-0.58714" y="1.19644" z="-0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>2</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>X</RotationAxis>
+          <MaxOpen>-45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="-0.58714" y="1.19644" z="-0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>2</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Y</RotationAxis>
+          <MaxOpen>-45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="-0.58714" y="1.19644" z="-0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>3</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Z</RotationAxis>
+          <MaxOpen>-90</MaxOpen>
+          <Speed>140</Speed>
+          <PivotPosition x="0.58714" y="1.19644" z="-0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>3</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>X</RotationAxis>
+          <MaxOpen>-45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="0.58714" y="1.19644" z="-0.58714"/>
+        </Opening>
+        <Opening>
+          <IDs>3</IDs>
+          <Move>Rotate</Move>
+          <RotationAxis>Y</RotationAxis>
+          <MaxOpen>45</MaxOpen>
+          <Speed>70</Speed>
+          <PivotPosition x="0.58714" y="1.19644" z="-0.58714"/>
+        </Opening>
+      </OpeningSequence>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>50</PCU>
+      <IsAirTight>true</IsAirTight>
+    </Definition>
+
+  </CubeBlocks>
+</Definitions>

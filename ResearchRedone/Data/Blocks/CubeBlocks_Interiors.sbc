@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <Definition>
+      <Id>
+        <TypeId>Passage</TypeId>
+        <SubtypeId>Research</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Advanced Interior</DisplayName>
+      <Icon>Textures\passageResearch.dds</Icon>
+      <Description>Description_Passage</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\passage.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="1" EndY="1" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.27" Side="Top" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0.85"/>
+        <MountPoint EndX="0.25" EndY="0.85" Side="Top" StartX="0" StartY="0.27"/>
+        <MountPoint EndX="1" EndY="0.85" Side="Top" StartX="0.75" StartY="0.27"/>
+        <MountPoint EndX="1" EndY="1" Side="Bottom" StartX="0" StartY="0.73"/>
+        <MountPoint EndX="1" EndY="0.15" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.25" EndY="0.73" Side="Bottom" StartX="0" StartY="0.15"/>
+        <MountPoint EndX="1" EndY="0.73" Side="Bottom" StartX="0.75" StartY="0.15"/>
+        <MountPoint EndX="0.15" EndY="1" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Front" StartX="0.85" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\PassageConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\PassageConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\PassageConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>PassageResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>80.0</BuildTimeSeconds>
+      <PCU>1</PCU>
+    </Definition>
+
+
+
+
+
+
+
+    <Definition>
+      <Id>
+        <TypeId>CubeBlock</TypeId>
+        <SubtypeId>LargeCoverWallResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Combat Walls</DisplayName>
+      <Icon>Textures\cover_wall_fullResearch.dds</Icon>
+      <Description>Description_FullCoverWall</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\CoverWall.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.97" EndY="0.4" Side="Left" StartX="0.83" StartY="0.01"/>
+        <MountPoint EndX="0.17" EndY="0.4" Side="Right" StartX="0.03" StartY="0.01"/>
+        <MountPoint Default="true" EndX="0.99" EndY="0.99" Side="Bottom" StartX="0.01" StartY="0.8"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.40" File="Models\Cubes\Large\CoverWallConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\CoverWallConstruction_2.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>FullCoverWallResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>40.0</BuildTimeSeconds>
+      <PCU>1</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+
+
+
+
+
+  </CubeBlocks>
+</Definitions>

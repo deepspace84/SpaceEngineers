@@ -6,17 +6,17 @@
       <CubeGrids>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>124412708272348880</EntityId>
+          <EntityId>113540392016791702</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
             <Position x="0" y="0" z="0" />
-            <Forward x="0.897176147" y="0.4409769" z="0.0247924626" />
-            <Up x="-0.05185619" y="0.0494253635" z="0.9974309" />
+            <Forward x="0.897153258" y="0.441020548" z="0.0248377919" />
+            <Up x="-0.0521600842" y="0.04993564" z="0.9973895" />
             <Orientation>
-              <X>0.5945557</X>
-              <Y>-0.398622453</Y>
-              <Z>-0.3489856</Z>
-              <W>0.6048246</W>
+              <X>0.59446007</X>
+              <Y>-0.3987933</Y>
+              <Z>-0.348782748</Z>
+              <W>0.6049229</W>
             </Orientation>
           </PositionAndOrientation>
           <LocalPositionAndOrientation xsi:nil="true" />
@@ -30,7 +30,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_RemoteControl">
               <SubtypeName>LargeBlockRemoteControl</SubtypeName>
-              <EntityId>75175368265131558</EntityId>
+              <EntityId>121317022755843736</EntityId>
               <Min x="0" y="2" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -71,7 +71,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_BatteryBlock">
               <SubtypeName>LargeBlockBatteryBlock</SubtypeName>
-              <EntityId>143639028729724071</EntityId>
+              <EntityId>117945858138037649</EntityId>
               <Min x="0" y="3" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -83,7 +83,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <CurrentStoredPower>0.8616685</CurrentStoredPower>
+              <CurrentStoredPower>0.8516128</CurrentStoredPower>
               <ProducerEnabled>true</ProducerEnabled>
               <MaxStoredPower>0</MaxStoredPower>
               <SemiautoEnabled>false</SemiautoEnabled>
@@ -92,7 +92,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CargoContainer">
               <SubtypeName>LargeBlockSmallContainer</SubtypeName>
-              <EntityId>128952172836278942</EntityId>
+              <EntityId>111830902224055522</EntityId>
               <Min x="0" y="4" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -132,7 +132,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorAdvancedStator">
               <SubtypeName>LargeAdvancedStator</SubtypeName>
-              <EntityId>138296774294222410</EntityId>
+              <EntityId>73179628532325141</EntityId>
               <Min x="0" y="5" z="-1" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
@@ -143,7 +143,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <TopBlockId>130628663305583011</TopBlockId>
+              <TopBlockId>122865037163897476</TopBlockId>
               <ShareInertiaTensor>false</ShareInertiaTensor>
               <SafetyDetach>5</SafetyDetach>
               <RotorEntityId xsi:nil="true" />
@@ -151,7 +151,7 @@
               <TargetVelocity>0</TargetVelocity>
               <MinAngle xsi:nil="true" />
               <MaxAngle xsi:nil="true" />
-              <CurrentAngle>1.62384131E-05</CurrentAngle>
+              <CurrentAngle>5.913951E-05</CurrentAngle>
               <LimitsActive>false</LimitsActive>
               <DummyDisplacement>-0.11</DummyDisplacement>
               <RotorLock>true</RotorLock>
@@ -352,7 +352,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>90160537444362271</EntityId>
+              <EntityId>94113679483596086</EntityId>
               <Min x="0" y="4" z="0" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
               <SkinSubtypeId>Neon_Colorable_Lights</SkinSubtypeId>
@@ -370,7 +370,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>136325237856022048</EntityId>
+              <EntityId>128531150341345572</EntityId>
               <Min x="0" y="4" z="-2" />
               <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -389,7 +389,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>112892016577727388</EntityId>
+              <EntityId>115312975613075553</EntityId>
               <Min x="1" y="4" z="-1" />
               <BlockOrientation Forward="Left" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -408,7 +408,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Door">
               <SubtypeName>LargeBlockOffsetDoor</SubtypeName>
-              <EntityId>134048603845990737</EntityId>
+              <EntityId>119331710663719385</EntityId>
               <Min x="-1" y="4" z="-1" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0" y="0.15" z="0.25" />
@@ -519,7 +519,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>ESCO | Crate 2</DisplayName>
+          <DisplayName>Crate_2</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
@@ -529,17 +529,17 @@
         </CubeGrid>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>142658331566661890</EntityId>
+          <EntityId>112020644161081655</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
-            <Position x="1.819580078125" y="2.39349365234375" z="12.598234176635742" />
-            <Forward x="0.8971638" y="0.44099316" z="0.0249348283" />
-            <Up x="-0.05197075" y="0.0493327975" z="0.997429132" />
+            <Position x="1.81396484375" y="2.399932861328125" z="12.59735107421875" />
+            <Forward x="0.89715296" y="0.441024035" z="0.0247813761" />
+            <Up x="-0.0520850122" y="0.04990959" z="0.997394562" />
             <Orientation>
-              <X>0.594607353</X>
-              <Y>-0.3986346</Y>
-              <Z>-0.348963767</Z>
-              <W>0.604778349</W>
+              <X>0.5944556</X>
+              <Y>-0.39876458</Y>
+              <Z>-0.348808944</Z>
+              <W>0.6049311</W>
             </Orientation>
           </PositionAndOrientation>
           <LocalPositionAndOrientation xsi:nil="true" />
@@ -547,15 +547,15 @@
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorAdvancedRotor">
               <SubtypeName>SmallAdvancedRotor</SubtypeName>
-              <EntityId>130628663305583011</EntityId>
+              <EntityId>122865037163897476</EntityId>
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
               <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
-              <ParentEntityId>85344597279163298</ParentEntityId>
+              <ParentEntityId>99833850700463318</ParentEntityId>
               <YieldLastComponent>false</YieldLastComponent>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Conveyor">
               <SubtypeName>SmallShipConveyorHub</SubtypeName>
-              <EntityId>117949010372321909</EntityId>
+              <EntityId>120063720920377485</EntityId>
               <Min x="0" y="2" z="0" />
               <BlockOrientation Forward="Down" Up="Forward" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -563,7 +563,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_RadioAntenna">
               <SubtypeName>SmallBlockRadioAntenna</SubtypeName>
-              <EntityId>97652022607924052</EntityId>
+              <EntityId>80324924934008153</EntityId>
               <Min x="1" y="3" z="-1" />
               <BlockOrientation Forward="Up" Up="Forward" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -585,7 +585,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_RadioAntenna">
               <SubtypeName>SmallBlockRadioAntenna</SubtypeName>
-              <EntityId>72771662124600982</EntityId>
+              <EntityId>143919264195775315</EntityId>
               <Min x="1" y="3" z="3" />
               <BlockOrientation Forward="Up" Up="Backward" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -597,7 +597,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>false</Enabled>
-              <BroadcastRadius>5000</BroadcastRadius>
+              <BroadcastRadius>50000</BroadcastRadius>
               <ShowShipName>false</ShowShipName>
               <EnableBroadcasting>false</EnableBroadcasting>
               <AttachedPB>0</AttachedPB>
@@ -879,7 +879,7 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_LargeGatlingTurret">
               <SubtypeName>SmallGatlingTurret</SubtypeName>
-              <EntityId>73669530494094418</EntityId>
+              <EntityId>79967369358625385</EntityId>
               <Min x="-1" y="5" z="-1" />
               <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
@@ -951,6 +951,198 @@
               <PreviousIdleRotationState>true</PreviousIdleRotationState>
               <TargetCharacters>true</TargetCharacters>
             </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>90967878211776402</EntityId>
+              <Min x="-2" y="3" z="2" />
+              <BlockOrientation Forward="Left" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 8</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>92514722475649359</EntityId>
+              <Min x="4" y="3" z="2" />
+              <BlockOrientation Forward="Right" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 7</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>138383715856953908</EntityId>
+              <Min x="-2" y="3" z="0" />
+              <BlockOrientation Forward="Left" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 6</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>143154554316369385</EntityId>
+              <Min x="4" y="3" z="0" />
+              <BlockOrientation Forward="Right" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 5</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>124828205393045008</EntityId>
+              <Min x="0" y="3" z="-2" />
+              <BlockOrientation Forward="Forward" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 9</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>111074477728296263</EntityId>
+              <Min x="2" y="3" z="-2" />
+              <BlockOrientation Forward="Forward" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 10</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>82888602649912577</EntityId>
+              <Min x="0" y="3" z="4" />
+              <BlockOrientation Forward="Backward" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 11</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
+            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_InteriorLight">
+              <SubtypeName>SmallBlockSmallLight</SubtypeName>
+              <EntityId>143055452689238211</EntityId>
+              <Min x="2" y="3" z="4" />
+              <BlockOrientation Forward="Backward" Up="Down" />
+              <ColorMaskHSV x="0" y="-0.8" z="-0.3" />
+              <SkinSubtypeId>CarbonFibre_Armor</SkinSubtypeId>
+              <CustomName>Interior Light 12</CustomName>
+              <ShowOnHUD>false</ShowOnHUD>
+              <ShowInTerminal>true</ShowInTerminal>
+              <ShowInToolbarConfig>true</ShowInToolbarConfig>
+              <ShowInInventory>true</ShowInInventory>
+              <Enabled>true</Enabled>
+              <Radius>8</Radius>
+              <ReflectorRadius>120</ReflectorRadius>
+              <ColorGreen>0.470588237</ColorGreen>
+              <ColorBlue>0.392156869</ColorBlue>
+              <Falloff>1.3</Falloff>
+              <Intensity>5</Intensity>
+              <BlinkIntervalSeconds>2</BlinkIntervalSeconds>
+              <BlinkLenght>40</BlinkLenght>
+              <BlinkOffset>0</BlinkOffset>
+              <Offset>0.5</Offset>
+            </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
           <XMirroxPlane x="1" y="3" z="1" />
           <ZMirroxPlane x="3" y="3" z="1" />
@@ -972,7 +1164,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>ESCO | Crate 2</DisplayName>
+          <DisplayName>DeSC | Crate_2</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

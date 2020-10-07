@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <!-- Region Piston-->
+    <Definition xsi:type="MyObjectBuilder_PistonBaseDefinition">
+      <Id>
+        <TypeId>PistonBase</TypeId>
+        <SubtypeId>LargePistonBaseResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Piston</DisplayName>
+      <Icon>Textures\PistonResearch.dds</Icon>
+      <Description>Description_Piston</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="2" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\PistonBase.mwm</Model>
+      <PlaceDecals>false</PlaceDecals>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.8" EndY="0.8" Side="Bottom" StartX="0.2" StartY="0.2"/>
+        <MountPoint EndX="0.75" EndY="1.7" Side="Left" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="1.7" Side="Right" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="1.7" Side="Front" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="1.7" Side="Back" StartX="0.25" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\PistonBaseConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\PistonBaseConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\PistonBaseConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>PistonBaseResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <PrimarySound>BlockPiston</PrimarySound>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.002</RequiredPowerInput>
+      <TopPart>PistonTop</TopPart>
+      <Public>false</Public>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <SafetyDetach>5</SafetyDetach>
+      <SafetyDetachMax>5</SafetyDetachMax>
+      <DefaultMaxImpulseAxis>50000</DefaultMaxImpulseAxis>
+      <DefaultMaxImpulseNonAxis>50000</DefaultMaxImpulseNonAxis>
+      <DangerousImpulseThreshold>100000</DangerousImpulseThreshold>
+      <MaxImpulse>340282300000000000000000000000000000000</MaxImpulse> //Float.Max
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>100</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+
+
+    <!-- End Region Piston-->
+    <!-- Region MotorStator-->
+    <Definition xsi:type="MyObjectBuilder_MotorStatorDefinition">
+      <Id>
+        <TypeId>MotorStator</TypeId>
+        <SubtypeId>LargeStatorResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Rotor</DisplayName>
+      <Icon>Textures\motorResearch.dds</Icon>
+      <Description>Description_Rotor</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="2" z="1"/>
+      <ModelOffset x="0" y="-1.25" z="0"/>
+      <Model>Models\Cubes\Large\MotorStator.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.8" EndY="0.8" Side="Bottom" StartX="0.2" StartY="0.2"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Left" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Right" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Front" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Back" StartX="0.25" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MotorStatorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MotorStatorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MotorStatorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>MotorStatorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <PrimarySound>BlockRotor</PrimarySound>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.002</RequiredPowerInput>
+      <MaxForceMagnitude>1E9</MaxForceMagnitude>
+      <DangerousTorqueThreshold>3.36E+07</DangerousTorqueThreshold>
+      <PropulsionForce>8000</PropulsionForce>
+      <RotorPart>MotorRotor</RotorPart>
+      <RotorDisplacementMin>-0.4</RotorDisplacementMin>
+      <RotorDisplacementMax>0.2</RotorDisplacementMax>
+      <RotorDisplacementMinSmall>-0.11</RotorDisplacementMinSmall>
+      <RotorDisplacementMaxSmall>0.11</RotorDisplacementMaxSmall>
+      <RotorDisplacementInModel>0.0</RotorDisplacementInModel>
+      <GuiVisible>false</GuiVisible>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <SafetyDetach>5</SafetyDetach>
+      <SafetyDetachMax>5</SafetyDetachMax>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <RotorType>Rotor</RotorType>
+      <PCU>100</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+    <!-- End Region MotorStator-->
+    <!-- Region AdvMotorStator-->
+    <Definition xsi:type="MyObjectBuilder_MotorAdvancedStatorDefinition">
+      <Id>
+        <TypeId>MotorAdvancedStator</TypeId>
+        <SubtypeId>LargeAdvancedStatorResearch</SubtypeId>
+      </Id>
+      <Public>true</Public>
+      <DisplayName>Prototype: Advanced Rotor</DisplayName>
+      <Icon>Textures\AdvancedMotorResearch.dds</Icon>
+      <Description>Description_AdvancedRotor</Description>
+      <CubeSize>Large</CubeSize>
+      <GuiVisible>false</GuiVisible>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="2" z="1"/>
+      <ModelOffset x="0" y="-1.25" z="0"/>
+      <Model>Models\Cubes\Large\MotorAdvancedStator.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="10" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="3" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.8" EndY="0.8" Side="Bottom" StartX="0.2" StartY="0.2"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Left" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Right" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Front" StartX="0.25" StartY="0"/>
+        <MountPoint EndX="0.75" EndY="0.61" Side="Back" StartX="0.25" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MotorAdvancedStatorConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MotorAdvancedStatorConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MotorAdvancedStatorConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>MotorAdvancedStatorResearch</BlockPairName>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>100.0</BuildTimeSeconds>
+      <PrimarySound>BlockRotor</PrimarySound>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.002</RequiredPowerInput>
+      <MaxForceMagnitude>1E9</MaxForceMagnitude>
+      <DangerousTorqueThreshold>3.36E+07</DangerousTorqueThreshold>
+      <RotorPart>MotorAdvancedRotor</RotorPart>
+      <RotorDisplacementMin>-0.4</RotorDisplacementMin>
+      <RotorDisplacementMax>0.2</RotorDisplacementMax>
+      <RotorDisplacementMinSmall>-0.11</RotorDisplacementMinSmall>
+      <RotorDisplacementMaxSmall>0.11</RotorDisplacementMaxSmall>
+      <RotorDisplacementInModel>0.0</RotorDisplacementInModel>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <SafetyDetach>5</SafetyDetach>
+      <SafetyDetachMax>5</SafetyDetachMax>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <RotorType>Rotor</RotorType>
+      <PCU>100</PCU>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+    <!-- End Region AdvMotorStator-->
+    <!-- Region HingeBlocks-->
+
+    <Definition xsi:type="MyObjectBuilder_MotorAdvancedStatorDefinition">
+      <Id>
+        <TypeId>MotorAdvancedStator</TypeId>
+        <SubtypeId>LargeHingeResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Hinge</DisplayName>
+      <Icon>Textures\HingeResearch.dds</Icon>
+      <Description>Description_Hinge</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\Hinge.mwm</Model>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate"/>
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="PrototypeSpace">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate"/>
+      </Components>
+      <CriticalComponent Index="0" Subtype="PrototypeEarth"/>
+      <MountPoints>
+        <MountPoint EndX="0.8" EndY="0.8" Side="Right" StartX="0.2" StartY="0.2"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\HingeConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\HingeConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\HingeConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>LargeHingeResearch</BlockPairName>
+      <BuildTimeSeconds>80.0</BuildTimeSeconds>
+      <UseModelIntersection>true</UseModelIntersection>
+      <RotorPart>LargeHingeHead</RotorPart>
+      <MirroringX>Y</MirroringX>
+      <MirroringY>X</MirroringY>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.002</RequiredPowerInput>
+      <MaxForceMagnitude>1E9</MaxForceMagnitude>
+      <DangerousTorqueThreshold>3.36E+07</DangerousTorqueThreshold>
+      <RotorDisplacementMin>0</RotorDisplacementMin>
+      <RotorDisplacementMax>0</RotorDisplacementMax>
+      <RotorDisplacementMinSmall>0</RotorDisplacementMinSmall>
+      <RotorDisplacementMaxSmall>0</RotorDisplacementMaxSmall>
+      <RotorDisplacementInModel>0</RotorDisplacementInModel>
+      <MinAngleDeg>-90</MinAngleDeg>
+      <MaxAngleDeg>90</MaxAngleDeg>
+      <SafetyDetach>5</SafetyDetach>
+      <SafetyDetachMax>5</SafetyDetachMax>
+      <DamageEffectId>212</DamageEffectId>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <PrimarySound>BlockRotor</PrimarySound>
+      <RotorType>Hinge</RotorType>
+      <PCU>100</PCU>
+    </Definition>
+
+
+
+
+
+
+
+
+
+
+
+  </CubeBlocks>
+</Definitions>

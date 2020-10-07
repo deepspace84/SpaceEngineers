@@ -1229,7 +1229,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>ESCO | Crate 5</DisplayName>
+          <DisplayName>DeSC | Crate 5</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
@@ -1380,7 +1380,7 @@
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>false</Enabled>
-              <BroadcastRadius>5000</BroadcastRadius>
+              <BroadcastRadius>50000</BroadcastRadius>
               <ShowShipName>false</ShowShipName>
               <EnableBroadcasting>false</EnableBroadcasting>
               <AttachedPB>0</AttachedPB>
@@ -1873,7 +1873,7 @@
               <ConveyorLineType>LARGE_LINE</ConveyorLineType>
             </MyObjectBuilder_ConveyorLine>
           </ConveyorLines>
-          <DisplayName>ESCO | Crate 5</DisplayName>
+          <DisplayName>DeSC | Crate 5</DisplayName>
           <DestructibleBlocks>true</DestructibleBlocks>
           <CreatePhysics>false</CreatePhysics>
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>

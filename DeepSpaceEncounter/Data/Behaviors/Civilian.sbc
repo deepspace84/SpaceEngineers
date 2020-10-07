@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<EntityComponents>
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>Civilian-Behaviour</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Behavior]
+        [BehaviorName:Passive]
+
+        [Triggers:AnnounceCivilian-Trigger]
+
+        [Triggers:Looted-Trigger]
+        [Triggers:Despawn-Trigger]
+        [Triggers:PlayerNear-Trigger]
+      </Description>      
+		</EntityComponent>
+
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>AnnounceCivilian-Trigger</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:true]
+        [Type:Timer]
+
+        [MinCooldownMs:5000]
+        [MaxCooldownMs:30000]
+        [StartsReady:false]
+
+        [MaxActions:-1]
+        [Actions:AnnounceCivilian-Action]
+
+      </Description>      
+		</EntityComponent>
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>AnnounceCivilian-Action</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Action]
+
+        [UseChatBroadcast:true]
+        [ChatData:AnnounceCivilian-Chat]
+
+      </Description>      
+		</EntityComponent>
+		<EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+			<Id>
+				<TypeId>Inventory</TypeId>
+				<SubtypeId>AnnounceCivilian-Chat</SubtypeId>
+			</Id>
+			<Description>
+
+        [RivalAI Chat]
+
+        [UseChat:true]
+        [StartsReady:true]
+        [Chance:100]
+        [MaxChats:1]
+        [SendToAllOnlinePlayers:true]
+        [BroadcastRandomly:true]
+
+        [Author:DeSC]
+        [Color:Red]
+        [GPSLabel:DeSC-Zivil]
+
+
+        [ChatMessages:Zivile Einrichtung {GridName} bei {GPS} ist einsatzbereit.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:{GridName} bei {GPS} wurde als Zivil eingestuft. Bewachung überflüssig.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+        [ChatMessages:Neue Einrichtung {GridName} steht bei {GPS} bereit.]
+        [ChatAudio:ArcHudGPSNotification1]
+        [BroadcastChatType:Chat]
+
+      </Description>      
+		</EntityComponent>
+
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Looted-Trigger</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:true]
+        [Type:Damage]
+        [DamageTypes:Any]
+
+        [StartsReady:true]
+
+        [MaxActions:1]
+        [Actions:Looted-Action]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>PlayerNear-Trigger</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:true]
+        [Type:PlayerNear]
+        [TargetDistance:1500]
+
+        [MinCooldownMs:2000]
+        [MaxCooldownMs:2000]
+        [StartsReady:true]
+
+        [MaxActions:-1]
+        [Actions:ResetDespawn-Action]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Looted-Action</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Action]
+
+        [EnableTriggers:true]
+        [EnableTriggerNames:Despawn-Trigger]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>ResetDespawn-Action</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Action]
+
+        [ResetCooldownTimeOfTriggers:true]
+        [ResetTriggerCooldownNames:Despawn-Trigger]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Despawn-Trigger</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Trigger]
+
+        [UseTrigger:false]
+        [Type:Timer]
+
+        [MinCooldownMs:300000]
+        [MaxCooldownMs:300000]
+        [StartsReady:false]
+
+        [MaxActions:-1]
+        [Actions:Despawn-Action]
+
+      </Description>
+    </EntityComponent>
+    <EntityComponent xsi:type="MyObjectBuilder_InventoryComponentDefinition">
+      <Id>
+        <TypeId>Inventory</TypeId>
+        <SubtypeId>Despawn-Action</SubtypeId>
+      </Id>
+      <Description>
+
+        [RivalAI Action]
+
+        [GenerateExplosion:true]
+        [ExplosionRange:30]
+        [ExplosionDamage:500]
+        [ExplosionIgnoresVoxels:true]
+        [ForceDespawn:true]
+
+      </Description>
+    </EntityComponent>
+	</EntityComponents>
+
+</Definitions>

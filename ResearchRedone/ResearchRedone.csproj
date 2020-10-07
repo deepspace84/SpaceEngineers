@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7FDAE37-D299-4DDA-80EB-DB47623AB220}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ResearchRedone</RootNamespace>
+    <AssemblyName>ResearchRedone</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Data\Blocks\CubeBlocks_Armor.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Automation.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Communications.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Control.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_DecorativePack.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_DecorativePack2.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Doors.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Economy.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Energy.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Frostbite.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Gravity.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Interiors.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_LCDPanels.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Lights.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Logistics.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Mechanical.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Medical.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Production.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Symbols.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Thrusters.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Tools.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Utility.sbc" />
+    <None Include="Data\Blocks\CubeBlocks_Weapons.sbc" />
+    <None Include="Data\Components.sbc" />
+    <None Include="Data\ResearchBlocks.sbc" />
+    <None Include="Data\ResearchGroups.sbc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="metadata.mod" />
+    <Content Include="Textures\antennaResearch.dds" />
+    <Content Include="Textures\ArtificialMassResearch.dds" />
+    <Content Include="Textures\BatteryResearch.dds" />
+    <Content Include="Textures\beaconResearch.dds" />
+    <Content Include="Textures\ButtonPanelResearch.dds" />
+    <Content Include="Textures\CockpitResearch.dds" />
+    <Content Include="Textures\Control PanelResearch.dds" />
+    <Content Include="Textures\cover_wall_fullResearch.dds" />
+    <Content Include="Textures\DeskResearch.dds" />
+    <Content Include="Textures\doorResearch.dds" />
+    <Content Include="Textures\FighterCockpitResearch.dds" />
+    <Content Include="Textures\GateResearch.dds" />
+    <Content Include="Textures\GratedCatwalkResearch.dds" />
+    <Content Include="Textures\gravity_generatorResearch.dds" />
+    <Content Include="Textures\gyroResearch.dds" />
+    <Content Include="Textures\HangarDoorResearch.dds" />
+    <Content Include="Textures\heavy_armor_cubeResearch.dds" />
+    <Content Include="Textures\HydrogenEngineLargeResearch.dds" />
+    <Content Include="Textures\interior_lightResearch.dds" />
+    <Content Include="Textures\KitchenResearch.dds" />
+    <Content Include="Textures\LaserAntennaResearch.dds" />
+    <Content Include="Textures\lightResearch.dds" />
+    <Content Include="Textures\light_armor_slopeResearch.dds" />
+    <Content Include="Textures\LockerRoomCornerResearch.dds" />
+    <Content Include="Textures\LockerRoomResearch.dds" />
+    <Content Include="Textures\Microscope.dds" />
+    <Content Include="Textures\MicroscopeEarth.dds" />
+    <Content Include="Textures\MicroscopeMoon.dds" />
+    <Content Include="Textures\MicroscopeSpace.dds" />
+    <Content Include="Textures\nuclear_reactorResearch.dds" />
+    <Content Include="Textures\nuclear_reactor_largeResearch.dds" />
+    <Content Include="Textures\passageResearch.dds" />
+    <Content Include="Textures\ProgrammingBlockResearch.dds" />
+    <Content Include="Textures\ProjectorResearch.dds" />
+    <Content Include="Textures\RemoteControlResearch.dds" />
+    <Content Include="Textures\RotatingLightResearch.dds" />
+    <Content Include="Textures\SafeZoneBlockResearch.dds" />
+    <Content Include="Textures\SensorResearch.dds" />
+    <Content Include="Textures\SoundBlockResearch.dds" />
+    <Content Include="Textures\StoreBlockResearch.dds" />
+    <Content Include="Textures\TextPanelResearch.dds" />
+    <Content Include="Textures\TimerBlockResearch.dds" />
+    <Content Include="Textures\TransparentLCDResearch.dds" />
+    <Content Include="Textures\WindowWallResearch.dds" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

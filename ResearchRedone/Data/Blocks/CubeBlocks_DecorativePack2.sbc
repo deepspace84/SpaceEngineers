@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CubeBlocks>
+    <!-- Decorative Blocks #2-->
+
+
+
+
+
+
+
+
+
+
+
+    <Definition>
+      <Id>
+        <TypeId>CubeBlock</TypeId>
+        <SubtypeId>WindowWallResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Reinforced Windows</DisplayName>
+      <Icon>Textures\WindowWallResearch.dds</Icon>
+      <Description>Description_WindowWall</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <GuiVisible>false</GuiVisible>
+      <Model>Models\Cubes\Large\WindowWallCenter.mwm</Model>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="3" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="0.3" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1.0" Side="Front" StartX="0" StartY="0.7"/>
+        <MountPoint EndX="1" EndY="0.3" Side="Right" StartX="0.4" StartY="0"/>
+        <MountPoint EndX="1" EndY="1.0" Side="Right" StartX="0.4" StartY="0.7"/>
+        <MountPoint EndX="0.6" EndY="0.3" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="0.6" EndY="1.0" Side="Left" StartX="0" StartY="0.7"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0" StartY="0.4"/>
+        <MountPoint Default="true" EndX="1" EndY="0.6" Side="Bottom" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\WindowWallCenterConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\WindowWallCenterConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\WindowWallCenterConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <HasInventory>false</HasInventory>
+      <BuildTimeSeconds>50.0</BuildTimeSeconds>
+      <PCU>1</PCU>
+      <IsAirTight>true</IsAirTight>
+      <DLC>DecorativeBlocks2</DLC>
+    </Definition>
+
+
+
+
+
+
+    <Definition xsi:type="MyObjectBuilder_TextPanelDefinition">
+      <Id>
+        <TypeId>TextPanel</TypeId>
+        <SubtypeId>TransparentLCDLargeResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Transparent LCDs</DisplayName>
+      <Icon>Textures\TransparentLCDResearch.dds</Icon>
+      <Description>Description_TransparentLCD</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <GuiVisible>false</GuiVisible>
+      <Model>Models\Cubes\Large\TransparentLCD.mwm</Model>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="0.1" EndY="1" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="1" EndY="0.1" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Front" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Right" StartX="0.9" StartY="0"/>
+        <MountPoint EndX="1" EndY="1" Side="Top" StartX="0.0" StartY="0.9"/>
+      </MountPoints>
+      <BlockPairName>TransparentLCDResearch</BlockPairName>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.5" File="Models\Cubes\Large\TransparentLCD_Construction_1.mwm"/>
+        <Model BuildPercentUpperBound="1.0" File="Models\Cubes\Large\TransparentLCD_Construction_2.mwm"/>
+      </BuildProgressModels>
+      <ScreenAreas>
+        <ScreenArea DisplayName="TransparentScreenArea" Name="TransparentScreenArea" ScreenHeight="1" ScreenWidth="1" TextureResolution="512"/>
+        <ScreenArea DisplayName="TransparentScreenArea90" Name="TransparentScreenArea90" ScreenHeight="1" ScreenWidth="1" TextureResolution="512"/>
+        <ScreenArea DisplayName="TransparentScreenArea270" Name="TransparentScreenArea180" ScreenHeight="1" ScreenWidth="1" TextureResolution="512"/>
+        <ScreenArea DisplayName="TransparentScreenArea180" Name="TransparentScreenArea270" ScreenHeight="1" ScreenWidth="1" TextureResolution="512"/>
+      </ScreenAreas>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <EdgeType>Light</EdgeType>
+      <HasInventory>false</HasInventory>
+      <BuildTimeSeconds>30.0</BuildTimeSeconds>
+      <MaxScreenRenderDistance>120</MaxScreenRenderDistance>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.00002</RequiredPowerInput>
+      <PanelMaterialName>TransparentScreenArea</PanelMaterialName>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <PCU>50</PCU>
+      <DLC>DecorativeBlocks2</DLC>
+    </Definition>
+
+
+
+    <Definition>
+      <Id>
+        <TypeId>CubeBlock</TypeId>
+        <SubtypeId>CatwalkResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Catwalks</DisplayName>
+      <Icon>Textures\GratedCatwalkResearch.dds</Icon>
+      <Description>Description_GratedCatwalk</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <GuiVisible>false</GuiVisible>
+      <Model>Models\Cubes\Large\GratedCatwalk.mwm</Model>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint EndX="1" EndY="0.1" ExclusionMask="1" PropertiesMask="2" Side="Left" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.1" ExclusionMask="1" PropertiesMask="2" Side="Right" StartX="0" StartY="0"/>
+        <MountPoint Default="true" EndX="1" EndY="1" ExclusionMask="1" PropertiesMask="2" Side="Bottom" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.1" ExclusionMask="1" PropertiesMask="2" Side="Back" StartX="0" StartY="0"/>
+        <MountPoint EndX="1" EndY="0.1" ExclusionMask="1" PropertiesMask="2" Side="Front" StartX="0" StartY="0"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GratedCatwalkConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GratedCatwalkConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GratedCatwalkConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <MirroringY>Z</MirroringY>
+      <MirroringZ>Y</MirroringZ>
+      <EdgeType>Light</EdgeType>
+      <HasInventory>false</HasInventory>
+      <BuildTimeSeconds>50.0</BuildTimeSeconds>
+      <BlockPairName>CatwalkResearch</BlockPairName>
+      <PCU>1</PCU>
+      <DLC>DecorativeBlocks2</DLC>
+      <IsAirTight>false</IsAirTight>
+    </Definition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <Definition xsi:type="MyObjectBuilder_ReflectorBlockDefinition">
+      <Id>
+        <TypeId>ReflectorLight</TypeId>
+        <SubtypeId>RotatingLightLargeResearch</SubtypeId>
+      </Id>
+      <DisplayName>Prototype: Rotating Light</DisplayName>
+      <Icon>Textures\RotatingLightResearch.dds</Icon>
+      <Description>Description_RotatingLight</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <GuiVisible>false</GuiVisible>
+      <Model>Models\Cubes\Large\RotatingLight.mwm</Model>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Components>
+        <Component Count="1" Subtype="SteelPlate" />
+        <Component Count="2" Subtype="PrototypeEarth">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Count="1" Subtype="SteelPlate" />
+      </Components>
+      <CriticalComponent Index="1" Subtype="SteelPlate"/>
+      <MountPoints>
+        <MountPoint Default="true" EndX="0.6" EndY="0.6" Side="Back" StartX="0.4" StartY="0.4"/>
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\RotatingLightConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\RotatingLightConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\RotatingLightConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+      <EdgeType>Light</EdgeType>
+      <HasInventory>false</HasInventory>
+      <BuildTimeSeconds>20.0</BuildTimeSeconds>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <BlockPairName>RotatingLightResearch</BlockPairName>
+      <PCU>25</PCU>
+      <DLC>DecorativeBlocks2</DLC>
+      <IsAirTight>false</IsAirTight>
+      <RotationSpeedBounds Default="0.08" Max="0.1" Min="0.01"/>
+      <LightRadius Default="1" Max="5" Min="1"/>
+      <LightReflectorRadius Default="20" Max="30" Min="10"/>
+      <LightFalloff Default="0.5" Max="3" Min="0.1"/>
+      <LightIntensity Default="6" Max="10" Min="0.5"/>
+      <ResourceSinkGroup>Utility</ResourceSinkGroup>
+      <RequiredPowerInput>0.0002</RequiredPowerInput>
+      <Flare>SpotlightSmall</Flare>
+      <ReflectorThickness>5.0</ReflectorThickness>
+      <ReflectorTexture>Textures\Lights\reflector.dds</ReflectorTexture>
+      <ReflectorConeDegrees>40</ReflectorConeDegrees>
+      <ReflectorConeMaterial>ReflectorConeNarrow</ReflectorConeMaterial>
+    </Definition>
+
+
+
+
+
+
+    <!-- End of Decorative Blocks 2 -->
+  </CubeBlocks>
+</Definitions>

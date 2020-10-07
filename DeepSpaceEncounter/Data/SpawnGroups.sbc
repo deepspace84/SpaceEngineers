@@ -27,14 +27,44 @@
       <Frequency>30.0</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
-        <Prefab SubtypeId="SR-Medical">
+        <Prefab SubtypeId="Warhead">
           <Position>
             <X>0.0</X>
             <Y>0.0</Y>
             <Z>0.0</Z>
           </Position>
-          <BeaconText>Super Gremlin</BeaconText>
-          <Speed>25.0</Speed>
+          <Speed>0.0</Speed>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>RessourceSpawn</SubtypeId>
+      </Id>
+      <Description>
+
+        [Modular Encounters Territory]
+        [Name:RessourceSpawn]
+        [Type:Static]
+        [CoordsX:143934.368367209]
+        [CoordsY:132305.339597341]
+        [CoordsZ:371748.006867876]
+        [Radius:50000]
+
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>30.0</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Warhead">
+          <Position>
+            <X>0.0</X>
+            <Y>0.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <Speed>0.0</Speed>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
@@ -52,7 +82,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
         [PlanetaryInstallationType:Small]
@@ -66,7 +96,7 @@
         [ThreatScoreMinimum:1]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Crate RandomLetterRandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -97,7 +127,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -112,7 +142,7 @@
         [ThreatScoreMinimum:10]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Crate RandomLetterRandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -143,7 +173,9 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -158,7 +190,7 @@
         [ThreatScoreMinimum:100]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Crate RandomLetterRandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -189,7 +221,9 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -204,7 +238,7 @@
         [ThreatScoreMinimum:250]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Crate RandomLetterRandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -235,7 +269,9 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -250,7 +286,7 @@
         [ThreatScoreMinimum:500]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Crate RandomLetterRandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -285,7 +321,9 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -297,10 +335,10 @@
 
         [UseThreatLevelCheck:true]
         [ThreatLevelCheckRange:15000]
-        [ThreatScoreMinimum:400]
+        [ThreatScoreMinimum:350]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Outpost NatoLetter RandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -330,7 +368,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -345,7 +383,7 @@
         [ThreatScoreMinimum:35]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Bunker NatoLetter RandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -375,7 +413,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -390,7 +428,7 @@
         [ThreatScoreMinimum:30]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Lab GreekLetter RandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -420,7 +458,9 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -435,7 +475,7 @@
         [ThreatScoreMinimum:750]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Base NatoLetter RandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -443,7 +483,7 @@
         [RivalAiReplaceRemoteControl:true]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
-      <Frequency>1</Frequency>
+      <Frequency>0.5</Frequency>
       <IsPirate>true</IsPirate>
       <Prefabs>
         <Prefab SubtypeId="Forward_Outpost">
@@ -465,7 +505,9 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -480,7 +522,7 @@
         [ThreatScoreMinimum:65]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Stand NatoLetter RandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -510,7 +552,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
 
         [PlanetRequiresAtmo:false]
         [PlanetaryInstallation:true]
@@ -518,14 +560,14 @@
         [CutVoxelsAtAirtightCells:true]
         [ReplenishSystems:true]
 
-        [AssignContainerTypesToAllCargo:Tier3]
+        [AssignContainerTypesToAllCargo:Tier1]
 
         [UseThreatLevelCheck:true]
         [ThreatLevelCheckRange:15000]
         [ThreatScoreMinimum:5]
 
         [UseRandomNameGenerator:true]
-        [RandomGridNamePrefix:ESCO | ]
+        [RandomGridNamePrefix:DeSC | ]
         [RandomGridNamePattern:Stand NatoLetter RandomNumberRandomNumber]
         [ReplaceAntennaNameWithRandomizedName:Antenna]
 
@@ -544,7 +586,236 @@
           </Position>
           <BeaconText>Bunker</BeaconText>
           <Speed>0</Speed>
+          <Behaviour>Ruin-Behaviour</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>HydrogenRefinery</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:DeSC]
+
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+
+        [AssignContainerTypesToAllCargo:Tier1]
+
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:15]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Raffinerie AnimalNoun RandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>0.5</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Hydrogen Refinery">
+          <Position>
+            <X>0.0</X>
+            <Y>5</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Bunker</BeaconText>
+          <Speed>0</Speed>
+          <Behaviour>Civilian-Behaviour</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>MilitaryOutpost2</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
+
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+
+        [AssignContainerTypesToAllCargo:Tier4,Tier5]
+
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:400]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Outpost NatoLetter RandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>1.5</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="MilitaerAusenposten">
+          <Position>
+            <X>0.0</X>
+            <Y>-3.5</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Military Outpost</BeaconText>
+          <Speed>0</Speed>
+          <Behaviour>SmallOutpost-Behaviour</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>RustyLandingPad</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:DeSC]
+
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+
+        [AssignContainerTypesToAllCargo:Tier1]
+
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:1]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Pad NatoLetter RandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>0.5</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Rusty Landing Pad">
+          <Position>
+            <X>0.0</X>
+            <Y>-1.25</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Pad</BeaconText>
+          <Speed>0</Speed>
+          <Behaviour>Ruins-Behaviour</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>SmallWatchtower</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:DeSC]
+
+        [Territory:RessourceSpawn]
+
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+
+        [AssignContainerTypesToAllCargo:Tier2,Tier3]
+
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:80]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Tower NatoLetter RandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>1.5</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="small WatchTower">
+          <Position>
+            <X>0.0</X>
+            <Y>13</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Military Outpost</BeaconText>
+          <Speed>0</Speed>
           <Behaviour>TinyOutpost-Behaviour</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Wohncontainer</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:DeSC]
+
+        [PlanetRequiresAtmo:false]
+        [PlanetaryInstallation:true]
+        [PlanetaryInstallationType:Small]
+        [CutVoxelsAtAirtightCells:true]
+        [ReplenishSystems:true]
+
+        [AssignContainerTypesToAllCargo:Tier2]
+
+        [UseThreatLevelCheck:true]
+        [ThreatLevelCheckRange:15000]
+        [ThreatScoreMinimum:12]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:FunnyAdjective ExplorerNoun RandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>1.5</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Wohncontainer">
+          <Position>
+            <X>0.0</X>
+            <Y>9</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Bunker</BeaconText>
+          <Speed>0</Speed>
+          <Behaviour>Civilian-Behaviour</Behaviour>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
@@ -559,7 +830,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
         [SpaceCargoShip:false]
         [LunarCargoShip:false]
         [SpaceRandomEncounter:false]
@@ -570,6 +841,11 @@
 
         [UseRivalAi:true]
         [RivalAiReplaceRemoteControl:true]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Scout RandomNumberRandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -594,7 +870,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
         [SpaceCargoShip:false]
         [LunarCargoShip:false]
         [SpaceRandomEncounter:false]
@@ -605,6 +881,11 @@
 
         [UseRivalAi:true]
         [RivalAiReplaceRemoteControl:true]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Scout RandomNumberRandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -629,7 +910,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
         [SpaceCargoShip:false]
         [LunarCargoShip:false]
         [SpaceRandomEncounter:false]
@@ -637,6 +918,14 @@
         [PlanetaryInstallation:false]
         [RivalAiSpawn:true]
         [ReplenishSystems:true]
+        
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Scout RandomNumberRandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -661,7 +950,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
         [SpaceCargoShip:false]
         [LunarCargoShip:false]
         [SpaceRandomEncounter:false]
@@ -672,6 +961,11 @@
 
         [UseRivalAi:true]
         [RivalAiReplaceRemoteControl:true]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Patrol RandomNumberRandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -696,7 +990,7 @@
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
         [SpaceCargoShip:false]
         [LunarCargoShip:false]
         [SpaceRandomEncounter:false]
@@ -707,6 +1001,11 @@
 
         [UseRivalAi:true]
         [RivalAiReplaceRemoteControl:true]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Patrol RandomNumberRandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -727,11 +1026,11 @@
     <SpawnGroup>
       <Id>
         <TypeId>SpawnGroupDefinition</TypeId>
-        <SubtypeId>HunterDrone</SubtypeId>
+        <SubtypeId>Combat Drone</SubtypeId>
       </Id>
       <Description>
         [Modular Encounters SpawnGroup]
-        [FactionOwner:ESCO]
+        [FactionOwner:DeSC]
         [SpaceCargoShip:false]
         [LunarCargoShip:false]
         [SpaceRandomEncounter:false]
@@ -742,6 +1041,51 @@
 
         [UseRivalAi:true]
         [RivalAiReplaceRemoteControl:true]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Patrol RandomNumberRandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>7</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Combat Drone">
+          <Position>
+            <X>0.0</X>
+            <Y>0.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <BeaconText>Combat Drone</BeaconText>
+          <Speed>0</Speed>
+          <Behaviour>SimpleDrone-Behavior</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>HunterDrone</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:DeSC]
+        [SpaceCargoShip:false]
+        [LunarCargoShip:false]
+        [SpaceRandomEncounter:false]
+        [AtmosphericCargoShip:false]
+        [PlanetaryInstallation:false]
+        [RivalAiSpawn:true]
+        [ReplenishSystems:true]
+
+        [UseRivalAi:true]
+        [RivalAiReplaceRemoteControl:true]
+
+        [UseRandomNameGenerator:true]
+        [RandomGridNamePrefix:DeSC | ]
+        [RandomGridNamePattern:Hunter RandomNumberRandomNumberRandomNumber]
+        [ReplaceAntennaNameWithRandomizedName:Antenna]
       </Description>
       <Icon>Textures\GUI\Icons\Fake.dds</Icon>
       <Frequency>7</Frequency>
@@ -756,6 +1100,39 @@
           <BeaconText>Hunter Drone</BeaconText>
           <Speed>0</Speed>
           <Behaviour>SimpleDrone-Behavior</Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <SpawnGroup>
+      <Id>
+        <TypeId>SpawnGroupDefinition</TypeId>
+        <SubtypeId>Warhead</SubtypeId>
+      </Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [FactionOwner:DeSC]
+        [SpaceCargoShip:false]
+        [LunarCargoShip:false]
+        [SpaceRandomEncounter:false]
+        [AtmosphericCargoShip:false]
+        [PlanetaryInstallation:false]
+        [RivalAiSpawn:true]
+        [ReplenishSystems:true]
+
+
+      </Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <Frequency>7</Frequency>
+      <IsPirate>true</IsPirate>
+      <Prefabs>
+        <Prefab SubtypeId="Warhead">
+          <Position>
+            <X>0.0</X>
+            <Y>0.0</Y>
+            <Z>0.0</Z>
+          </Position>
+          <Speed>0</Speed>
         </Prefab>
       </Prefabs>
     </SpawnGroup>
