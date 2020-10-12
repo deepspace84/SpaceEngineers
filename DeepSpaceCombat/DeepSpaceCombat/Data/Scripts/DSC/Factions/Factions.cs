@@ -68,10 +68,6 @@ namespace DSC
                     PlayersToFaction = new Dictionary<long, long>(),
                     FactionTechs = new Dictionary<long, List<string>>(),
                     FactionBlocks = new Dictionary<long, List<string>>(),
-                    PlayersToPCU = new Dictionary<long, List<long>>(),
-                    PlayerDamage = new Dictionary<long, ulong>(),
-                    FactionDamage = new Dictionary<long, ulong>(),
-
                 };
             }
 
@@ -81,6 +77,10 @@ namespace DSC
 
             // Add Faction state changed event
             MyAPIGateway.Session.Factions.FactionCreated += FactionCreated;
+
+            // Player events
+            MyVisualScriptLogicProvider.PlayerSpawned += PlayerSpawned;
+            MyVisualScriptLogicProvider.PlayerConnected += PlayerConnected;
 
             // Add gridhandlers to all existing grids
             AddGridHandlers();
@@ -93,6 +93,9 @@ namespace DSC
 
             // Load research blocks
             LoadResearchStations();
+
+            // Remove old cached contracts
+            RemoveCachedContracts();
 
             // Register Area handlers
             MyVisualScriptLogicProvider.AreaTrigger_Entered += Event_Area_Entered;
@@ -128,8 +131,9 @@ namespace DSC
             MyAPIGateway.Entities.OnEntityAdd -= AddGridEvent;
             MyAPIGateway.Entities.OnEntityRemove -= RemoveGridEvent;
 
-            // Remove faction state event
-            MyAPIGateway.Session.Factions.FactionStateChanged -= FactionStateChaned;
+            // Player events
+            MyVisualScriptLogicProvider.PlayerSpawned -= PlayerSpawned;
+            MyVisualScriptLogicProvider.PlayerConnected -= PlayerConnected;
 
             // Remove Contract handlers
             try
@@ -140,10 +144,6 @@ namespace DSC
             {
                 DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Still could not unload contract handlers");
             }
-
-
-            // Clear damage caching
-            _preDamageEvents?.ClearList();
         }
         #endregion
 
@@ -391,7 +391,7 @@ namespace DSC
         }
 
          private void FactionCreated(long factionID)
-        {
+         {
             // Directly set npc faction states
             MyAPIGateway.Session.Factions.SendPeaceRequest(factionID, DeepSpaceCombat.Instance.NPCFactionID);
             MyAPIGateway.Session.Factions.AcceptPeace(factionID, DeepSpaceCombat.Instance.NPCFactionID);
@@ -416,6 +416,12 @@ namespace DSC
 
                 // Recalculate next tech levels
                 RecalulateNextTech(factionID);
+
+                // Rebuild menu for all faction players
+                foreach(long playerId in Storage.FactionPlayers[factionID])
+                {
+                    RebuildPlayerMenu(playerId);
+                }
 
                 return true;
             }
@@ -707,9 +713,15 @@ namespace DSC
                 // Add conctract
                 result = MyAPIGateway.ContractSystem.AddContract(contract);
 
+                // Add contract to core storage and save it, because we can't get em later
+                DeepSpaceCombat.Instance.CoreStorage.ResearchContracts.Add(result.ContractId);
+
                 // Add contract to reference
                 ResearchStationsContracts[areaName].Add(result.ContractId, new DSC_ResearchContract(result.ContractId, areaName, techLevel, researchPoints, factionId));
             }
+
+            // Save core storage
+            DeepSpaceCombat.Instance.SaveCoreStorage();
         }
 
         private void RemoveContracts(string areaName)
@@ -722,6 +734,20 @@ namespace DSC
 
             // Remove all contracts from this block
             ResearchStationsContracts[areaName].Clear();
+        }
+
+        private void RemoveCachedContracts()
+        {
+            foreach (long contractId in DeepSpaceCombat.Instance.CoreStorage.ResearchContracts)
+            {
+                // Remove contract
+                MyAPIGateway.ContractSystem.RemoveContract(contractId);
+            }
+
+            // Remove all contracts from this block
+            DeepSpaceCombat.Instance.CoreStorage.ResearchContracts.Clear();
+
+            DeepSpaceCombat.Instance.SaveCoreStorage();
         }
 
         private int CalculateResearchpoints(string techLevel)
@@ -742,6 +768,90 @@ namespace DSC
             finalPoints = (int)Math.Floor(finalPoints * DSC_Config.ResearchSteps[factionCount]);
 
             return finalPoints;
+        }
+
+        private void PlayerSpawned(long playerId)
+        {
+            // Check if player ever spawned, if not clear his toolbar
+            if (!DeepSpaceCombat.Instance.CoreStorage.PlayerReference.Contains(playerId))
+            {
+                DeepSpaceCombat.Instance.CoreStorage.PlayerReference.Add(playerId);
+                MyVisualScriptLogicProvider.ClearAllToolbarSlots(playerId);
+            }
+
+            RebuildPlayerMenu(playerId);
+        }
+
+        private void PlayerConnected(long playerId)
+        {
+            RebuildPlayerMenu(playerId);
+        }
+
+        private void RebuildPlayerMenu(long playerId)
+        {
+            try
+            {
+                // Check if player is online
+                if (!PlayerIsOnline(playerId))
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player is not online=>"+playerId.ToString());
+                    return;
+                }
+
+                // First disable all
+                SendResearch("Init", playerId, null, null);
+
+                // Check if player is in a faction
+                if (Storage.PlayersToFaction.ContainsKey(playerId))
+                {
+                    long factionId = Storage.PlayersToFaction[playerId];
+
+                    // Loop through buildable blocks and allow them
+                    foreach (string techLevel in Storage.FactionBlocks[factionId])
+                    {
+                        //MyObjectBuilder_CubeBlock / LargeBlockArmorBlock
+
+                        // Remove MyObjectBuilder_ from the name
+                        techLevel.Replace("MyObjectBuilder_", "");
+
+                        string[] typeIds = techLevel.Split('/');
+
+                        SendResearch("Research", playerId, typeIds[0], typeIds[1]);
+                    }
+                }
+                else
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player is in no faction");
+                }
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC PlayerSpawned failed");
+            }
+        }
+
+        private void SendResearch(string type, long playerId, string typeId, string subTypeId)
+        {
+            ulong steamId = MyAPIGateway.Players.TryGetSteamId(playerId);
+            if(steamId != 0)
+            {
+                DeepSpaceCombat.Instance.Networking.SendToPlayer(new PacketResearch(type, playerId, typeId, subTypeId), steamId);
+            }
+        }
+
+        private bool PlayerIsOnline(long playerId)
+        {
+            List<IMyPlayer> players = new List<IMyPlayer>();
+            MyAPIGateway.Players.GetPlayers(players);
+            foreach (IMyPlayer player in players)
+            {
+                if (player.IdentityId == playerId)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         #endregion

@@ -50,31 +50,51 @@ namespace DSC
 
         private void ButtonPressedFull(string name, int button, long playerId, long blockId)
         {
-            // Check if button is in reference
-            if (!RespawnStations.ContainsKey(blockId)) return;
-            string spawnName = RespawnStations[blockId];
-
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull block in reference");
-
-            // Check if button id exists
-            if (!DSC_Config.Respawns[spawnName].Prefabs.ContainsKey(button)) return;
-
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull Button Id exists");
-
-            // Check if player allready spawned a ship
-            if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(playerId))
+            try
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressed: Player allready got one " + MyVisualScriptLogicProvider.GetPlayersName(playerId));
-                MyVisualScriptLogicProvider.SendChatMessage("Only one start ship allowed", "Server", playerId);
-                return;
+                // Check if button is in reference
+                if (!RespawnStations.ContainsKey(blockId)) return;
+                string spawnName = RespawnStations[blockId];
+
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull block in reference");
+
+                // Check if button id exists
+                if (!DSC_Config.Respawns[spawnName].Prefabs.ContainsKey(button)) return;
+
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull Button Id exists");
+
+                // Check if player allready spawned a ship
+                if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(playerId))
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressed: Player allready got one " + MyVisualScriptLogicProvider.GetPlayersName(playerId));
+                    MyVisualScriptLogicProvider.SendChatMessage("Only one start ship allowed", "Server", playerId);
+                    return;
+                }
+
+                // Add player to storage
+                DeepSpaceCombat.Instance.CoreStorage.Respawns.Add(playerId, DateTime.Now);
+
+                // Spawn ship
+                DSC_SpawnShip spawnShipObj = new DSC_SpawnShip(playerId, DSC_Config.Respawns[spawnName].Prefabs[button], DSC_Config.Respawns[spawnName].StartPosition, DSC_Config.Respawns[spawnName].StartDirection, true);
+                if(spawnShipObj == null)
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("WTF...");
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo(playerId.ToString()+"--"+DSC_Config.Respawns[spawnName].Prefabs[button].ToString()+"--"+DSC_Config.Respawns[spawnName].StartPosition.ToString()+"--"+DSC_Config.Respawns[spawnName].StartDirection.ToString());
+                    return;
+                }
+                else
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Was ist nur los...");
+                }
+
+                DeepSpaceCombat.Instance.SpawnManager.Spawn(spawnShipObj);
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull ship spawned");
+            }catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "RespawnManager ButtonPressedFull failed");
             }
 
-            // Add player to storage
-            DeepSpaceCombat.Instance.CoreStorage.Respawns.Add(playerId, DateTime.Now);
 
-            // Spawn ship
-            DeepSpaceCombat.Instance.SpawnManager.Spawn(new DSC_SpawnShip(playerId, DSC_Config.Respawns[spawnName].Prefabs[button], DSC_Config.Respawns[spawnName].StartPosition, DSC_Config.Respawns[spawnName].StartDirection, true));
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull ship spawned");
         }
 
 

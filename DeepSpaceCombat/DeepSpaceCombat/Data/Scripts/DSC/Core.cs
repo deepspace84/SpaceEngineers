@@ -20,8 +20,8 @@ namespace DSC
         public static DeepSpaceCombat Instance; // the only way to access session comp from other classes and the only accepted static.
 
         private bool _isInitialized; // Is this instance is initialized
-        private bool _isClientRegistered;
-        private bool _isServerRegistered;
+        public bool _isClientRegistered;
+        public bool _isServerRegistered;
         public ulong TickCounter { get; private set; }
 
         public bool IsClientRegistered // Is this instance a client
@@ -245,6 +245,9 @@ namespace DSC
                 // TradeManager
                 TradeManager.Unload();
 
+                // Spawn Manager
+                SpawnManager.Unload();
+
                 // Respawn Manager
                 RespawnManager.Unload();
 
@@ -330,6 +333,9 @@ namespace DSC
             // Load faction data
             Factions.Load();
 
+            // Load SpawnManager
+            SpawnManager.Load();
+
             // Load RespawnManager
             RespawnManager.Load();
 
@@ -344,7 +350,7 @@ namespace DSC
 
         /*
          * GotMessage
-         * Local message handler function TODO
+         * Local message handler function
          * 
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
@@ -384,11 +390,13 @@ namespace DSC
                 CoreStorage = new DSC_Storage_Core
                 {
                     Respawns = new Dictionary<long, DateTime>(),
+                    ResearchContracts = new List<long>(),
+                    PlayerReference = new List<long>()
                 };
             }
         }
 
-        private void SaveCoreStorage()
+        public void SaveCoreStorage()
         {
             // Save Storage
             byte[] serialized = MyAPIGateway.Utilities.SerializeToBinary<DSC_Storage_Core>(CoreStorage);

@@ -127,24 +127,33 @@ namespace DSC
         }
         public ulong Spawn(DSC_SpawnShip spawnShip)
         {
-            // Check if player exists
-            if (null != spawnShip)
+            try
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Spawn added");
+                // Check if player exists
+                if (null != spawnShip)
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Spawn added");
 
-                // Set new spawnShipId
-                spawnShip.Id = Storage.SpawnId++;
+                    // Set new spawnShipId
+                    spawnShip.Id = Storage.SpawnId++;
 
-                // Spawn
-                SpawnQueue.Add(spawnShip);
-                return spawnShip.Id;
+                    // Spawn
+                    SpawnQueue.Add(spawnShip);
+                    return spawnShip.Id;
+                }
+                else
+                {
+                    // Spawnship not defined
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Spawn undefined spawnship");
+                    return 0;
+                }
             }
-            else
+            catch (Exception e)
             {
-                // Spawnship not defined
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("SpawnManager::Spawn undefined spawnship");
-                return 0;
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "SpawnManager Spawn failed");
             }
+            
+            return 0;
         }
         
 

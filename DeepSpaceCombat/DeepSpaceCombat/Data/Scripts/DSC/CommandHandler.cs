@@ -50,12 +50,8 @@ namespace DSC
                 switch(cmd)
                 {
                     case ECommand.Test:
-                        try { 
-                            IMyFaction factionObj =  MyAPIGateway.Session.Factions.TryGetFactionByTag(lcommand[1]);
-                            if(factionObj != null)
-                            {
-                                MyAPIGateway.Session.Factions.RemoveFaction(factionObj.FactionId);
-                            }
+                        try {
+                            DeepSpaceCombat.Instance.Networking.SendToPlayer(new PacketCommand("DSCResearch", playerId), MyAPIGateway.Players.TryGetSteamId(playerId));
                         }
                         catch (Exception e)
                         {
@@ -64,7 +60,7 @@ namespace DSC
 
                         break;
                     case ECommand.Help:
-                        PrintHelp(playerId);
+                        DeepSpaceCombat.Instance.Networking.SendToPlayer(new PacketCommand("DSCResearch2", playerId), MyAPIGateway.Players.TryGetSteamId(playerId));
                         break;
                     case ECommand.AddFaction:
                         DeepSpaceCombat.Instance.Factions.AddFaction(lcommand[1], false);
@@ -198,25 +194,6 @@ namespace DSC
 
                         break;
 
-                    case ECommand.MyDamage:
-
-                        // Check if player exists
-                        if (DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage.ContainsKey(playerId))
-                        {
-                            MyVisualScriptLogicProvider.SendChatMessage("Your total damage is "+ DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId].ToString("#,##0"), "[Server]", playerId);
-                        }
-
-                        break;
-                    case ECommand.DelDamage:
-
-                        // Check if player exists
-                        if (DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage.ContainsKey(playerId))
-                        {
-                            DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId] = 0;
-                            MyVisualScriptLogicProvider.SendChatMessage("Your total damage is " + DeepSpaceCombat.Instance.Factions.Storage.PlayerDamage[playerId].ToString("#,##0"), "[Server]", playerId);
-                        }
-
-                        break;
                     case ECommand.ResetSpawn:
 
                         // Check if player exists

@@ -71,15 +71,18 @@ namespace DSC
                 public string ItemName;
                 [ProtoMember(2)]
                 public int Price;
-                [ProtoMember(2)]
+                [ProtoMember(3)]
                 public int MaxAmount;
+                [ProtoMember(4)]
+                public int Multiplier;
 
                 public TradeItem() { }
-                public TradeItem(string itemName, int price, int maxAmount)
+                public TradeItem(string itemName, int price, int maxAmount, int multiplier)
                 {
                     ItemName = itemName;
                     Price = price;
                     MaxAmount = maxAmount;
+                    Multiplier = multiplier;
                 }
             }
 

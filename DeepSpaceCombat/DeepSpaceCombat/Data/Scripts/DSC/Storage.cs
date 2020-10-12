@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ProtoBuf;
+using Sandbox.Game;
 
 namespace DSC
 {
@@ -30,12 +31,6 @@ namespace DSC
         public Dictionary<long, List<string>> FactionTechs = new Dictionary<long, List<string>>(); // factionID - TechLevelName
         [ProtoMember(6)]
         public Dictionary<long, List<string>> FactionBlocks = new Dictionary<long, List<string>>(); // factionID - LIST->BlockTechName
-        [ProtoMember(7)]
-        public Dictionary<long, List<long>> PlayersToPCU = new Dictionary<long, List<long>>(); // playerID - LIST->blockIDs
-        [ProtoMember(8)]
-        public Dictionary<long, ulong> PlayerDamage = new Dictionary<long, ulong>(); // playerID - TotalDamage
-        [ProtoMember(9)]
-        public Dictionary<long, ulong> FactionDamage = new Dictionary<long, ulong>(); // factionID - TotalDamage
 
         internal DSC_Storage_Factions Clone()
         {
@@ -46,9 +41,6 @@ namespace DSC
                 FactionPlayers = FactionPlayers,
                 PlayersToFaction = PlayersToFaction,
                 FactionTechs = FactionTechs,
-                FactionBlocks = FactionBlocks,
-                PlayerDamage = PlayerDamage,
-                FactionDamage = FactionDamage,
             };
         }
     }
@@ -121,14 +113,16 @@ namespace DSC
 
         [ProtoMember(1)]
         public Dictionary<long, DateTime> Respawns = new Dictionary<long, DateTime>(); // playerId - lastSpawn
-
+        public List<long> ResearchContracts = new List<long>();
+        public List<long> PlayerReference = new List<long>();
 
         internal DSC_Storage_Core Clone()
         {
             return new DSC_Storage_Core
             {
                 Respawns = Respawns,
-
+                ResearchContracts = ResearchContracts,
+                PlayerReference = PlayerReference
             };
         }
 
