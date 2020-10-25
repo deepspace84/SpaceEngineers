@@ -36,7 +36,7 @@ namespace DSCPlugin
             {
                 throw new FileNotFoundException();
             }
-            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_server_e8_alpha\\Instance\\Saves\\Epsilon 8\\Storage\\2033950117.sbm_DSC", file));
+            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_epsilon_9\\Instance\\Saves\\Epsilon 9\\Storage\\2033950117.sbm_DSC", file));
             if (stream != null)
             {
                 return new BinaryReader(stream);
@@ -50,7 +50,7 @@ namespace DSCPlugin
             {
                 throw new FileNotFoundException();
             }
-            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_server_e8_alpha\\Instance\\Saves\\Epsilon 8\\Storage\\2033950117.sbm_DSC", file));
+            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_epsilon_9\\Instance\\Saves\\Epsilon 9\\Storage\\2033950117.sbm_DSC", file));
             if (stream != null)
             {
                 return new StreamReader(stream);
@@ -80,7 +80,7 @@ namespace DSCPlugin
                 // Faction Data
                 try
                 {
-                    string curFile = @"C:\Servers\se_server_e8_alpha\Instance\Saves\Epsilon 8\Storage\2033950117.sbm_DSC\DSC_Storage_Factions";
+                    string curFile = @"C:\Servers\se_epsilon_9\Instance\Saves\Epsilon 9\Storage\2033950117.sbm_DSC\DSC_Storage_Factions";
                     if (File.Exists(curFile))
                     {
                         var reader = ReadStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
@@ -102,7 +102,7 @@ namespace DSCPlugin
                 // Techtree
                 try
                 {
-                    string curFile = @"C:\Servers\se_server_e8_alpha\Instance\Saves\\Epsilon 8\Storage\2033950117.sbm_DSC\DSC_Config_TechTree";
+                    string curFile = @"C:\Servers\se_epsilon_9\Instance\Saves\Epsilon 9\Storage\2033950117.sbm_DSC\DSC_Config_TechTree";
                     if (File.Exists(curFile))
                     {
                         System.IO.TextReader reader = TextReader("DSC_Config_TechTree", typeof(DSC_Config_TechTree));
@@ -154,11 +154,7 @@ namespace DSCPlugin
             var responseString = await response.Content.ReadAsStringAsync();
 
             Log.Info("Response" + responseString);
-
         }
-
-
-
 
         #endregion
     }

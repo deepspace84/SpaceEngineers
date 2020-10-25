@@ -67,7 +67,7 @@ namespace DSC
                         if (cubeDef != null)
                         {
                             // Ignore Assemblers TODO Check if we have to activate all Assembler types
-                            if (cubeDef.Id.ToString().Contains("Assembler"))
+                            if (cubeDef.Id.ToString().Contains("BasicAssembler"))
                             {
                                 continue;
                             }

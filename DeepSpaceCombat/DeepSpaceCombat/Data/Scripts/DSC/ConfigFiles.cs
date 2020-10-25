@@ -15,6 +15,10 @@ namespace DSC
         public List<Station> Stations = new List<Station>();
         [ProtoMember(2)]
         public List<TradeType> Types = new List<TradeType>();
+        [ProtoMember(3)]
+        public int Treshold = 0;
+        [ProtoMember(4)]
+        public float Malus = 0.2f;
 
         internal DSC_Config_Trade Clone()
         {
@@ -22,6 +26,8 @@ namespace DSC
             {
                 Stations = Stations,
                 Types = Types,
+                Treshold = Treshold,
+                Malus = Malus,
             };
         }
 

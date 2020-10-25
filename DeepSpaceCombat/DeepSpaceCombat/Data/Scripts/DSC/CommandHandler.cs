@@ -17,7 +17,6 @@ namespace DSC
         public enum ECommand
         {
             Test = 0,
-            Help = 1,
             AddFaction = 2,
             FreeBuild = 3,
             Dev = 4,
@@ -25,7 +24,6 @@ namespace DSC
             DelDamage=6,
             ResetSpawn=7,
             freeFaction=8
-
         };
 
         public CommandHandler() { }
@@ -59,19 +57,29 @@ namespace DSC
                         }
 
                         break;
-                    case ECommand.Help:
-                        DeepSpaceCombat.Instance.Networking.SendToPlayer(new PacketCommand("DSCResearch2", playerId), MyAPIGateway.Players.TryGetSteamId(playerId));
-                        break;
                     case ECommand.AddFaction:
                         DeepSpaceCombat.Instance.Factions.AddFaction(lcommand[1], false);
                         break;
                     case ECommand.FreeBuild:
-                        DeepSpaceCombat.Instance.Factions.freeBuild = !DeepSpaceCombat.Instance.Factions.freeBuild;
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild=>"+ DeepSpaceCombat.Instance.Factions.freeBuild.ToString());
-                        break;
-                    case ECommand.freeFaction:
-                        DeepSpaceCombat.Instance.Factions.freeFaction = !DeepSpaceCombat.Instance.Factions.freeFaction;
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("freeFaction=>" + DeepSpaceCombat.Instance.Factions.freeFaction.ToString());
+                        if (DeepSpaceCombat.Instance.Factions.PlayerFreeBuild.Contains(playerId))
+                        {
+                            // Deactivate freebuild
+                            DeepSpaceCombat.Instance.Factions.RebuildPlayerMenu(playerId);
+                            DeepSpaceCombat.Instance.Factions.PlayerFreeBuild.Remove(playerId);
+                            MyVisualScriptLogicProvider.SendChatMessage("Freebuild deactivated", "Server", playerId);
+                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild deactivated");
+                        }
+                        else
+                        {
+                            // Activate freebuild
+                            DeepSpaceCombat.Instance.Factions.FreebuildPlayerMenu(playerId);
+                            DeepSpaceCombat.Instance.Factions.PlayerFreeBuild.Add(playerId);
+                            MyVisualScriptLogicProvider.SendChatMessage("Freebuild activated", "Server", playerId);
+                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild activated");
+                        }
+
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild=>"+ DeepSpaceCombat.Instance.Factions.FreeBuild.ToString());
+
                         break;
                     case ECommand.Dev:
 
@@ -96,10 +104,7 @@ namespace DSC
                                 DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "SpawnManagerCommand failed");
                             }
 
-
-
                             DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Testspawn called");
-                            //DeepSpaceCombat.Instance.SpawnManager.Spawn("TestSpawn", "DSC_TestVehicle");
                         }
 
                         if (lcommand[1].Equals("blockdefs"))
@@ -145,14 +150,12 @@ namespace DSC
                         {
                             foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
                             {
-                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("All def =>" + def.Id.ToString());
                                 var compDef = def as MyComponentDefinition;
                                 if (compDef != null)
                                 {
                                     if (compDef.Public)
                                     {
                                         string compname = compDef.Id.ToString().Replace("MyObjectBuilder_Component/", "");
-
                                         // Print new definition to server log
                                         DeepSpaceCombat.Instance.ServerLogger.WriteInfo("{ \"" + compname + "\",  MyVisualScriptLogicProvider.GetDefinitionId(\"Component\", \""+ compname + "\")},");
                                         //{ "ResearchPoint", MyVisualScriptLogicProvider.GetDefinitionId("Component", "ResearchPoint")}
@@ -184,13 +187,6 @@ namespace DSC
                                 }
                             }
                         }
-
-                        if (lcommand[1].Equals("rtrigger"))
-                        {
-                            MyVisualScriptLogicProvider.RemoveTrigger(lcommand[2]);
-                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Remove trigger=>" + lcommand[2]);
-                        }
-                            
 
                         break;
 

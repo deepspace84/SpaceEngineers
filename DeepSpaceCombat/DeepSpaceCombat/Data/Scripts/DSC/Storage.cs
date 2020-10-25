@@ -60,15 +60,18 @@ namespace DSC
     {
 
         [ProtoMember(1)]
-        public Dictionary<long, List<Trade>> Trades = new Dictionary<long, List<Trade>>(); // factionId - "dateTimeString_amount"
+        public List<Trade> TradesBuy = new List<Trade>();
         [ProtoMember(2)]
+        public List<Trade> TradesSell = new List<Trade>();
+        [ProtoMember(3)]
         public Dictionary<long, float> TradeMalus = new Dictionary<long, float>(); // factionID - TradeMalus
 
         internal DSC_Storage_Trade Clone()
         {
             return new DSC_Storage_Trade
             {
-                Trades = Trades,
+                TradesBuy = TradesBuy,
+                TradesSell = TradesSell,
                 TradeMalus = TradeMalus
             };
         }

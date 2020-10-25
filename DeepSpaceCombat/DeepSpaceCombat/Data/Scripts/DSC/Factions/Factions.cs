@@ -30,8 +30,8 @@ namespace DSC
         private Dictionary<string, List<long>> ResearchStationsPlayers = new Dictionary<string, List<long>>();
         private Dictionary<string, Dictionary<long, DSC_ResearchContract>> ResearchStationsContracts = new Dictionary<string, Dictionary<long, DSC_ResearchContract>>();
 
-        public bool freeBuild = true;
-        public bool freeFaction = false;
+        public List<long> PlayerFreeBuild = new List<long>();
+        public bool FreeBuild = true;
 
         public DSC_Factions() { }
 
@@ -187,10 +187,10 @@ namespace DSC
             }
         }
 
-        private bool checkTechBlockFaction(long factionID, string techBlock)
+        private bool checkTechBlockFaction(long factionID, string techBlock, long playerId)
         {
             // Check for freeBuild
-            if (freeBuild) return true;
+            if (PlayerFreeBuild.Contains(playerId)) return true;
 
             // Check if hashset with this types exists
             if (Storage.FactionBlocks[factionID].Contains(techBlock))
@@ -208,6 +208,9 @@ namespace DSC
         {
             var grid = ent as MyCubeGrid;
             if (grid?.Physics == null) return;
+
+            // Deactivate this part
+            return;
 
             // Check if its the first block
             if (grid.BlocksCount == 1)
@@ -227,7 +230,7 @@ namespace DSC
                     return;
                 }
 
-                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString(), block.BuiltBy))
                 {
                     MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500, MyFontEnum.Red, block.BuiltBy);
 
@@ -253,6 +256,9 @@ namespace DSC
         // Event - New block added to grid | Progression check
         private void GridBlockAddedEvent(IMySlimBlock block)
         {
+            // Deactivate this part
+            return;
+
             try { 
 
                 // Check if block is in definitions
@@ -280,7 +286,7 @@ namespace DSC
                 }
 
                 // Check if block building is allowed
-                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString(), block.BuiltBy))
                 {
                     MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block!", 2500, MyFontEnum.Red, block.BuiltBy);
 
@@ -784,19 +790,27 @@ namespace DSC
 
         private void PlayerConnected(long playerId)
         {
+            // Check if player ever spawned, if not clear his toolbar
+            if (!DeepSpaceCombat.Instance.CoreStorage.PlayerReference.Contains(playerId))
+            {
+                DeepSpaceCombat.Instance.CoreStorage.PlayerReference.Add(playerId);
+                MyVisualScriptLogicProvider.ClearAllToolbarSlots(playerId);
+            }
+
             RebuildPlayerMenu(playerId);
         }
 
-        private void RebuildPlayerMenu(long playerId)
+        public void RebuildPlayerMenu(long playerId)
         {
             try
             {
                 // Check if player is online
                 if (!PlayerIsOnline(playerId))
                 {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player is not online=>"+playerId.ToString());
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction::RebuildPlayerMenu Player is not online=>" + playerId.ToString());
                     return;
                 }
+
 
                 // First disable all
                 SendResearch("Init", playerId, null, null);
@@ -821,12 +835,43 @@ namespace DSC
                 }
                 else
                 {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player is in no faction");
+                    MyVisualScriptLogicProvider.ClearAllToolbarSlots(playerId);
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction::RebuildPlayerMenu Player is in no faction");
                 }
             }
             catch (Exception e)
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC PlayerSpawned failed");
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Faction::RebuildPlayerMenu DSC PlayerSpawned failed");
+            }
+        }
+
+        public void FreebuildPlayerMenu(long playerId)
+        {
+            try
+            {
+                // Check if player is online
+                if (!PlayerIsOnline(playerId))
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction::FreebuildPlayerMenu Player is not online=>" + playerId.ToString());
+                    return;
+                }
+
+                // First disable all
+                SendResearch("Init", playerId, null, null);
+
+
+                foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
+                {
+                    var cubeDef = def as MyCubeBlockDefinition;
+                    if (cubeDef != null)
+                    {
+                        cubeDef.Public = true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Faction::FreebuildPlayerMenu failed");
             }
         }
 
@@ -836,6 +881,11 @@ namespace DSC
             if(steamId != 0)
             {
                 DeepSpaceCombat.Instance.Networking.SendToPlayer(new PacketResearch(type, playerId, typeId, subTypeId), steamId);
+            }
+            else
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction::SendResearch Could not find player steam id");
+
             }
         }
 

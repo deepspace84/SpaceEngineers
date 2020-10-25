@@ -78,13 +78,8 @@ namespace DSC
                 DSC_SpawnShip spawnShipObj = new DSC_SpawnShip(playerId, DSC_Config.Respawns[spawnName].Prefabs[button], DSC_Config.Respawns[spawnName].StartPosition, DSC_Config.Respawns[spawnName].StartDirection, true);
                 if(spawnShipObj == null)
                 {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("WTF...");
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo(playerId.ToString()+"--"+DSC_Config.Respawns[spawnName].Prefabs[button].ToString()+"--"+DSC_Config.Respawns[spawnName].StartPosition.ToString()+"--"+DSC_Config.Respawns[spawnName].StartDirection.ToString());
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::Spawnship failed" + playerId.ToString()+"--"+DSC_Config.Respawns[spawnName].Prefabs[button].ToString()+"--"+DSC_Config.Respawns[spawnName].StartPosition.ToString()+"--"+DSC_Config.Respawns[spawnName].StartDirection.ToString());
                     return;
-                }
-                else
-                {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Was ist nur los...");
                 }
 
                 DeepSpaceCombat.Instance.SpawnManager.Spawn(spawnShipObj);

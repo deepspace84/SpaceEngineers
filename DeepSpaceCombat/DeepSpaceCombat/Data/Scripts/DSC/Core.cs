@@ -7,7 +7,6 @@ using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
 using VRage.Game.ModAPI;
-using VRage.Game.ModAPI.Ingame;
 using VRage.Scripting;
 
 namespace DSC
@@ -59,6 +58,7 @@ namespace DSC
 
         public long NPCPlayerID;
         public long NPCFactionID;
+        public IMyPlayer NPCPlayerObj;
 
         public TextLogger ServerLogger = new TextLogger(); // This is a dummy logger until Init() is called.
         public TextLogger ClientLogger = new TextLogger(); // This is a dummy logger until Init() is called.
@@ -180,11 +180,19 @@ namespace DSC
                 InitServerLate();
             }
 
-            if (TickCounter % 60 == 0)
+            if (IsServerRegistered)
             {
-                if (IsServerRegistered)
+                // Every second
+                if (TickCounter % 60 == 0)
                 {
+                
                     SpawnManager.Check();
+                }
+
+                // Every minute
+                if (TickCounter % 3600 == 0)
+                {
+                    TradeManager.CheckTrades();
                 }
             }
             
@@ -213,6 +221,9 @@ namespace DSC
 
                 // Techtree
                 Techtree.Save();
+
+                // SpawnManager
+                SpawnManager.Save();
             }
         }
 
@@ -355,6 +366,8 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
+            MyVisualScriptLogicProvider.SendChatMessage("PromoteLevel=>" + MyAPIGateway.Session.Player.PromoteLevel.ToString());
+            // && MyAPIGateway.Session.Player.PromoteLevel.CompareTo(MyPromoteLevel.Admin) > 3
             if (messageText.StartsWith(_commandStart.ToString()))
             {
                 Networking.SendToServer(new PacketCommand(messageText.TrimStart(_commandStart), MyAPIGateway.Session.Player.IdentityId));
@@ -415,8 +428,7 @@ namespace DSC
                 // Create faction
                 MyAPIGateway.Session.Factions.CreateNPCFaction(DSC_Config.MainFactionTag, DSC_Config.MainFactionName, "", "");
             }
-                
-            
+
             // Get faction
             IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(DSC_Config.MainFactionTag);
 
@@ -448,6 +460,9 @@ namespace DSC
                     }
                 }
             }
+
+            // Add NPC Player Obj
+            NPCPlayerObj = DSCReference.FindPlayerById(NPCPlayerID);
         }
 
         #endregion

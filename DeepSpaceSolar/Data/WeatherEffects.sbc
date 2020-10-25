@@ -9,9 +9,9 @@
         <DisplayName>Super Heavy Storm</DisplayName>
         <Public>true</Public>
         <FogColor>
-          <X>0.5725</X>
-          <Y>0.2775</Y>
-          <Z>0.06</Z>
+          <X>0.0</X>
+          <Y>0.3</Y>
+          <Z>0.52</Z>
         </FogColor>
         <FogDensity>0.08</FogDensity>
         <FogMultiplier>1</FogMultiplier>
