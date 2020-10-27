@@ -139,11 +139,13 @@ namespace DSC
             writer.Dispose();
 
             // Save Config
+            /*
             var xmlData = MyAPIGateway.Utilities.SerializeToXML<DSC_Config_Trade>(Config);
             System.IO.TextWriter writerConfig = MyAPIGateway.Utilities.WriteFileInWorldStorage("DSC_Config_Trade", typeof(DSC_Config_Trade));
             writerConfig.Write(xmlData);
             writerConfig.Flush();
             writerConfig.Close();
+            */
         }
 
         public void Unload()
@@ -163,7 +165,6 @@ namespace DSC
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_Component() { SubtypeName = def.Id.SubtypeId.ToString() }));
                         int minPrice = 0;
                         CalculateItemMinimalPrice(def.Id, 1, ref minPrice);
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Minimum price for =>"+def.Id.SubtypeName+" - "+minPrice.ToString());
                         break;
                     case "MyObjectBuilder_AmmoMagazine":
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_AmmoMagazine() { SubtypeName = def.Id.SubtypeId.ToString() }));
@@ -175,7 +176,6 @@ namespace DSC
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_Ore() { SubtypeName = def.Id.SubtypeId.ToString() }));
                         int minPrice2 = 0;
                         CalculateItemMinimalPrice(def.Id, 1, ref minPrice2);
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Minimum price for =>" + def.Id.SubtypeName + " - " + minPrice2.ToString());
                         break;
                     case "MyObjectBuilder_PhysicalObject":
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_PhysicalObject() { SubtypeName = def.Id.SubtypeId.ToString() }));
@@ -202,7 +202,7 @@ namespace DSC
             }
             else
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("NPCPlayerObj not set");
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("NPCPlayerObj not set");
             }
         }
 
@@ -286,6 +286,9 @@ namespace DSC
                     // Block could not be added
                     if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("TradeManager::LoadTradeStations: Could not add/find block in Reference. Blockname=>" + tradeStation.Name + " | Error=>" + blockId.ToString());
                 }
+
+                // Directly reload all orders
+                CheckTrades(true);
             }
 
             // Loop through all types
@@ -295,10 +298,10 @@ namespace DSC
             }
         }
 
-        public void CheckTrades()
+        public void CheckTrades(bool force=false)
         {
             // Call all 60 minutes the default rebuild
-            if((DateTime.Now-LastCall).TotalMinutes > 2){ // TODO
+            if((DateTime.Now-LastCall).TotalMinutes > 2 || force){ // TODO
                 foreach(string stationName in StationsCache.Keys)
                 {
                     AddTrades(stationName);
@@ -306,12 +309,11 @@ namespace DSC
 
                 LastCall = DateTime.Now.AddMinutes(1);
             }
-
         }
 
         private void RemoveTrades(string name)
         {
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders for block =>" + name);
+            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders for block =>" + name);
 
             // get blockid
             long blockId = DeepSpaceCombat.Instance.DSCReference.GetBlockWithName(name);
@@ -326,7 +328,7 @@ namespace DSC
                 foreach (var item in storeItems)
                 {
                     storeBlock.CancelStoreItem(item.Id);
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders BlockList Item =>" + item.Id.ToString());
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders BlockList Item =>" + item.Id.ToString());
                 }
 
                 // Remove all items from storage
@@ -335,143 +337,178 @@ namespace DSC
             }
             else
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders Could not find block=>" + name);
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders Could not find block=>" + name);
             }
         }
 
         private void AddTrades(string name)
         {
-            // Remove all old orders for this block first
-            RemoveTrades(name);
-
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades for block =>" + name);
-
-            // get blockid
-            long blockId = DeepSpaceCombat.Instance.DSCReference.GetBlockWithName(name);
-            if (blockId == 0) return;
-            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades for blockId =>" + blockId.ToString());
-
-            // Load block
-            Sandbox.ModAPI.IMyStoreBlock storeBlock = MyAPIGateway.Entities.GetEntityById(blockId) as Sandbox.ModAPI.IMyStoreBlock;
-            if (storeBlock != null)
+            try
             {
-                // Get Store Block inventory
-                IMyInventory invent = storeBlock.GetInventory();
+                // Remove all old orders for this block first
+                RemoveTrades(name);
 
-                // Get station
-                if (StationsCache.ContainsKey(name))
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades for block =>" + name);
+
+                // get blockid
+                long blockId = DeepSpaceCombat.Instance.DSCReference.GetBlockWithName(name);
+                if (blockId == 0) return;
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades for blockId =>" + blockId.ToString());
+
+                // Load block
+                Sandbox.ModAPI.IMyStoreBlock storeBlock = MyAPIGateway.Entities.GetEntityById(blockId) as Sandbox.ModAPI.IMyStoreBlock;
+                if (storeBlock != null)
                 {
-                    if (TradeTypeCache.ContainsKey(StationsCache[name].Type))
+                    // Get Store Block inventory
+                    IMyInventory invent = storeBlock.GetInventory();
+
+                    // Get station
+                    if (StationsCache.ContainsKey(name))
                     {
-                        // First check all trades and remove old ones
-                        int timetreshold = (int)DateTime.Now.ToUnixTimestamp() - Config.Treshold;
-                        foreach(DSC_Storage_Trade.Trade trade in Storage.TradesBuy)
+                        if (TradeTypeCache.ContainsKey(StationsCache[name].Type))
                         {
-                            if (trade.Utime <= timetreshold) Storage.TradesBuy.Remove(trade);
-                        }
+                            // First check all trades and remove old ones
+                            int timetreshold = (int)DateTime.Now.ToUnixTimestamp() - Config.Treshold;
 
-                        // Loop through items
-                        foreach (DSC_Config_Trade.TradeType.TradeItem item in TradeTypeCache[StationsCache[name].Type].Items)
-                        {
-                            // Check if items exists
-                            if (TradeItemsCache.ContainsKey(item.ItemName))
+                            for (int i = Storage.TradesBuy.Count - 1; i >= 0; i--)
                             {
-                                /*
-                                 * Price calculation item.Price
-                                 * ------------------
-                                 */
-                                //int offerPrice = item.Price;
-                                int orderPrice = item.Price;
-
-                                // Check for existing trades
-                                long preAmount = 0;
-                                foreach (DSC_Storage_Trade.Trade trade in Storage.TradesBuy)
+                                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Store item=>" + Storage.TradesBuy[i].ItemName);
+                                if (Storage.TradesBuy[i].Utime <= timetreshold)
                                 {
-                                    if (trade.ItemName.Equals(item.ItemName)){
-                                        preAmount += trade.TotalPrice;
-                                    }
+                                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Reomve old item=>"+ Storage.TradesBuy[i].ItemName);
+                                    Storage.TradesBuy.RemoveAt(i);
                                 }
-
-                                if(preAmount > 0)
-                                {
-                                    // Calculate malus
-                                    float finalMalus = 1+ ((int)(preAmount / item.Multiplier)*Config.Malus);
-
-                                    orderPrice = (int)(orderPrice * (1f / finalMalus));
-                                }
-
-
-
-                                // Check min price for orders, because game blocks them
-                                int minPrice = 0;
-                                CalculateItemMinimalPrice(TradeItemsCache[item.ItemName].ItemId, 1, ref minPrice);
-                                if (orderPrice < minPrice)
-                                {
-                                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Item price was to low =>"+ item.ItemName+" -> "+orderPrice.ToString());
-                                    orderPrice = minPrice;
-                                }
-
-                                try
-                                {
-                                    // First item amount for selling
-                                    invent.AddItems((MyFixedPoint)item.MaxAmount, (MyObjectBuilder_PhysicalObject)TradeItemsCache[item.ItemName].Builder);
-                                }
-                                catch (Exception e)
-                                {
-                                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Storage_Trade loading failed");
-                                }
-
-                                MyStoreItemData storeItemOrder = new MyStoreItemData(TradeItemsCache[item.ItemName].ItemId, item.MaxAmount, item.Price, (amount, left, totalPrice, sellerPlayerId, playerId) => BuyCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName, name), null);
-                                //MyStoreItemData storeItemOffer = new MyStoreItemData(TradeItemsCache[item.ItemName].ItemId, item.MaxAmount, item.Price, (amount, left, totalPrice, sellerPlayerId, playerId) => SellCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName, name), null);
-
-                                long storeItemId;
-                                storeBlock.InsertOrder(storeItemOrder, out storeItemId);
-                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades storeItem=>" + storeItemId.ToString());
-
-
-                                // We dont sell any more
-                                //storeBlock.InsertOffer(storeItemOffer, out storeItemId);
-                                //DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades storeItem=>" + storeItemId.ToString());
-
                             }
-                            else
+
+                            // Loop through items
+                            foreach (DSC_Config_Trade.TradeType.TradeItem item in TradeTypeCache[StationsCache[name].Type].Items)
                             {
-                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Item not in definitions =>" + item.ItemName);
+                                // Check if items exists
+                                if (TradeItemsCache.ContainsKey(item.ItemName))
+                                {
+                                    /*
+                                     * Price calculation item.Price
+                                     * ------------------
+                                     */
+                                    //int offerPrice = item.Price;
+                                    int orderPrice = item.Price;
+
+                                    // Check for existing trades
+                                    long preAmount = 0;
+                                    foreach (DSC_Storage_Trade.Trade trade in Storage.TradesBuy)
+                                    {
+                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Store item check=>" + trade.ItemName + " | itemcheck=>"+ item.ItemName);
+                                        if (trade.ItemName.Equals(item.ItemName))
+                                        {
+                                            preAmount += trade.TotalPrice;
+                                        }
+                                    }
+
+
+                                    if (preAmount > 0)
+                                    {
+                                        // Calculate malus
+                                        float finalMalus = 1 + ((int)(preAmount / item.Multiplier) * Config.Malus);
+
+                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades preAmount=>" + preAmount.ToString() + " | finalMalus=>"+ finalMalus.ToString()+ " | pre orderPrice=>"+ orderPrice.ToString());
+
+                                        orderPrice = (int)(orderPrice * (1f / finalMalus));
+                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades orderPrice=>" + orderPrice.ToString());
+                                    }
+
+
+                                    // Check min price for orders, because game blocks them
+                                    int minPrice = 0;
+                                    CalculateItemMinimalPrice(TradeItemsCache[item.ItemName].ItemId, 1, ref minPrice);
+                                    if (orderPrice < minPrice)
+                                    {
+                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Item price was to low =>" + item.ItemName + " -> " + orderPrice.ToString());
+                                        orderPrice = minPrice;
+                                    }
+
+                                    try
+                                    {
+                                        // First item amount for selling
+                                        invent.AddItems((MyFixedPoint)item.MaxAmount, (MyObjectBuilder_PhysicalObject)TradeItemsCache[item.ItemName].Builder);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Storage_Trade loading failed");
+                                    }
+
+                                    MyStoreItemData storeItemOrder = new MyStoreItemData(TradeItemsCache[item.ItemName].ItemId, item.MaxAmount, orderPrice, (amount, left, totalPrice, sellerPlayerId, playerId) => BuyCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName, name), null);
+                                    //MyStoreItemData storeItemOffer = new MyStoreItemData(TradeItemsCache[item.ItemName].ItemId, item.MaxAmount, item.Price, (amount, left, totalPrice, sellerPlayerId, playerId) => SellCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName, name), null);
+
+                                    long storeItemId;
+                                    storeBlock.InsertOrder(storeItemOrder, out storeItemId);
+                                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades storeItem=>" + storeItemId.ToString());
+
+
+                                    // We dont sell any more
+                                    //storeBlock.InsertOffer(storeItemOffer, out storeItemId);
+                                    //DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades storeItem=>" + storeItemId.ToString());
+
+                                }
+                                else
+                                {
+                                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Item not in definitions =>" + item.ItemName);
+                                }
                             }
                         }
                     }
                 }
+                else
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Could not find block=>" + name);
+                };
             }
-            else
+            catch (Exception e)
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Could not find block=>" + name);
-            };
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "TradeManager::AddTrades failed");
+            }
         }
 
         private void BuyCallback(int amount, int left, long totalPrice, long sellerPlayerId, long playerId, string itemName, string stationName)
         {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::BuyCallback called unknown=>" + sellerPlayerId.ToString()+" - "+ itemName);
+            try
+            {
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::BuyCallback called unknown=>" + sellerPlayerId.ToString() + " - " + itemName);
 
-            // Add trade
-            Storage.TradesBuy.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
+                // Add trade
+                Storage.TradesBuy.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
 
-            // Set NPC Money
-            SetNpcMoney();
+                // Set NPC Money
+                SetNpcMoney();
 
-            // Rebuild trade prices
-            AddTrades(stationName);
+                // Rebuild trade prices
+                AddTrades(stationName);
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "TradeManager::BuyCallback failed");
+            }
+
+
         }
 
         private void SellCallback(int amount, int left, long totalPrice, long sellerPlayerId, long playerId, string itemName, string stationName)
         {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::SellCallback called unknown=>" + sellerPlayerId.ToString() + " - " + itemName);
+            try 
+            { 
 
-            // Add trade
-            Storage.TradesSell.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::SellCallback called unknown=>" + sellerPlayerId.ToString() + " - " + itemName);
+
+                // Add trade
+                Storage.TradesSell.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
 
 
-            // Rebuild trade prices
-            AddTrades(stationName);
+                // Rebuild trade prices
+                AddTrades(stationName);
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "TradeManager::SellCallback failed");
+            }
         }
 
     }

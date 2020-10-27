@@ -185,7 +185,7 @@ namespace DSC
                 // Every second
                 if (TickCounter % 60 == 0)
                 {
-                
+                    Factions.PlayerConnectCheck();
                     SpawnManager.Check();
                 }
 
@@ -366,7 +366,6 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
-            MyVisualScriptLogicProvider.SendChatMessage("PromoteLevel=>" + MyAPIGateway.Session.Player.PromoteLevel.ToString());
             // && MyAPIGateway.Session.Player.PromoteLevel.CompareTo(MyPromoteLevel.Admin) > 3
             if (messageText.StartsWith(_commandStart.ToString()))
             {

@@ -16,7 +16,7 @@ namespace DSC
         [ProtoMember(2)]
         public List<TradeType> Types = new List<TradeType>();
         [ProtoMember(3)]
-        public int Treshold = 0;
+        public int Treshold = 21600;
         [ProtoMember(4)]
         public float Malus = 0.2f;
 

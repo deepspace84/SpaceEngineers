@@ -78,8 +78,6 @@ namespace DSC
                             DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild activated");
                         }
 
-                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Freebuild=>"+ DeepSpaceCombat.Instance.Factions.FreeBuild.ToString());
-
                         break;
                     case ECommand.Dev:
 

@@ -30,6 +30,8 @@ namespace DSC
         private Dictionary<string, List<long>> ResearchStationsPlayers = new Dictionary<string, List<long>>();
         private Dictionary<string, Dictionary<long, DSC_ResearchContract>> ResearchStationsContracts = new Dictionary<string, Dictionary<long, DSC_ResearchContract>>();
 
+        private Dictionary<long, uint> PlayerConnectedCache = new Dictionary<long, uint>();
+
         public List<long> PlayerFreeBuild = new List<long>();
         public bool FreeBuild = true;
 
@@ -790,16 +792,46 @@ namespace DSC
 
         private void PlayerConnected(long playerId)
         {
-            // Check if player ever spawned, if not clear his toolbar
-            if (!DeepSpaceCombat.Instance.CoreStorage.PlayerReference.Contains(playerId))
-            {
-                DeepSpaceCombat.Instance.CoreStorage.PlayerReference.Add(playerId);
-                MyVisualScriptLogicProvider.ClearAllToolbarSlots(playerId);
-            }
-
-            RebuildPlayerMenu(playerId);
+            // Add player to check cache
+            PlayerConnectedCache.Add(playerId, DateTime.Now.ToUnixTimestamp());
         }
 
+        public void PlayerConnectCheck()
+        {
+            if (PlayerConnectedCache.Count == 0) return;
+
+            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player check count =>" + PlayerConnectedCache.Count.ToString());
+
+            // Cache list
+            List<long> del = new List<long>();
+
+            foreach(KeyValuePair<long, uint> entry in PlayerConnectedCache)
+            {
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player in check queue =>" + entry.Value.ToString());
+
+                if (DateTime.Now.ToUnixTimestamp() <= entry.Value + 5)
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Waitet long enough =>" + entry.Value.ToString());
+
+                    if (!PlayerIsOnline(entry.Key)) continue;
+
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player is online =>" + entry.Value.ToString());
+
+                    RebuildPlayerMenu(entry.Key);
+                }
+                else
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player finished =>" + entry.Value.ToString());
+                    del.Add(entry.Key);
+                }
+            }
+
+            foreach(long playerId in del)
+            {
+                PlayerConnectedCache.Remove(playerId);
+            }
+        }
+        
         public void RebuildPlayerMenu(long playerId)
         {
             try
@@ -810,7 +842,6 @@ namespace DSC
                     DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction::RebuildPlayerMenu Player is not online=>" + playerId.ToString());
                     return;
                 }
-
 
                 // First disable all
                 SendResearch("Init", playerId, null, null);
@@ -859,15 +890,7 @@ namespace DSC
                 // First disable all
                 SendResearch("Init", playerId, null, null);
 
-
-                foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
-                {
-                    var cubeDef = def as MyCubeBlockDefinition;
-                    if (cubeDef != null)
-                    {
-                        cubeDef.Public = true;
-                    }
-                }
+                SendResearch("Freebuild", playerId, null, null);
             }
             catch (Exception e)
             {

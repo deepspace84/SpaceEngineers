@@ -61,11 +61,13 @@ namespace DSC
         public void Save()
         {
             // Save Config
+            /*
             var xmlData = MyAPIGateway.Utilities.SerializeToXML<DSC_Config_TechTree>(Config);
             System.IO.TextWriter writerConfig = MyAPIGateway.Utilities.WriteFileInWorldStorage("DSC_Config_TechTree", typeof(DSC_Config_TechTree));
             writerConfig.Write(xmlData);
             writerConfig.Flush();
             writerConfig.Close();
+            */
         }
 
     }

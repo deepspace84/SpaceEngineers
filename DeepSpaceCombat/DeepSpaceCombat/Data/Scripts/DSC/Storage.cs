@@ -91,6 +91,8 @@ namespace DSC
             [ProtoMember(4)]
             public int Utime;
 
+            internal Trade (){}
+
             internal Trade(string itemName, int amount, long totalPrice, int utime)
             {
                 ItemName = itemName;

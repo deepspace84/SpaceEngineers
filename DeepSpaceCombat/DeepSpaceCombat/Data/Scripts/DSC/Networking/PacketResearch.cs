@@ -93,6 +93,18 @@ namespace DSC
                     }
                 }
 
+                if (Type.Equals("Freebuild"))
+                {
+                    foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
+                    {
+                        var cubeDef = def as MyCubeBlockDefinition;
+                        if (cubeDef != null)
+                        {
+                            cubeDef.Public = true;
+                        }
+                    }
+                }
+
             }
 
             return false;
