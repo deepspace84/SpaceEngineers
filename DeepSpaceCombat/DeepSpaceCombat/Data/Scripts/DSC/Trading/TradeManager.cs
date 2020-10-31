@@ -81,34 +81,7 @@ namespace DSC
                 };
             }
 
-            // Load config xml
-            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Config_Trade", typeof(DSC_Config_Trade)))
-            {
-                try
-                {
-                    System.IO.TextReader reader = MyAPIGateway.Utilities.ReadFileInWorldStorage("DSC_Config_Trade", typeof(DSC_Config_Trade));
-                    var xmlData = reader.ReadToEnd();
-                    Config = MyAPIGateway.Utilities.SerializeFromXML<DSC_Config_Trade>(xmlData);
-                    reader.Dispose();
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DSC_Config_Trade found and loaded");
-                }
-                catch (Exception e)
-                {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Config_Trade loading failed");
-                }
-            }
-            else
-            {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No DSC_Config_Trade found, create default");
-                // Create default values
-                Config = new DSC_Config_Trade
-                {
-                    Stations = new List<DSC_Config_Trade.Station>(),
-                    Types = new List<DSC_Config_Trade.TradeType>(),
-                    Treshold = 3600,
-                    Malus = 1,
-                };
-            }
+            LoadConfig();
 
             // Reset all prices
             var allDefs = MyDefinitionManager.Static.GetAllDefinitions();
@@ -138,14 +111,44 @@ namespace DSC
             writer.Flush();
             writer.Dispose();
 
-            // Save Config
-            /*
-            var xmlData = MyAPIGateway.Utilities.SerializeToXML<DSC_Config_Trade>(Config);
-            System.IO.TextWriter writerConfig = MyAPIGateway.Utilities.WriteFileInWorldStorage("DSC_Config_Trade", typeof(DSC_Config_Trade));
-            writerConfig.Write(xmlData);
-            writerConfig.Flush();
-            writerConfig.Close();
-            */
+        }
+
+        public void LoadConfig()
+        {
+            // Load config xml
+            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Config_Trade", typeof(DSC_Config_Trade)))
+            {
+                try
+                {
+                    System.IO.TextReader reader = MyAPIGateway.Utilities.ReadFileInWorldStorage("DSC_Config_Trade", typeof(DSC_Config_Trade));
+                    var xmlData = reader.ReadToEnd();
+                    Config = MyAPIGateway.Utilities.SerializeFromXML<DSC_Config_Trade>(xmlData);
+                    reader.Dispose();
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DSC_Config_Trade found and loaded");
+                }
+                catch (Exception e)
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Config_Trade loading failed");
+                }
+            }
+            else
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No DSC_Config_Trade found, create default");
+                // Create default values
+                Config = new DSC_Config_Trade
+                {
+                    Stations = new List<DSC_Config_Trade.Station>(),
+                    Types = new List<DSC_Config_Trade.TradeType>(),
+                    Treshold = 3600,
+                    Malus = 1,
+                };
+
+                var xmlData = MyAPIGateway.Utilities.SerializeToXML<DSC_Config_Trade>(Config);
+                System.IO.TextWriter writerConfig = MyAPIGateway.Utilities.WriteFileInWorldStorage("DSC_Config_Trade", typeof(DSC_Config_Trade));
+                writerConfig.Write(xmlData);
+                writerConfig.Flush();
+                writerConfig.Close();
+            }
         }
 
         public void Unload()
@@ -163,8 +166,6 @@ namespace DSC
                     
                     case "MyObjectBuilder_Component":
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_Component() { SubtypeName = def.Id.SubtypeId.ToString() }));
-                        int minPrice = 0;
-                        CalculateItemMinimalPrice(def.Id, 1, ref minPrice);
                         break;
                     case "MyObjectBuilder_AmmoMagazine":
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_AmmoMagazine() { SubtypeName = def.Id.SubtypeId.ToString() }));
@@ -174,8 +175,6 @@ namespace DSC
                         break;
                     case "MyObjectBuilder_Ore":
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_Ore() { SubtypeName = def.Id.SubtypeId.ToString() }));
-                        int minPrice2 = 0;
-                        CalculateItemMinimalPrice(def.Id, 1, ref minPrice2);
                         break;
                     case "MyObjectBuilder_PhysicalObject":
                         TradeItemsCache.Add(def.Id.ToString(), new TradeItem(def.Id, def.Id.TypeId.ToString(), def.Id.SubtypeId.ToString(), new MyObjectBuilder_PhysicalObject() { SubtypeName = def.Id.SubtypeId.ToString() }));
@@ -313,7 +312,6 @@ namespace DSC
 
         private void RemoveTrades(string name)
         {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders for block =>" + name);
 
             // get blockid
             long blockId = DeepSpaceCombat.Instance.DSCReference.GetBlockWithName(name);
@@ -328,12 +326,11 @@ namespace DSC
                 foreach (var item in storeItems)
                 {
                     storeBlock.CancelStoreItem(item.Id);
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::RemoveOrders BlockList Item =>" + item.Id.ToString());
                 }
 
                 // Remove all items from storage
                 IMyInventory invent = storeBlock.GetInventory();
-                //invent.Clear();
+                invent.Clear();
             }
             else
             {
@@ -348,12 +345,9 @@ namespace DSC
                 // Remove all old orders for this block first
                 RemoveTrades(name);
 
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades for block =>" + name);
-
                 // get blockid
                 long blockId = DeepSpaceCombat.Instance.DSCReference.GetBlockWithName(name);
                 if (blockId == 0) return;
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades for blockId =>" + blockId.ToString());
 
                 // Load block
                 Sandbox.ModAPI.IMyStoreBlock storeBlock = MyAPIGateway.Entities.GetEntityById(blockId) as Sandbox.ModAPI.IMyStoreBlock;
@@ -372,10 +366,8 @@ namespace DSC
 
                             for (int i = Storage.TradesBuy.Count - 1; i >= 0; i--)
                             {
-                                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Store item=>" + Storage.TradesBuy[i].ItemName);
                                 if (Storage.TradesBuy[i].Utime <= timetreshold)
                                 {
-                                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Reomve old item=>"+ Storage.TradesBuy[i].ItemName);
                                     Storage.TradesBuy.RemoveAt(i);
                                 }
                             }
@@ -397,10 +389,9 @@ namespace DSC
                                     long preAmount = 0;
                                     foreach (DSC_Storage_Trade.Trade trade in Storage.TradesBuy)
                                     {
-                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades Store item check=>" + trade.ItemName + " | itemcheck=>"+ item.ItemName);
                                         if (trade.ItemName.Equals(item.ItemName))
                                         {
-                                            preAmount += trade.TotalPrice;
+                                            preAmount += trade.Amount;
                                         }
                                     }
 
@@ -408,12 +399,8 @@ namespace DSC
                                     if (preAmount > 0)
                                     {
                                         // Calculate malus
-                                        float finalMalus = 1 + ((int)(preAmount / item.Multiplier) * Config.Malus);
-
-                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades preAmount=>" + preAmount.ToString() + " | finalMalus=>"+ finalMalus.ToString()+ " | pre orderPrice=>"+ orderPrice.ToString());
-
+                                        float finalMalus = 1 + ((preAmount / item.Multiplier) * Config.Malus);
                                         orderPrice = (int)(orderPrice * (1f / finalMalus));
-                                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades orderPrice=>" + orderPrice.ToString());
                                     }
 
 
@@ -426,6 +413,7 @@ namespace DSC
                                         orderPrice = minPrice;
                                     }
 
+                                    /*
                                     try
                                     {
                                         // First item amount for selling
@@ -435,14 +423,13 @@ namespace DSC
                                     {
                                         if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Storage_Trade loading failed");
                                     }
+                                    */
 
                                     MyStoreItemData storeItemOrder = new MyStoreItemData(TradeItemsCache[item.ItemName].ItemId, item.MaxAmount, orderPrice, (amount, left, totalPrice, sellerPlayerId, playerId) => BuyCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName, name), null);
                                     //MyStoreItemData storeItemOffer = new MyStoreItemData(TradeItemsCache[item.ItemName].ItemId, item.MaxAmount, item.Price, (amount, left, totalPrice, sellerPlayerId, playerId) => SellCallback(amount, left, totalPrice, sellerPlayerId, playerId, item.ItemName, name), null);
 
                                     long storeItemId;
                                     storeBlock.InsertOrder(storeItemOrder, out storeItemId);
-                                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::AddTrades storeItem=>" + storeItemId.ToString());
-
 
                                     // We dont sell any more
                                     //storeBlock.InsertOffer(storeItemOffer, out storeItemId);
@@ -496,7 +483,7 @@ namespace DSC
             try 
             { 
 
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::SellCallback called unknown=>" + sellerPlayerId.ToString() + " - " + itemName);
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::SellCallback" + amount.ToString() + " - " + itemName);
 
                 // Add trade
                 Storage.TradesSell.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));

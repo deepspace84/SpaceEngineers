@@ -63,8 +63,11 @@ namespace DSC
 
                 if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull Button Id exists");
 
+                // Check if player is in an active faction
+                if (!DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.ContainsKey(playerId)) return;
+
                 // Check if player allready spawned a ship
-                if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(playerId))
+                if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction[playerId]))
                 {
                     if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressed: Player allready got one " + MyVisualScriptLogicProvider.GetPlayersName(playerId));
                     MyVisualScriptLogicProvider.SendChatMessage("Only one start ship allowed", "Server", playerId);
@@ -72,7 +75,7 @@ namespace DSC
                 }
 
                 // Add player to storage
-                DeepSpaceCombat.Instance.CoreStorage.Respawns.Add(playerId, DateTime.Now);
+                DeepSpaceCombat.Instance.CoreStorage.Respawns.Add(DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction[playerId], DateTime.Now);
 
                 // Spawn ship
                 DSC_SpawnShip spawnShipObj = new DSC_SpawnShip(playerId, DSC_Config.Respawns[spawnName].Prefabs[button], DSC_Config.Respawns[spawnName].StartPosition, DSC_Config.Respawns[spawnName].StartDirection, true);
@@ -83,6 +86,9 @@ namespace DSC
                 }
 
                 DeepSpaceCombat.Instance.SpawnManager.Spawn(spawnShipObj);
+
+                MyVisualScriptLogicProvider.SendChatMessage(MyVisualScriptLogicProvider.GetPlayersName(playerId) + " spawned the start rover for faction " + DeepSpaceCombat.Instance.Factions.Storage.PlayerFactions[DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction[playerId]]);
+
                 if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull ship spawned");
             }catch (Exception e)
             {

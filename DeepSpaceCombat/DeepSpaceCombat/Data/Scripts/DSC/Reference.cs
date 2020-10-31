@@ -123,7 +123,24 @@ namespace DSC
                     //Look for tagged Terminal blocks
                     if (blockName.Equals(fb.DisplayNameText))
                     {
-                        reference.Add(fb.EntityId);
+                        // Check for security key
+                        IMyTerminalBlock terminal = fb as IMyTerminalBlock;
+                        if(terminal != null)
+                        {
+                            if (terminal.CustomData.Contains(DeepSpaceCombat.Instance.Config.BlockKey))
+                            {
+                                reference.Add(fb.EntityId);
+                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DSC_Storage_Reference::FindBlocksWithName Terminal Key accepted");
+                            }
+                            else
+                            {
+                                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DSC_Storage_Reference::FindBlocksWithName Terminal Key wrong");
+                            }
+                        }
+                        else
+                        {
+                            reference.Add(fb.EntityId);
+                        }
                     }
                 }
             }

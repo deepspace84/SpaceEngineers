@@ -216,34 +216,41 @@ namespace DSC
         #region events
         private void PrefabDetailed_Event(long entityId, string prefabName)
         {
-
-            if(null == SpawnCache)
+            try
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnManager::PrefabDetailed_Event: Spawn Cache null");
-                return;
+
+                if (null == SpawnCache)
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnManager::PrefabDetailed_Event: Spawn Cache null");
+                    return;
+                }
+
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnManager::PrefabDetailed_Event: Ship spawned=> -" + prefabName+ "- | SpawnCache.PrefabName=> -" + SpawnCache.PrefabName+"-");
+
+                // Check if the prefabName is the same as in cache
+                if (!SpawnCache.PrefabName.Equals(prefabName))
+                {
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnManager::PrefabDetailed_Event: Unknown grid spawned=>" + prefabName);
+                    return;
+                }
+
+                // Set ownership to target player
+                MyVisualScriptLogicProvider.ChangeOwner(MyVisualScriptLogicProvider.GetEntityName(entityId), SpawnCache.PlayerId);
+
+                // Set the entity id
+                SpawnCache.GridEntityId = entityId;
+
+                // Add the ship to the storage
+                Storage.SpawnedData.Add(SpawnCache.Id, SpawnCache);
+
+                // Empty cache
+                SpawnCache = null;
+                SpawnCacheTimer = DateTime.MinValue;
             }
-
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnManager::PrefabDetailed_Event: Ship spawned=> -" + prefabName+ "- | SpawnCache.PrefabName=> -" + SpawnCache.PrefabName+"-");
-
-            // Check if the prefabName is the same as in cache
-            if (!SpawnCache.PrefabName.Equals(prefabName))
+            catch (Exception e)
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("SpawnManager::PrefabDetailed_Event: Unknown grid spawned=>" + prefabName);
-                return;
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "SpawnManagerCommand failed");
             }
-
-            // Set ownership to target player
-            MyVisualScriptLogicProvider.ChangeOwner(MyVisualScriptLogicProvider.GetEntityName(entityId), SpawnCache.PlayerId);
-
-            // Set the entity id
-            SpawnCache.GridEntityId = entityId;
-
-            // Add the ship to the storage
-            Storage.SpawnedData.Add(SpawnCache.Id, SpawnCache);
-
-            // Empty cache
-            SpawnCache = null;
-            SpawnCacheTimer = DateTime.MinValue;
         }
 
         #endregion

@@ -42,27 +42,15 @@ namespace DSC
         public static string respawn_pb_trigger = "respawnClicked"; // Trigger string in customname => DSC_Respawn_Hangar_Left;respawnClicked
         public static Dictionary<string, DSC_RespawnLocation> Respawns = new Dictionary<string, DSC_RespawnLocation>() // PrefabName, DSC_RespawnLocation
         {
-            
             // Hangar Left
-            {"DSC_Respawn_Hangar_Right", new DSC_RespawnLocation("DSC_Respawn_Hangar_Right", new Vector3D(120973.31, 132846.72, 371873.93), new Vector3D(120969.52, 132805.13, 371874.40),
+            {"TESA_Startroverbutton", new DSC_RespawnLocation("TESA_Startroverbutton", new Vector3D(188250.77, 140028.55, 145483.24), new Vector3D(188246.98, 140039.95, 145481.83),
                 new Dictionary<int, string>(){
-                    {0, "SR-Combat" },
-                    {1, "SR-Industrial"},
-                    {2, "SR-Medical"}
-                })
-            },
-            
-            // Hanger Right
-            {"DSC_Respawn_Hangar_Left", new DSC_RespawnLocation("DSC_Respawn_Hangar_Left", new Vector3D(120948.91, 132849.26, 371877.74), new Vector3D(120944.97, 132811.58, 371880.23),
-                new Dictionary<int, string>(){
-                    {0, "SR-Combat" },
-                    {1, "SR-Industrial"},
-                    {2, "SR-Medical"}
+                    {0, "StartingRover" }
                 })
             },
         };
 
         // Research steps for 5 Factions
-        public static float[] ResearchSteps = new float[]{1, 0.8f, 0.6f, 0.5f, 0.4f};
+        public static float[] ResearchSteps = new float[]{1f, 0.9f, 0.85f, 0.8f, 0.75f, 0.5f, 0.4f, 0.3f, 0.3f };
     }
 }

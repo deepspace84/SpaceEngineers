@@ -5,7 +5,67 @@ using ProtoBuf;
 
 namespace DSC
 {
-    
+    [ProtoContract]
+    [Serializable]
+    public class DSC_Config_Main
+    {
+
+        [ProtoMember(1)]
+        public List<string> NeutralFactions = new List<string>();
+        [ProtoMember(2)]
+        public string BlockKey;
+        [ProtoMember(3)]
+        public List<Respawn> Respawns = new List<Respawn>();
+
+
+        [ProtoContract]
+        [Serializable]
+        public class Respawn
+        {
+
+            [ProtoMember(1)]
+            public string ButtonName;
+            [ProtoMember(2)]
+            public string PrefabName;
+            [ProtoMember(3)]
+            public double SVector_X;
+            [ProtoMember(4)]
+            public double SVector_Y;
+            [ProtoMember(5)]
+            public double SVector_Z;
+            [ProtoMember(6)]
+            public double OVector_X;
+            [ProtoMember(7)]
+            public double OVector_Y;
+            [ProtoMember(8)]
+            public double OVector_Z;
+
+            public Respawn() { }
+            public Respawn(string buttonName, string prefabName, long sVector_X, long sVector_Y, long sVector_Z, long oVector_X, long oVector_Y, long oVector_Z)
+            {
+                ButtonName = buttonName;
+                PrefabName = prefabName;
+                SVector_X = sVector_X;
+                SVector_Y = sVector_Y;
+                SVector_Z = sVector_Z;
+                OVector_X = oVector_X;
+                OVector_Y = oVector_Y;
+                OVector_Z = oVector_Z;
+            }
+        }
+
+        internal DSC_Config_Main Clone()
+        {
+            return new DSC_Config_Main
+            {
+                NeutralFactions = NeutralFactions,
+                BlockKey = BlockKey,
+                Respawns = Respawns
+            };
+        }
+    }
+
+
     [ProtoContract]
     [Serializable]
     public class DSC_Config_Trade

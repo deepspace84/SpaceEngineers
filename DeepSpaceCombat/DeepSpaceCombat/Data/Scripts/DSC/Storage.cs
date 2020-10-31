@@ -31,6 +31,8 @@ namespace DSC
         public Dictionary<long, List<string>> FactionTechs = new Dictionary<long, List<string>>(); // factionID - TechLevelName
         [ProtoMember(6)]
         public Dictionary<long, List<string>> FactionBlocks = new Dictionary<long, List<string>>(); // factionID - LIST->BlockTechName
+        [ProtoMember(7)]
+        public Dictionary<long, string> PlayerNames = new Dictionary<long, string>(); // playerID - playerName
 
         internal DSC_Storage_Factions Clone()
         {
@@ -41,6 +43,7 @@ namespace DSC
                 FactionPlayers = FactionPlayers,
                 PlayersToFaction = PlayersToFaction,
                 FactionTechs = FactionTechs,
+                PlayerNames = PlayerNames
             };
         }
     }
@@ -118,7 +121,9 @@ namespace DSC
 
         [ProtoMember(1)]
         public Dictionary<long, DateTime> Respawns = new Dictionary<long, DateTime>(); // playerId - lastSpawn
+        [ProtoMember(2)]
         public List<long> ResearchContracts = new List<long>();
+        [ProtoMember(3)]
         public List<long> PlayerReference = new List<long>();
 
         internal DSC_Storage_Core Clone()

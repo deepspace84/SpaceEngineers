@@ -16,14 +16,15 @@ namespace DSC
 
         public enum ECommand
         {
-            Test = 0,
+            ReloadStoreConfig = 0,
+            ResetPrices = 1,
             AddFaction = 2,
             FreeBuild = 3,
             Dev = 4,
             MyDamage = 5,
             DelDamage=6,
             ResetSpawn=7,
-            freeFaction=8
+            ReloadCoreConfig = 8
         };
 
         public CommandHandler() { }
@@ -47,15 +48,23 @@ namespace DSC
                 messageHandled = true;
                 switch(cmd)
                 {
-                    case ECommand.Test:
+                    case ECommand.ReloadStoreConfig:
                         try {
-                            DeepSpaceCombat.Instance.Networking.SendToPlayer(new PacketCommand("DSCResearch", playerId), MyAPIGateway.Players.TryGetSteamId(playerId));
+                            DeepSpaceCombat.Instance.TradeManager.LoadConfig();
+                            MyVisualScriptLogicProvider.SendChatMessage("Store config loaded", "Server", playerId);
+                            DeepSpaceCombat.Instance.TradeManager.CheckTrades(true);
                         }
                         catch (Exception e)
                         {
-                            DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "FactionDel failed");
+                            DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Config load failed");
                         }
 
+                        break;
+                    case ECommand.ResetPrices:
+                        DeepSpaceCombat.Instance.TradeManager.Storage.TradesSell.Clear();
+                        DeepSpaceCombat.Instance.TradeManager.Storage.TradesBuy.Clear();
+                        DeepSpaceCombat.Instance.TradeManager.CheckTrades(true);
+                        MyVisualScriptLogicProvider.SendChatMessage("Prices cleared", "Server", playerId);
                         break;
                     case ECommand.AddFaction:
                         DeepSpaceCombat.Instance.Factions.AddFaction(lcommand[1], false);
@@ -81,28 +90,10 @@ namespace DSC
                         break;
                     case ECommand.Dev:
 
-                        if (lcommand[1].Equals("spawn"))
+                        if (lcommand[1].Equals("test"))
                         {
 
-                            try
-                            {
-
-                                Vector3D startPosition = new Vector3D(float.Parse(lcommand[3]), float.Parse(lcommand[4]), float.Parse(lcommand[5]));
-                                Vector3D startDirection = new Vector3D();
-                                if (lcommand.Count > 6)
-                                {
-                                    startDirection = new Vector3D(float.Parse(lcommand[6]), float.Parse(lcommand[7]), float.Parse(lcommand[8]));
-                                }
-                                
-                                DeepSpaceCombat.Instance.SpawnManager.Spawn(new DSC_SpawnShip(playerId, lcommand[2], startPosition, startDirection, true));
-
-                            }
-                            catch (Exception e)
-                            {
-                                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "SpawnManagerCommand failed");
-                            }
-
-                            DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Testspawn called");
+                            DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::RemoveCachedContracts called Amount=>" + DeepSpaceCombat.Instance.CoreStorage.ResearchContracts.Count.ToString());
                         }
 
                         if (lcommand[1].Equals("blockdefs"))
@@ -187,13 +178,48 @@ namespace DSC
                         }
 
                         break;
-
                     case ECommand.ResetSpawn:
-
-                        // Check if player exists
-                        if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(playerId))
+                        try
                         {
-                            DeepSpaceCombat.Instance.CoreStorage.Respawns.Remove(playerId);
+                            if (lcommand.Count > 1)
+                            {
+                                IMyFaction factObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(lcommand[1]);
+
+                                if (factObj != null)
+                                {
+                                    if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(factObj.FactionId))
+                                    {
+                                        MyVisualScriptLogicProvider.SendChatMessage("Reset spwan for faction" + lcommand[1], "Server", playerId);
+                                        DeepSpaceCombat.Instance.CoreStorage.Respawns.Remove(factObj.FactionId);
+                                    }
+                                }
+
+                            }
+
+                            // Check if player is in an active faction
+                            if (!DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.ContainsKey(playerId)) return;
+
+                            // Check if player allready spawned a ship
+                            if (DeepSpaceCombat.Instance.CoreStorage.Respawns.ContainsKey(DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction[playerId]))
+                            {
+                                DeepSpaceCombat.Instance.CoreStorage.Respawns.Remove(DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction[playerId]);
+                                MyVisualScriptLogicProvider.SendChatMessage("Reset spwan for faction" + DeepSpaceCombat.Instance.Factions.Storage.PlayerFactions[DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction[playerId]], "Server", playerId);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Config load failed");
+                        }
+                        break;
+                    case ECommand.ReloadCoreConfig:
+                        try
+                        {
+                            DeepSpaceCombat.Instance.LoadCoreConfig(true);
+                            MyVisualScriptLogicProvider.SendChatMessage("Core config loaded", "Server", playerId);
+                        }
+                        catch (Exception e)
+                        {
+                            DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Config load failed");
                         }
 
                         break;

@@ -45,6 +45,7 @@ namespace DSC
         public bool isDebug = true;
 
         public DSC_Storage_Core CoreStorage;
+        public DSC_Config_Main Config;
 
         public Networking Networking = new Networking(DSC_Config.ConnectionId);
         public CommandHandler CMDHandler = new CommandHandler();
@@ -187,6 +188,7 @@ namespace DSC
                 {
                     Factions.PlayerConnectCheck();
                     SpawnManager.Check();
+                    Factions.CheckProjectors();
                 }
 
                 // Every minute
@@ -314,44 +316,61 @@ namespace DSC
          */
         private void InitServer()
         {
-            _isInitialized = true; // Set this first to block any other calls from UpdateAfterSimulation().
-            _isServerRegistered = true;
-            ServerLogger.Init("DSC_Server.Log", false, 0); // comment this out if logging is not required for the Server.
-            ServerLogger.WriteStart("DSC MOD Server Log Started");
-            ServerLogger.WriteInfo("DSC MOD Server Version {0}", DSC_Config.modVersion.ToString());
-            ServerLogger.WriteInfo("DSC MOD Communiction Server Version {0}", DSC_Config.ModCommunicationVersion);
-            if (ServerLogger.IsActive)
-                VRage.Utils.MyLog.Default.WriteLine(string.Format("##Mod## DSC Server Logging File: {0}", ServerLogger.LogFile));
+            try
+            {
+                _isInitialized = true; // Set this first to block any other calls from UpdateAfterSimulation().
+                _isServerRegistered = true;
+                ServerLogger.Init("DSC_Server.Log", false, 0); // comment this out if logging is not required for the Server.
+                ServerLogger.WriteStart("DSC MOD Server Log Started");
+                ServerLogger.WriteInfo("DSC MOD Server Version {0}", DSC_Config.modVersion.ToString());
+                ServerLogger.WriteInfo("DSC MOD Communiction Server Version {0}", DSC_Config.ModCommunicationVersion);
+                if (ServerLogger.IsActive)
+                    VRage.Utils.MyLog.Default.WriteLine(string.Format("##Mod## DSC Server Logging File: {0}", ServerLogger.LogFile));
 
-            ServerLogger.Flush();
+                ServerLogger.Flush();
 
-            // Load core storage
-            LoadCoreStorage();
+                // Load core storage
+                LoadCoreStorage();
 
-            // Check for default faction / npc data
-            CheckDefaultFactionNPC();
+                // Load core config
+                LoadCoreConfig();
 
-            // Load Reference data
-            DSCReference.Load();
+                // Check for default faction / npc data
+                CheckDefaultFactionNPC();
 
-            // Load tech tree
-            Techtree.Load();
+                // Load Reference data
+                DSCReference.Load();
 
+                // Load tech tree
+                Techtree.Load();
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Core::InitServer");
+            }
         }
 
         private void InitServerLate()
         {
-            // Load faction data
-            Factions.Load();
+            try
+            {
+                // Load faction data
+                Factions.Load();
 
-            // Load SpawnManager
-            SpawnManager.Load();
+                // Load SpawnManager
+                SpawnManager.Load();
 
-            // Load RespawnManager
-            RespawnManager.Load();
+                // Load RespawnManager
+                RespawnManager.Load();
 
-            // Load TradeManager
-            TradeManager.Load();
+                // Load TradeManager
+                TradeManager.Load();
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Core::InitServerLate");
+            }
+
         }
 
         #endregion
@@ -366,17 +385,53 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
-            // && MyAPIGateway.Session.Player.PromoteLevel.CompareTo(MyPromoteLevel.Admin) > 3
-            if (messageText.StartsWith(_commandStart.ToString()))
+            if (messageText.StartsWith(_commandStart.ToString()) && (MyAPIGateway.Session.Player.PromoteLevel.Equals(MyPromoteLevel.Admin) || MyAPIGateway.Session.Player.PromoteLevel.Equals(MyPromoteLevel.Owner)))
             {
                 Networking.SendToServer(new PacketCommand(messageText.TrimStart(_commandStart), MyAPIGateway.Session.Player.IdentityId));
                 sendToOthers = false;
             }
-            else { sendToOthers = true; }
         }
         #endregion
 
         #region core functions
+
+        public void LoadCoreConfig(bool writenew=false)
+        {
+            // Load config xml
+            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Config_Main", typeof(DSC_Config_Main)) && writenew == false)
+            {
+                try
+                {
+                    System.IO.TextReader reader = MyAPIGateway.Utilities.ReadFileInWorldStorage("DSC_Config_Main", typeof(DSC_Config_Main));
+                    var xmlData = reader.ReadToEnd();
+                    Config = MyAPIGateway.Utilities.SerializeFromXML<DSC_Config_Main>(xmlData);
+                    reader.Dispose();
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("DSC_Config_Main found and loaded");
+                }
+                catch (Exception e)
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Config_Main loading failed");
+                }
+            }
+            else
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No DSC_Config_Main found, create default");
+                // Create default values
+                Config = new DSC_Config_Main
+                {
+                    NeutralFactions = new List<string>(),
+                    BlockKey = "12345",
+                    Respawns = new List<DSC_Config_Main.Respawn>()
+                };
+
+                // Write file
+                var xmlData = MyAPIGateway.Utilities.SerializeToXML<DSC_Config_Main>(Config);
+                System.IO.TextWriter writerConfig = MyAPIGateway.Utilities.WriteFileInWorldStorage("DSC_Config_Main", typeof(DSC_Config_Main));
+                writerConfig.Write(xmlData);
+                writerConfig.Flush();
+                writerConfig.Close();
+            }
+        }
 
         private void LoadCoreStorage()
         {
