@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sandbox.Definitions;
 using Sandbox.Game;
 using Sandbox.Game.World;
 using Sandbox.ModAPI;
+using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
 using VRage.Game.ModAPI;
@@ -56,6 +58,7 @@ namespace DSC
         public DSC_SpawnManager SpawnManager = new DSC_SpawnManager();
         public DSC_RespawnManager RespawnManager = new DSC_RespawnManager();
         public DSC_TradeManager TradeManager = new DSC_TradeManager();
+        public DSC_TextHudModule TextHudModule = new DSC_TextHudModule();
 
         public long NPCPlayerID;
         public long NPCFactionID;
@@ -83,22 +86,6 @@ namespace DSC
             // TODO Do we need this? used in ship speed, keep it? :P
             if (MyAPIGateway.Utilities == null) { MyAPIGateway.Utilities = MyAPIUtilities.Static; }
 
-            try
-            {
-                //Define Speedes and Missile Range #TODO Check if its on the right location on init? Check back with original script
-                MyDefinitionManager.Static.EnvironmentDefinition.LargeShipMaxSpeed = DSC_Config.largeShipSpeed;
-                MyDefinitionManager.Static.EnvironmentDefinition.SmallShipMaxSpeed = DSC_Config.smallShipSpeed;
-                MyDefinitionId missileId = new MyDefinitionId(typeof(MyObjectBuilder_AmmoDefinition), "Missile");
-                MyMissileAmmoDefinition ammoDefinition = MyDefinitionManager.Static.GetAmmoDefinition(missileId) as MyMissileAmmoDefinition;
-                ammoDefinition.MaxTrajectory = DSC_Config.missileExplosionRange;
-                ammoDefinition.MissileInitialSpeed = DSC_Config.missileMinSpeed;
-                ammoDefinition.DesiredSpeed = DSC_Config.missileMaxSpeed;
-            }
-            catch (Exception ex)
-            {
-                // Main init failure
-                VRage.Utils.MyLog.Default.WriteLine("##Mod## ERROR " + ex.Message);
-            }
         }
 
         /*
@@ -110,7 +97,11 @@ namespace DSC
         {
             base.BeforeStart();
 
+            // Register network handling
             Networking.Register();
+
+            // Initiate Text Hud Api
+            TextHudModule.Init();
         }
 
         /*
@@ -118,6 +109,14 @@ namespace DSC
          * 
          * UpdateBeforeSimulation override
          */
+
+        public override void LoadData()
+        {
+            base.LoadData();
+        }
+
+
+
         public override void UpdateBeforeSimulation()
         {
             // Init Block
@@ -161,7 +160,14 @@ namespace DSC
             }
 
 
-
+            if (IsClientRegistered)
+            {
+                // Every minute
+                if (TickCounter % 240 == 0)
+                {
+                    TextHudModule.Check();
+                }
+            }
         }
 
 
@@ -194,6 +200,7 @@ namespace DSC
                 // Every minute
                 if (TickCounter % 3600 == 0)
                 {
+                    TradeManager.SetNpcMoney();
                     TradeManager.CheckTrades();
                 }
             }
@@ -304,6 +311,8 @@ namespace DSC
             // Register client message handler
             MyAPIGateway.Utilities.MessageEntered += GotMessage;
 
+            
+
             ClientLogger.Flush();
 
         }
@@ -385,9 +394,15 @@ namespace DSC
          */
         private void GotMessage(string messageText, ref bool sendToOthers)
         {
-            if (messageText.StartsWith(_commandStart.ToString()) && (MyAPIGateway.Session.Player.PromoteLevel.Equals(MyPromoteLevel.Admin) || MyAPIGateway.Session.Player.PromoteLevel.Equals(MyPromoteLevel.Owner)))
-            {
-                Networking.SendToServer(new PacketCommand(messageText.TrimStart(_commandStart), MyAPIGateway.Session.Player.IdentityId));
+            if (messageText.StartsWith(_commandStart.ToString())){
+
+                bool isAdmin = false;
+                if ((MyAPIGateway.Session.Player.PromoteLevel.Equals(MyPromoteLevel.Admin) || MyAPIGateway.Session.Player.PromoteLevel.Equals(MyPromoteLevel.Owner)))
+                {
+                    isAdmin = true;
+                }
+
+                Networking.SendToServer(new PacketCommand(messageText.TrimStart(_commandStart), MyAPIGateway.Session.Player.IdentityId, isAdmin));
                 sendToOthers = false;
             }
         }
@@ -395,10 +410,10 @@ namespace DSC
 
         #region core functions
 
-        public void LoadCoreConfig(bool writenew=false)
+        public void LoadCoreConfig()
         {
             // Load config xml
-            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Config_Main", typeof(DSC_Config_Main)) && writenew == false)
+            if (MyAPIGateway.Utilities.FileExistsInWorldStorage("DSC_Config_Main", typeof(DSC_Config_Main)))
             {
                 try
                 {
@@ -412,8 +427,7 @@ namespace DSC
                 {
                     DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "DSC_Config_Main loading failed");
                 }
-            }
-            else
+            }else
             {
                 DeepSpaceCombat.Instance.ServerLogger.WriteInfo("No DSC_Config_Main found, create default");
                 // Create default values

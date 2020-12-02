@@ -1,24 +1,8 @@
 ﻿using ProtoBuf;
-using Sandbox.ModAPI;
-using VRage.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Sandbox.Definitions;
 using Sandbox.Game;
-using Sandbox.Game.Entities;
-using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
-using VRage.Game.Components;
-using VRage.Input;
-using VRage.Game.Entity;
-using VRage.Game.ModAPI;
-using VRage.ModAPI;
-using VRageMath;
-using VRage.ObjectBuilders;
-using VRage.Collections;
-using Sandbox.Game.SessionComponents;
+
 
 
 namespace DSC
@@ -79,6 +63,11 @@ namespace DSC
 
                 if (Type.Equals("Research"))
                 {
+                    if (SubTypeId.Contains("null"))
+                    {
+                        SubTypeId = null;
+                    }
+
                     MyDefinitionId defId =  MyVisualScriptLogicProvider.GetDefinitionId(TypeId, SubTypeId);
 
                     if(defId != null)

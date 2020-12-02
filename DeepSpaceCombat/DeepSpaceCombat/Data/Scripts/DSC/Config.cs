@@ -27,7 +27,7 @@ namespace DSC
          * Ship & Missile speeds
          */
         public static float largeShipSpeed = 150;
-        public static float smallShipSpeed = 225;
+        public static float smallShipSpeed = 180;
         public static float missileMinSpeed = 240;
         public static float missileMaxSpeed = 360;
         public static float missileExplosionRange = 2500;
@@ -40,15 +40,6 @@ namespace DSC
 
         // Respawns
         public static string respawn_pb_trigger = "respawnClicked"; // Trigger string in customname => DSC_Respawn_Hangar_Left;respawnClicked
-        public static Dictionary<string, DSC_RespawnLocation> Respawns = new Dictionary<string, DSC_RespawnLocation>() // PrefabName, DSC_RespawnLocation
-        {
-            // Hangar Left
-            {"TESA_Startroverbutton", new DSC_RespawnLocation("TESA_Startroverbutton", new Vector3D(188250.77, 140028.55, 145483.24), new Vector3D(188246.98, 140039.95, 145481.83),
-                new Dictionary<int, string>(){
-                    {0, "StartingRover" }
-                })
-            },
-        };
 
         // Research steps for 5 Factions
         public static float[] ResearchSteps = new float[]{1f, 0.9f, 0.85f, 0.8f, 0.75f, 0.5f, 0.4f, 0.3f, 0.3f };

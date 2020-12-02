@@ -93,15 +93,18 @@ namespace DSC
             public long TotalPrice;
             [ProtoMember(4)]
             public int Utime;
+            [ProtoMember(5)]
+            public string StationName;
 
             internal Trade (){}
 
-            internal Trade(string itemName, int amount, long totalPrice, int utime)
+            internal Trade(string itemName, int amount, long totalPrice, int utime, string stationName)
             {
                 ItemName = itemName;
                 Amount = amount;
                 TotalPrice = totalPrice;
                 Utime = utime;
+                StationName = stationName;
             }
         }
 

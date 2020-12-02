@@ -37,17 +37,21 @@ namespace DSC
         [ProtoMember(2)]
         public long PlayerId;
 
-        public PacketCommand(string text, long playerId)
+        [ProtoMember(3)]
+        public bool IsAdmin;
+
+        public PacketCommand(string text, long playerId, bool isAdmin)
         {
             Text = text;
             PlayerId = playerId;
+            IsAdmin = isAdmin;
         }
 
         public override bool Received()
         {
             if (MyAPIGateway.Session.IsServer)
             {
-                DeepSpaceCombat.Instance.CMDHandler.HandleCommand(Text, PlayerId);
+                DeepSpaceCombat.Instance.CMDHandler.HandleCommand(Text, PlayerId, IsAdmin);
             }
 
             return false;

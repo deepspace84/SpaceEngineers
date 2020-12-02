@@ -36,7 +36,7 @@ namespace DSCPlugin
             {
                 throw new FileNotFoundException();
             }
-            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_epsilon_9\\Instance\\Saves\\Epsilon 9\\Storage\\2033950117.sbm_DSC", file));
+            Stream stream = MyFileSystem.OpenRead(Path.Combine(@"C:\Servers\torch-server-wasteland\Instance\Saves\Epsilon Wasteland\Storage\2033950117.sbm_DSC", file));
             if (stream != null)
             {
                 return new BinaryReader(stream);
@@ -50,7 +50,8 @@ namespace DSCPlugin
             {
                 throw new FileNotFoundException();
             }
-            Stream stream = MyFileSystem.OpenRead(Path.Combine("C:\\Servers\\se_epsilon_9\\Instance\\Saves\\Epsilon 9\\Storage\\2033950117.sbm_DSC", file));
+        
+            Stream stream = MyFileSystem.OpenRead(Path.Combine(@"C:\Servers\torch-server-wasteland\Instance\Saves\Epsilon Wasteland\Storage\2033950117.sbm_DSC", file));
             if (stream != null)
             {
                 return new StreamReader(stream);
@@ -80,7 +81,7 @@ namespace DSCPlugin
                 // Faction Data
                 try
                 {
-                    string curFile = @"C:\Servers\se_epsilon_9\Instance\Saves\Epsilon 9\Storage\2033950117.sbm_DSC\DSC_Storage_Factions";
+                    string curFile = @"C:\Servers\torch-server-wasteland\Instance\Saves\Epsilon Wasteland\Storage\2033950117.sbm_DSC\DSC_Storage_Factions";
                     if (File.Exists(curFile))
                     {
                         var reader = ReadStorage("DSC_Storage_Factions", typeof(DSC_Storage_Factions));
@@ -102,7 +103,7 @@ namespace DSCPlugin
                 // Techtree
                 try
                 {
-                    string curFile = @"C:\Servers\se_epsilon_9\Instance\Saves\Epsilon 9\Storage\2033950117.sbm_DSC\DSC_Config_TechTree";
+                    string curFile = @"C:\Servers\torch-server-wasteland\Instance\Saves\Epsilon Wasteland\Storage\2033950117.sbm_DSC\DSC_Config_TechTree";
                     if (File.Exists(curFile))
                     {
                         System.IO.TextReader reader = TextReader("DSC_Config_TechTree", typeof(DSC_Config_TechTree));
@@ -167,9 +168,9 @@ namespace DSCPlugin
          * Faction data 
          */
         [ProtoMember(1)]
-        public Dictionary<long, string> PlayerFactions = new Dictionary<long, string>(); // factionTag - factionID
+        public Dictionary<long, string> PlayerFactions = new Dictionary<long, string>(); // factionId - factionTag
         [ProtoMember(2)]
-        public Dictionary<long, string> NPCFactions = new Dictionary<long, string>(); // factionTag - factionID
+        public Dictionary<long, string> NPCFactions = new Dictionary<long, string>(); // factionId - factionTag
         [ProtoMember(3)]
         public Dictionary<long, List<long>> FactionPlayers = new Dictionary<long, List<long>>(); // factionID - LIST->playerID
         [ProtoMember(4)]
@@ -179,11 +180,7 @@ namespace DSCPlugin
         [ProtoMember(6)]
         public Dictionary<long, List<string>> FactionBlocks = new Dictionary<long, List<string>>(); // factionID - LIST->BlockTechName
         [ProtoMember(7)]
-        public Dictionary<long, List<long>> PlayersToPCU = new Dictionary<long, List<long>>(); // playerID - LIST->blockIDs
-        [ProtoMember(8)]
-        public Dictionary<long, int> PlayerDamage = new Dictionary<long, int>(); // playerID - TotalDamage
-        [ProtoMember(9)]
-        public Dictionary<long, int> FactionDamage = new Dictionary<long, int>(); // factionID - TotalDamage
+        public Dictionary<long, string> PlayerNames = new Dictionary<long, string>(); // playerID - playerName
 
         internal DSC_Storage_Factions Clone()
         {
@@ -194,9 +191,7 @@ namespace DSCPlugin
                 FactionPlayers = FactionPlayers,
                 PlayersToFaction = PlayersToFaction,
                 FactionTechs = FactionTechs,
-                FactionBlocks = FactionBlocks,
-                PlayerDamage = PlayerDamage,
-                FactionDamage = FactionDamage
+                PlayerNames = PlayerNames
             };
         }
     }

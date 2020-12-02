@@ -10,14 +10,14 @@ using VRage.ModAPI;
 using Sandbox.Game.Entities;
 using VRageMath;
 using Sandbox.ModAPI.Contracts;
-
+using VRageRender.Messages;
 
 namespace DSC
 {
     public class DSC_Factions
     {
         public DSC_Storage_Factions Storage;
-        private Dictionary<long, List<string>> FactionNextTech = new Dictionary<long, List<string>>();
+        public Dictionary<long, List<string>> FactionNextTech = new Dictionary<long, List<string>>();
 
         private Dictionary<string, Dictionary<long, DSC_ResearchContract>> ResearchStationsContracts = new Dictionary<string, Dictionary<long, DSC_ResearchContract>>();
         private Dictionary<string, List<long>> ResearchStationsPlayers = new Dictionary<string, List<long>>();
@@ -209,7 +209,37 @@ namespace DSC
             // Check if its the first block
             if (grid.BlocksCount == 1)
             {
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Grid added");
+                IMySlimBlock block = grid.CubeBlocks.FirstElement();
+
+                if (block.BlockDefinition.Id.ToString().Contains("MyObjectBuilder_Wheel")) return;
+                if (block.BlockDefinition.Id.ToString().Contains("MyObjectBuilder_ShipConnector")) return;
+
+                if (block.BuiltBy == 0) return;
+
+                if (DeepSpaceCombat.Instance.Factions.PlayerFreeBuild.Contains(block.BuiltBy)) return;
+
+                if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("AddGridEvent:: Block builder not in a faction =>" + block.BuiltBy.ToString());
+                    if (block.BuiltBy == 0)
+                    {
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("AddGridEvent:: Block built by none");
+                        return;
+                    }
+
+                    block.CubeGrid.RemoveBlock(block);
+                    return;
+                }
+
+                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+                {
+                    MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block =>" + block.BlockDefinition.ToString(), 2500, MyFontEnum.Red, block.BuiltBy);
+
+                    // Remove block
+                    block.CubeGrid.RemoveBlock(block);
+
+                    return;
+                }
             }
 
             grid.OnBlockAdded += GridBlockAddedEvent;
@@ -242,6 +272,60 @@ namespace DSC
             {
                 DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "GridBlockAddedEvent:: Crash.....");
             }
+
+
+            try
+            {
+                if (block.BlockDefinition.Id.ToString().Contains("MyObjectBuilder_Wheel")) return;
+                if (block.BlockDefinition.Id.ToString().Contains("MyObjectBuilder_ShipConnector")) return;
+
+                if (block.BuiltBy == 0) return;
+
+                if (DeepSpaceCombat.Instance.Factions.PlayerFreeBuild.Contains(block.BuiltBy)) return;
+
+                // Check if player is in a player faction, if not dont allow building at all
+                if (!Storage.PlayersToFaction.ContainsKey(block.BuiltBy))
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block builder not in a faction =>" + block.BuiltBy.ToString());
+                    if (block.BuiltBy == 0)
+                    {
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("GridBlockAddedEvent:: Block built by none");
+                        return;
+                    }
+                    // Remove block
+                    block.CubeGrid.RemoveBlock(block);
+
+                    // Add item back to player
+                    MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
+
+                    return;
+                }
+
+                // Check if block building is allowed
+                if (!checkTechBlockFaction(Storage.PlayersToFaction[block.BuiltBy], block.BlockDefinition.ToString()))
+                {
+                    MyVisualScriptLogicProvider.ShowNotification("You are not allowed to build this block => "+ block.BlockDefinition.ToString(), 2500, MyFontEnum.Red, block.BuiltBy);
+
+                    // Add item back to player
+                    MyVisualScriptLogicProvider.AddToPlayersInventory(block.BuiltBy, DeepSpaceCombat.Instance.Definitions.Blocks[block.BlockDefinition.ToString()].buildComponent, 1);
+
+                    // Remove block
+                    block.CubeGrid.RemoveBlock(block);
+                }
+            }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "GridBlockAddedEvent:: Crash.....");
+            }
+        }
+
+        private bool checkTechBlockFaction(long factionID, string techBlock)
+        {
+            // Check if hashset with this types exists
+            if (Storage.FactionBlocks[factionID].Contains(techBlock))
+                return true;
+
+            return false;
         }
 
         private void AddProjector(IMyProjector projector)
@@ -320,6 +404,7 @@ namespace DSC
             {
                 if (dscProjector.NeedsCheck)
                 {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Checking projector");
                     dscProjector.NeedsCheck = false;
 
                     // Check if projecting
@@ -444,6 +529,8 @@ namespace DSC
 
                                     // Add player name
                                     Storage.PlayerNames.Add(playerId, MyVisualScriptLogicProvider.GetPlayersName(playerId));
+                                    
+                                    RebuildPlayerMenu(playerId);
                                 }
                             }
 
@@ -469,26 +556,88 @@ namespace DSC
         {
             try
             {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState=> change:" + change.ToString() + " | fromFaction:" + fromFactionId.ToString() + " | toFaction:" + toFactionId.ToString() + " | player:" + playerId.ToString() + " | sender:" + senderId.ToString());
+                bool check = false;
+                try
+                {
+                    
+                    List<IMyPlayer> players = new List<IMyPlayer>();
+                    MyAPIGateway.Players.GetPlayers(players);
+                    foreach (IMyPlayer player in players)
+                    {
+                        if (player.IdentityId == playerId)
+                        {
+                            if (!player.IsBot)
+                            {
+                                check = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Factions::FactionStateChaned MyAPIGateway.Players.GetPlayers failed");
+                }
+
+
+
+                if (!check) return;
+
+                // Player kicked
+                if (change == MyFactionStateChange.FactionMemberKick)
+                {
+                    // Remove from old factions
+                    foreach (long factions in DeepSpaceCombat.Instance.Factions.Storage.FactionPlayers.Keys)
+                    {
+                        DeepSpaceCombat.Instance.Factions.Storage.FactionPlayers[factions].Remove(playerId);
+                    }
+                    DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.Remove(playerId);
+                }
+
                 // Player entered Faction
                 if (change == MyFactionStateChange.FactionMemberAcceptJoin)
                 {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player changed faction=>"+MyVisualScriptLogicProvider.GetPlayersName(playerId)+ " toFactionId=>" + MyAPIGateway.Session.Factions.TryGetFactionById(toFactionId).Tag + " | fromFactionId=>" + MyAPIGateway.Session.Factions.TryGetFactionById(fromFactionId).Tag);
-                    // Check if faction exists in storage
-                    if (Storage.PlayerFactions.ContainsKey(toFactionId))
+                    try
                     {
-                        // Add player to reference
-                        Storage.FactionPlayers[toFactionId].Add(playerId);
-                        Storage.PlayersToFaction.Add(playerId, toFactionId);
-
-                        // Check if player name is in reference
-                        if (!Storage.PlayerNames.ContainsKey(playerId))
+                        DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Player changed faction=>" + MyVisualScriptLogicProvider.GetPlayersName(playerId) + " toFactionId=>" + MyAPIGateway.Session.Factions.TryGetFactionById(toFactionId).Tag + " | fromFactionId=>" + MyAPIGateway.Session.Factions.TryGetFactionById(fromFactionId).Tag);
+                        try
                         {
-                            Storage.PlayerNames.Add(playerId, MyVisualScriptLogicProvider.GetPlayersName(playerId));
+                            // Remove from old factions
+                            foreach (long factions in DeepSpaceCombat.Instance.Factions.Storage.FactionPlayers.Keys)
+                            {
+                                DeepSpaceCombat.Instance.Factions.Storage.FactionPlayers[factions].Remove(playerId);
+                            }
+                            DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction.Remove(playerId);
+                        }
+                        catch (Exception e)
+                        {
+                            DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Factions::FactionStateChaned Remove from faction failed");
+                        }
+
+                        // Check if faction exists in storage
+                        if (Storage.PlayerFactions.ContainsKey(toFactionId))
+                        {
+                            // Add player to reference
+                            Storage.FactionPlayers[toFactionId].Add(playerId);
+                            Storage.PlayersToFaction.Add(playerId, toFactionId);
+
+                            RebuildPlayerMenu(playerId);
+
+                            // Check if player name is in reference
+                            if (!Storage.PlayerNames.ContainsKey(playerId))
+                            {
+                                Storage.PlayerNames.Add(playerId, MyVisualScriptLogicProvider.GetPlayersName(playerId));
+                            }
+                        }
+                        else
+                        {
+                            //MyVisualScriptLogicProvider.SetPlayersFaction(playerId);
                         }
                     }
-                    else
+                    catch (Exception e)
                     {
-                        //MyVisualScriptLogicProvider.SetPlayersFaction(playerId);
+                        DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Factions::FactionStateChaned Player entered Faction faction failed");
                     }
                 }
 
@@ -498,6 +647,8 @@ namespace DSC
                     // Check if faction exists in storage
                     if (Storage.PlayerFactions.ContainsKey(toFactionId))
                     {
+                        RebuildPlayerMenu(playerId);
+
                         // Remove Player from references
                         Storage.FactionPlayers[toFactionId].Remove(playerId);
                         Storage.PlayersToFaction.Remove(playerId);
@@ -547,7 +698,7 @@ namespace DSC
 
                 }
 
-                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("FactionState=> change:" + change.ToString() + " | fromFaction:" + fromFactionId.ToString() + " | toFaction:" + toFactionId.ToString() + " | player:" + playerId.ToString() + " | sender:" + senderId.ToString());
+
             }
             catch (Exception e)
             {
@@ -668,6 +819,7 @@ namespace DSC
                         FactionNextTech[factionId].Add(levelName);
                     }
                 }
+                FactionNextTech[factionId].Sort();
             }
             catch (Exception e)
             {
@@ -868,71 +1020,80 @@ namespace DSC
 
         private void Event_CustomActivateContract(long contractId, long playerId)
         {
-            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract: Contract=>" + contractId.ToString() + " | playe=>" + playerId.ToString());
-
-            // Get the contract object from our reference
-            foreach (string areaName in ResearchStationsContracts.Keys)
+            try
             {
-                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Checking station=>"+areaName);
+                if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract: Contract=>" + contractId.ToString() + " | playe=>" + playerId.ToString());
 
-                if (ResearchStationsContracts[areaName].ContainsKey(contractId))
+                // Get the contract object from our reference
+                foreach (string areaName in ResearchStationsContracts.Keys)
                 {
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Research station found");
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Checking station=>" + areaName);
 
-                    DSC_ResearchContract contract = ResearchStationsContracts[areaName][contractId];
-
-                    // Remove contract
-                    if (MyAPIGateway.ContractSystem.RemoveContract(contractId))
+                    if (ResearchStationsContracts[areaName].ContainsKey(contractId))
                     {
-                        DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could remove contract");
+                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Research station found");
+
+                        DSC_ResearchContract contract = ResearchStationsContracts[areaName][contractId];
+
+                        // Remove contract
+                        if (MyAPIGateway.ContractSystem.RemoveContract(contractId))
+                        {
+                            DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could remove contract");
+                        }
+                        else
+                        {
+                            DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could not remove contract");
+                        }
+
+                        if (MyAPIGateway.ContractSystem.TryAbandonCustomContract(contract.ContractId, playerId))
+                        {
+                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could abandon contract");
+                        }
+                        else
+                        {
+                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could not abandon contract");
+                        }
+
+                        // Check user inventory
+                        if (MyVisualScriptLogicProvider.GetPlayersInventoryItemAmount(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"]) >= contract.ResearchPoints)
+                        {
+                            // Remove Research points
+                            MyVisualScriptLogicProvider.RemoveFromPlayersInventory(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"], contract.ResearchPoints);
+
+                            // Add techlevel to faction and recalculate everything
+                            AddTechLevel(contract.FactionId, contract.TechLevel);
+
+                            // Update area with new tech data
+                            RemoveContracts(contract.ContractBlockName);
+                            AddContracts(contract.ContractBlockName, contract.FactionId);
+
+                            // Send chat message
+                            MyVisualScriptLogicProvider.SendChatMessage("You have successfully researched Techlevel: " + contract.TechLevel, "Server", playerId, MyFontEnum.Red);
+                            MyVisualScriptLogicProvider.SendChatMessage("Faction " + DeepSpaceCombat.Instance.Factions.Storage.PlayerFactions[contract.FactionId] + "has successfully researched Techlevel: " + contract.TechLevel, "Server", 0, MyFontEnum.Red);
+
+                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Player researched=>" + contract.TechLevel + " | player=>" + playerId.ToString());
+                        }
+                        else
+                        {
+                            // Rebuild tech contracts
+                            RemoveContracts(contract.ContractBlockName);
+                            AddContracts(contract.ContractBlockName, contract.FactionId);
+
+                            if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Player has not enough points | player=>" + playerId.ToString());
+
+                            // Send chat message
+                            MyVisualScriptLogicProvider.SendChatMessage("You have not enough ResearchPoints to research the Techlevel: " + contract.TechLevel + ". Needed Researchpoints:" + contract.ResearchPoints.ToString(), "Server", playerId, MyFontEnum.Red);
+                        }
+
+                        break;
                     }
-                    else
-                    {
-                        DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could not remove contract");
-                    }
-
-                    if (MyAPIGateway.ContractSystem.TryAbandonCustomContract(contract.ContractId, playerId))
-                    {
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could abandon contract");
-                    }
-                    else
-                    {
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract could not abandon contract");
-                    }
-
-                    // Check user inventory
-                    if (MyVisualScriptLogicProvider.GetPlayersInventoryItemAmount(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"]) >= contract.ResearchPoints)
-                    {
-                        // Remove Research points
-                        MyVisualScriptLogicProvider.RemoveFromPlayersInventory(playerId, DeepSpaceCombat.Instance.Definitions.Compontents["ResearchPoint"], contract.ResearchPoints);
-
-                        // Add techlevel to faction and recalculate everything
-                        AddTechLevel(contract.FactionId, contract.TechLevel);
-
-                        // Update area with new tech data
-                        RemoveContracts(contract.ContractBlockName);
-                        AddContracts(contract.ContractBlockName, contract.FactionId);
-
-                        // Send chat message
-                        MyVisualScriptLogicProvider.SendChatMessage("You have successfully researched the Techlevel: " + contract.TechLevel, "Server", playerId, MyFontEnum.Red);
-
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Player researched=>"+contract.TechLevel+" | player=>" + playerId.ToString());
-                    }
-                    else
-                    {
-                        // Rebuild tech contracts
-                        RemoveContracts(contract.ContractBlockName);
-                        AddContracts(contract.ContractBlockName, contract.FactionId);
-
-                        if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Player has not enough points | player=>" + playerId.ToString());
-
-                        // Send chat message
-                        MyVisualScriptLogicProvider.SendChatMessage("You have not enough ResearchPoints to research the Techlevel: " + contract.TechLevel + ". Needed Researchpoints:" + contract.ResearchPoints.ToString(), "Server", playerId, MyFontEnum.Red);
-                    }
-
-                    break;
                 }
             }
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Factions::Event_CustomActivateContract faction failed");
+            }
+            
         }
 
         private void AddContracts(string areaName, long factionId)
@@ -948,6 +1109,16 @@ namespace DSC
 
                 MyDefinitionId def_id;
                 MyDefinitionId.TryParse("MyObjectBuilder_ContractTypeDefinition/CustomContract", out def_id);
+
+                bool factCheck = false;
+                foreach (string factionTag in DeepSpaceCombat.Instance.Config.NeutralFactions)
+                {
+                    IMyFaction factionObj = MyAPIGateway.Session.Factions.TryGetFactionByTag(factionTag);
+                    if (factionObj != null)
+                    {
+                        if (factionObj.FactionId == factionId) factCheck = true;
+                    }
+                }
 
                 // Loop through available techs
                 foreach (string techLevel in FactionNextTech[factionId])
@@ -968,7 +1139,7 @@ namespace DSC
                         block.Replace("MyObjectBuilder_", "");
 
                         string[] typeIds = block.Split('/');
-                        blockinfo += "\n\r" + typeIds[1];
+                        blockinfo += " - " + typeIds[1];
                     }
 
                     MyAddContractResultWrapper result = new MyAddContractResultWrapper();
@@ -976,13 +1147,25 @@ namespace DSC
                     int collateral = 0;
                     int duration = 1;
                     int researchPoints = CalculateResearchpoints(techLevel);
+
+                    if (factCheck) {
+                        researchPoints = researchPoints /2;
+                        if (researchPoints == 0) researchPoints=1;
+                    }
+
+
                     string contract_name = techLevel;
                     string contract_description = "You can research this Techlevel for " + researchPoints.ToString() + " ResearchPoints. Accept this contract while you have the needed amount of ResearchPoints in your inventory." + blockinfo;
                     MyContractCustom contract = new Sandbox.ModAPI.Contracts.MyContractCustom(def_id, contractBlock, reward, collateral, duration, contract_name, contract_description, 0, 0, null);
 
                     // Add conctract
                     result = MyAPIGateway.ContractSystem.AddContract(contract);
-                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::Event_CustomActivateContract Added contract to station=>" + areaName + " | id=>" + result.ContractId.ToString());
+                    if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::AddContracts Added contract to station=>" + areaName + " | id=>" + result.ContractId.ToString());
+                    if(result.ContractId == 0)
+                    {
+                        DeepSpaceCombat.Instance.ServerLogger.WriteError("Factions::AddContracts Creation failed for techlevel =>" + techLevel + " | id=>" + result.ContractId.ToString() +" - Research Points=>"+ researchPoints.ToString());
+                        continue;
+                    }
 
                     // Add contract to core storage and save it, because we can't get em later
                     DeepSpaceCombat.Instance.CoreStorage.ResearchContracts.Add(result.ContractId);
@@ -1066,7 +1249,12 @@ namespace DSC
             }
 
             // Calculate points on the ResearchSteps config values
-            finalPoints = (int)Math.Floor(finalPoints * DSC_Config.ResearchSteps[factionCount]);
+            finalPoints = (int)Math.Ceiling(finalPoints * DSC_Config.ResearchSteps[factionCount]);
+
+            if(finalPoints == 0)
+            {
+                finalPoints = 1;
+            }
 
             return finalPoints;
         }
@@ -1205,19 +1393,40 @@ namespace DSC
             }
         }
 
+        public void SendMissionScreen(long playerId, string title, string message, string buttonText = "Close")
+        {
+            ulong steamId = MyAPIGateway.Players.TryGetSteamId(playerId);
+            if (steamId != 0)
+            {
+                DeepSpaceCombat.Instance.Networking.SendToPlayer(new PacketScreen(playerId, title, message, buttonText), steamId);
+            }
+            else
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteInfo("Faction::SendMissionScreen Could not find player steam id");
+
+            }
+        }
+
         private bool PlayerIsOnline(long playerId)
         {
-            List<IMyPlayer> players = new List<IMyPlayer>();
-            MyAPIGateway.Players.GetPlayers(players);
-            foreach (IMyPlayer player in players)
+            try
             {
-                if (player.IdentityId == playerId)
+                List<IMyPlayer> players = new List<IMyPlayer>();
+                MyAPIGateway.Players.GetPlayers(players);
+                foreach (IMyPlayer player in players)
                 {
-                    return true;
+                    if (player.IdentityId == playerId)
+                    {
+                        return true;
+                    }
                 }
             }
-
+            catch (Exception e)
+            {
+                DeepSpaceCombat.Instance.ServerLogger.WriteException(e, "Faction::PlayerIsOnline failed");
+            }
             return false;
+
         }
 
         #endregion

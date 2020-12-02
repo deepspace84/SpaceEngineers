@@ -6,6 +6,7 @@ namespace DSC
     // tag numbers in ProtoInclude collide with numbers from ProtoMember in the same class, therefore they must be unique.
     [ProtoInclude(2000, typeof(PacketCommand))]
     [ProtoInclude(3000, typeof(PacketResearch))]
+    [ProtoInclude(4000, typeof(PacketScreen))]
     [ProtoContract]
     public abstract class PacketBase
     {

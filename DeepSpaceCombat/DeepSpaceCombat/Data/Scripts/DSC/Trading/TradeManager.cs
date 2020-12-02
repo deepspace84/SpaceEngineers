@@ -389,7 +389,7 @@ namespace DSC
                                     long preAmount = 0;
                                     foreach (DSC_Storage_Trade.Trade trade in Storage.TradesBuy)
                                     {
-                                        if (trade.ItemName.Equals(item.ItemName))
+                                        if (trade.ItemName.Equals(item.ItemName) && trade.StationName.Equals(name))
                                         {
                                             preAmount += trade.Amount;
                                         }
@@ -462,7 +462,7 @@ namespace DSC
                 if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::BuyCallback called unknown=>" + sellerPlayerId.ToString() + " - " + itemName);
 
                 // Add trade
-                Storage.TradesBuy.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
+                Storage.TradesBuy.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp(), stationName));
 
                 // Set NPC Money
                 SetNpcMoney();
@@ -486,7 +486,7 @@ namespace DSC
                 if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("TradeManager::SellCallback" + amount.ToString() + " - " + itemName);
 
                 // Add trade
-                Storage.TradesSell.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
+                //Storage.TradesSell.Add(new DSC_Storage_Trade.Trade(itemName, amount, totalPrice, (int)DateTime.Now.ToUnixTimestamp()));
 
 
                 // Rebuild trade prices

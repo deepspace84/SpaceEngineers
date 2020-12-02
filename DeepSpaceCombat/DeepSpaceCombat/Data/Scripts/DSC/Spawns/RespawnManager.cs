@@ -21,32 +21,39 @@ namespace DSC
 
 
         private Dictionary<long, string> RespawnStations = new Dictionary<long, string>(); // blockId - respawnName
+        private Dictionary<string, DSC_RespawnLocation> Respawns = new Dictionary<string, DSC_RespawnLocation>(); // blockId - respawnName
 
         public void Load()
         {
             MyVisualScriptLogicProvider.ButtonPressedEntityName += ButtonPressedFull;
 
+            LoadRespawns();
+        }
+
+        public void LoadRespawns()
+        {
+            RespawnStations.Clear();
+            Respawns.Clear();
+
             // Load all stations from config
-            foreach (string respawnName in DSC_Config.Respawns.Keys)
+            foreach (DSC_Config_Main.Respawn respawn in DeepSpaceCombat.Instance.Config.Respawns)
             {
-                DSC_RespawnLocation respawnLocation = DSC_Config.Respawns[respawnName];
+                DSC_RespawnLocation respawnLocation = new DSC_RespawnLocation(respawn.ButtonName, new Vector3D(respawn.SVector_X, respawn.SVector_Y, respawn.SVector_Z), new Vector3D(respawn.OVector_X, respawn.OVector_Y, respawn.OVector_Z), new Dictionary<int, string>() { { 0, respawn.PrefabName } });
 
                 // Check if block exists
                 long blockId = DeepSpaceCombat.Instance.DSCReference.AddBlockWithName(respawnLocation.BlockName);
                 if (blockId > 0)
                 {
-                    RespawnStations.Add(blockId, respawnName);
+                    RespawnStations.Add(blockId, respawn.ButtonName);
+                    Respawns.Add(respawnLocation.BlockName, respawnLocation);
                     if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::Load: Add RespawnStation=>" + respawnLocation.BlockName);
                 }
                 else
                 {
                     if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteError("RespawnManager::load: Could not add/find block in Reference. Blockname=>" + respawnLocation.BlockName + " | Error=>" + blockId.ToString());
                 }
-
             }
-
         }
-
 
         private void ButtonPressedFull(string name, int button, long playerId, long blockId)
         {
@@ -59,7 +66,7 @@ namespace DSC
                 if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull block in reference");
 
                 // Check if button id exists
-                if (!DSC_Config.Respawns[spawnName].Prefabs.ContainsKey(button)) return;
+                if (!Respawns[spawnName].Prefabs.ContainsKey(button)) return;
 
                 if (DeepSpaceCombat.Instance.isDebug) DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::ButtonPressedFull Button Id exists");
 
@@ -78,10 +85,10 @@ namespace DSC
                 DeepSpaceCombat.Instance.CoreStorage.Respawns.Add(DeepSpaceCombat.Instance.Factions.Storage.PlayersToFaction[playerId], DateTime.Now);
 
                 // Spawn ship
-                DSC_SpawnShip spawnShipObj = new DSC_SpawnShip(playerId, DSC_Config.Respawns[spawnName].Prefabs[button], DSC_Config.Respawns[spawnName].StartPosition, DSC_Config.Respawns[spawnName].StartDirection, true);
+                DSC_SpawnShip spawnShipObj = new DSC_SpawnShip(playerId, Respawns[spawnName].Prefabs[button], Respawns[spawnName].StartPosition, Respawns[spawnName].StartDirection, true);
                 if(spawnShipObj == null)
                 {
-                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::Spawnship failed" + playerId.ToString()+"--"+DSC_Config.Respawns[spawnName].Prefabs[button].ToString()+"--"+DSC_Config.Respawns[spawnName].StartPosition.ToString()+"--"+DSC_Config.Respawns[spawnName].StartDirection.ToString());
+                    DeepSpaceCombat.Instance.ServerLogger.WriteInfo("RespawnManager::Spawnship failed" + playerId.ToString()+"--"+Respawns[spawnName].Prefabs[button].ToString()+"--"+Respawns[spawnName].StartPosition.ToString()+"--"+Respawns[spawnName].StartDirection.ToString());
                     return;
                 }
 

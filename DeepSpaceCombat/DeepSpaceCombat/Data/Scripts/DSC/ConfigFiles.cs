@@ -41,7 +41,7 @@ namespace DSC
             public double OVector_Z;
 
             public Respawn() { }
-            public Respawn(string buttonName, string prefabName, long sVector_X, long sVector_Y, long sVector_Z, long oVector_X, long oVector_Y, long oVector_Z)
+            public Respawn(string buttonName, string prefabName, double sVector_X, double sVector_Y, double sVector_Z, double oVector_X, double oVector_Y, double oVector_Z)
             {
                 ButtonName = buttonName;
                 PrefabName = prefabName;
