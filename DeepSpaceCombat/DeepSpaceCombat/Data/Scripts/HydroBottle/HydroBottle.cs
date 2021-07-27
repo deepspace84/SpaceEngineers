@@ -27,7 +27,7 @@ using VRageMath;
 using VRage.Game.Entity;
 using VRage.Voxels;
 
-namespace HydroSupportEngine
+namespace JetpackStation
 {
     [MyEntityComponentDescriptor(typeof(MyObjectBuilder_HydrogenEngine), true, "HydroSupport")]
     public class CloneBlock : MyGameLogicComponent
@@ -42,9 +42,12 @@ namespace HydroSupportEngine
         {
             Entity.NeedsUpdate |= MyEntityUpdateEnum.EACH_FRAME | MyEntityUpdateEnum.EACH_100TH_FRAME;
 
+            // Save block entity
             TerminalalBlock = Entity as Sandbox.ModAPI.IMyTerminalBlock;
 
+            // Get init position
             TerminalPos = TerminalalBlock.CubeGrid.GetPosition();
+
             MyAPIGateway.Players.GetPlayers(AllPlayers);
         }
 
@@ -52,17 +55,22 @@ namespace HydroSupportEngine
         {
             base.UpdateBeforeSimulation100();
 
-            Counter++;
-            if(Counter == 10)
-            {
-                MyAPIGateway.Players.GetPlayers(AllPlayers);
-            }
-
             // Check if block is active
             if (TerminalalBlock.IsWorking)
             {
-                foreach(IMyPlayer player in AllPlayers)
+                // Update players and block location each 10 ticks / 1000 real ticks => equals each second
+                Counter++;
+                if (Counter == 10)
                 {
+                    MyAPIGateway.Players.GetPlayers(AllPlayers);
+                    TerminalPos = TerminalalBlock.CubeGrid.GetPosition();
+
+                }
+
+                foreach (IMyPlayer player in AllPlayers)
+                {
+                    if(player.GetRelationTo(player.IdentityId) != MyRelationsBetweenPlayerAndBlock.Enemies)
+
                     if (Vector3D.Distance(player.GetPosition(), TerminalPos) <= 200)
                     {
                         MyVisualScriptLogicProvider.SetPlayersHydrogenLevel(player.IdentityId, 1);
