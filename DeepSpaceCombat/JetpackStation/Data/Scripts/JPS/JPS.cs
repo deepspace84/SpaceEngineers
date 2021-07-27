@@ -48,11 +48,6 @@ namespace JetpackStation
 
             // Save block entity
             TerminalalBlock = Entity as Sandbox.ModAPI.IMyTerminalBlock;
-
-            // Get init position
-            TerminalPos = TerminalalBlock.CubeGrid.GetPosition();
-            
-            MyAPIGateway.Players.GetPlayers(AllPlayers);
         }
 
         public override void UpdateBeforeSimulation100()
