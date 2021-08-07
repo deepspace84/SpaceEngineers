@@ -36,6 +36,8 @@ namespace JetpackStation
 
         private Sandbox.ModAPI.IMyTerminalBlock TerminalalBlock;
         private List<IMyPlayer> AllPlayers = new List<IMyPlayer>();
+        private List<IMyPlayer> InPlayers = new List<IMyPlayer>();
+        private List<IMyPlayer> InCachePlayers = new List<IMyPlayer>();
         private Vector3D TerminalPos;
         private int Counter = 0;
         private int StationRange = 1000;
@@ -78,10 +80,22 @@ namespace JetpackStation
                         {
                             if (Vector3D.Distance(player.GetPosition(), TerminalPos) <= CheckRange)
                             {
+                                
+
+
                                 MyVisualScriptLogicProvider.SetPlayersHydrogenLevel(player.IdentityId, 1);
+                                MyVisualScriptLogicProvider.SetPlayersEnergyLevel(player.IdentityId, 1);
+                                MyVisualScriptLogicProvider.SetPlayersOxygenLevel(player.IdentityId, 1);
                             }
                         }
                     }
+                    // Check fo missing in cache
+
+
+                    // Rewrite cache
+                    InCachePlayers.Clear();
+                    InCachePlayers = InPlayers;
+                    //InCachePlayers.Add(InPlayers);
                 }
 
             }else Counter++;

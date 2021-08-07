@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3D_Printer_V2", "3D_Printer_V2\3D_Printer_V2.csproj", "{52AB07F7-EFD5-4C6D-AEA9-22E09B3241F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceWelder", "SpaceWelder\SpaceWelder.csproj", "{2182EB8E-0638-41A2-8380-F7E453C59342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,6 +14,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{52AB07F7-EFD5-4C6D-AEA9-22E09B3241F2}.Debug|x64.ActiveCfg = Debug|x64
 		{52AB07F7-EFD5-4C6D-AEA9-22E09B3241F2}.Debug|x64.Build.0 = Debug|x64
+		{2182EB8E-0638-41A2-8380-F7E453C59342}.Debug|x64.ActiveCfg = Debug|x64
+		{2182EB8E-0638-41A2-8380-F7E453C59342}.Debug|x64.Build.0 = Debug|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
