@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepSpaceCombat", "DeepSpaceCombat\DeepSpaceCombat.csproj", "{5DD09820-8240-4CDD-A6C1-EDC11087ED19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetpackStation", "JetpackStation\JetpackStation.csproj", "{724DFF51-4E90-4972-908A-168D34A6B7CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JetpackStation", "JetpackStation\JetpackStation.csproj", "{724DFF51-4E90-4972-908A-168D34A6B7CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPAdminBlocks", "WPAdminBlocks\WPAdminBlocks.csproj", "{C15B8326-C70A-41B1-944B-198DC3B28AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMChat", "COMChat\COMChat.csproj", "{1174C82D-F4D3-4DD2-BA51-704328C29C5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{724DFF51-4E90-4972-908A-168D34A6B7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724DFF51-4E90-4972-908A-168D34A6B7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724DFF51-4E90-4972-908A-168D34A6B7CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15B8326-C70A-41B1-944B-198DC3B28AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15B8326-C70A-41B1-944B-198DC3B28AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15B8326-C70A-41B1-944B-198DC3B28AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15B8326-C70A-41B1-944B-198DC3B28AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1174C82D-F4D3-4DD2-BA51-704328C29C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1174C82D-F4D3-4DD2-BA51-704328C29C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1174C82D-F4D3-4DD2-BA51-704328C29C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1174C82D-F4D3-4DD2-BA51-704328C29C5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

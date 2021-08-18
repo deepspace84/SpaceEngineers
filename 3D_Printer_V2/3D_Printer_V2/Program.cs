@@ -501,6 +501,9 @@ namespace IngameScript
                     printLength = (d3_posMax_y / d3_pist_y.Count);
                 }
 
+                List<IMyThrust> thrusterBlocks = new List<IMyThrust>();
+                GridTerminalSystem.GetBlocksOfType(thrusterBlocks, (IMyThrust x) => x != null);
+
                 // Add piston object to dictonary
                 pistonObject = (IMyPistonBase)GridTerminalSystem.GetBlockWithName(name);
                 if (null != pistonObject)

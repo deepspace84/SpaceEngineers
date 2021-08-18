@@ -5,10 +5,10 @@
     <Definition xsi:type="MyObjectBuilder_HydrogenEngineDefinition">
       <Id>
         <TypeId>HydrogenEngine</TypeId>
-        <SubtypeId>JetpackStation</SubtypeId>
+        <SubtypeId>LifeSupportStation</SubtypeId>
       </Id>
-      <DisplayName>JetpackStation</DisplayName>
-      <Description>Auto Hydro filling wihtin 200m</Description>
+      <DisplayName>LifeSupportStation</DisplayName>
+      <Description>Life support for hydrogen/oxygen/energy</Description>
       <Icon>Textures\GUI\Icons\Cubes\HydrogenEngineLarge.dds</Icon>
       <CubeSize>Large</CubeSize>
       <GuiVisible>false</GuiVisible>
@@ -61,7 +61,7 @@
           </Id>
         </FuelInfo>
       </FuelInfos>
-      <FuelProductionToCapacityMultiplier>0.001</FuelProductionToCapacityMultiplier>
+      <FuelProductionToCapacityMultiplier>0.0005</FuelProductionToCapacityMultiplier>
       <PrimarySound>ArcBlockHydrogenEngine</PrimarySound>
 
       <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>

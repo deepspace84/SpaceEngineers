@@ -44,7 +44,6 @@ namespace DSC
                 if (Type.Equals("Init"))
                 {
                     //MyVisualScriptLogicProvider.ClearAllToolbarSlots(PlayerId);
-
                     foreach (var def in MyDefinitionManager.Static.GetAllDefinitions())
                     {
                         var cubeDef = def as MyCubeBlockDefinition;

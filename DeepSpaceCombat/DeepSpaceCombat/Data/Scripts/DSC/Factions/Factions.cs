@@ -65,7 +65,7 @@ namespace DSC
                     FactionTechs = new Dictionary<long, List<string>>(),
                     FactionBlocks = new Dictionary<long, List<string>>(),
                     PlayerNames = new Dictionary<long, string>(),
-            };
+                };
             }
 
             // Add block event for progression
